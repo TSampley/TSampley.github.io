@@ -1,0 +1,9 @@
+
+# Ignore Jekyll files
+_site
+.sass-cache
+.jekyll-metadata
+
+# Ignore Bundler files
+vender
+.bundle
