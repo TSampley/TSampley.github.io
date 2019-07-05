@@ -91,7 +91,7 @@ This is another entry point, but this code actually seems relevant. Looks like
 I was playing with calculating distance before getting distracted with binary
 and hexcode.
 
-#### Review
+#### Conclusion
 
 This looks like what I expect to see a lot of: incomplete projects
 inspired by small curiosities - often made simply to experiment with an idea. I
