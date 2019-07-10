@@ -1,23 +1,24 @@
 
 class CalculationData {
-  xs;
-  ys;
-  fs;
-
-  xsum;
-  ysum;
-  fsum;
-
-  meanX;
-  meanY;
-
-  dxs;
-  dys;
-
-  varX;
-  varY;
-  covar;
-  corr;
+  // apparently this syntax isn't widely supported
+  // xs;
+  // ys;
+  // fs;
+  //
+  // xsum;
+  // ysum;
+  // fsum;
+  //
+  // meanX;
+  // meanY;
+  //
+  // dxs;
+  // dys;
+  //
+  // varX;
+  // varY;
+  // covar;
+  // corr;
 
   constructor(xs, ys, fs) {
     // Points

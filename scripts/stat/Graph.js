@@ -7,23 +7,24 @@ const FLAG_DY = 1 << 1;
 const FLAG_ALL = 0x7fffffff;
 
 class Graph {
-  // canvas and context
-  canvas;
-  context;
-  // translation. starts with (0, 0) at center
-  tx;
-  ty;
-  // scale. default 1
-  sx;
-  sy;
-  // tick interval
-  ix;
-  iy;
-
-  // render flags
-  flags;
-  // colors
-  colors;
+  // see CalculationData fields for commenting reason
+  // // canvas and context
+  // canvas;
+  // context;
+  // // translation. starts with (0, 0) at center
+  // tx;
+  // ty;
+  // // scale. default 1
+  // sx;
+  // sy;
+  // // tick interval
+  // ix;
+  // iy;
+  //
+  // // render flags
+  // flags;
+  // // colors
+  // colors;
   constructor(canvas, context, tx, ty, sx, sy, ix, iy) {
     this.canvas = canvas;
     this.context = context;
