@@ -1,5 +1,5 @@
 
-class CalculationData {
+class DiscretePDF {
   // apparently this syntax isn't widely supported
   // xs;
   // ys;

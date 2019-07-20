@@ -17,6 +17,8 @@ allow me to define functions and find integrals in javascript, so demonstrating
 joint continuous PDF's was probably impractical for this small project, but I'd
 still like to do that another time; continuous PDF's are more fun in general.
 
+2019-07-11 Edit: The exam was going to cover joint probability **distribution** functions. "Continuous" is redundant since PDF's (probability **density** functions) describe continuous functions, while this looks at probability **mass** functions.
+
 This could be a bit more polished, but it does its jobs. Just click to create a
 data point. Click-and-drag to move a data point. Saving and clearing points
 uses your cookies.
@@ -24,7 +26,7 @@ uses your cookies.
 <canvas id="chalkboard" width="600" height="400"></canvas>
 <button type="button" onclick="savePoints()">Save Points</button>
 <button type="button" onclick="clearPoints()">Clear Points</button>
-<input id="slider_scale" type="range" min="5" max="20" value="1" />
+<input id="slider_scale" type="range" min="5" max="20" value="1" step="any" />
 <br/>
 <p id="label_count"></p>
 <p id="label_meanx"></p>
@@ -34,6 +36,6 @@ uses your cookies.
 <p id="label_covar"></p>
 <p id="label_corr"></p>
 
-<script src="/scripts/stat/CalculationData.js"></script>
+<script src="/scripts/stat/DiscretePDF.js"></script>
 <script src="/scripts/stat/Graph.js"></script>
 <script src="/scripts/stat/main.js"></script>

@@ -1,0 +1,24 @@
+---
+layout: page
+title: "Statistics 2"
+date: 2019-07-11 12:34:00 -0500
+categories: snippet fun
+---
+
+
+<canvas id="canvas" width="600" height="400"></canvas>
+<button type="button" onclick="savePoints()">Save Points</button>
+<button type="button" onclick="clearPoints()">Clear Points</button>
+<input id="slider_scale" type="range" min="5.0" max="20.0" value="1.0" />
+<br/>
+<p id="label_count"></p>
+<p id="label_meanx"></p>
+<p id="label_meany"></p>
+<p id="label_varX"></p>
+<p id="label_varY"></p>
+<p id="label_covar"></p>
+<p id="label_corr"></p>
+
+<script src="/scripts/stat/CalculationData.js"></script>
+<script src="/scripts/stat/Graph.js"></script>
+<script src="/scripts/stat/main.js"></script>

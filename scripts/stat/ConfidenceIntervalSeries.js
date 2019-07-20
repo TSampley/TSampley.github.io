@@ -1,0 +1,6 @@
+
+class ConfidenceIntervalSeries {
+  constructor(ys) {
+    
+  }
+}

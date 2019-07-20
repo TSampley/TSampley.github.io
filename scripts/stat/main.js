@@ -54,7 +54,7 @@ function savePoints() {
 }
 
 function clearPoints() {
-  data = new CalculationData([], [], []);
+  data = new DiscretePDF([], [], []);
   updateDisplay();
 }
 
@@ -91,13 +91,13 @@ function main() {
   cookies = loadCookies();
 
   if (cookies.has("xs")) {
-    data = new CalculationData(
+    data = new DiscretePDF(
       cookies.get("xs").split(",").map(parseFloat),
       cookies.get("ys").split(",").map(parseFloat),
       cookies.get("fs").split(",").map(parseFloat)
     );
   } else {
-    data = new CalculationData([], [], []);
+    data = new DiscretePDF([], [], []);
   }
 
   // get chalkboard reference
