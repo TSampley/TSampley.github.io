@@ -23,14 +23,4 @@ a little time on programming again. Unfortunately, at my current job, our latest
 assistant manager left with no warning for something that paid higher, so I may
 not get as much time as I'd like before school starts again.
 
-However, a friend at work told me about a group called
-[Techlahoma](https://www.techlahoma.org/). I joined a couple days ago and posted
-a short blurb about myself asking for advice, and the response was incredibly
-encouraging. It looks like getting a remote position may be a possibility. I had
-dreamed about it before but never considered it seriously. A remote position
-would be ideal while I'm completing my degree, but being able to program for
-work at all would be amazing. I try to keep my mind active at work, thinking
-about problems and working things out in my head, but it's the kind of work that
-requires just enough attention to be cognitively disruptive yet not enough to be
-stimulating. Of course the inevitable pay increase would make things easier as
-well, but that's less important than my degree right now.
+However, a friend at work told me about a group called [Techlahoma](https://www.techlahoma.org/). I joined their slack channel a couple days ago and posted a short blurb about myself asking for advice, and the response was incredibly encouraging. It looks like getting a remote position may be a possibility. I had dreamed about it before but never considered it seriously. A remote position would be ideal while I'm completing my degree, but being able to program for work at all would be amazing. I try to keep my mind active at work, thinking about problems and working things out in my head, but it's the kind of work that requires just enough attention to be cognitively disruptive yet not enough to be stimulating. Of course the inevitable pay increase would make things easier as well, but that's less important than my degree right now.
