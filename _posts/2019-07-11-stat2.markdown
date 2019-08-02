@@ -3,6 +3,7 @@ layout: page
 title: "Statistics 2"
 date: 2019-07-11 12:34:00 -0500
 categories: snippet fun
+published: false
 ---
 
 
