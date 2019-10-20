@@ -4,15 +4,6 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+My name is Taush Sampley. I took my first programming class freshman year of high school and have been programming ever since. If you don't consider visual scripting languages practical or "real", Visual Basic would be the first language I learned; if you're insane, then Alice might be my first, but then I would argue you should include my friend from 8th grade, the Logo turtle.
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+I have a wide range of interests and find it difficult to study just one thing at a time. I like information rich subjects and environments where criticism is expected and encouraged. My primary interests are AI (whose isn't), mycology, languages, and people.

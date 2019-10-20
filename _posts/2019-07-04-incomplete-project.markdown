@@ -3,6 +3,7 @@ layout: post
 title: "Incomplete Projects"
 date: 2019-07-04 18:29:00 -0500
 categories: update
+permalink: /3D-collisions/
 ---
 
 The first project folder on my list is something called "3D-collisions".

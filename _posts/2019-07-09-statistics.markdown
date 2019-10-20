@@ -3,6 +3,7 @@ layout: page
 title: "Statistics"
 date: 2019-07-09 20:51:00 -0500
 categories: snippet fun
+permalink: /stat/
 ---
 
 I'm taking Engineering Statistics over the summer along with two other courses:
