@@ -48,7 +48,7 @@ As soon as I ran it on the API 19 emulator, I saw that there was some error in t
 with the server on our calendar and twitter feeds, but our news feed was totally fine. Looking
 at the logs, the error was occurring after the server requested a protocol upgrade from SSL3,
 which makes sense, because SSL3 has been considered broken for a while. I went to the docs,
-and it was reported that TLS 1.1 and 1.2 were both supported starting in API 16, so why wasn't
+and it's reported that [TLS 1.1 and 1.2 are both supported starting in API 16](https://developer.android.com/reference/javax/net/ssl/SSLContext.html), so why wasn't
 the app upgrading its protocol? Well, unfortunately, this is one of those quirks of the earlier
 APIs. TLS 1.1 and 1.2 are supported, just not *enabled* by default.
 
@@ -59,4 +59,4 @@ default SSLSocketFactory Security property. You can do that easily in later APIs
 API 19 where I needed it.
 
 I would love to share code snippets, but I already feel I'm pushing my CDA. You can find this
-SSLSocketFactory (referenced in several places)[https://gist.github.com/fkrauthan/ac8624466a4dee4fd02f].
+SSLSocketFactory [referenced in several places](https://gist.github.com/fkrauthan/ac8624466a4dee4fd02f).
