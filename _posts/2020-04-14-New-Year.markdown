@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "Hello, World!"
+date:   2020-04-14 17:05 -0600
+categories: update
+permalink: /Happy New Year/
+---
+
+Well, it's been quite a while since my last update. A lot has happened and I've learned a lot. It's been a fairly good experience fixing up production code, but I'm definitely ready to do something more challenging.
+
+I'm definitely on the look-out for a job that fits me well. Unfortunately, I've been forced into waterfall methodology lately. As a progressive thinker, I need an environment that actively seeks improvement and exploration of different methodologies - if even just the latest accepted practices.
+
+A recruiter reached out to me on LinkedIn - Jenna Roman, with Robert Half Technology - which has been a very positive experience so far. I've gotten involved with Techlahoma again as a result, and it's inspiring to see how many people are doing big things for tech in Oklahoma. I think I badly need a change in environment. Where I am currently, I find myself constantly thinking that Oklahoma is at least a decade behind.
