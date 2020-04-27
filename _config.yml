@@ -27,7 +27,7 @@ show_excerpts: true
 
 # Minima data format override
 minima:
-  date_format: "%Y-%m-%dT%T%Z"
+  date_format: "%Y-%m-%ds"
 
 # Sass settings
 sass:
