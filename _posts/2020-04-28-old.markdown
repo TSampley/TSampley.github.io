@@ -1,0 +1,15 @@
+---
+layout: post
+title:  "Old Speed Code Challenge"
+date:  2020-04-28 20:00 -0500
+categories: update
+permalink: /updates/speed-code/
+---
+
+Today I decided to review and clean up a very early project. 
+
+Prior to this I had made a simple desktop app that let you create walls and spawn balls that would bounce off the walls. I found very quickly that certain physics "bugs" were actually desirable: when a wall was created intersecting a ball, the ball would be reflected each frame, resulting in the ball acting as if it were skewered. Now, I think it would be better explicitly support that behavior as a feature, but it was a fun way to discover a new behavior I hadn't considered before.
+
+When I wrote this body of code, I had been into the idea of coding competitions. I have yet to compete in a serious competition, but I think I mentioned before that I had done a school competition (and won first place). I definitely don't exercise coding practices that would be helpful in one of those environments, but I'd still like to compete some day.
+
+The project data shows that it was created using NetBeans 6.9, so this was some time after June 15, 2010 but before August according to [Netbeans release roadmap](https://netbeans.org/community/releases/roadmap.html) – the fall semester of my senior year.
