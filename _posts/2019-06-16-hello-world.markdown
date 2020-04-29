@@ -3,7 +3,7 @@ layout: post
 title:  "Hello, World!"
 date:   2019-06-16 00:05:24 -0500
 categories: update
-permalink: /hello-world/
+permalink: /updates/hello-world/
 ---
 
 This is the first post documenting my progress going through all my old

@@ -3,7 +3,7 @@ layout: post
 title: "Group Project"
 date: 2019-07-05 17:02:00 -0500
 categories: update
-permalink: /amulet-android/
+permalink: /updates/amulet-android/
 ---
 
 The next project folder is called "Amulet". This was a personal android port of

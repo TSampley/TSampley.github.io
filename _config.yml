@@ -19,7 +19,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   This is the place where I update my progress cleaning up old incomplete
   projects. Hopefully some new projects as well.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://TSampley.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://tsampley.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: SampleyTaush
 github_username:  TSampley
 show_excerpts: true
@@ -44,10 +44,11 @@ plugins:
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-#exclude:
+exclude:
 #   - Gemfile
 #   - Gemfile.lock
-#   - node_modules
+  - node_modules
+  - commands
 #   - vendor/bundle/
 #   - vendor/cache/
 #   - vendor/gems/

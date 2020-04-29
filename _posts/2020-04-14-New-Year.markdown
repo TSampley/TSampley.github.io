@@ -3,7 +3,7 @@ layout: post
 title:  "Happy New Year!"
 date:   2020-04-14 17:05 -0600
 categories: update
-permalink: /Happy New Year/
+permalink: /updates/Happy New Year/
 ---
 
 Well, it's been quite a while since my last update. A lot has happened and I've learned a lot. It's been a fairly good experience fixing up production code, but I'm definitely ready to do something more challenging.

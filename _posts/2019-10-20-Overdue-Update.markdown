@@ -3,7 +3,7 @@ layout: page
 title: "Overdue Update"
 date: 2019-10-20 12:00:00 -0500
 categories: update
-permalink: /overdue-update/
+permalink: /updates/overdue-update/
 ---
 
 It's just about the middle of the Fall semester, and things are going great. This will

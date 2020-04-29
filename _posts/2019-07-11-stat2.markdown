@@ -20,6 +20,6 @@ published: false
 <p id="label_covar"></p>
 <p id="label_corr"></p>
 
-<script src="/scripts/stat/CalculationData.js"></script>
-<script src="/scripts/stat/Graph.js"></script>
-<script src="/scripts/stat/main.js"></script>
+<script src="/js/stat/CalculationData.js"></script>
+<script src="/js/stat/Graph.js"></script>
+<script src="/js/stat/main.js"></script>

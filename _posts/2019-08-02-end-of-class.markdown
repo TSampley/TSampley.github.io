@@ -3,7 +3,7 @@ layout: page
 title: "End of Summer 2019 Classes"
 date: 2019-08-02 15:48:30 -0500
 categories: update
-permalink: /end-of-class/
+permalink: /updates/end-of-class/
 ---
 
 Well, it's the day after my last exam and I feel so much better. Even after that
