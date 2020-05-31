@@ -1,0 +1,19 @@
+---
+layout: post
+title: "End of May"
+date: 2020-05-31 12:00 -0500
+permalink: /retrospectives/2020/May/
+categories: retrospective
+---
+
+## Documentation
+
+I'm not just a fan of self-documenting code – I consider it a necessity. After reviewing many of my high school programming projects, it's hard to believe I ever knew what I was writing. However, I still really enjoy creating standalone documentation.
+
+Recently, as I've been playing with Angular more, I was delighted to learn about [CompoDoc](https://compodoc.app/) from [Vojtech Ruzicka's Programming Blog](https://www.vojtechruzicka.com/documenting-angular-apps-with-typedoc-compodoc-and-angulardoc/). It looks like a nice tool to work with. I'm not planning on releasing anything publicly anytime soon, so it doesn't have much utility for me, but it's always nice to have another tool in the belt.
+
+## Covidiots
+
+I naively thought Wal-Mart was actually taking customer safety seriously, so I called my local store and let them know their associate standing outside the doors wasn't wearing his mask and appeared to be asleep on the job. The manager thanked me and told me he would take care of it. A different person was at the door the next time I went, and they were actually wearing a mask and presumably asking people to wear theirs as they entered, which was a nice change.
+
+Unfortunately, as I was leaving, I passed the second entrance and saw the original lazy idiot not wearing his mask again and apparently asleep again. I reported him again and was thanked again. It's hard to believe they didn't know what he was doing.
