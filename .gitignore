@@ -7,3 +7,6 @@ _site
 # Ignore Bundler files
 vender
 .bundle
+
+# Ignore post resources for now
+_posts/res
