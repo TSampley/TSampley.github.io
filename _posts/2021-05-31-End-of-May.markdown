@@ -1,0 +1,10 @@
+---
+layout: post
+title: "End of May"
+date: 2021-05-31 12:00 -0500
+categories: retrospective
+permalink: "retrospectives/2021/May"
+---
+
+## Getting Settled
+Things haven't really been what I expected. Normally I would expect to get up and running within the first week, but essentially the entire month was dedicated to allowing me to get settled in. Ideally I could complete a "good first issue" task on my first day, but there were several barriers to that. I've spent most of my time looking over code and combing through a variety of documents. It was getting so mind-numbing not doing anything that I took the initiative to start coordinating with the remote team and discussing refactoring to increase our agility by removing technical debt.
