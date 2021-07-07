@@ -2,7 +2,7 @@
 layout: post
 title: "End of January"
 date: 2021-01-31 20:00 -0600
-permalink: "retrospectives/2021/01"
+permalink: "retrospectives/2021/January"
 categories: retrospective
 ---
 
