@@ -16,4 +16,4 @@ I haven't interacted with my neighbors much at all, but I did meet two of them b
 ## Avocadocide
 My last avocado sapling was very happy in the south-facing bay windows and had set 6 new, healthy leaves before I naively planted a ginger sprout from the store. Now the sapling's growth has abruptly stopped and the leaves are slowly yellowing between the veins. At this point I believe the ginger introduced a pathogen, but all I can do now is watch as it progresses. If it dies, I'll have managed to kill my 3 avocado plants with cold, heat, and disease – I've always been a generalist.
 
-Regardless of what happens with the avocados, I'm excited to sprout some moso bamboo seeds I bought. It's a bit uncertain how well they'll grow without access to full sunlight, but I plan to supplement with my grow light – yes, I know how large moso bamboo can grow.
+Regardless of what happens with the avocados, I'm excited to sprout some moso bamboo seeds I bought. It's a bit uncertain how well they'll grow without access to full sunlight, but I plan to supplement with my grow light – yes, I know how large moso bamboo can grow.
