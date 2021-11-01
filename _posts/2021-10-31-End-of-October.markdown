@@ -1,0 +1,26 @@
+---
+layout: post
+title: "End of October"
+date: 2021-10-31 22:46 -0400
+categories: retrospective
+permalink: "retrospectives/2021/October"
+published: true
+---
+
+## Blame
+This month was off to a bad start with another brand new experience – group academic dishonesty. In my Software Engineering course, we had been randomly assigned to groups as part of an "extreme programming" exercise, which would require us to schedule a time we were all available to collaborate as a group and then talk through some answers to questions about our experience. Most groups had two people, but mine had three, so, knowing it could be difficult to synchronize 3 schedules, I tried to coordinate a time for us to get together as soon as groups were assigned.
+
+First I reached out over Canvas, our university's online classroom system, but didn't get a response over the next couple days. Next I tried e-mailing both partners directly (even though Canvas notifies users through e-mail when they receive messages), and I only heard back from one partner, who said they and the other partner both had jobs but would be free later that week and she would let me know. I did not hear from her again until the assignment was due.
+
+On the day of the night the assignment was due, I suddenly received e-mail notifications for many messages being sent back-and-forth over Microsoft Teams. When I logged in, the mystery third group member I had never heard from let us know they had put together the entire report and just wanted us to review it and give feedback. I hoped I was just misunderstanding them because of the language barrier, but when I opened the report it was clear they intended to lie about the entire activity and turn in a falsified report. I immediately took screenshots of the conversation on Teams and downloaded the original report and reported it to my professor as well as OSU's academic integrity office.
+
+The fallout was interesting. I was given full points, but asked to do a makeup assignment about "The Responsibility Process". I'm not sure what happened to my group members, but the third group member messaged me the next week, angry and asking if I was trying to ruin their degree. I can't fathom the reasoning there – let alone trying to blame me for their weakness. You ruined your degree the moment you thought turning in a falsified assignment was acceptable. Maybe they cheated because of their weakness – did they not understand the report? Maybe they blamed me because of their weakness – it's easier than trying to improve if you don't have the strength to be better.
+
+## Degree? Professional Experience? What Does It All Mean?
+Degrees are difficult enough for me to take seriously. Why do most people need someone to hold their hand and tell them which paragraphs to read in a prescribed book? There's merit in access to resources requiring significant investment, like the chemistry or engineering labs, but even if you pretend that can only be found at a university, regular occurrences like the above story would surely make companies question the merit of a degree as a minimum requirement for job candidates. Yet the majority of job postings list a computer science degree as a minimum requirement.
+
+On top of that, job listings usually have a requirement for some arbitrary number of years of "professional experience". I had long believed it to be irrelevant considering my unimpressive experiences with "professional" developers, but I was being turned down so frequently I started to think maybe there was something to it – after all, despite my almost decade of personal programming experience and committment to staying on top of the latest technology and practices, I had 0 years first-hand professional experience. By the time I was accepted for a role, I was desperate to take any position – even as a junior – despite believing I had senior level competence. All I've learned is that I was right.
+
+I've worked with people who have degrees in computer science and multiple years of professional experience. Neither guarantee quality, nor are even regularly indicative. One developer needed me to explain what a PR was, and considering how long they'd been working there, I had to wonder what exactly they had been doing for so many months.
+
+I have benefitted from this professional experience, though: I finally have a point of comparison for myself against other developers in industry; I now know my worth. I don't take degrees or "professional exerience" as a reliable prediction of competence, but I can't change the fact that most people consider it a convenient filter for job candidates as well as a banner to follow. I will continue, as always, to engage with others without making Appeal to Authority Falacies, but for the simpletons who need it, I am looking forward to having that magical piece of paper to waive around.
