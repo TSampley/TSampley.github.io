@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "End of November"
-date: 2021-11-30 12:00 -0400
+date: 2021-11-30 23:00 -0500
 categories: retrospective
 permalink: "retrospectives/2021/November"
 ---
