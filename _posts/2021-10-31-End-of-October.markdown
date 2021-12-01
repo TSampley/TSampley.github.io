@@ -4,7 +4,6 @@ title: "End of October"
 date: 2021-10-31 22:46 -0400
 categories: retrospective
 permalink: "retrospectives/2021/October"
-published: true
 ---
 
 ## Blame

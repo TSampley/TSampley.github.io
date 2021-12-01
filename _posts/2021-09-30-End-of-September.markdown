@@ -4,7 +4,6 @@ title: "End of September"
 date: 2021-09-30 23:01 -0400
 categories: retrospective
 permalink: "retrospectives/2021/September"
-published: true
 ---
 
 ## New Responsibilities
