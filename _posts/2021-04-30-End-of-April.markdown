@@ -16,4 +16,4 @@ Since I had to fund myself to get to Kentucky, I didn't have any room in my budg
 
 I arrived in Kentucky the night of the 24th and stayed at a Flying J for the night. I've been homeless before, so I wasn't too worried about that one night, but I had been worried about how productive I would be able to be if I had to work remote from my car till I found a place. Fortunately, even though no one is required to be in the office, it is available for me to use whenever I need it.
 
-Meeting my new boss, Irena, was pretty nerve wracking – not because she was intimidating or anything, but if things didn't go well, I would be completely stranded in an unfamiliar state with no form of income, all my material possessions in temporary storage
+Meeting my new boss, Irena, was pretty nerve wracking – not because she was intimidating or anything, but if things didn't go well, I would be completely stranded in an unfamiliar state with no form of income and all my material possessions in temporary storage.

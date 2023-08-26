@@ -10,3 +10,6 @@ vender
 
 # Ignore post resources for now
 _posts/res
+
+# Mac
+.DS_Store
