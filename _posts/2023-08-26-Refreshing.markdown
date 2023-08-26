@@ -3,7 +3,7 @@ layout: post
 title: "Refreshing"
 date: 2023-08-26 16:00 -0500
 categories: update
-permalink: "update/refreshing"
+permalink: "updates/refreshing"
 ---
 
 # Refreshing
