@@ -24,3 +24,8 @@ Amulet would have been written for desktop using Swing, so converting the UI com
 3D-collisions is another that was written for desktop but the main UI library was Java3D, unless I'm misremembering. Regardless of the library, I'll be converting it to cross-platform use, focusing on the maths of a simulation.
 
 Mandelbrot would be fun to convert into a wallpaper generator. Bonus points for cross-platform UI.
+
+## Progress
+
+### 08-27 18:53
+I'm at the laundromat and I just switched my laundry to the dry cycle. Let's see how much I can get done in just under 30 minutes.
