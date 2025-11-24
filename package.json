@@ -4,7 +4,7 @@
   "description": "Personal website javascript logic",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
