@@ -1,0 +1,13 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://taushsampley.com/schemas/event",
+    "type": "object",
+    "properties": {
+        "id": { "$ref": "https://taushsampley.com/schemas/uuid" },
+        "datetime": { "$ref": "https://taushsampley.com/schemas/datetime" },
+        "description": {
+            "type": "string"
+        },
+        "source": { "$ref": "https://taushsampley.com/schemas/uri" }
+    }
+}

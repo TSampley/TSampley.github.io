@@ -1,0 +1,11 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://taushsampley.com/schemas/event-list",
+    "type": "object",
+    "properties": {
+        "entries": {
+            "type":"array",
+            "items": { "$ref": "/schemas/event" }
+        }
+    }
+}

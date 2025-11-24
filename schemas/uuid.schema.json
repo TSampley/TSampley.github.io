@@ -1,0 +1,7 @@
+{
+    "$schema":"https://json-schema.org/draft/2020-12/schema",
+    "$id":"https://taushsampley.com/schemas/uuid",
+    "type":"string",
+    "format":"uuid",
+    "pattern": "^[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9A-F]{12}$"
+}
