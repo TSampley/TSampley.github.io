@@ -1,0 +1,22 @@
+{
+  "name": "com.taushsampley",
+  "version": "0.1.0",
+  "description": "Personal website javascript logic",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TSampley/TSampley.github.io.git"
+  },
+  "author": "taushsampley@gmail.com",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/TSampley/TSampley.github.io/issues"
+  },
+  "homepage": "https://github.com/TSampley/TSampley.github.io#readme",
+  "dependencies": {
+    "jest": "^30.2.0"
+  }
+}
