@@ -1,8 +1,18 @@
 
-import { Particle } from '/scripts/physics/particle.mjs'
+import '../physics/world-controller.mjs';
+import '../physics/particle.mjs'
 
-const canvas = document.getElementById('hydrogen-bulk');
-const context = canvas.getContext('2d');
+import '../demos/demo.mjs'
+
+const demo = new Demo(id='hydrogen-bulk');
+
+let controller = new WorldController()
+
+demo.addMouseDownListener((event)=>{
+    const x = event.x
+    const y = event.y
+    controller.addParticle(new Particle(x, y))
+})
 
 let width = canvas.width;
 let height = canvas.height;
@@ -32,6 +42,8 @@ function step(delta) {
         y = -y;
     }
 }
+
+const context = demo.context;
 
 let lastTime = 0;
 function animate(timestamp) {
