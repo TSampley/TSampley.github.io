@@ -1,7 +1,5 @@
 
-// const library = require('./particle')
-
-import something from '../physics.js'
+import { Particle } from './particle.mjs'
 
 test("x coordinate should be first constructor arg", () => {
     let testPart = new Particle(0, 5, {})

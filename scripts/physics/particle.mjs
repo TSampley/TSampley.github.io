@@ -111,8 +111,8 @@ class AtomicProperties {
     /**
      * 
      * @param {Number} number Also the proton count.
-     * @param {Number} charge 
-     * @param {Number} neutronCount
+     * @param {Number} charge Difference in electrons and protons.
+     * @param {Number} neutronCount Number of neutrons in this atom.
      */
     constructor(number,charge,neutronCount) {
         if (charge > number) throw "Charge must be less than or equal to the atomic number."
@@ -128,6 +128,9 @@ class AtomicProperties {
     get electronCount() {
         return this.electronCount;
     }
+    get neutronCount() {
+        return this.neutronCount;
+    }
     get charge() {
         return this.number - this.electronCount;
     }
@@ -140,14 +143,14 @@ class AtomicProperties {
     }
 
     /**
-     * @returns {Number?} the van der waals radius of this atom or null if none.
+     * @returns {Number?} the effective radius of this atom tested empirically or null if none.
      */
     get empiricalRadius() {
         return AtomicRadii.empiricalRadius[number];
     }
 
     /**
-     * @returns {Number?} the van der waals radius of this atom or null if none.
+     * @returns {Number?} the effective radius of this atom calculated or null if none.
      */
     get calculatedRadius() {
         return AtomicRadii.calculatedRadius[number];
