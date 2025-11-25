@@ -44,10 +44,16 @@ plugins:
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
 exclude:
-#   - Gemfile
-#   - Gemfile.lock
-  - node_modules
+  # Shell
   - commands
+  # Ruby
+  - Gemfile
+  - Gemfile.lock
+  # Node
+  - node_modules
+  # NPM
+  - package-lock.json
+  - package.json
 #   - vendor/bundle/
 #   - vendor/cache/
 #   - vendor/gems/
