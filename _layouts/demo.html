@@ -1,0 +1,42 @@
+---
+title: Demo
+description: A demonstration of some kind, usually physics.
+---
+
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ post.title }} | {{ site.title }}</title>
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="{{ post.title }}" /></head>
+<body>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">{{ post.title }}</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="{{ post.datePublished }}" itemprop="datePublished">{{ post.datePublished }}
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ post.author }}</span></span></p>
+  </header>
+
+  {{ post.content }}
+
+</article>
+
+      </div>
+    </main>
+
+</footer>
+<script src='/scripts/physics.js'></script>
+<script src='/scripts/physics/simulation.js' type='module'></script>
+<script src='/scripts/physics/world.js' type='module'></script>
+<script src='/scripts/demos/hydrogen.js'></script>
+<noscript>
+    <p>Please Enable Javascript to Use Interactive Demos</p>
+</noscript>
+</body>
+
+</html>
