@@ -22,6 +22,8 @@ export class Particle {
  * individual atomic properties, e.g. the mean mass may be fractional
  * which would often require fractional neutrons - impossible for
  * real elemental atoms.
+ * 
+ * https://www.nature.com/articles/s41467-021-22429-0
  */
 export class Element {
     /**
@@ -36,6 +38,7 @@ export class Element {
         this.name = name;
         this.symbol = symbol;
         this.meanMass = meanMass;
+        this.electronegativity = 0.0;
     }
 }
 
