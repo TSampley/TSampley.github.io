@@ -1,6 +1,6 @@
 
 
-import * as constants from './constants'
+import './constants.mjs'
 
 /**
  * The 
