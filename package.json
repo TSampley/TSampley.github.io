@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Personal website javascript logic",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "jest"
   },
@@ -16,7 +17,8 @@
     "url": "https://github.com/TSampley/TSampley.github.io/issues"
   },
   "homepage": "https://github.com/TSampley/TSampley.github.io#readme",
-  "dependencies": {
+  "transform": {},
+  "devDependencies": {
     "jest": "^30.2.0"
   }
 }
