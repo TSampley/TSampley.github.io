@@ -2,7 +2,8 @@
 import { SoundBoard } from "../physics/sound-board.mjs";
 
 /**
- * 
+ * A Demo captures the essential HTML Elements for the base demo
+ * functionality.
  */
 export class Demo {
 
