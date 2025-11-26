@@ -23,6 +23,20 @@ export class Element {
         this.meanMass = meanMass;
         this.electronegativity = electronegativity;
     }
+
+    /**
+     * 
+     * @param {Number} number 
+     * @returns {Element?}
+     */
+    static getByNumber(number) {
+        for (const element in Elements) {
+            if (Elements[element].number == number) {
+                return Elements[element];
+            }
+        }
+        return null;
+    }
 }
 
 /**

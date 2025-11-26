@@ -1,8 +1,17 @@
 
+import { Element } from './element.mjs'
+
 /**
  * 
  */
 export class Particle {
+
+    /**
+     * 
+     * @param {Number} x 
+     * @param {Number} y 
+     * @param {AtomicProperties} props 
+     */
     constructor(x, y, props) {
         this.x = x;
         this.y = y;
@@ -20,7 +29,7 @@ export class Particle {
 /**
  * https://en.wikipedia.org/wiki/Chemical_bond
  */
-class AtomicProperties {
+export class AtomicProperties {
 
     /**
      * 
@@ -34,6 +43,8 @@ class AtomicProperties {
         this.number = number;
         this.electronCount = number - charge;
         this.neutronCount = neutronCount;
+
+        this.element = Element.getByNumber(number);
     }
 
     get protonCount() {
