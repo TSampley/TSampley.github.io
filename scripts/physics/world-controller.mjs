@@ -2,7 +2,7 @@
 import './constants.mjs';
 import { Particle } from './particle.mjs';
 import { Simulation } from './simulation.mjs';
-import { World } from './world.mjs';
+import { Timer } from '../common/timer.mjs';
 
 /**
  * 
@@ -38,7 +38,7 @@ export class WorldController {
             context.beginPath();
             context.ellipse(particle.x, particle.y, 10, 10, 0, 0, 2*Math.PI);
             context.closePath();
-            context.fillStyle = particle.props.renderColor;
+            context.fillStyle = particle.props.element.renderColor;
             context.fill();
         }
     }
