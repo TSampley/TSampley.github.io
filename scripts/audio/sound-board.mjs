@@ -1,8 +1,9 @@
 
 import { lazy } from '../common/lazy.mjs'
 
-const clack = lazy(()=>{return new Audio('/assets/audio/mouth-pop-short.wav')})
+const clack = lazy(()=>{return new Audio('/assets/audio/glass-tap-dull.wav')})
 const pop = lazy(()=>{return new Audio('/assets/audio/mouth-pop-short.wav')})
+const woop = lazy(()=>{return new Audio('/assets/audio/mouth-woop-small.wav')})
 
 export const SoundBoard = {
 
@@ -22,5 +23,8 @@ export const SoundBoard = {
     },
     playPop: function() {
         this.quickPlay(pop)
-    }
+    },
+    playWoop: function() {
+        this.quickPlay(woop)
+    },
 }
