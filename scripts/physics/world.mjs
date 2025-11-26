@@ -5,7 +5,7 @@ import './constants.mjs'
 /**
  * The 
  */
-class World {
+export class World {
 
     constructor() {
         this.milliseconds = 0;
@@ -58,5 +58,3 @@ class World {
         }
     }
 }
-
-export class World { }
