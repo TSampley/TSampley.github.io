@@ -1,5 +1,5 @@
 
-import { World } from './world.mjs'
+import { Timer } from '../common/timer.mjs'
 import { Particle } from './particle.mjs'
 
 const DefaultGenerator = (x,y)=>{return new Particle(x, y);}
@@ -11,7 +11,7 @@ const DefaultStep = 0.5
  */
 export class Simulation {
     constructor() {
-        this.world = new World()
+        this.world = new Timer()
         this.particleList = new Array()
     }
 
@@ -65,6 +65,32 @@ export class Simulation {
                 x+=stepx;
             }
             y+=stepy;
+        }
+    }
+
+    step(delta,width,height,onCollide,onBounce) {
+        const max = this.particleList.length
+        for (const index in this.particleList) {
+            const particle = this.particleList[index]
+            particle.step(delta,width,height,onBounce)
+        }
+        for (let index = 0; index < max; index++) {
+            const particle = this.particleList[index]
+            for (let otherIndex = index + 1; otherIndex < max; otherIndex++) {
+                const other = this.particleList[otherIndex]
+    
+                const minRadius = particle.props.atomicRadius + other.props.atomicRadius
+                const minSqr = minRadius * minRadius
+                const diffX = particle.x - other.x
+                const diffY = particle.y - other.y
+                const diffSqr = diffX*diffX + diffY*diffY;
+    
+                if (diffSqr <= minSqr) {
+                    onCollide()
+                } else {
+                    console.log(`missed collision: ${minSqr} ? ${diffSqr}`)
+                }
+            }
         }
     }
 }

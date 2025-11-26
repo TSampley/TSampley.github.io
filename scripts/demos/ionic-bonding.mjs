@@ -1,20 +1,21 @@
 
-import { Simulation } from '../physics/simulation.mjs';
-import { World } from '../physics/world.mjs';
-import { WorldController } from '../physics/world-controller.mjs';
-import { NullProperties, Particle } from '../physics/particle.mjs'
+import { Timer } from '../common/timer.mjs';
 
 import { SoundBoard } from '../audio/sound-board.mjs';
+
+import { Elements } from '../physics/element.mjs'
+import { Simulation } from '../physics/simulation.mjs';
+import { WorldController } from '../physics/world-controller.mjs';
+import { AtomicProperties, NullProperties, Particle } from '../physics/particle.mjs'
 
 import { Demo } from '../components/demo.mjs'
 
 const slider = document.getElementById('hydrogen-distance')
-
 const demo = new Demo('hydrogen-bulk');
 
 let simulation = new Simulation()
-let world = new World()
-let controller = new WorldController(simulation,world)
+let timer = new Timer()
+let controller = new WorldController(simulation,timer)
 
 function setHydrogenDistance(value) {
     alert(`Hydrogen Distance set to ${value}`)
@@ -26,23 +27,25 @@ slider.addEventListener('input',(event => {
 demo.addMouseDownListener((event)=>{
     const x = event.offsetX;
     const y = event.offsetY;
-    const particle = new Particle(x, y, NullProperties);
-    particle.vx = Math.random() * .1
-    particle.vy = Math.random() * .1
-    controller.addParticle(particle)
-    SoundBoard.quickPlay(SoundBoard.pop)
+    const hydrogen = new Particle(x, y, new AtomicProperties(Elements.Hydrogen,0,1));
+    const oxygen = new Particle(x, y, new AtomicProperties(Elements.Oxygen,0,8));
+    hydrogen.vx = Math.random() * .1
+    hydrogen.vy = Math.random() * .1
+    oxygen.vx = -hydrogen.vx
+    oxygen.vy = -hydrogen.vy
+    controller.addParticle(hydrogen)
+    controller.addParticle(oxygen)
+    SoundBoard.playPop()
 })
 
 let width = demo.canvas.width;
 let height = demo.canvas.height;
 
+const onCollide = ()=>{ SoundBoard.playClack() }
+const onBounce = ()=>{ SoundBoard.playWoop() }
+
 function step(delta) {
-    for (const key in controller.simulation.particleList) {
-        const particle = controller.simulation.particleList[key]
-        particle.step(delta,width,height,
-            ()=>{ SoundBoard.quickPlay(SoundBoard.clack) }
-        )
-    }
+    controller.simulation.step(delta,width,height,onCollide,onBounce)
 }
 
 const context = demo.context;
