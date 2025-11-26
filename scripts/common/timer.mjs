@@ -1,11 +1,11 @@
 
 
-import './constants.mjs'
+import '../physics/constants.mjs'
 
 /**
  * The 
  */
-export class World {
+export class Timer {
 
     constructor() {
         this.milliseconds = 0;
