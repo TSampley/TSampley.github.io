@@ -4,7 +4,7 @@ import { World } from '../physics/world.mjs';
 import { WorldController } from '../physics/world-controller.mjs';
 import { NullProperties, Particle } from '../physics/particle.mjs'
 
-import { SoundBoard } from '../physics/sound-board.mjs';
+import { SoundBoard } from '../audio/sound-board.mjs';
 
 import { Demo } from '../components/demo.mjs'
 
