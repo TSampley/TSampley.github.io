@@ -14,8 +14,12 @@ export class Demo {
         this.context = this.canvas.getContext('2d');
 
         this.canvas.addEventListener('mousedown', (event)=> {
-            this.#clackSound.play();
+            this.playClack();
         });
+    }
+
+    playClack() {
+        this.#clackSound.play();
     }
 
     addEventListener(event,listener) {
