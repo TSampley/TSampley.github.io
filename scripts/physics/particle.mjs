@@ -74,49 +74,41 @@ export class AtomicProperties {
      * @param {Element} element Determines the base properties of the atom.
      * @param {Number} charge Difference in electrons and protons.
      * @param {Number} neutronCount Number of neutrons in this atom.
-     * @param {String} renderColor Html color-code to use for rendering.
      */
-    constructor(element,charge,neutronCount,renderColor) {
+    constructor(element,charge,neutronCount) {
         if (charge > element.number) throw "Charge must be less than or equal to the atomic number."
         if (neutronCount <= 0) throw "Neutron Count must be greater than 0."
         this.element = element;
-        this.electronCount = number - charge;
+        this.electronCount = element.number - charge;
         this.neutronCount = neutronCount;
-        this.renderColor = renderColor;
     }
 
     get protonCount() {
         return this.element.number;
     }
-    get electronCount() {
-        return this.electronCount;
-    }
-    get neutronCount() {
-        return this.neutronCount;
-    }
     get charge() {
-        return this.number - this.electronCount;
+        return this.element.number - this.electronCount;
     }
 
     /**
      * @returns {Number?} the van der waals radius of this atom or null if none.
      */
     get atomicRadius() {
-        return AtomicRadii.vanDerWaals[number];
+        return AtomicRadii.vanDerWaals[this.element.number];
     }
 
     /**
      * @returns {Number?} the effective radius of this atom tested empirically or null if none.
      */
     get empiricalRadius() {
-        return AtomicRadii.empiricalRadius[number];
+        return AtomicRadii.empiricalRadius[this.element.number];
     }
 
     /**
      * @returns {Number?} the effective radius of this atom calculated or null if none.
      */
     get calculatedRadius() {
-        return AtomicRadii.calculatedRadius[number];
+        return AtomicRadii.calculatedRadius[this.element.number];
     }
 
     /**
@@ -137,7 +129,7 @@ class AtomicRadii {
      * 
      * https://en.wikipedia.org/wiki/Van_der_Waals_radius
      */
-    vanDerWaals = [
+    static vanDerWaals = [
         null,
         120, 140, 182, 153, 192,
         170, 155, 152, 147, 154, // 10
@@ -163,7 +155,7 @@ class AtomicRadii {
     /**
      * https://en.wikipedia.org/wiki/Atomic_radii_of_the_elements_(data_page)
      */
-    empirical = [
+    static empirical = [
         null,
         null, null, null, null, null,
         null, null, null, null, null, // 10 
@@ -187,7 +179,7 @@ class AtomicRadii {
         null, null, null, null, null // 100 
     ]
 
-    calculated = [
+    static calculated = [
         null,
         null, null, null, null, null,
         null, null, null, null, null, // 10 
@@ -211,7 +203,7 @@ class AtomicRadii {
         null, null, null, null, null // 100 
     ]
 
-    covalent = [
+    static covalent = [
         null,
         null, null, null, null, null,
         null, null, null, null, null, // 10 
@@ -235,7 +227,7 @@ class AtomicRadii {
         null, null, null, null, null // 100 
     ]
 
-    triple = [
+    static triple = [
         null,
         null, null, null, null, null,
         null, null, null, null, null, // 10 
@@ -263,7 +255,7 @@ class AtomicRadii {
      * Metallic bonds only form between metallic atoms and some non-metallic
      * elements, e.g. carbon in alloys.
      */
-    metallic = [
+    static metallic = [
         null,
         null, null, null, null, null,
         null, null, null, null, null, // 10 
