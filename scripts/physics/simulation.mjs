@@ -79,16 +79,24 @@ export class Simulation {
             for (let otherIndex = index + 1; otherIndex < max; otherIndex++) {
                 const other = this.particleList[otherIndex]
     
-                const minRadius = particle.props.atomicRadius + other.props.atomicRadius
+                const minRadius = particle.props.collisionRadius + other.props.collisionRadius
                 const minSqr = minRadius * minRadius
                 const diffX = particle.x - other.x
                 const diffY = particle.y - other.y
                 const diffSqr = diffX*diffX + diffY*diffY;
     
+                // console.log(`${minSqr} > ${diffSqr} => ${minSqr > diffSqr}`)
                 if (diffSqr <= minSqr) {
-                    onCollide()
+                    const velX = particle.vx - other.vx
+                    const velY = particle.vy - other.vy
+                    const dotProd = velX*diffX + velY*diffY
+                    if (dotProd < 0) {
+                        onCollide()
+                    } else {
+                        console.log('already moving apart')
+                    }
                 } else {
-                    console.log(`missed collision: ${minSqr} ? ${diffSqr}`)
+                    console.log(`${diffSqr} > ${minSqr}`)
                 }
             }
         }

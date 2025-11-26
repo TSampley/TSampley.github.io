@@ -34,7 +34,7 @@ export class WorldController {
     drawParticles(context) {
         for (const key in this.simulation.particleList) {
             const particle = this.simulation.particleList[key]
-            const radius = particle.props.atomicRadius
+            const radius = particle.props.collisionRadius
 
             context.beginPath();
             context.ellipse(particle.x, particle.y, radius, radius, 0, 0, 2*Math.PI);

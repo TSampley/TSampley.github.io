@@ -2,6 +2,7 @@
 import { Element } from './element.mjs'
 
 const GRAVITY = 0.00009
+const SCALE = 0.02
 
 /**
  * 
@@ -89,6 +90,13 @@ export class AtomicProperties extends Properties {
     }
     get charge() {
         return this.element.number - this.electronCount;
+    }
+
+    /**
+     * @returns {Number?} the scaled van der waals radius of this atom or null if none.
+     */
+    get collisionRadius() {
+        return AtomicRadii.vanDerWaals[this.element.number] * SCALE;
     }
 
     /**
