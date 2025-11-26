@@ -1,6 +1,8 @@
 
 import { Element } from './element.mjs'
 
+const GRAVITY = 0.00009
+
 /**
  * 
  */
@@ -29,7 +31,9 @@ export class Particle {
      */
     step(delta,width,height,onCollide) {
         this.x += this.vx * delta;
-        this.y += this.vy * delta;
+        this.y += this.vy * delta + GRAVITY * delta * delta / 2;
+
+        this.vy += GRAVITY * delta;
 
         if (this.x > width) {
             onCollide();
