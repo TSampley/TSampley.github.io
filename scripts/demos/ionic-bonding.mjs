@@ -1,6 +1,8 @@
 
+import { Simulation } from '../physics/simulation.mjs';
+import { World } from '../physics/world.mjs';
 import { WorldController } from '../physics/world-controller.mjs';
-import { Particle } from '../physics/particle.mjs'
+import { NullProperties, Particle } from '../physics/particle.mjs'
 
 import { Demo } from './demo.mjs'
 
@@ -8,7 +10,9 @@ const slider = document.getElementById('hydrogen-distance')
 
 const demo = new Demo('hydrogen-bulk');
 
-let controller = new WorldController()
+let simulation = new Simulation()
+let world = new World()
+let controller = new WorldController(simulation,world)
 
 function setHydrogenDistance(value) {
     alert(`Hydrogen Distance set to ${value}`)
@@ -18,9 +22,10 @@ slider.addEventListener('input',(event => {
     setHydrogenDistance(event.target.value);
 }));
 demo.addMouseDownListener((event)=>{
-    const x = event.x
-    const y = event.y
-    controller.addParticle(new Particle(x, y))
+    const x = event.offsetX;
+    const y = event.offsetY;
+    const particle = new Particle(x, y, NullProperties);
+    controller.addParticle(particle)
 })
 
 let width = demo.canvas.width;
@@ -32,23 +37,9 @@ let vx = Math.random() * .1
 let vy = Math.random() * .1
 
 function step(delta) {
-    x += vx * delta;
-    y += vy * delta;
-
-    if (x > width) {
-        vx *= -1;
-        x = 2*width - x;
-    } else if (x < 0) {
-        vx *= -1;
-        x = -x;
-    }
-
-    if (y > height) {
-        vy *= -1;
-        y = 2*height - y;
-    } else if (y < 0) {
-        vy *= -1;
-        y = -y;
+    for (const key in controller.simulation.particleList) {
+        const particle = controller.simulation.particleList[key]
+        particle.step(delta,width,height,()=>{demo.playClack()})
     }
 }
 
