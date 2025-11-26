@@ -25,28 +25,28 @@ export class Particle {
     /**
      * Progress the particle simulation by [delta].
      * @param {number} delta The amount of time to advance the simulation.
-     * @param {()=>void} soundGenerator Callback to trigger a collision sound.
+     * @param {()=>void} onCollide Callback to trigger a collision sound.
      */
-    step(delta,width,height,soundGenerator) {
+    step(delta,width,height,onCollide) {
         this.x += this.vx * delta;
         this.y += this.vy * delta;
 
         if (this.x > width) {
-            soundGenerator();
+            onCollide();
             this.vx *= -1;
             this.x = 2*width - this.x;
         } else if (this.x < 0) {
-            soundGenerator();
+            onCollide();
             this.vx *= -1;
             this.x = -this.x;
         }
 
         if (this.y > height) {
-            soundGenerator();
+            onCollide();
             this.vy *= -1;
             this.y = 2*height - this.y;
         } else if (this.y < 0) {
-            soundGenerator();
+            onCollide();
             this.vy *= -1;
             this.y = -this.y;
         }

@@ -1,10 +1,10 @@
 
+import { SoundBoard } from "../physics/sound-board.mjs";
+
 /**
  * 
  */
 export class Demo {
-
-    #clackSound = new Audio('/assets/billiard-ball-clack.wav')
 
     /**
      * @param {String} id The HTMLElement id for the host canvas.
@@ -12,14 +12,6 @@ export class Demo {
     constructor(id) {
         this.canvas = document.getElementById(id);
         this.context = this.canvas.getContext('2d');
-
-        this.canvas.addEventListener('mousedown', (event)=> {
-            this.playClack();
-        });
-    }
-
-    playClack() {
-        this.#clackSound.play();
     }
 
     addEventListener(event,listener) {

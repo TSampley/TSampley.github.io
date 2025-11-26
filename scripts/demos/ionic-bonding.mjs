@@ -4,6 +4,8 @@ import { World } from '../physics/world.mjs';
 import { WorldController } from '../physics/world-controller.mjs';
 import { NullProperties, Particle } from '../physics/particle.mjs'
 
+import { SoundBoard } from '../physics/sound-board.mjs';
+
 import { Demo } from './demo.mjs'
 
 const slider = document.getElementById('hydrogen-distance')
@@ -26,6 +28,7 @@ demo.addMouseDownListener((event)=>{
     const y = event.offsetY;
     const particle = new Particle(x, y, NullProperties);
     controller.addParticle(particle)
+    SoundBoard.pop.value.play()
 })
 
 let width = demo.canvas.width;
@@ -39,7 +42,9 @@ let vy = Math.random() * .1
 function step(delta) {
     for (const key in controller.simulation.particleList) {
         const particle = controller.simulation.particleList[key]
-        particle.step(delta,width,height,()=>{demo.playClack()})
+        particle.step(delta,width,height,
+            ()=>{SoundBoard.clack.value.play()}
+        )
     }
 }
 
