@@ -1,6 +1,6 @@
 
-import { World } from './world'
-import { Particle } from './particle'
+import { World } from './world.mjs'
+import { Particle } from './particle.mjs'
 
 let DefaultGenerator = (x,y)=>{return new Particle(x, y);}
 let PassTest = (x,y)=>{return true;}
@@ -9,10 +9,10 @@ let DefaultStep = 0.5
 /**
  * 
  */
-class Simulation {
+export class Simulation {
     constructor() {
-        this.world = World()
-        this.particleList = []
+        this.world = new World()
+        this.particleList = new Array()
     }
 
     initializeCircle(centerX,centerY,radius) {
@@ -68,5 +68,3 @@ class Simulation {
         }
     }
 }
-
-export class Simulation { }
