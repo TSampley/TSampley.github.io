@@ -91,6 +91,10 @@ export class Simulation {
                     const velY = particle.vy - other.vy
                     const dotProd = velX*diffX + velY*diffY
                     if (dotProd < 0) {
+                        particle.vx = -particle.vx
+                        particle.vy = -particle.vy
+                        other.vx = -other.vx
+                        other.vy = -other.vy
                         onCollide()
                     } else {
                         console.log('already moving apart')

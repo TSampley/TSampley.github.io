@@ -3,6 +3,7 @@ import { Element } from './element.mjs'
 
 const GRAVITY = 0.00009
 const SCALE = 0.02
+const RESTITUTION = 0.99
 
 /**
  * 
@@ -38,21 +39,21 @@ export class Particle {
 
         if (this.x > width) {
             onBounce();
-            this.vx *= -1;
+            this.vx *= -RESTITUTION;
             this.x = 2*width - this.x;
         } else if (this.x < 0) {
             onBounce();
-            this.vx *= -1;
+            this.vx *= -RESTITUTION;
             this.x = -this.x;
         }
 
         if (this.y > height) {
             onBounce();
-            this.vy *= -1;
+            this.vy *= -RESTITUTION;
             this.y = 2*height - this.y;
         } else if (this.y < 0) {
             onBounce();
-            this.vy *= -1;
+            this.vy *= -RESTITUTION;
             this.y = -this.y;
         }
     }
