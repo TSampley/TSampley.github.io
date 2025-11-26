@@ -12,11 +12,11 @@ export class WorldController {
     /**
      * 
      * @param {Simulation} simulation The simulation data.
-     * @param {World} world The ongoing state of the world.
+     * @param {Timer} timer
      */
-    constructor(simulation,world) {
+    constructor(simulation,timer) {
         this.simulation = simulation
-        this.world = world
+        this.timer = timer
     }
 
     /**
@@ -34,9 +34,10 @@ export class WorldController {
     drawParticles(context) {
         for (const key in this.simulation.particleList) {
             const particle = this.simulation.particleList[key]
+            const radius = particle.props.atomicRadius
 
             context.beginPath();
-            context.ellipse(particle.x, particle.y, 10, 10, 0, 0, 2*Math.PI);
+            context.ellipse(particle.x, particle.y, radius, radius, 0, 0, 2*Math.PI);
             context.closePath();
             context.fillStyle = particle.props.element.renderColor;
             context.fill();

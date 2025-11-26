@@ -1,13 +1,13 @@
 
 import { Particle } from './particle.mjs';
 import { Simulation } from './simulation.mjs';
-import { World } from './world.mjs';
+import { Timer } from '../common/timer.mjs';
 import { WorldController } from './world-controller.mjs';
 
 test('WorldController.addParticle should add the given particle', ()=>{
     const simulation = new Simulation()
-    const world = new World()
-    const controller = new WorldController(simulation, world)
+    const timer = new Timer()
+    const controller = new WorldController(simulation, timer)
 
     expect(simulation.particleList.length).toBe(0)
 
