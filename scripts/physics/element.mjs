@@ -30,9 +30,9 @@ export class Element {
      * @returns {Element?}
      */
     static getByNumber(number) {
-        for (const element in Elements) {
-            if (Elements[element].number == number) {
-                return Elements[element];
+        for (const key in Elements) {
+            if (Elements[key].number == number) {
+                return Elements[key];
             }
         }
         return null;

@@ -32,23 +32,20 @@ export class Particle {
 export class AtomicProperties {
 
     /**
-     * 
-     * @param {Number} number Also the proton count.
+     * @param {Element} element Determines the base properties of the atom.
      * @param {Number} charge Difference in electrons and protons.
      * @param {Number} neutronCount Number of neutrons in this atom.
      */
-    constructor(number,charge,neutronCount) {
-        if (charge > number) throw "Charge must be less than or equal to the atomic number."
+    constructor(element,charge,neutronCount) {
+        if (charge > element.number) throw "Charge must be less than or equal to the atomic number."
         if (neutronCount <= 0) throw "Neutron Count must be greater than 0."
-        this.number = number;
+        this.element = element;
         this.electronCount = number - charge;
         this.neutronCount = neutronCount;
-
-        this.element = Element.getByNumber(number);
     }
 
     get protonCount() {
-        return this.number;
+        return this.element.number;
     }
     get electronCount() {
         return this.electronCount;
@@ -221,6 +218,10 @@ class AtomicRadii {
         null, null, null, null, null // 100 
     ]
 
+    /**
+     * Metallic bonds only form between metallic atoms and some non-metallic
+     * elements, e.g. carbon in alloys.
+     */
     metallic = [
         null,
         null, null, null, null, null,
