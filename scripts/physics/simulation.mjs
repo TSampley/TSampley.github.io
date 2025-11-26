@@ -2,9 +2,9 @@
 import { World } from './world.mjs'
 import { Particle } from './particle.mjs'
 
-let DefaultGenerator = (x,y)=>{return new Particle(x, y);}
-let PassTest = (x,y)=>{return true;}
-let DefaultStep = 0.5
+const DefaultGenerator = (x,y)=>{return new Particle(x, y);}
+const PassTest = (x,y)=>{return true;}
+const DefaultStep = 0.5
 
 /**
  * 
