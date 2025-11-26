@@ -27,30 +27,30 @@ export class Particle {
     /**
      * Progress the particle simulation by [delta].
      * @param {number} delta The amount of time to advance the simulation.
-     * @param {()=>void} onCollide Callback to trigger a collision sound.
+     * @param {()=>void} onBounce Callback to notify of bounce events.
      */
-    step(delta,width,height,onCollide) {
+    step(delta,width,height,onBounce) {
         this.x += this.vx * delta;
         this.y += this.vy * delta + GRAVITY * delta * delta / 2;
 
         this.vy += GRAVITY * delta;
 
         if (this.x > width) {
-            onCollide();
+            onBounce();
             this.vx *= -1;
             this.x = 2*width - this.x;
         } else if (this.x < 0) {
-            onCollide();
+            onBounce();
             this.vx *= -1;
             this.x = -this.x;
         }
 
         if (this.y > height) {
-            onCollide();
+            onBounce();
             this.vy *= -1;
             this.y = 2*height - this.y;
         } else if (this.y < 0) {
-            onCollide();
+            onBounce();
             this.vy *= -1;
             this.y = -this.y;
         }
@@ -68,7 +68,7 @@ export const NullProperties = new Properties("blue")
 /**
  * https://en.wikipedia.org/wiki/Chemical_bond
  */
-export class AtomicProperties {
+export class AtomicProperties extends Properties {
 
     /**
      * @param {Element} element Determines the base properties of the atom.
@@ -76,6 +76,7 @@ export class AtomicProperties {
      * @param {Number} neutronCount Number of neutrons in this atom.
      */
     constructor(element,charge,neutronCount) {
+        super(element.renderColor)
         if (charge > element.number) throw "Charge must be less than or equal to the atomic number."
         if (neutronCount <= 0) throw "Neutron Count must be greater than 0."
         this.element = element;
@@ -116,7 +117,7 @@ export class AtomicProperties {
      * @param {Particle} beta
      */
     static bondLength(alpha,beta) {
-        
+        return 50
     }
 }
 
