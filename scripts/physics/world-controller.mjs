@@ -1,6 +1,6 @@
 
 import './constants.mjs';
-import './particle.mjs';
+import { Particle } from './particle.mjs';
 import { Simulation } from './simulation.mjs';
 import { World } from './world.mjs';
 
@@ -25,5 +25,19 @@ export class WorldController {
      */
     addParticle(particle) {
         this.simulation.particleList.push(particle)
+    }
+
+    /**
+     * 
+     * @param {CanvasRenderingContext2D} context 
+     */
+    drawParticles(context) {
+        for (const particle in this.simulation.particleList) {
+            context.beginPath();
+            context.ellipse(particle.x, particle.y, 10, 10, 0, 0, 2*Math.PI);
+            context.closePath();
+            context.fillStyle = particle.props.renderColor;
+            context.fill();
+        }
     }
 }

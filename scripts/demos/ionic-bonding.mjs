@@ -61,11 +61,7 @@ function animate(timestamp) {
 
     context.clearRect(0, 0, demo.canvas.width, demo.canvas.height);
 
-    context.beginPath();
-    context.ellipse(x, y, 10, 10, 0, 0, 2*Math.PI);
-    context.closePath();
-    context.fillStyle = "blue";
-    context.fill();
+    controller.drawParticles(demo.context)
     
     lastTime = timestamp;
     
