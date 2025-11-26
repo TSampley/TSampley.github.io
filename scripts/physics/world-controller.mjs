@@ -15,8 +15,8 @@ export class WorldController {
      * @param {World} world The ongoing state of the world.
      */
     constructor(simulation,world) {
-        this.simulation = new Simulation()
-        this.world = new World()
+        this.simulation = simulation
+        this.world = world
     }
 
     /**
@@ -32,7 +32,9 @@ export class WorldController {
      * @param {CanvasRenderingContext2D} context 
      */
     drawParticles(context) {
-        for (const particle in this.simulation.particleList) {
+        for (const key in this.simulation.particleList) {
+            const particle = this.simulation.particleList[key]
+
             context.beginPath();
             context.ellipse(particle.x, particle.y, 10, 10, 0, 0, 2*Math.PI);
             context.closePath();

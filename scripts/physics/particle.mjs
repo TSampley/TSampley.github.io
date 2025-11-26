@@ -10,21 +10,56 @@ export class Particle {
      * 
      * @param {Number} x 
      * @param {Number} y 
-     * @param {AtomicProperties} props 
+     * @param {AtomicProperties|NullProperties} props 
      */
-    constructor(x, y, props) {
+    constructor(x, y, props = NullProperties) {
         this.x = x;
         this.y = y;
+        
+        this.vx = 0;
+        this.vy = 0;
+        
+        this.props = props;
     }
 
     /**
      * Progress the particle simulation by [delta].
-     * @param {number} delta 
+     * @param {number} delta The amount of time to advance the simulation.
+     * @param {()=>void} soundGenerator Callback to trigger a collision sound.
      */
-    step(delta) {
-        
+    step(delta,width,height,soundGenerator) {
+        this.x += this.vx * delta;
+        this.y += this.vy * delta;
+
+        if (this.x > width) {
+            soundGenerator();
+            this.vx *= -1;
+            this.x = 2*width - this.x;
+        } else if (this.x < 0) {
+            soundGenerator();
+            this.vx *= -1;
+            this.x = -this.x;
+        }
+
+        if (this.y > height) {
+            soundGenerator();
+            this.vy *= -1;
+            this.y = 2*height - this.y;
+        } else if (this.y < 0) {
+            soundGenerator();
+            this.vy *= -1;
+            this.y = -this.y;
+        }
     }
 }
+
+export class Properties {
+    constructor(renderColor) {
+        this.renderColor = renderColor
+    }
+}
+
+export const NullProperties = new Properties("blue")
 
 /**
  * https://en.wikipedia.org/wiki/Chemical_bond
@@ -35,13 +70,15 @@ export class AtomicProperties {
      * @param {Element} element Determines the base properties of the atom.
      * @param {Number} charge Difference in electrons and protons.
      * @param {Number} neutronCount Number of neutrons in this atom.
+     * @param {String} renderColor Html color-code to use for rendering.
      */
-    constructor(element,charge,neutronCount) {
+    constructor(element,charge,neutronCount,renderColor) {
         if (charge > element.number) throw "Charge must be less than or equal to the atomic number."
         if (neutronCount <= 0) throw "Neutron Count must be greater than 0."
         this.element = element;
         this.electronCount = number - charge;
         this.neutronCount = neutronCount;
+        this.renderColor = renderColor;
     }
 
     get protonCount() {
