@@ -100,5 +100,5 @@ export const Elements = Object.freeze({
     Antimony: new Element(51,"Antimony","Sb",121.76,0.0),
     Tellurium: new Element(52,"Tellurium","Te",127.60,0.0),
     Iodine: new Element(53,"Iodine","I",126.90,0.0),
-    Xenon: new Element(54,"Krypton","Xe",131.29,0.0),
+    Xenon: new Element(54,"Xenon","Xe",131.29,0.0),
 })
