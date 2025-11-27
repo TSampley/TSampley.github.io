@@ -11,12 +11,24 @@ import { AtomicProperties, NullProperties, Particle } from '../physics/particle.
 import { Demo } from '../components/demo.mjs'
 
 const slider = document.getElementById('hydrogen-distance')
+const displayParagraph = document.getElementById('sim-display')
+const displayCharge = document.getElementById('sim-charge')
+const buttonChargeUp = document.getElementById('sim-charge-up')
+const buttonChargeDown = document.getElementById('sim-charge-down')
 const buttonReset = document.getElementById('sim-reset')
 const demo = new Demo('hydrogen-bulk');
 
 let simulation = new Simulation()
 let timer = new Timer()
 let controller = new WorldController(simulation,timer)
+
+const hydrogenParticle = new Particle(0,0,new AtomicProperties(Elements.Hydrogen, 0, 1))
+controller.onSetDisplay = (display)=>{
+    displayParagraph.innerText = display
+}
+controller.onSetCharge = (charge)=>{
+    displayCharge.innerText = charge
+}
 
 function setHydrogenDistance(value) {
     // TODO: update simulation
@@ -25,20 +37,43 @@ function setHydrogenDistance(value) {
 slider.addEventListener('input',(event => {
     setHydrogenDistance(event.target.value);
 }));
+buttonChargeUp.onclick = ()=>{
+    controller.incrementCharge()
+}
+buttonChargeDown.onclick = ()=>{
+    controller.decrementCharge()
+}
 buttonReset.onclick = ()=>{
     controller.reset()
+}
+document.getElementById('sim-hydrogen').onclick = ()=>{
+    controller.setParticle(hydrogenParticle)
+}
+document.getElementById('sim-helium').onclick = ()=>{
+    controller.setParticle(new Particle(0,0,new AtomicProperties(Elements.Helium, 0, 2)))
+}
+document.getElementById('sim-lithium').onclick = ()=>{
+    controller.setParticle(new Particle(0,0,new AtomicProperties(Elements.Lithium, 0, 3)))
+}
+document.getElementById('sim-carbon').onclick = ()=>{
+    controller.setParticle(new Particle(0,0,new AtomicProperties(Elements.Carbon, 0, 6)))
+}
+document.getElementById('sim-nitrogen').onclick = ()=>{
+    controller.setParticle(new Particle(0,0,new AtomicProperties(Elements.Nitrogen, 0, 7)))
+}
+document.getElementById('sim-oxygen').onclick = ()=>{
+    controller.setParticle(new Particle(0,0,new AtomicProperties(Elements.Oxygen, 0, 8)))
 }
 demo.addMouseDownListener((event)=>{
     const x = event.offsetX;
     const y = event.offsetY;
-    const hydrogen = new Particle(x, y, new AtomicProperties(Elements.Hydrogen,0,1));
-    const oxygen = new Particle(x, y, new AtomicProperties(Elements.Oxygen,0,8));
-    hydrogen.vx = Math.random() * .1
-    hydrogen.vy = Math.random() * .1
-    oxygen.vx = -hydrogen.vx
-    oxygen.vy = -hydrogen.vy
-    controller.addParticle(hydrogen)
-    controller.addParticle(oxygen)
+    controller.spawn(x,y)
+    // hydrogen.vx = Math.random() * .1
+    // hydrogen.vy = Math.random() * .1
+    // oxygen.vx = -hydrogen.vx
+    // oxygen.vy = -hydrogen.vy
+    // controller.addParticle(hydrogen)
+    // controller.addParticle(oxygen)
     SoundBoard.playPop()
 })
 
@@ -52,14 +87,12 @@ function step(delta) {
     controller.simulation.step(delta,width,height,onCollide,onBounce)
 }
 
-const context = demo.context;
-
 let lastTime = 0;
 function animate(timestamp) {
     let diff = timestamp - lastTime;
     step(diff);
 
-    context.clearRect(0, 0, demo.canvas.width, demo.canvas.height);
+    demo.context.clearRect(0, 0, demo.canvas.width, demo.canvas.height);
 
     controller.drawParticles(demo.context)
     
@@ -68,4 +101,6 @@ function animate(timestamp) {
     requestAnimationFrame(animate);
 }
 
+controller.setParticle(hydrogenParticle)
+controller.setCharge(0)
 animate(0);

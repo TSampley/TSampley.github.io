@@ -17,10 +17,42 @@ export class WorldController {
     constructor(simulation,timer) {
         this.simulation = simulation
         this.timer = timer
+        this.onSetDisplay = (display)=>{}
+        this.onSetCharge = (charge)=>{}
     }
 
     reset() {
         this.simulation.particleList = []
+    }
+
+    /**
+     * @type {Particle}
+     */
+    #particle = null
+    setParticle(particle) {
+        this.#particle = particle
+        this.onSetDisplay(particle.props.element.name)
+    }
+
+    setCharge(charge) {
+        this.#particle.props.charge = charge
+        this.onSetCharge(charge)
+    }
+    incrementCharge() {
+        this.setCharge(this.#particle.props.charge + 1)
+    }
+    decrementCharge() {
+        this.setCharge(this.#particle.props.charge - 1)
+    }
+
+    /**
+     * 
+     * @param {number} x 
+     * @param {number} y 
+     */
+    spawn(x,y) {
+        const newParticle = new Particle(x,y,this.#particle.props)
+        this.addParticle(newParticle)
     }
 
     /**
