@@ -19,6 +19,10 @@ export class WorldController {
         this.timer = timer
     }
 
+    reset() {
+        this.simulation.particleList = []
+    }
+
     /**
      * 
      * @param {Particle} particle 

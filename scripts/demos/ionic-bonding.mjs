@@ -11,6 +11,7 @@ import { AtomicProperties, NullProperties, Particle } from '../physics/particle.
 import { Demo } from '../components/demo.mjs'
 
 const slider = document.getElementById('hydrogen-distance')
+const buttonReset = document.getElementById('sim-reset')
 const demo = new Demo('hydrogen-bulk');
 
 let simulation = new Simulation()
@@ -18,12 +19,15 @@ let timer = new Timer()
 let controller = new WorldController(simulation,timer)
 
 function setHydrogenDistance(value) {
-    alert(`Hydrogen Distance set to ${value}`)
+    // TODO: update simulation
 }
 
 slider.addEventListener('input',(event => {
     setHydrogenDistance(event.target.value);
 }));
+buttonReset.onclick = ()=>{
+    controller.reset()
+}
 demo.addMouseDownListener((event)=>{
     const x = event.offsetX;
     const y = event.offsetY;

@@ -22,6 +22,7 @@ When a bunch of atoms are moving about freely in a space, these forces work in a
 
 
 <canvas class="demo-box" id="hydrogen-bulk" style='width:200; height:500; background-color: black'></canvas>
+<button id="sim-reset">Reset</button>
 
 <script type="module" src="/scripts/demos/ionic-bonding.mjs"></script>
 <noscript>
