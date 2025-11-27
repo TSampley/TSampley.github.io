@@ -1,8 +1,7 @@
 ---
-title: Physics Demos
+title: Particle Collisions
 layout: post
 tags: physics, particles, charges
-author: Some Teacher
 ---
 
 
