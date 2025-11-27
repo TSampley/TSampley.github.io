@@ -92,6 +92,12 @@ export class AtomicProperties extends Properties {
     get charge() {
         return this.element.number - this.electronCount;
     }
+    /**
+     * @returns {Number} Atomic mass in Daltons (Da) a.k.a. unified atomic mass unit (u)
+     */
+    get mass() {
+        return this.element.number * 1.0073 + this.neutronCount * 1.0087
+    }
 
     /**
      * @returns {Number?} the scaled van der waals radius of this atom or null if none.
