@@ -12,6 +12,9 @@ const DefaultStep = 0.5
 export class Simulation {
     constructor() {
         this.world = new Timer()
+        /**
+         * @type {Array<Particle>}
+         */
         this.particleList = new Array()
     }
 
@@ -68,41 +71,98 @@ export class Simulation {
         }
     }
 
+    /**
+     * 
+     * @param {number} delta 
+     * @param {number} width 
+     * @param {number} height 
+     * @param {()=>void} onCollide 
+     * @param {()=>void} onBounce 
+     */
     step(delta,width,height,onCollide,onBounce) {
         const max = this.particleList.length
         for (const index in this.particleList) {
             const particle = this.particleList[index]
             particle.step(delta,width,height,onBounce)
         }
+        // Iterate over all particle pairs **once**
         for (let index = 0; index < max; index++) {
-            const particle = this.particleList[index]
+            const alpha = this.particleList[index]
             for (let otherIndex = index + 1; otherIndex < max; otherIndex++) {
-                const other = this.particleList[otherIndex]
-    
-                const minRadius = particle.props.collisionRadius + other.props.collisionRadius
-                const minSqr = minRadius * minRadius
-                const diffX = particle.x - other.x
-                const diffY = particle.y - other.y
-                const diffSqr = diffX*diffX + diffY*diffY;
-    
-                // console.log(`${minSqr} > ${diffSqr} => ${minSqr > diffSqr}`)
-                if (diffSqr <= minSqr) {
-                    const velX = particle.vx - other.vx
-                    const velY = particle.vy - other.vy
-                    const dotProd = velX*diffX + velY*diffY
-                    if (dotProd < 0) {
-                        particle.vx = -particle.vx
-                        particle.vy = -particle.vy
-                        other.vx = -other.vx
-                        other.vy = -other.vy
-                        onCollide()
-                    } else {
-                        console.log('already moving apart')
-                    }
-                } else {
-                    console.log(`${diffSqr} > ${minSqr}`)
+                const beta = this.particleList[otherIndex]
+
+                const collision = this.checkCollision(alpha, beta)
+                if (collision) {
+                    collision.resolve()
+                    onCollide()
                 }
             }
         }
+    }
+
+    /**
+     * 
+     * @param {Particle} alpha 
+     * @param {Particle} beta 
+     * @param {Collision?}
+     */
+    checkCollision(alpha, beta) {
+        // Calculate vector between particles
+        const deltaX = beta.x - alpha.x
+        const deltaY = beta.y - alpha.y
+        const deltaSqr = deltaX*deltaX + deltaY*deltaY;
+        // TODO: calculate soft force progressively with Lennard-Jones force
+        const minRadius = alpha.props.collisionRadius + beta.props.collisionRadius
+        const minRadiusSqr = minRadius * minRadius
+
+        // Ensure particles within collision range
+        if (deltaSqr <= minRadiusSqr) {
+            const velX = beta.vx - alpha.vx
+            const velY = beta.vy - alpha.vy
+            const dotProd = velX*deltaX + velY*deltaY
+            // ensure velocities are opposed
+            if (dotProd < 0) {
+                return new Collision(alpha, beta, deltaX, deltaY, deltaSqr)
+            } else {
+                return null
+            }
+        }
+        return null
+    }
+}
+
+class Collision {
+    constructor(alpha, beta,
+        deltaX=beta.x-alpha.x,
+        deltaY=beta.y-alpha.y,
+        deltaSqr=deltaX*deltaX+deltaY*deltaY
+    ) {
+        this.alpha = alpha
+        this.beta = beta
+        this.deltaX = deltaX
+        this.deltaY = deltaY
+        this.deltaSqr = deltaSqr
+    }
+
+    resolve() {
+        // decompose velocity into parallel and opposing components
+        const alphaDiffMag = (this.alpha.vx*this.deltaX + this.alpha.vy*this.deltaY) / this.deltaSqr
+        const alphaTanMag = (this.alpha.vx*this.deltaY - this.alpha.vy*this.deltaX) / this.deltaSqr
+        const betaDiffMag = (this.beta.vx*this.deltaX + this.beta.vy*this.deltaY) / this.deltaSqr
+        const betaTanMag = (this.beta.vx*this.deltaY - this.beta.vy*this.deltaX) / this.deltaSqr
+
+        // calculate new components along collision path
+        const alphaMass = this.alpha.props.mass
+        const betaMass = this.beta.props.mass
+        const totalMass = alphaMass + betaMass
+        const massDiff = alphaMass - betaMass
+        const finalAlphaDiffMag = (massDiff/totalMass)*alphaDiffMag + 2*betaMass/totalMass*betaDiffMag
+        const finalBetaDiffMag = 2*alphaMass/totalMass*alphaDiffMag - (massDiff/totalMass)*betaDiffMag
+
+        // recompose new velocities
+        this.alpha.vx = finalAlphaDiffMag*this.deltaX + alphaTanMag*this.deltaY
+        this.alpha.vy = finalAlphaDiffMag*this.deltaY + alphaTanMag*(-this.deltaX)
+        this.beta.vx = finalBetaDiffMag*this.deltaX + betaTanMag*this.deltaY
+        this.beta.vy = finalBetaDiffMag*this.deltaY + betaTanMag*(-this.deltaX)
     }
 }
