@@ -21,6 +21,15 @@ When a bunch of atoms are moving about freely in a space, these forces work in a
 
 
 <canvas class="demo-box" id="hydrogen-bulk" style='width:200; height:500; background-color: black'></canvas>
+<p id='sim-display'></p>
+<button id="sim-hydrogen">Hydrogen</button>
+<button id="sim-helium">Helium</button>
+<br/>
+<button id="sim-lithium">Lithium</button>
+<button id="sim-carbon">Carbon</button>
+<button id="sim-nitrogen">Nitrogen</button>
+<button id="sim-oxygen">Oxygen</button>
+<br/>
 <button id="sim-reset">Reset</button>
 
 <script type="module" src="/scripts/demos/ionic-bonding.mjs"></script>
