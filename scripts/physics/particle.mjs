@@ -82,15 +82,15 @@ export class AtomicProperties extends Properties {
         if (charge > element.number) throw "Charge must be less than or equal to the atomic number."
         if (neutronCount <= 0) throw "Neutron Count must be greater than 0."
         this.element = element;
-        this.electronCount = element.number - charge;
+        this.charge = charge;
         this.neutronCount = neutronCount;
     }
 
     get protonCount() {
         return this.element.number;
     }
-    get charge() {
-        return this.element.number - this.electronCount;
+    get electronCount() {
+        return this.element.number - this.charge;
     }
     /**
      * @returns {Number} Atomic mass in Daltons (Da) a.k.a. unified atomic mass unit (u)
