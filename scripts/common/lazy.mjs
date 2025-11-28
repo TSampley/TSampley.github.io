@@ -4,7 +4,7 @@
  * value is requested.
  * @type V 
  */
-export class LazyValue {
+class LazyValue {
     /**
      * 
      * @param {()=>V} provider 
