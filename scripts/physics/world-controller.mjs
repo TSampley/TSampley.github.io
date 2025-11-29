@@ -51,7 +51,7 @@ export class WorldController {
      * @param {number} y 
      */
     spawn(x,y) {
-        const newParticle = new Particle(x,y,this.#particle.props)
+        const newParticle = new Particle(x,y,this.#particle.props.clone())
         this.addParticle(newParticle)
     }
 
@@ -61,6 +61,10 @@ export class WorldController {
      */
     addParticle(particle) {
         this.simulation.particleList.push(particle)
+    }
+
+    setGravityOn(value) {
+        this.simulation.gravityOn = value
     }
 
     /**

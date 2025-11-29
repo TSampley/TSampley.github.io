@@ -3,7 +3,9 @@ import { Element } from './element.mjs'
 
 const GRAVITY = 0.00009
 const SCALE = 0.02
-const RESTITUTION = 0.99
+const RESTITION_BOUNCE = 0.99
+
+const RESTITUTION_MEDIUM = (1 - 0.01)
 
 /**
  * 
@@ -31,37 +33,46 @@ export class Particle {
      * @param {number} delta The amount of time to advance the simulation.
      * @param {()=>void} onBounce Callback to notify of bounce events.
      */
-    step(delta,width,height,onBounce) {
+    step(delta,gravityOn,width,height,onBounce) {
         this.x += this.vx * delta;
-        this.y += this.vy * delta + GRAVITY * delta * delta / 2;
+        this.y += this.vy * delta;
 
-        this.vy += GRAVITY * delta;
+        if (gravityOn) {
+            this.y += GRAVITY * delta * delta / 2
+            this.vy += GRAVITY * delta
+        }
 
         if (this.x > width) {
             onBounce();
-            this.vx *= -RESTITUTION;
+            this.vx *= -RESTITION_BOUNCE;
             this.x = 2*width - this.x;
         } else if (this.x < 0) {
             onBounce();
-            this.vx *= -RESTITUTION;
+            this.vx *= -RESTITION_BOUNCE;
             this.x = -this.x;
         }
 
         if (this.y > height) {
             onBounce();
-            this.vy *= -RESTITUTION;
+            this.vy *= -RESTITION_BOUNCE;
             this.y = 2*height - this.y;
         } else if (this.y < 0) {
             onBounce();
-            this.vy *= -RESTITUTION;
+            this.vy *= -RESTITION_BOUNCE;
             this.y = -this.y;
         }
+
+        this.vx *= RESTITUTION_MEDIUM
+        this.vy *= RESTITUTION_MEDIUM
     }
 }
 
 export class Properties {
     constructor(renderColor) {
         this.renderColor = renderColor
+    }
+    clone() {
+        throw `Abstract Method:${typeof this}`
     }
 }
 
@@ -125,6 +136,14 @@ export class AtomicProperties extends Properties {
      */
     get calculatedRadius() {
         return AtomicRadii.calculatedRadius[this.element.number];
+    }
+
+    clone() {
+        return new AtomicProperties(
+            this.element,
+            this.charge,
+            this.neutronCount
+        )
     }
 
     /**

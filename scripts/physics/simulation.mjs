@@ -6,6 +6,8 @@ const DefaultGenerator = (x,y)=>{return new Particle(x, y);}
 const PassTest = (x,y)=>{return true;}
 const DefaultStep = 0.5
 
+const COULOMB_CONSTANT = 5
+
 /**
  * 
  */
@@ -16,6 +18,7 @@ export class Simulation {
          * @type {Array<Particle>}
          */
         this.particleList = new Array()
+        this.gravityOn = false
     }
 
     initializeCircle(centerX,centerY,radius) {
@@ -83,18 +86,36 @@ export class Simulation {
         const max = this.particleList.length
         for (const index in this.particleList) {
             const particle = this.particleList[index]
-            particle.step(delta,width,height,onBounce)
+            particle.step(delta,this.gravityOn,width,height,onBounce)
         }
         // Iterate over all particle pairs **once**
         for (let index = 0; index < max; index++) {
             const alpha = this.particleList[index]
+            const alphaCharge = alpha.props.charge
             for (let otherIndex = index + 1; otherIndex < max; otherIndex++) {
                 const beta = this.particleList[otherIndex]
+                const betaCharge = beta.props.charge
 
                 const collision = this.checkCollision(alpha, beta)
                 if (collision) {
                     collision.resolve()
                     onCollide()
+                }
+
+                if (alphaCharge != 0 && betaCharge != 0) {
+                    // Calculate vector between particles
+                    const deltaX = beta.x - alpha.x
+                    const deltaY = beta.y - alpha.y
+                    const deltaSqr = deltaX*deltaX + deltaY*deltaY;
+                    const deltaMag = Math.sqrt(deltaSqr)
+                    const force = -COULOMB_CONSTANT*alphaCharge*betaCharge/deltaSqr
+
+                    const impulseX = force * deltaX / deltaMag
+                    const impulseY = force * deltaY / deltaMag
+                    alpha.vx += impulseX
+                    alpha.vy += impulseY
+                    beta.vx -= impulseX
+                    beta.vy -= impulseY
                 }
             }
         }

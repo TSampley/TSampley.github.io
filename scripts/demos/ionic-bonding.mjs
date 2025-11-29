@@ -15,6 +15,7 @@ const displayParagraph = document.getElementById('sim-display')
 const displayCharge = document.getElementById('sim-charge')
 const buttonChargeUp = document.getElementById('sim-charge-up')
 const buttonChargeDown = document.getElementById('sim-charge-down')
+const inputGravity = document.getElementsByTagName('input').namedItem('input-gravity')
 const buttonReset = document.getElementById('sim-reset')
 const demo = new Demo('hydrogen-bulk');
 
@@ -42,6 +43,10 @@ buttonChargeUp.onclick = ()=>{
 }
 buttonChargeDown.onclick = ()=>{
     controller.decrementCharge()
+}
+inputGravity.value = controller.simulation.gravityOn
+inputGravity.onchange = (event)=>{
+    controller.setGravityOn(event.target.checked)
 }
 buttonReset.onclick = ()=>{
     controller.reset()
