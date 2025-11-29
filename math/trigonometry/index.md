@@ -1,0 +1,5 @@
+---
+layout: wiki
+---
+
+# Trigonometry
