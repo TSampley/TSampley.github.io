@@ -1,6 +1,6 @@
 
 import { Timer } from '../common/timer.mjs'
-import { Particle } from './particle.mjs'
+import { Particle, UNITS_PER_PM_SCALE } from './particle.mjs'
 
 const DefaultGenerator = (x,y)=>{return new Particle(x, y);}
 const PassTest = (x,y)=>{return true;}
@@ -106,16 +106,16 @@ export class Simulation {
                     // Calculate vector between particles
                     const deltaX = beta.x - alpha.x
                     const deltaY = beta.y - alpha.y
-                    const deltaSqr = deltaX*deltaX + deltaY*deltaY;
+                    const deltaSqr = Math.max(deltaX*deltaX + deltaY*deltaY, (200*UNITS_PER_PM_SCALE)**2);
                     const deltaMag = Math.sqrt(deltaSqr)
                     const force = -COULOMB_CONSTANT*alphaCharge*betaCharge/deltaSqr
 
                     const impulseX = force * deltaX / deltaMag
                     const impulseY = force * deltaY / deltaMag
-                    alpha.vx += impulseX
-                    alpha.vy += impulseY
-                    beta.vx -= impulseX
-                    beta.vy -= impulseY
+                    alpha.vx += impulseX / alpha.mass
+                    alpha.vy += impulseY / alpha.mass
+                    beta.vx -= impulseX / beta.mass
+                    beta.vy -= impulseY / beta.mass
                 }
             }
         }

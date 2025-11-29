@@ -2,7 +2,7 @@
 import { Element } from './element.mjs'
 
 const GRAVITY = 0.00009
-const SCALE = 0.02
+export const UNITS_PER_PM_SCALE = 0.02
 const RESTITION_BOUNCE = 0.99
 
 const RESTITUTION_MEDIUM = (1 - 0.01)
@@ -114,7 +114,7 @@ export class AtomicProperties extends Properties {
      * @returns {Number?} the scaled van der waals radius of this atom or null if none.
      */
     get collisionRadius() {
-        return AtomicRadii.vanDerWaals[this.element.number] * SCALE;
+        return AtomicRadii.vanDerWaals[this.element.number] * UNITS_PER_PM_SCALE;
     }
 
     /**
@@ -314,7 +314,3 @@ class AtomicRadii {
         null, null, null, null, null // 100 
     ]
 }
-
-// module.exports = {
-//     Particle: Particle
-// }
