@@ -16,3 +16,6 @@ _posts/res
 
 # Node
 node_modules
+
+# Ignore example files being disected
+_examples/*
