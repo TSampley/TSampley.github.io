@@ -1,0 +1,15 @@
+---
+---
+
+<article>
+    <header>
+        <!-- Article Header -->
+    </header>
+    <!-- Consists of multiple Sections -->
+    {% for item in collection %}
+        {% include section.html title=item.title %}
+    {% endfor %}
+    <footer>
+        <!-- Article Footer -->
+    </footer>
+</article>
