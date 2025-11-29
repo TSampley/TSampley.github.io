@@ -34,6 +34,8 @@ When a bunch of atoms are moving about freely in a space, these forces work in a
 <br/>
 <button id="sim-reset">Reset</button>
 </div>
+<label for='input-gravity'>Gravity</label>
+<input type='checkbox' name='input-gravity'/>
 
 <script type="module" src="/scripts/demos/ionic-bonding.mjs"></script>
 <noscript>
