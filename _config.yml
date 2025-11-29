@@ -62,12 +62,14 @@ exclude:
   # Ruby
   - Gemfile
   - Gemfile.lock
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
   # Node
   - node_modules
   # NPM
   - package-lock.json
   - package.json
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+  # Intermediate
+  # - html # apparently used during generation phase
