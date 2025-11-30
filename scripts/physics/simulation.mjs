@@ -106,6 +106,7 @@ export class Simulation {
                     // Calculate vector between particles
                     const deltaX = beta.x - alpha.x
                     const deltaY = beta.y - alpha.y
+                    // TODO: explore soft-core potentials - https://pmc.ncbi.nlm.nih.gov/articles/PMC3187911/; https://www.sciencedirect.com/science/article/abs/pii/S1093326303001967 
                     const deltaSqr = Math.max(deltaX*deltaX + deltaY*deltaY, (200*UNITS_PER_PM_SCALE)**2);
                     const deltaMag = Math.sqrt(deltaSqr)
                     const force = -COULOMB_CONSTANT*alphaCharge*betaCharge/deltaSqr
