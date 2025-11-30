@@ -18,9 +18,10 @@ export class Demo {
     addEventListener(event,listener) {
         this.canvas.addEventListener(event,listener);
     }
+
     /**
      * 
-     * @param {(MouseEvent)=>undefined} listener 
+     * @param {(MouseEvent)=>void} listener
      */
     addMouseDownListener(listener) {
         this.canvas.addEventListener('mousedown',listener);
