@@ -1,12 +1,12 @@
 
+
+import { COULOMB_CONSTANT } from './constants.mjs'
 import { Timer } from '../common/timer.mjs'
 import { Particle, UNITS_PER_PM_SCALE } from './particle.mjs'
 
 const DefaultGenerator = (x,y)=>{return new Particle(x, y);}
 const PassTest = (x,y)=>{return true;}
 const DefaultStep = 0.5
-
-const COULOMB_CONSTANT = 5
 
 /**
  * 
