@@ -7,16 +7,26 @@ const RESTITION_BOUNCE = 0.99
 
 const RESTITUTION_MEDIUM = (1 - 0.01)
 
+/*
+class Entity {
+    step(delta,environment) {}
+    draw(context) {}
+}
+*/
+
 /**
- * 
+ * A particle as a general entity has only a position, (x,y).
+ * Properties must usually be attached for use in
+ * a specific application.
  */
 export class Particle {
 
     /**
-     * 
+     * Create a new particle centered at `x` and `y` with the
+     * given properties.
      * @param {Number} x 
      * @param {Number} y 
-     * @param {AtomicProperties|NullProperties} props 
+     * @param {AtomicProperties|NullProperties} props Default NullProperties
      */
     constructor(x, y, props = NullProperties) {
         this.x = x;
@@ -24,6 +34,9 @@ export class Particle {
         
         this.vx = 0;
         this.vy = 0;
+
+        this.fx = 0;
+        this.fy = 0;
         
         this.props = props;
     }
@@ -64,6 +77,15 @@ export class Particle {
 
         this.vx *= RESTITUTION_MEDIUM
         this.vy *= RESTITUTION_MEDIUM
+    }
+
+    /**
+     * 
+     * @param {CanvasRenderingContext2D} context 
+     */
+    draw(context) {
+        context.fillStyle = this.props.element.renderColor
+        // TODO: move particle drawing logic into particle
     }
 }
 
