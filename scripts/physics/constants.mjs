@@ -29,3 +29,39 @@ export const MILLIS_PER_DAY =
     MINUTES_PER_HOUR * HOURS_PER_DAY;
 
 // #endregion
+
+// #region Physical Constants
+
+/**
+ * https://en.wikipedia.org/wiki/Vacuum_permittivity
+ * 
+ * @type {number} $`F * m^-1`
+ */
+export const VACUUM_PERMITIVITY = 8.8541878188E-12
+
+/**
+ * $`\frac{1}{4 * PI * \epsilon_0}`$
+ * 
+ * https://en.wikipedia.org/wiki/Coulomb%27s_law#Coulomb_constant
+ * 
+ * @type {number} $`N * m^2 * C^-2`$
+ */
+export const COULOMB_CONSTANT = 8.987551785972E9
+
+/**
+ * https://en.wikipedia.org/wiki/Gravity_of_Earth
+ * 
+ * @type {number} $`m * s^-2`$ | $`N * kg^-1`$
+ */
+export const GRAVITY_EARTH_ACCELERATION = 9.8
+
+/**
+ * $`F = G * \frac{m_1 * m_2}{r^2}`$
+ * 
+ * https://en.wikipedia.org/wiki/Gravitational_constant
+ * 
+ * @type {number} $`m^3 * kg^-1 * s^-2`$
+ */
+export const GRAVITY_CONSTANT = 6.6743E-11
+
+// #endregion
