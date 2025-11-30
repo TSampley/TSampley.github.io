@@ -1,7 +1,7 @@
 
+import { GRAVITY_EARTH_ACCELERATION } from './constants.mjs'
 import { Element } from './element.mjs'
 
-const GRAVITY = 0.00009
 export const UNITS_PER_PM_SCALE = 0.02
 const RESTITION_BOUNCE = 0.99
 
@@ -38,8 +38,8 @@ export class Particle {
         this.y += this.vy * delta;
 
         if (gravityOn) {
-            this.y += GRAVITY * delta * delta / 2
-            this.vy += GRAVITY * delta
+            this.y += GRAVITY_EARTH_ACCELERATION * delta * delta / 2
+            this.vy += GRAVITY_EARTH_ACCELERATION * delta
         }
 
         if (this.x > width) {
