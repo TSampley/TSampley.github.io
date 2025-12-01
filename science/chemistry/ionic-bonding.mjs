@@ -24,7 +24,8 @@ const uiElements = {
     displayCharge: document.getElementById('sim-charge'),
     buttonChargeUp: document.getElementById('sim-charge-up'),
     buttonChargeDown: document.getElementById('sim-charge-down'),
-    inputGravity: document.getElementsByTagName('input').namedItem('input-gravity'),
+    inputGravity: document.getElementById('input-gravity'),
+    inputRunning: document.getElementById('input-running'),
     buttonReset: document.getElementById('sim-reset'),
     table: Object.values(Elements).map((value)=>{
         document.getElementById(`sim-${value.name.toLowerCase()}`)
@@ -49,9 +50,13 @@ buttonChargeUp.onclick = ()=>{
 buttonChargeDown.onclick = ()=>{
     controller.decrementCharge()
 }
-inputGravity.checked = controller.simulation.environment.gravity > 0
+inputGravity.checked = controller.simulation.environment.forceMatrix.gravity.isEnabled
 inputGravity.onchange = (event)=>{
-    controller.setGravityOn(event.target.checked)
+    controller.simulation.environment.forceMatrix.gravity.isEnabled = event.target.checked
+}
+uiElements.inputRunning.checked = controller.isRunning
+uiElements.inputRunning.onchange = (event)=>{
+    controller.isRunning = event.target.checked
 }
 buttonReset.onclick = ()=>{
     controller.reset()
@@ -78,12 +83,6 @@ demo.addMouseDownListener((event)=>{
     const x = event.offsetX;
     const y = event.offsetY;
     controller.spawn(x,y)
-    // hydrogen.vx = Math.random() * .1
-    // hydrogen.vy = Math.random() * .1
-    // oxygen.vx = -hydrogen.vx
-    // oxygen.vy = -hydrogen.vy
-    // controller.addParticle(hydrogen)
-    // controller.addParticle(oxygen)
     SoundBoard.playPop()
 })
 
@@ -96,7 +95,10 @@ controller.simulation.environment.onBounce = SoundBoard.playWoop
 let lastTime = 0;
 function animate(timestamp) {
     let diff = timestamp - lastTime;
-    controller.simulation.step(diff)
+
+    if (controller.isRunning) {
+        controller.simulation.step(diff)
+    }
 
     demo.context.clearRect(0, 0, demo.canvas.width, demo.canvas.height);
 
@@ -109,4 +111,11 @@ function animate(timestamp) {
 
 controller.setParticle(hydrogenParticle)
 controller.setCharge(0)
+
+controller.simulation.environment.forceMatrix.lennardJones.isEnabled = false
+controller.simulation.environment.forceMatrix.charge.isEnabled = false
+controller.simulation.environment.forceMatrix.drag.isEnabled = false
+controller.simulation.environment.forceMatrix.gravity.isEnabled = true
+controller.simulation.environment.forceMatrix.boundaries.isEnabled = true
+
 animate(0);
