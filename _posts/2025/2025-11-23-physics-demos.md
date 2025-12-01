@@ -9,7 +9,7 @@ tags: physics, particles, charges
 
 Adjust the slider to change the distance between the two hydrogen atoms and observe how the force changes.
 
-<canvas class="demo-box" id="force-between-hydrogens" style='background-color: black'></canvas>
+<canvas class="demo-box" id="canvas-hydrogen" style='background-color: black'></canvas>
 <div>
 <input type="range" name="distance" id="hydrogen-distance" min="0" max="100"/>
 <label for="distance">Distance</label>
