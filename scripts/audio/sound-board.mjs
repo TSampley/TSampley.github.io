@@ -18,13 +18,13 @@ export const SoundBoard = {
         clip.play()
     },
 
-    playClack: function() {
-        this.quickPlay(clack)
+    playClack: ()=>{
+        SoundBoard.quickPlay(clack)
     },
-    playPop: function() {
-        this.quickPlay(pop)
+    playPop: ()=>{
+        SoundBoard.quickPlay(pop)
     },
-    playWoop: function() {
-        this.quickPlay(woop)
+    playWoop: ()=>{
+        SoundBoard.quickPlay(woop)
     },
 }
