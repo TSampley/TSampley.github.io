@@ -5,7 +5,6 @@ import { Environment, ForceMatrix } from './environment.mjs';
 import { Timer } from '../../../scripts/common/timer.mjs'
 import { Particle } from '../../physics/mechanics/particle.mjs'
 import { Entity } from './entity.mjs';
-import { COULOMB_CONSTANT, GRAVITY_EARTH_ACCELERATION } from '../../physics/mechanics/constants.mjs';
 
 const DefaultGenerator = (x,y)=>{return new Particle(x, y);}
 const PassTest = (x,y)=>{return true;}
@@ -97,7 +96,6 @@ export class Simulation {
         const max = this.particleList.length
         for (let alphaIndex = 0; alphaIndex < max; alphaIndex++) {
             const alpha = this.particleList[alphaIndex]
-            console.log(`beginning ${alpha.x}, ${alpha.y}`)
             for (let betaIndex = alphaIndex + 1; betaIndex < max; betaIndex++) {
                 const beta = this.particleList[betaIndex]
                 alpha.calculateParticleForces(dt,beta,this.environment)
@@ -107,9 +105,7 @@ export class Simulation {
 
         // Integrate entities
         for (const particle of this.particleList) {
-            console.log(`integrate ${particle.x}, ${particle.y}`)
             particle.integrate(dt)
-            console.log(`integrated ${particle.x}, ${particle.y}`)
         }
 
         // Resolve collisions
