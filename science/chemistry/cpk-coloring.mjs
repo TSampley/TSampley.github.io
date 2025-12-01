@@ -6,6 +6,7 @@ import { Element } from '../../scripts/physics/element.mjs'
  * 
  */
 export class ElementColorScheme {
+    constructor() {}
     /**
      * 
      * @param {Element} element
@@ -25,6 +26,7 @@ export class ArrayColorScheme extends ElementColorScheme {
      * @param {Array<string>} scheme 
      */
     constructor(scheme) {
+        super()
         this.scheme = scheme
     }
     colorForElement(element) {
@@ -39,7 +41,7 @@ export class ArrayColorScheme extends ElementColorScheme {
 /**
  * https://en.wikipedia.org/wiki/CPK_coloring#Modern_variants
  */
-export const CPKColoring = new ArrayColorScheme(
+export const CPKColorScheme = new ArrayColorScheme(
     [
         "#fff","#aaa","#aaa","#aaa","#aaa",
         "#111","#aaf","#d00","#0f0","#aaa", // 10
