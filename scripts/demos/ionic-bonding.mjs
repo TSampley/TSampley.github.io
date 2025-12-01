@@ -10,7 +10,6 @@ import { AtomicProperties, NullProperties, Particle } from '../physics/particle.
 
 import { Demo } from '../components/demo.mjs'
 
-// const slider = document.getElementById('hydrogen-distance') // TODO: replace remaining references with object
 const displayParagraph = document.getElementById('sim-display')
 const displayCharge = document.getElementById('sim-charge')
 const buttonChargeUp = document.getElementById('sim-charge-up')
@@ -19,7 +18,6 @@ const inputGravity = document.getElementsByTagName('input').namedItem('input-gra
 const buttonReset = document.getElementById('sim-reset')
 const demo = new Demo('hydrogen-bulk');
 const uiElements = {
-    slider: document.getElementById('hydrogen-distance'),
     displayParagraph: document.getElementById('sim-display'),
     displayCharge: document.getElementById('sim-charge'),
     buttonChargeUp: document.getElementById('sim-charge-up'),
@@ -43,13 +41,6 @@ controller.onSetCharge = (charge)=>{
     displayCharge.innerText = charge
 }
 
-function setHydrogenDistance(value) {
-    // TODO: update simulation
-}
-
-uiElements.slider.addEventListener('input',(event => {
-    setHydrogenDistance(event.target.value);
-}));
 buttonChargeUp.onclick = ()=>{
     controller.incrementCharge()
 }
