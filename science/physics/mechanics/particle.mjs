@@ -63,35 +63,6 @@ export class Particle {
     }
 
     /**
-     * 
-     * @param {number} delta 
-     * @param {Particle} beta 
-     * @param {Environment} environment
-     */
-    calculateParticleForces(dt,beta,environment) {
-        let logOutput = ''
-        const alpha = this
-
-        environment.particleForces().forEach((force)=>{
-            force.applyForce(dt,alpha,beta)
-        })
-    }
-
-    /**
-     * 
-     * @param {number} dt 
-     * @param {Environment} environment 
-     */
-    calculateEnvironmentForces(dt,environment) {
-        if (environment.gravity) {
-            this.fy += environment.gravity * this.props.mass
-        }
-        environment.environmentForces().forEach((force)=>{
-            force.applyForce(dt,this)
-        })
-    }
-
-    /**
      * TODO: swap with replaceable Integrators
      * @param {number} dt The span of time to integrate over.
      */
@@ -201,7 +172,6 @@ export class Particle {
     draw(context,colorScheme) {
         const radius = this.props.collisionRadius
 
-        console.log(`draw ellipse ${this.x}, ${this.y}`)
         const elementColor = colorScheme.colorForElement(this.props.element);
         context.fillStyle = elementColor
         context.beginPath();
