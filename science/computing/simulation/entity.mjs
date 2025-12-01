@@ -1,6 +1,6 @@
 
 import { UnimplementedError } from '../../../scripts/common/errors.mjs'
-import { Environment } from '../physics/environment.mjs'
+import { Environment } from '../simulation/environment.mjs'
 
 /**
  * A {@link Simulation} consists of an {@link Environment} and 

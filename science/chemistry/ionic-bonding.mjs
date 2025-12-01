@@ -1,12 +1,14 @@
 
+import { AtomicProperties } from './atomic-properties.mjs'
+import { Elements } from './element.mjs'
 import { Timer } from '../../scripts/common/timer.mjs';
 
 import { SoundBoard } from '../../scripts/audio/sound-board.mjs';
 
-import { Elements } from './element.mjs'
-import { Simulation } from '../physics/simulation.mjs';
-import { WorldController } from '../physics/world-controller.mjs';
-import { AtomicProperties, NullProperties, Particle } from '../physics/particle.mjs'
+import { WorldController } from '../computing/simulation/world-controller.mjs';
+import { Simulation } from '../computing/simulation/simulation.mjs';
+
+import { Particle } from '../physics/mechanics/particle.mjs'
 
 import { Demo } from '../../scripts/components/demo.mjs'
 

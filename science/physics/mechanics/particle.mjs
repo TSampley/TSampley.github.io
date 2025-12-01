@@ -26,6 +26,9 @@ export const NullProperties = new Properties()
  * A particle as a general entity has only a position, (x,y).
  * Properties must usually be attached for use in
  * a specific application.
+ * 
+ * https://en.wikipedia.org/wiki/Particle
+ * https://www.etymonline.com/word/particle
  */
 export class Particle {
 

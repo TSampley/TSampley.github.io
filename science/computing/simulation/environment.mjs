@@ -1,5 +1,5 @@
-import { NoOp } from '../common/fns.mjs'
-import { COULOMB_CONSTANT, GRAVITY_EARTH_ACCELERATION } from './constants.mjs'
+import { NoOp } from '../../../scripts/common/fns.mjs'
+import { COULOMB_CONSTANT, GRAVITY_EARTH_ACCELERATION } from '../../physics/mechanics/constants.mjs'
 
 
 /**
