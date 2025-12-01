@@ -1,5 +1,6 @@
 import { NoOp } from '../common/fns.mjs'
-import { GRAVITY_EARTH_ACCELERATION } from './constants.mjs'
+import { COULOMB_CONSTANT, GRAVITY_EARTH_ACCELERATION } from './constants.mjs'
+
 
 /**
  * 
@@ -21,6 +22,11 @@ export class Environment {
         this.height = height
 
         this.gravity = GRAVITY_EARTH_ACCELERATION
+        this.chargeConstant = COULOMB_CONSTANT
+        this.bounceRestitution = 0.99
+        // TODO: update mediumRestitution when drag updated
+        this.drag = 0.01
+        this.mediumRestitution = 1 - this.drag
         /** @type {()=>void} */
         this.onCollide = NoOp.f0
         /** @type {()=>void} */
