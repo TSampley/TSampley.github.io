@@ -1,18 +1,27 @@
 
+import { UnimplementedError } from '../common/errors.mjs'
 import { GRAVITY_EARTH_ACCELERATION } from './constants.mjs'
 import { Element } from './element.mjs'
+import { Environment } from './environment.mjs'
 
 export const UNITS_PER_PM_SCALE = 0.02
 const RESTITION_BOUNCE = 0.99
 
+const MEDIUM_DRAG = 0.01
+/** @deprecated */
 const RESTITUTION_MEDIUM = (1 - 0.01)
+const MEDIUM_RESTITUTION = (1 - MEDIUM_DRAG)
 
-/*
-class Entity {
-    step(delta,environment) {}
-    draw(context) {}
+export class Properties {
+    constructor() {
+
+    }
+    clone() {
+        throw `Abstract Method:${typeof this}`
+    }
 }
-*/
+
+export const NullProperties = new Properties()
 
 /**
  * A particle as a general entity has only a position, (x,y).
@@ -46,37 +55,161 @@ export class Particle {
      * @param {number} delta The amount of time to advance the simulation.
      * @param {()=>void} onBounce Callback to notify of bounce events.
      */
-    step(delta,gravityOn,width,height,onBounce) {
-        this.x += this.vx * delta;
-        this.y += this.vy * delta;
+    step(delta,environment) { /* gravityOn,width,height,onBounce */
 
-        if (gravityOn) {
-            this.y += GRAVITY_EARTH_ACCELERATION * delta * delta / 2
-            this.vy += GRAVITY_EARTH_ACCELERATION * delta
+    }
+
+    clearForces() {
+        this.fx = 0
+        this.fy = 0
+    }
+
+    addForce(fx, fy) {
+        this.fx += fx
+        this.fy += fy
+    }
+
+    /**
+     * 
+     * @param {number} delta 
+     * @param {Particle} beta 
+     */
+    calculateParticleForces(dt,beta) {
+        // TODO: coulomb force
+        const alpha = this
+        const alphaCharge = this.props.charge
+        const betaCharge = this.props.charge
+        if (alphaCharge != 0 && betaCharge != 0) {
+            // Calculate vector between particles
+            const deltaX = beta.x - alpha.x
+            const deltaY = beta.y - alpha.y
+            // TODO: explore soft-core potentials - https://pmc.ncbi.nlm.nih.gov/articles/PMC3187911/; https://www.sciencedirect.com/science/article/abs/pii/S1093326303001967 
+            const deltaSqr = Math.max(deltaX*deltaX + deltaY*deltaY, (200*UNITS_PER_PM_SCALE)**2);
+            const deltaMag = Math.sqrt(deltaSqr)
+            const force = -COULOMB_CONSTANT*alphaCharge*betaCharge/deltaSqr
+
+            const impulseX = force * deltaX / deltaMag
+            const impulseY = force * deltaY / deltaMag
+            alpha.vx += impulseX / alpha.mass
+            alpha.vy += impulseY / alpha.mass
+            beta.vx -= impulseX / beta.mass
+            beta.vy -= impulseY / beta.mass
         }
+    }
 
+    /**
+     * 
+     * @param {number} dt 
+     * @param {Environment} environment 
+     */
+    calculateEnvironmentForces(dt,environment) {
+        if (environment.gravity != 0) {
+            this.fy += environment.gravity * this.mass
+        }
+        this.fx -= this.vx * MEDIUM_DRAG
+        this.fy -= this.vy * MEDIUM_DRAG
+    }
+
+    /**
+     * TODO: swap with replaceable Integrators
+     * @param {number} dt The span of time to integrate over.
+     */
+    integrate(dt) {
+        const ax = this.fx / this.props.mass
+        const ay = this.fy / this.props.mass
+
+        this.vx += ax * delta
+        this.vy += ay * delta
+
+        this.x += this.vx * delta
+        this.y += this.vy * delta
+    }
+
+    /**
+     * 
+     * @param {Environment} environment 
+     */
+    checkEnvironmentCollision(environment) {
+        // TODO: check bounds of environment
         if (this.x > width) {
-            onBounce();
+            environment.onBounce();
             this.vx *= -RESTITION_BOUNCE;
             this.x = 2*width - this.x;
         } else if (this.x < 0) {
-            onBounce();
+            environment.onBounce();
             this.vx *= -RESTITION_BOUNCE;
             this.x = -this.x;
         }
 
         if (this.y > height) {
-            onBounce();
+            environment.onBounce();
             this.vy *= -RESTITION_BOUNCE;
             this.y = 2*height - this.y;
         } else if (this.y < 0) {
-            onBounce();
+            environment.onBounce();
             this.vy *= -RESTITION_BOUNCE;
             this.y = -this.y;
         }
+    }
+    /**
+     * Checks the two particles against each other for collision and resolves
+     * it if detected, applying appropriate forces to each particle.
+     * 
+     * @param {Particle} beta The other particle to check for collision. 
+     * @param {Environment} environment The environment the particles exist within.
+     */
+    checkParticleCollision(beta,environment) {
+        // TODO: check collision energy directed along normal to overcome bond energy + ionization energy
+        // TODO: e.g. Na+ Cl- formation requires free Na particle and Cl particle
+        /*
+        Na-Na-Na + Cl-Cl Cl-Cl
+        Na-Na Na + Cl-Cl Cl-Cl
+        Na-Na Na + Cl Cl Cl-Cl
+        Na-Na + Na Cl + Cl Cl-Cl
+        Na-Na + Na+ Cl- + Cl Cl-Cl
+        Na-Na + Na+Cl- + Cl Cl-Cl
+        */
+       const alpha = this
+        // Calculate vector between particles
+        const deltaX = beta.x - alpha.x
+        const deltaY = beta.y - alpha.y
+        const deltaSqr = deltaX*deltaX + deltaY*deltaY;
+        // TODO: calculate soft force progressively with Lennard-Jones force
+        const minRadius = alpha.props.collisionRadius + beta.props.collisionRadius
+        const minRadiusSqr = minRadius * minRadius
 
-        this.vx *= RESTITUTION_MEDIUM
-        this.vy *= RESTITUTION_MEDIUM
+        // Ensure particles within collision range
+        if (deltaSqr <= minRadiusSqr) {
+            const velX = beta.vx - alpha.vx
+            const velY = beta.vy - alpha.vy
+            const dotProd = velX*deltaX + velY*deltaY
+            // ensure velocities are opposed
+            if (dotProd < 0) {
+                // Resolve Collision
+
+                // decompose velocity into parallel and opposing components
+                const alphaDiffMag = (alpha.vx*deltaX + alpha.vy*deltaY) / deltaSqr
+                const alphaTanMag = (alpha.vx*deltaY - alpha.vy*deltaX) / deltaSqr
+                const betaDiffMag = (beta.vx*deltaX + beta.vy*deltaY) / deltaSqr
+                const betaTanMag = (beta.vx*deltaY - beta.vy*deltaX) / deltaSqr
+
+                // calculate new components along collision path
+                const alphaMass = alpha.props.mass
+                const betaMass = beta.props.mass
+                const totalMass = alphaMass + betaMass
+                const massDiff = alphaMass - betaMass
+                const finalAlphaDiffMag = (massDiff/totalMass)*alphaDiffMag + 2*betaMass/totalMass*betaDiffMag
+                const finalBetaDiffMag = 2*alphaMass/totalMass*alphaDiffMag - (massDiff/totalMass)*betaDiffMag
+
+                // recompose new velocities
+                alpha.vx = finalAlphaDiffMag*deltaX + alphaTanMag*deltaY
+                alpha.vy = finalAlphaDiffMag*deltaY + alphaTanMag*(-deltaX)
+                beta.vx = finalBetaDiffMag*deltaX + betaTanMag*deltaY
+                beta.vy = finalBetaDiffMag*deltaY + betaTanMag*(-deltaX)
+
+                environment.onCollide()
+            }
+        }
     }
 
     /**
@@ -89,19 +222,10 @@ export class Particle {
     }
 }
 
-export class Properties {
-    constructor(renderColor) {
-        this.renderColor = renderColor
-    }
-    clone() {
-        throw `Abstract Method:${typeof this}`
-    }
-}
-
-export const NullProperties = new Properties("blue")
-
 /**
  * https://en.wikipedia.org/wiki/Chemical_bond
+ * 
+ * TODO: move to AtomicProperties file
  */
 export class AtomicProperties extends Properties {
 
@@ -111,7 +235,7 @@ export class AtomicProperties extends Properties {
      * @param {Number} neutronCount Number of neutrons in this atom.
      */
     constructor(element,charge,neutronCount) {
-        super(element.renderColor)
+        super()
         if (charge > element.number) throw "Charge must be less than or equal to the atomic number."
         if (neutronCount <= 0) throw "Neutron Count must be greater than 0."
         this.element = element;
