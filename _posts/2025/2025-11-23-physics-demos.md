@@ -37,7 +37,7 @@ When a bunch of atoms are moving about freely in a space, these forces work in a
 <label for='input-gravity'>Gravity</label>
 <input type='checkbox' name='input-gravity'/>
 
-<script type="module" src="/scripts/demos/ionic-bonding.mjs"></script>
+<script type="module" src="/science/chemistry/ionic-bonding.mjs"></script>
 <noscript>
 <p>Please Enable Javascript to Use Interactive Demos</p>
 </noscript>
