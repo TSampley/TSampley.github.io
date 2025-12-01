@@ -44,7 +44,7 @@ export class Element {
 /**
  * https://en.wikipedia.org/wiki/Periodic_table
  * 
- * TODO: move colors to UI layer to allow swapping - https://en.wikipedia.org/wiki/CPK_coloring#Modern_variants 
+ * TODO: move colors to UI layer to allow swapping - 
  */
 export const Elements = Object.freeze({
     Hydrogen: new Element(1,"Hydrogen","H","#fff",1.008,0.0),
