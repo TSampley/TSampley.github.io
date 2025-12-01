@@ -1,6 +1,5 @@
 
 
-import { COULOMB_CONSTANT } from './constants.mjs'
 import { Timer } from '../common/timer.mjs'
 import { Particle, UNITS_PER_PM_SCALE } from './particle.mjs'
 import { Environment } from './environment.mjs';
@@ -12,6 +11,8 @@ const DefaultStep = 0.5
 
 /**
  * 
+ * TODO: replace particle list with entity list; consider ParticleSimulation
+ *   with extended functionality
  */
 export class Simulation {
     constructor() {
@@ -83,7 +84,6 @@ export class Simulation {
     /**
      * 
      * @param {number} delta
-     * @param {Environment} environment
      */
     step(delta) {
         // Clear previous state
