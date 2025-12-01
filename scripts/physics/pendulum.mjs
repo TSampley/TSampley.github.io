@@ -1,10 +1,18 @@
 
 import './constants.mjs'
 
+import { Entity } from './entity.mjs'
+
 /**
  * TODO: create Pendulum demo section in simulation integrators page
+ * 
+ * TODO: create other pendulums
+ *   - charged pendulum: weight also affected by charge
+ *   - stiff pendulum: weight at fixed radius from anchor
+ *   - rope pendulum: weight at max radius from anchor
+ *   - spring pendulum: weight on spring
  */
-export class Pendulum {
+export class Pendulum extends Entity {
 
     /**
      * 
@@ -23,22 +31,14 @@ export class Pendulum {
         this.angularVelocity = angularVelocity
     }
 
-    /**
-     * Progresses the pendulum simulation by `dt`
-     * 
-     * @param {number} dt Change in time for this simulation step.
-     */
-    step(dt) {
-        // force = mass * gravity_accel
-        // angularAccel = 
+    step(dt,environment) {
+        const angularAccel = environment.gravity * Math.cos(this.angle)
+
+        this.angularVelocity += angularAccel * dt
 
         this.angle += this.angularVelocity * dt
     }
 
-    /**
-     * 
-     * @param {CanvasRenderingContext2D} context 
-     */
     draw(context) {
         const weightX = Math.cos(this.angle) * this.length
         const weightY = Math.sin(this.angle) * this.length
