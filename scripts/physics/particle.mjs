@@ -76,17 +76,20 @@ export class Particle {
      * @param {Particle} beta 
      */
     calculateParticleForces(dt,beta) {
-        // TODO: coulomb force
         const alpha = this
+        // Calculate vector between particles
+        const deltaX = beta.x - alpha.x
+        const deltaY = beta.y - alpha.y
+        // TODO: explore soft-core potentials
+        //   https://pmc.ncbi.nlm.nih.gov/articles/PMC3187911/;
+        //   https://www.sciencedirect.com/science/article/abs/pii/S1093326303001967 
+        const deltaSqr = Math.max(deltaX*deltaX + deltaY*deltaY, (200*UNITS_PER_PM_SCALE)**2);
+        const deltaMag = Math.sqrt(deltaSqr)
+
+        // Coulomb Force/Potential
         const alphaCharge = this.props.charge
         const betaCharge = this.props.charge
         if (alphaCharge != 0 && betaCharge != 0) {
-            // Calculate vector between particles
-            const deltaX = beta.x - alpha.x
-            const deltaY = beta.y - alpha.y
-            // TODO: explore soft-core potentials - https://pmc.ncbi.nlm.nih.gov/articles/PMC3187911/; https://www.sciencedirect.com/science/article/abs/pii/S1093326303001967 
-            const deltaSqr = Math.max(deltaX*deltaX + deltaY*deltaY, (200*UNITS_PER_PM_SCALE)**2);
-            const deltaMag = Math.sqrt(deltaSqr)
             const force = -COULOMB_CONSTANT*alphaCharge*betaCharge/deltaSqr
 
             const impulseX = force * deltaX / deltaMag
@@ -96,6 +99,20 @@ export class Particle {
             beta.vx -= impulseX / beta.mass
             beta.vy -= impulseY / beta.mass
         }
+
+        // Lennard-Jones Potential
+        const epsilon = 10 // depth of potential well
+        const rho = 10 // finite distance where potential is zero
+        const rhoOverDistance = rho / deltaMag
+        const attraction = -(rhoOverDistance ** 6)
+        const repulsion = rhoOverDistance ** 12
+        const total = 4*epsilon*(repulsion + attraction)
+        const totalX = total * deltaX / deltaMag
+        const totalY = total * deltaY / deltaMag
+        alpha.fx += totalX
+        alpha.fy += totalY
+        beta.fx -= totalX
+        beta.fy -= totalY
     }
 
     /**
@@ -145,7 +162,7 @@ export class Particle {
         if (this.y > environment.height) {
             environment.onBounce();
             this.vy *= -RESTITION_BOUNCE;
-            this.y = 2*height - this.y;
+            this.y = 2*environment.height - this.y;
         } else if (this.y < 0) {
             environment.onBounce();
             this.vy *= -RESTITION_BOUNCE;
@@ -219,9 +236,9 @@ export class Particle {
      * @param {ElementColorScheme} colorScheme
      */
     draw(context,colorScheme) {
-        context.fillStyle = this.props.element.renderColor
         const radius = this.props.collisionRadius
 
+        console.log(`draw ellipse ${this.x}, ${this.y}`)
         context.beginPath();
         context.ellipse(this.x, this.y, radius, radius, 0, 0, 2*Math.PI);
         context.closePath();
