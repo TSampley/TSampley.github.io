@@ -3,6 +3,8 @@
 import { COULOMB_CONSTANT } from './constants.mjs'
 import { Timer } from '../common/timer.mjs'
 import { Particle, UNITS_PER_PM_SCALE } from './particle.mjs'
+import { Environment } from './environment.mjs';
+import { Entity } from './entity.mjs';
 
 const DefaultGenerator = (x,y)=>{return new Particle(x, y);}
 const PassTest = (x,y)=>{return true;}
@@ -18,7 +20,11 @@ export class Simulation {
          * @type {Array<Particle>}
          */
         this.particleList = new Array()
-        this.gravityOn = false
+        /**
+         * @type {Array<Entity>}
+         */
+        this.entityList = new Array()
+        this.environment = new Environment(500, 500)
     }
 
     initializeCircle(centerX,centerY,radius) {
@@ -76,115 +82,39 @@ export class Simulation {
 
     /**
      * 
-     * @param {number} delta 
-     * @param {number} width 
-     * @param {number} height 
-     * @param {()=>void} onCollide 
-     * @param {()=>void} onBounce 
+     * @param {number} delta
+     * @param {Environment} environment
      */
-    step(delta,width,height,onCollide,onBounce) {
-        const max = this.particleList.length
-        for (const index in this.particleList) {
-            const particle = this.particleList[index]
-            particle.step(delta,this.gravityOn,width,height,onBounce)
+    step(delta) {
+        // Clear previous state
+        for (const particle of this.particleList) {
+            particle.clearForces()
         }
-        // Iterate over all particle pairs **once**
+
+        // Calculate all forces and collisions
+        const max = this.particleList.length
         for (let index = 0; index < max; index++) {
             const alpha = this.particleList[index]
-            const alphaCharge = alpha.props.charge
             for (let otherIndex = index + 1; otherIndex < max; otherIndex++) {
                 const beta = this.particleList[otherIndex]
-                const betaCharge = beta.props.charge
-
-                const collision = this.checkCollision(alpha, beta)
-                if (collision) {
-                    collision.resolve()
-                    onCollide()
-                }
-
-                if (alphaCharge != 0 && betaCharge != 0) {
-                    // Calculate vector between particles
-                    const deltaX = beta.x - alpha.x
-                    const deltaY = beta.y - alpha.y
-                    // TODO: explore soft-core potentials - https://pmc.ncbi.nlm.nih.gov/articles/PMC3187911/; https://www.sciencedirect.com/science/article/abs/pii/S1093326303001967 
-                    const deltaSqr = Math.max(deltaX*deltaX + deltaY*deltaY, (200*UNITS_PER_PM_SCALE)**2);
-                    const deltaMag = Math.sqrt(deltaSqr)
-                    const force = -COULOMB_CONSTANT*alphaCharge*betaCharge/deltaSqr
-
-                    const impulseX = force * deltaX / deltaMag
-                    const impulseY = force * deltaY / deltaMag
-                    alpha.vx += impulseX / alpha.mass
-                    alpha.vy += impulseY / alpha.mass
-                    beta.vx -= impulseX / beta.mass
-                    beta.vy -= impulseY / beta.mass
-                }
+                alpha.calculateParticleForces(beta,this.environment)
             }
+            alpha.calculateEnvironmentForces(this.environment)
         }
-    }
 
-    /**
-     * 
-     * @param {Particle} alpha 
-     * @param {Particle} beta 
-     * @param {Collision?}
-     */
-    checkCollision(alpha, beta) {
-        // Calculate vector between particles
-        const deltaX = beta.x - alpha.x
-        const deltaY = beta.y - alpha.y
-        const deltaSqr = deltaX*deltaX + deltaY*deltaY;
-        // TODO: calculate soft force progressively with Lennard-Jones force
-        const minRadius = alpha.props.collisionRadius + beta.props.collisionRadius
-        const minRadiusSqr = minRadius * minRadius
+        // Integrate entities
+        for (const particle of this.particleList) {
+            particle.integrate(delta)
+        }
 
-        // Ensure particles within collision range
-        if (deltaSqr <= minRadiusSqr) {
-            const velX = beta.vx - alpha.vx
-            const velY = beta.vy - alpha.vy
-            const dotProd = velX*deltaX + velY*deltaY
-            // ensure velocities are opposed
-            if (dotProd < 0) {
-                return new Collision(alpha, beta, deltaX, deltaY, deltaSqr)
-            } else {
-                return null
+        // Resolve collisions
+        for (let index = 0; index < max; index++) {
+            const alpha = this.particleList[index]
+            for (let otherIndex = index + 1; otherIndex < max; otherIndex++) {
+                const beta = this.particleList[otherIndex]
+                alpha.checkParticleCollision(beta,this.environment)
             }
+            alpha.checkEnvironmentCollision(this.environment)
         }
-        return null
-    }
-}
-
-class Collision {
-    constructor(alpha, beta,
-        deltaX=beta.x-alpha.x,
-        deltaY=beta.y-alpha.y,
-        deltaSqr=deltaX*deltaX+deltaY*deltaY
-    ) {
-        this.alpha = alpha
-        this.beta = beta
-        this.deltaX = deltaX
-        this.deltaY = deltaY
-        this.deltaSqr = deltaSqr
-    }
-
-    resolve() {
-        // decompose velocity into parallel and opposing components
-        const alphaDiffMag = (this.alpha.vx*this.deltaX + this.alpha.vy*this.deltaY) / this.deltaSqr
-        const alphaTanMag = (this.alpha.vx*this.deltaY - this.alpha.vy*this.deltaX) / this.deltaSqr
-        const betaDiffMag = (this.beta.vx*this.deltaX + this.beta.vy*this.deltaY) / this.deltaSqr
-        const betaTanMag = (this.beta.vx*this.deltaY - this.beta.vy*this.deltaX) / this.deltaSqr
-
-        // calculate new components along collision path
-        const alphaMass = this.alpha.props.mass
-        const betaMass = this.beta.props.mass
-        const totalMass = alphaMass + betaMass
-        const massDiff = alphaMass - betaMass
-        const finalAlphaDiffMag = (massDiff/totalMass)*alphaDiffMag + 2*betaMass/totalMass*betaDiffMag
-        const finalBetaDiffMag = 2*alphaMass/totalMass*alphaDiffMag - (massDiff/totalMass)*betaDiffMag
-
-        // recompose new velocities
-        this.alpha.vx = finalAlphaDiffMag*this.deltaX + alphaTanMag*this.deltaY
-        this.alpha.vy = finalAlphaDiffMag*this.deltaY + alphaTanMag*(-this.deltaX)
-        this.beta.vx = finalBetaDiffMag*this.deltaX + betaTanMag*this.deltaY
-        this.beta.vy = finalBetaDiffMag*this.deltaY + betaTanMag*(-this.deltaX)
     }
 }
