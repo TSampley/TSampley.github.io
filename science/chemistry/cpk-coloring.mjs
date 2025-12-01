@@ -1,6 +1,6 @@
 
 import { UnimplementedError } from '../../scripts/common/errors.mjs'
-import { Element } from '../../scripts/physics/element.mjs'
+import { Element } from './element.mjs'
 
 /**
  * 

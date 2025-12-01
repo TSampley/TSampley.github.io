@@ -3,7 +3,7 @@ import { COULOMB_CONSTANT, GRAVITY_EARTH_ACCELERATION } from './constants.mjs'
 
 
 /**
- * 
+ * TODO: move to /science/computing/simulation/
  */
 export class Environment {
     /**
