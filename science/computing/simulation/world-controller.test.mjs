@@ -1,7 +1,7 @@
 
-import { Particle } from './particle.mjs';
+import { Particle } from '../../physics/mechanics/particle.mjs';
 import { Simulation } from './simulation.mjs';
-import { Timer } from '../common/timer.mjs';
+import { Timer } from '../../../scripts/common/timer.mjs';
 import { WorldController } from './world-controller.mjs';
 
 test('WorldController.addParticle should add the given particle', ()=>{

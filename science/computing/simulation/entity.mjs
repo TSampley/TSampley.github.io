@@ -1,5 +1,5 @@
 
-import { UnimplementedError } from '../common/errors.mjs'
+import { UnimplementedError } from '../../../scripts/common/errors.mjs'
 import { Environment } from '../physics/environment.mjs'
 
 /**

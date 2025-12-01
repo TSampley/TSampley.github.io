@@ -1,8 +1,9 @@
 
 
-import { Timer } from '../common/timer.mjs'
-import { Particle } from './particle.mjs'
 import { Environment } from './environment.mjs';
+
+import { Timer } from '../../../scripts/common/timer.mjs'
+import { Particle } from '../../physics/mechanics/particle.mjs'
 import { Entity } from './entity.mjs';
 
 const DefaultGenerator = (x,y)=>{return new Particle(x, y);}

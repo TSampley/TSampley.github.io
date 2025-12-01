@@ -1,10 +1,10 @@
 
-import { ElementColorScheme } from '../../science/chemistry/cpk-coloring.mjs'
-import { ArtomicProperties } from '../../science/chemistry/atomic-properties.mjs'
+import { ElementColorScheme } from '../../chemistry/cpk-coloring.mjs'
+import { ArtomicProperties } from '../../chemistry/atomic-properties.mjs'
 
-import { Element } from '../../science/chemistry/element.mjs'
+import { Element } from '../../chemistry/element.mjs'
 
-import { UnimplementedError } from '../common/errors.mjs'
+import { UnimplementedError } from '../../../scripts/common/errors.mjs'
 import { Environment } from './environment.mjs'
 
 /**

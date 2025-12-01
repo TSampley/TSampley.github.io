@@ -1,10 +1,10 @@
 
-import './constants.mjs';
-import { Particle } from './particle.mjs';
+import '../../physics/mechanics/constants.mjs';
+import { Particle } from '../../physics/mechanics/particle.mjs';
 import { Simulation } from './simulation.mjs';
-import { Timer } from '../common/timer.mjs';
+import { Timer } from '../../../scripts/common/timer.mjs';
 
-import { CPKColorScheme } from '../../science/chemistry/cpk-coloring.mjs'
+import { CPKColorScheme } from '../../chemistry/cpk-coloring.mjs'
 
 /**
  * 
