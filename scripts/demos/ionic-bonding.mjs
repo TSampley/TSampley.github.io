@@ -10,7 +10,7 @@ import { AtomicProperties, NullProperties, Particle } from '../physics/particle.
 
 import { Demo } from '../components/demo.mjs'
 
-const slider = document.getElementById('hydrogen-distance')
+// const slider = document.getElementById('hydrogen-distance') // TODO: replace remaining references with object
 const displayParagraph = document.getElementById('sim-display')
 const displayCharge = document.getElementById('sim-charge')
 const buttonChargeUp = document.getElementById('sim-charge-up')
@@ -18,6 +18,18 @@ const buttonChargeDown = document.getElementById('sim-charge-down')
 const inputGravity = document.getElementsByTagName('input').namedItem('input-gravity')
 const buttonReset = document.getElementById('sim-reset')
 const demo = new Demo('hydrogen-bulk');
+const uiElements = {
+    slider: document.getElementById('hydrogen-distance'),
+    displayParagraph: document.getElementById('sim-display'),
+    displayCharge: document.getElementById('sim-charge'),
+    buttonChargeUp: document.getElementById('sim-charge-up'),
+    buttonChargeDown: document.getElementById('sim-charge-down'),
+    inputGravity: document.getElementsByTagName('input').namedItem('input-gravity'),
+    buttonReset: document.getElementById('sim-reset'),
+    table: Object.values(Elements).map((value)=>{
+        document.getElementById(`sim-${value.name.toLowerCase()}`)
+    })
+}
 
 let simulation = new Simulation()
 let timer = new Timer()
@@ -35,7 +47,7 @@ function setHydrogenDistance(value) {
     // TODO: update simulation
 }
 
-slider.addEventListener('input',(event => {
+uiElements.slider.addEventListener('input',(event => {
     setHydrogenDistance(event.target.value);
 }));
 buttonChargeUp.onclick = ()=>{
@@ -82,14 +94,14 @@ demo.addMouseDownListener((event)=>{
     SoundBoard.playPop()
 })
 
-let width = demo.canvas.width;
-let height = demo.canvas.height;
+controller.simulation.environment.width = demo.canvas.width
+controller.simulation.environment.height = demo.canvas.height
 
-const onCollide = ()=>{ SoundBoard.playClack() }
-const onBounce = ()=>{ SoundBoard.playWoop() }
+controller.simulation.environment.onCollide = SoundBoard.playClack
+controller.simulation.environment.onBounce = SoundBoard.playWoop
 
 function step(delta) {
-    controller.simulation.step(delta,width,height,onCollide,onBounce)
+    controller.simulation.step(delta)
 }
 
 let lastTime = 0;
