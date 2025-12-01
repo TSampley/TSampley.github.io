@@ -68,7 +68,7 @@ export class WorldController {
     }
 
     setGravityOn(value) {
-        this.simulation.gravityOn = value
+        this.simulation.environment.forceMatrix.gravity.isEnabled = value
     }
 
     /**

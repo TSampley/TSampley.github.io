@@ -1,10 +1,11 @@
 
 
-import { Environment } from './environment.mjs';
+import { Environment, ForceMatrix } from './environment.mjs';
 
 import { Timer } from '../../../scripts/common/timer.mjs'
 import { Particle } from '../../physics/mechanics/particle.mjs'
 import { Entity } from './entity.mjs';
+import { COULOMB_CONSTANT, GRAVITY_EARTH_ACCELERATION } from '../../physics/mechanics/constants.mjs';
 
 const DefaultGenerator = (x,y)=>{return new Particle(x, y);}
 const PassTest = (x,y)=>{return true;}
@@ -26,7 +27,7 @@ export class Simulation {
          * @type {Array<Entity>}
          */
         this.entityList = new Array()
-        this.environment = new Environment(500, 500)
+        this.environment = new Environment(500, 500, new ForceMatrix())
     }
 
     initializeCircle(centerX,centerY,radius) {
@@ -118,7 +119,7 @@ export class Simulation {
                 const beta = this.particleList[otherIndex]
                 alpha.checkParticleCollision(beta,this.environment)
             }
-            alpha.checkEnvironmentCollision(this.environment)
+            // alpha.checkEnvironmentCollision(this.environment)
         }
     }
 }

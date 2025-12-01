@@ -71,45 +71,10 @@ export class Particle {
     calculateParticleForces(dt,beta,environment) {
         let logOutput = ''
         const alpha = this
-        // Calculate vector between particles for relative forces
-        const deltaX = beta.x - alpha.x
-        const deltaY = beta.y - alpha.y
-        // TODO: explore soft-core potentials
-        //   https://pmc.ncbi.nlm.nih.gov/articles/PMC3187911/;
-        //   https://www.sciencedirect.com/science/article/abs/pii/S1093326303001967 
-        const deltaSqr = deltaX*deltaX + deltaY*deltaY;
-        const deltaMag = Math.sqrt(deltaSqr)
 
-        let forceSum = 0
-
-        // Coulomb Force/Potential
-        const alphaCharge = this.props.charge
-        const betaCharge = beta.props.charge
-        if (alphaCharge != 0 && betaCharge != 0) {
-            const force = -environment.chargeConstant*alphaCharge*betaCharge/deltaSqr
-            forceSum += force
-
-            logOutput += `chargeForce=${force}`
-        }
-
-        // Lennard-Jones Potential
-        const epsilon = 10 // depth of potential well
-        const rho = 10 // finite distance where potential is zero
-        const rhoOverDistance = rho / deltaMag
-        const attraction = -(rhoOverDistance ** 6)
-        const repulsion = rhoOverDistance ** 12
-        const total = 4*epsilon*(repulsion + attraction)
-        forceSum += total
-
-        // Distribute total force
-        const impulseX = forceSum * deltaX / deltaMag
-        const impulseY = forceSum * deltaY / deltaMag
-        alpha.fx += impulseX
-        alpha.fy += impulseY
-        beta.fx -= impulseX
-        beta.fy -= impulseY
-
-        logOutput += `potentialForce=${total}`
+        environment.particleForces().forEach((force)=>{
+            force.applyForce(dt,alpha,beta)
+        })
     }
 
     /**
@@ -121,8 +86,9 @@ export class Particle {
         if (environment.gravity) {
             this.fy += environment.gravity * this.props.mass
         }
-        this.fx -= this.vx * environment.drag
-        this.fy -= this.vy * environment.drag
+        environment.environmentForces().forEach((force)=>{
+            force.applyForce(dt,this)
+        })
     }
 
     /**
@@ -149,7 +115,7 @@ export class Particle {
         if (this.x > environment.width) {
             environment.onBounce();
             this.vx *= -environment.bounceRestitution;
-            this.x = 2*width - this.x;
+            this.x = 2*environment.width - this.x;
         } else if (this.x < 0) {
             environment.onBounce();
             this.vx *= -environment.bounceRestitution;
