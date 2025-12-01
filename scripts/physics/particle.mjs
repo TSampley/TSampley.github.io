@@ -1,4 +1,5 @@
 
+import { ElementColorScheme } from '../../science/chemistry/cpk-coloring.mjs'
 import { UnimplementedError } from '../common/errors.mjs'
 import { GRAVITY_EARTH_ACCELERATION } from './constants.mjs'
 import { Element } from './element.mjs'
@@ -118,11 +119,11 @@ export class Particle {
         const ax = this.fx / this.props.mass
         const ay = this.fy / this.props.mass
 
-        this.vx += ax * delta
-        this.vy += ay * delta
+        this.vx += ax * dt
+        this.vy += ay * dt
 
-        this.x += this.vx * delta
-        this.y += this.vy * delta
+        this.x += this.vx * dt
+        this.y += this.vy * dt
     }
 
     /**
@@ -131,7 +132,7 @@ export class Particle {
      */
     checkEnvironmentCollision(environment) {
         // TODO: check bounds of environment
-        if (this.x > width) {
+        if (this.x > environment.width) {
             environment.onBounce();
             this.vx *= -RESTITION_BOUNCE;
             this.x = 2*width - this.x;
@@ -141,7 +142,7 @@ export class Particle {
             this.x = -this.x;
         }
 
-        if (this.y > height) {
+        if (this.y > environment.height) {
             environment.onBounce();
             this.vy *= -RESTITION_BOUNCE;
             this.y = 2*height - this.y;
@@ -215,10 +216,18 @@ export class Particle {
     /**
      * 
      * @param {CanvasRenderingContext2D} context 
+     * @param {ElementColorScheme} colorScheme
      */
-    draw(context) {
+    draw(context,colorScheme) {
         context.fillStyle = this.props.element.renderColor
-        // TODO: move particle drawing logic into particle
+        const radius = this.props.collisionRadius
+
+        context.beginPath();
+        context.ellipse(this.x, this.y, radius, radius, 0, 0, 2*Math.PI);
+        context.closePath();
+        const elementColor = colorScheme.colorForElement(this.props.element);
+        context.fillStyle = elementColor
+        context.fill();
     }
 }
 

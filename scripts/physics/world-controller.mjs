@@ -4,6 +4,8 @@ import { Particle } from './particle.mjs';
 import { Simulation } from './simulation.mjs';
 import { Timer } from '../common/timer.mjs';
 
+import { CPKColorScheme } from '../../science/chemistry/cpk-coloring.mjs'
+
 /**
  * 
  */
@@ -19,6 +21,8 @@ export class WorldController {
         this.timer = timer
         this.onSetDisplay = (display)=>{}
         this.onSetCharge = (charge)=>{}
+
+        this.colorScheme = CPKColorScheme
     }
 
     reset() {
@@ -72,15 +76,8 @@ export class WorldController {
      * @param {CanvasRenderingContext2D} context 
      */
     drawParticles(context) {
-        for (const key in this.simulation.particleList) {
-            const particle = this.simulation.particleList[key]
-            const radius = particle.props.collisionRadius
-
-            context.beginPath();
-            context.ellipse(particle.x, particle.y, radius, radius, 0, 0, 2*Math.PI);
-            context.closePath();
-            context.fillStyle = particle.props.element.renderColor;
-            context.fill();
+        for (const particle of this.simulation.particleList) {
+            particle.draw(context,this.colorScheme)
         }
     }
 }
