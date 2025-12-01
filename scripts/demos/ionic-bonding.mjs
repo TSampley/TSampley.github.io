@@ -100,14 +100,10 @@ controller.simulation.environment.height = demo.canvas.height
 controller.simulation.environment.onCollide = SoundBoard.playClack
 controller.simulation.environment.onBounce = SoundBoard.playWoop
 
-function step(delta) {
-    controller.simulation.step(delta)
-}
-
 let lastTime = 0;
 function animate(timestamp) {
     let diff = timestamp - lastTime;
-    step(diff);
+    controller.simulation.step(diff)
 
     demo.context.clearRect(0, 0, demo.canvas.width, demo.canvas.height);
 
