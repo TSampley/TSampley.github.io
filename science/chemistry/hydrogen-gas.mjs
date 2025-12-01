@@ -1,6 +1,6 @@
 
 import { Simulation } from "../physics/simulation.mjs";
-import { Demo } from "../components/demo.mjs";
+import { Demo } from "../../scripts/components/demo.mjs";
 
 const uiElements = {
     slider: document.getElementById('hydrogen-distance'),

@@ -1,14 +1,14 @@
 
-import { Timer } from '../common/timer.mjs';
+import { Timer } from '../../scripts/common/timer.mjs';
 
-import { SoundBoard } from '../audio/sound-board.mjs';
+import { SoundBoard } from '../../scripts/audio/sound-board.mjs';
 
-import { Elements } from '../../science/chemistry/element.mjs'
+import { Elements } from './element.mjs'
 import { Simulation } from '../physics/simulation.mjs';
 import { WorldController } from '../physics/world-controller.mjs';
 import { AtomicProperties, NullProperties, Particle } from '../physics/particle.mjs'
 
-import { Demo } from '../components/demo.mjs'
+import { Demo } from '../../scripts/components/demo.mjs'
 
 const displayParagraph = document.getElementById('sim-display')
 const displayCharge = document.getElementById('sim-charge')
