@@ -1,11 +1,10 @@
 
 import { ElementColorScheme } from '../../chemistry/cpk-coloring.mjs'
-import { ArtomicProperties } from '../../chemistry/atomic-properties.mjs'
-
 import { Element } from '../../chemistry/element.mjs'
+import { AtomicProperties } from '../../chemistry/atomic-properties.mjs'
 
-import { UnimplementedError } from '../../../scripts/common/errors.mjs'
-import { Environment } from './environment.mjs'
+import { UnimplementedError } from  '../../../scripts/common/errors.mjs'
+import { Environment } from '../../computing/simulation/environment.mjs'
 
 /**
  * Used to convert between window units and picometers
