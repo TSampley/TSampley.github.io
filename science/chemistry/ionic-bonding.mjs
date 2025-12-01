@@ -49,7 +49,7 @@ buttonChargeUp.onclick = ()=>{
 buttonChargeDown.onclick = ()=>{
     controller.decrementCharge()
 }
-inputGravity.value = controller.simulation.gravityOn
+inputGravity.checked = controller.simulation.environment.gravity > 0
 inputGravity.onchange = (event)=>{
     controller.setGravityOn(event.target.checked)
 }
