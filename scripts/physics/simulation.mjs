@@ -83,9 +83,9 @@ export class Simulation {
 
     /**
      * 
-     * @param {number} delta
+     * @param {number} dt
      */
-    step(delta) {
+    step(dt) {
         // Clear previous state
         for (const particle of this.particleList) {
             particle.clearForces()
@@ -99,12 +99,12 @@ export class Simulation {
                 const beta = this.particleList[otherIndex]
                 alpha.calculateParticleForces(beta,this.environment)
             }
-            alpha.calculateEnvironmentForces(this.environment)
+            alpha.calculateEnvironmentForces(dt,this.environment)
         }
 
         // Integrate entities
         for (const particle of this.particleList) {
-            particle.integrate(delta)
+            particle.integrate(dt)
         }
 
         // Resolve collisions
