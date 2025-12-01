@@ -1,7 +1,7 @@
 
 
 import { Timer } from '../common/timer.mjs'
-import { Particle, UNITS_PER_PM_SCALE } from './particle.mjs'
+import { Particle } from './particle.mjs'
 import { Environment } from './environment.mjs';
 import { Entity } from './entity.mjs';
 
@@ -93,18 +93,21 @@ export class Simulation {
 
         // Calculate all forces and collisions
         const max = this.particleList.length
-        for (let index = 0; index < max; index++) {
-            const alpha = this.particleList[index]
-            for (let otherIndex = index + 1; otherIndex < max; otherIndex++) {
-                const beta = this.particleList[otherIndex]
-                alpha.calculateParticleForces(beta,this.environment)
+        for (let alphaIndex = 0; alphaIndex < max; alphaIndex++) {
+            const alpha = this.particleList[alphaIndex]
+            console.log(`beginning ${alpha.x}, ${alpha.y}`)
+            for (let betaIndex = alphaIndex + 1; betaIndex < max; betaIndex++) {
+                const beta = this.particleList[betaIndex]
+                alpha.calculateParticleForces(dt,beta,this.environment)
             }
             alpha.calculateEnvironmentForces(dt,this.environment)
         }
 
         // Integrate entities
         for (const particle of this.particleList) {
+            console.log(`integrate ${particle.x}, ${particle.y}`)
             particle.integrate(dt)
+            console.log(`integrated ${particle.x}, ${particle.y}`)
         }
 
         // Resolve collisions
