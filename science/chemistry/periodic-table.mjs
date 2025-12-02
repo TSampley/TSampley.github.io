@@ -1,3 +1,4 @@
+import { Element } from "./element.mjs";
 import { Elements } from "./element.mjs";
 
 
@@ -83,8 +84,24 @@ export class PeriodicTable {
  */
 function renderTable(table) {
     return `<table>
-    <tr>
-    </tr>
+    ${renderRow()}
+    ${renderRow()}
     </table>`
 }
 
+function renderRow() {
+    let rowContent = ''
+    for (const element in list) {
+        rowContent += renderElement(element)
+    }
+    return `<tr class='ptable-row'>${rowContent}</tr>`
+}
+
+/**
+ * 
+ * @param {Element} element 
+ * @returns 
+ */
+function renderElement(element) {
+    return `<td class='ptable-element'><button>${element.id}</button></td>`
+}
