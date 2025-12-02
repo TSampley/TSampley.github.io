@@ -1,122 +1,124 @@
 
-<table>
-    <tr>
-        <td>
-        <button id="sim-hydrogen">Hydrogen</button>
+<link rel="stylesheet" src="/assets/css/chemistry.css">
+<script type="module" src="/science/chemistry/periodic-table.mjs"></script>
+<table class='ptable'>
+    <tr class='ptable-row'>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-hydrogen">Hydrogen</button>
         </td>
-        <td colspan=16></td>
-        <td>
-        <button id="sim-helium">Helium</button>
-        </td>
-    </tr>
-    <tr>
-        <td>
-        <button id="sim-lithium">Lithium</button>
-        </td>
-        <td>
-        <button id="sim-beryllium">Beryllium</button>
-        </td>
-        <td colspan=10></td>
-        <td>
-        <button id="sim-carbon">Boron</button>
-        </td>
-        <td>
-        <button id="sim-carbon">Carbon</button>
-        </td>
-        <td>
-        <button id="sim-nitrogen">Nitrogen</button>
-        </td>
-        <td>
-        <button id="sim-oxygen">Oxygen</button>
-        </td>
-        <td>
-        <button id="sim-oxygen">Fluorine</button>
-        </td>
-        <td>
-        <button id="sim-oxygen">Neon</button>
+        <td class='ptable-gap' colspan=16></td>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-helium">Helium</button>
         </td>
     </tr>
-    <tr>
-        <td>
-        <button id="sim-sodium">Sodium</button>
+    <tr class='ptable-row'>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-lithium">Lithium</button>
         </td>
-        <td>
-        <button id="sim-magnesium">Magnesium</button>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-beryllium">Beryllium</button>
         </td>
-        <td colspan=10></td>
-        <td>
-        <button id="sim-aluminium">Aluminium</button>
+        <td class='ptable-gap' colspan=10></td>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-carbon">Boron</button>
         </td>
-        <td>
-        <button id="sim-silicon">Silicon</button>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-carbon">Carbon</button>
         </td>
-        <td>
-        <button id="sim-phosphorous">Phosphorous</button>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-nitrogen">Nitrogen</button>
         </td>
-        <td>
-        <button id="sim-sulfur">Sulfur</button>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-oxygen">Oxygen</button>
         </td>
-        <td>
-        <button id="sim-chlorine">Chlorine</button>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-oxygen">Fluorine</button>
         </td>
-        <td>
-        <button id="sim-argon">Argon</button>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-oxygen">Neon</button>
         </td>
     </tr>
-    <tr>
-        <td>
-        <button id="sim-potassium">Potassium</button>
+    <tr class='ptable-row'>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-sodium">Sodium</button>
         </td>
-        <td>
-        <button id="sim-calcium">Calcium</button>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-magnesium">Magnesium</button>
         </td>
-        <td>
-        <button id="sim-scandium"></button>
+        <td class='ptable-gap' colspan=10></td>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-aluminium">Aluminium</button>
         </td>
-        <td>
-        <button id="sim-titanium"></button>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-silicon">Silicon</button>
         </td>
-        <td>
-        <button id="sim-vanadium"></button>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-phosphorous">Phosphorous</button>
         </td>
-        <td>
-        <button id="sim-chromium"></button>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-sulfur">Sulfur</button>
         </td>
-        <td>
-        <button id="sim-manganese"></button>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-chlorine">Chlorine</button>
         </td>
-        <td>
-        <button id="sim-iron"></button>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-argon">Argon</button>
         </td>
-        <td>
-        <button id="sim-cobalt"></button>
+    </tr>
+    <tr class='ptable-row'>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-potassium">Potassium</button>
         </td>
-        <td>
-        <button id="sim-nickel"></button>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-calcium">Calcium</button>
         </td>
-        <td>
-        <button id="sim-copper"></button>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-scandium"></button>
         </td>
-        <td>
-        <button id="sim-zinc"></button>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-titanium"></button>
         </td>
-        <td>
-        <button id="sim-gallium"></button>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-vanadium"></button>
         </td>
-        <td>
-        <button id="sim-germanium">Germanium</button>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-chromium"></button>
         </td>
-        <td>
-        <button id="sim-arsenic">Arsenic</button>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-manganese"></button>
         </td>
-        <td>
-        <button id="sim-selenium">Selenium</button>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-iron"></button>
         </td>
-        <td>
-        <button id="sim-bromine">Bromine</button>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-cobalt"></button>
         </td>
-        <td>
-        <button id="sim-krypton">Krypton</button>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-nickel"></button>
+        </td>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-copper"></button>
+        </td>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-zinc"></button>
+        </td>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-gallium"></button>
+        </td>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-germanium">Germanium</button>
+        </td>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-arsenic">Arsenic</button>
+        </td>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-selenium">Selenium</button>
+        </td>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-bromine">Bromine</button>
+        </td>
+        <td class='ptable-element'>
+        <button class='ptable' id="ptable-krypton">Krypton</button>
         </td>
     </tr>
 </table>
