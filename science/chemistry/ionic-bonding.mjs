@@ -16,7 +16,6 @@ const displayParagraph = document.getElementById('sim-display')
 const displayCharge = document.getElementById('sim-charge')
 const buttonChargeUp = document.getElementById('sim-charge-up')
 const buttonChargeDown = document.getElementById('sim-charge-down')
-const inputGravity = document.getElementsByTagName('input').namedItem('input-gravity')
 const buttonReset = document.getElementById('sim-reset')
 const demo = new Demo('hydrogen-bulk');
 const uiElements = {
@@ -24,6 +23,7 @@ const uiElements = {
     displayCharge: document.getElementById('sim-charge'),
     buttonChargeUp: document.getElementById('sim-charge-up'),
     buttonChargeDown: document.getElementById('sim-charge-down'),
+    divForceInputs: document.getElementById('sim-force-inputs'),
     inputGravity: document.getElementById('input-gravity'),
     inputRunning: document.getElementById('input-running'),
     buttonReset: document.getElementById('sim-reset'),
@@ -50,10 +50,29 @@ buttonChargeUp.onclick = ()=>{
 buttonChargeDown.onclick = ()=>{
     controller.decrementCharge()
 }
-inputGravity.checked = controller.simulation.environment.forceMatrix.gravity.isEnabled
-inputGravity.onchange = (event)=>{
-    controller.simulation.environment.forceMatrix.gravity.isEnabled = event.target.checked
-}
+
+Object.values(controller.simulation.environment.forceMatrix).forEach(force => {
+    uiElements.divForceInputs.innerHTML += 
+        `<li><label for='${force.id}'>${force.name}</label><input type='checkbox' id='${force.id}'></li>`
+    const element = document.getElementById(force.id)
+    uiElements[force.id] = element
+
+    console.log(`${force.id} returned element: ${element.id}`)
+
+    element.checked = true
+        // controller.simulation.environment.forceMatrix[force.id].isEnabled
+        element.onclick = (event)=>{
+            console.log('click')
+        }
+    element.onchange = (event)=>{
+        console.log(`${force.id} checked ${event.target.checked}`)
+        controller.simulation.environment.forceMatrix[force.id].isEnabled = event.target.checked
+    }
+});
+// inputGravity.checked = controller.simulation.environment.forceMatrix.gravity.isEnabled
+// inputGravity.onchange = (event)=>{
+//     controller.simulation.environment.forceMatrix.gravity.isEnabled = event.target.checked
+// }
 uiElements.inputRunning.checked = controller.isRunning
 uiElements.inputRunning.onchange = (event)=>{
     controller.isRunning = event.target.checked
@@ -112,10 +131,10 @@ function animate(timestamp) {
 controller.setParticle(hydrogenParticle)
 controller.setCharge(0)
 
-controller.simulation.environment.forceMatrix.lennardJones.isEnabled = false
-controller.simulation.environment.forceMatrix.charge.isEnabled = false
-controller.simulation.environment.forceMatrix.drag.isEnabled = false
-controller.simulation.environment.forceMatrix.gravity.isEnabled = true
-controller.simulation.environment.forceMatrix.boundaries.isEnabled = true
+// controller.simulation.environment.forceMatrix.lennardJones.isEnabled = false
+// controller.simulation.environment.forceMatrix.charge.isEnabled = false
+// controller.simulation.environment.forceMatrix.drag.isEnabled = false
+// controller.simulation.environment.forceMatrix.gravity.isEnabled = true
+// controller.simulation.environment.forceMatrix.boundaries.isEnabled = true
 
 animate(0);
