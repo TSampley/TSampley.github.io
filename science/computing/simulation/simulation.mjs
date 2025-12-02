@@ -93,14 +93,24 @@ export class Simulation {
         }
 
         // Calculate all forces and collisions
+        const particleForces = this.environment.particleForces().filter((value)=>{
+            return value.isEnabled
+        })
+        const environmentForces = this.environment.environmentForces().filter((value)=>{
+            return value.isEnabled
+        })
         const max = this.particleList.length
         for (let alphaIndex = 0; alphaIndex < max; alphaIndex++) {
             const alpha = this.particleList[alphaIndex]
             for (let betaIndex = alphaIndex + 1; betaIndex < max; betaIndex++) {
                 const beta = this.particleList[betaIndex]
-                alpha.calculateParticleForces(dt,beta,this.environment)
+                particleForces.forEach((force)=>{
+                    force.applyForce(dt,alpha,beta)
+                })
             }
-            alpha.calculateEnvironmentForces(dt,this.environment)
+            environmentForces.forEach((force)=>{
+                force.applyForce(dt,alpha)
+            })
         }
 
         // Integrate entities
@@ -115,7 +125,7 @@ export class Simulation {
                 const beta = this.particleList[otherIndex]
                 alpha.checkParticleCollision(beta,this.environment)
             }
-            // alpha.checkEnvironmentCollision(this.environment)
+            alpha.checkEnvironmentCollision(this.environment)
         }
     }
 }
