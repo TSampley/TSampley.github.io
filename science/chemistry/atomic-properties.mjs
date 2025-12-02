@@ -1,6 +1,7 @@
 
 import { Properties } from "../physics/mechanics/particle.mjs";
 import { UNITS_PER_PM_SCALE } from "../physics/mechanics/particle.mjs";
+import { Element } from "./element.mjs";
 
 /**
  * https://en.wikipedia.org/wiki/Chemical_bond
