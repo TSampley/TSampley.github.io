@@ -1,16 +1,16 @@
 import { NoOp } from '../../../scripts/common/fns.mjs'
 import { COULOMB_CONSTANT, GRAVITY_EARTH_ACCELERATION } from '../../physics/mechanics/constants.mjs'
-import { Particle } from '../../physics/mechanics/particle.mjs'
+import { Particle, UNITS_PER_PM_SCALE } from '../../physics/mechanics/particle.mjs'
 
 
-class Force {
+export class Force {
     /**
      * 
      * @param {number} value 
      */
     constructor(value) {
-        this.isEnabled = true
         this.value = value
+        this.isEnabled = true
     }
 }
 
@@ -23,6 +23,7 @@ export class EnvironmentForce extends Force {
      */
     applyForce(dt,subject) {}
 }
+
 /**
  * 
  */
@@ -36,6 +37,14 @@ export class CoulombForce extends InterparticleForce {
         super(value)
     }
 
+    get id() {
+        return "charge"
+    }
+
+    get name() {
+        return "Coulomb"
+    }
+
     applyForce(dt,alpha,beta) {
         // Calculate vector between particles for relative forces
         const deltaX = beta.x - alpha.x
@@ -47,10 +56,11 @@ export class CoulombForce extends InterparticleForce {
         const deltaMag = Math.sqrt(deltaSqr)
 
         // Coulomb Force/Potential
-        const alphaCharge = this.props.charge
+        const alphaCharge = alpha.props.charge
         const betaCharge = beta.props.charge
         if (alphaCharge != 0 && betaCharge != 0) {
             const force = -this.value*alphaCharge*betaCharge/deltaSqr
+            console.log(`coulomb force: ${force}`)
             const forceX = force * deltaX / deltaMag
             const forceY = force * deltaY / deltaMag
 
@@ -70,23 +80,34 @@ export class LennardJonesPotential extends InterparticleForce {
         super(value)
     }
 
+    get id() {
+        return "lennardJones"
+    }
+
+    get name() {
+        return "Lennard-Jones"
+    }
+
     applyForce(dt,alpha,beta) {
         // Calculate vector between particles for relative forces
-        const deltaX = beta.x - alpha.x
-        const deltaY = beta.y - alpha.y
+        const deltaX = (beta.x - alpha.x) / UNITS_PER_PM_SCALE
+        const deltaY = (beta.y - alpha.y) / UNITS_PER_PM_SCALE
         // TODO: explore soft-core potentials
         //   https://pmc.ncbi.nlm.nih.gov/articles/PMC3187911/;
         //   https://www.sciencedirect.com/science/article/abs/pii/S1093326303001967 
-        const deltaSqr = deltaX*deltaX + deltaY*deltaY;
+        const deltaSqr = Math.max(deltaX*deltaX + deltaY*deltaY, 100) // minimum distance 100pm
         const deltaMag = Math.sqrt(deltaSqr)
 
         // Lennard-Jones Potential
-        const epsilon = 10 // depth of potential well
-        const sigma = 10 // finite distance where potential is zero
+        // epsilon: depth of potential well
+        const epsilon = 1 // eV
+        // sigma: finite distance where potential is zero, i.e., atoms "collide"
+        const sigma = (alpha.props.atomicRadius + beta.props.atomicRadius) // PM
         const sigmaOverDistance = sigma / deltaMag
         const attraction = -(sigmaOverDistance ** 6)
         const repulsion = sigmaOverDistance ** 12
         const total = 4*epsilon*(repulsion + attraction)
+        console.log(`lennard jones: ${total}`)
         const forceX = total * deltaX / deltaMag
         const forceY = total * deltaY / deltaMag
 
@@ -102,8 +123,18 @@ export class Gravity extends EnvironmentForce {
         super(value)
     }
 
+    get id() {
+        return "gravity"
+    }
+
+    get name() {
+        return "Gravity"
+    }
+
     applyForce(dt,subject) {
-        subject.fx += this.value / subject.mass
+        const force = this.value * subject.props.mass
+        subject.fy += force
+        console.log(`gravity: ${force}`)
     }
 }
 
@@ -112,6 +143,14 @@ export class ElasticBoundary extends EnvironmentForce {
         super(value)
         this.width = width
         this.height = height
+    }
+
+    get id() {
+        return "boundaries"
+    }
+
+    get name() {
+        return "Boundary"
     }
 
     applyForce(dt,subject) {
@@ -136,9 +175,19 @@ export class Drag extends EnvironmentForce {
         this.restitution = 1 - value
     }
 
+    get id() {
+        return "drag"
+    }
+
+    get name() {
+        return "Drag"
+    }
+
     applyForce(dt,subject) {
         subject.fx += this.value * subject.vx
         subject.fy += this.value * subject.vy
+        const dragMag = Math.sqrt(subject.vx**2 + subject.vy**2) * this.value
+        console.log(`drag: ${dragMag}`)
     }
 }
 
@@ -146,9 +195,9 @@ export class ForceMatrix {
     constructor() {
         this.boundaries = new ElasticBoundary(0.99,500,500)
         this.drag = new Drag(0.01)
-        this.gravity = new EnvironmentForce(GRAVITY_EARTH_ACCELERATION * 1E-3)
+        this.gravity = new Gravity(GRAVITY_EARTH_ACCELERATION * 1E-5)
 
-        this.charge = new InterparticleForce(COULOMB_CONSTANT)
+        this.charge = new CoulombForce(COULOMB_CONSTANT)
         this.lennardJones = new LennardJonesPotential(1.0)
     }
 }
