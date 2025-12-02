@@ -24,18 +24,13 @@ When a bunch of atoms are moving about freely in a space, these forces work in a
 <div id='sim-controls'>
 <p id='sim-display'></p>
 <p>Charge: <span id='sim-charge'></span><button id='sim-charge-up'>Up</button><button id='sim-charge-down'>Down</button></p>
-<button id="sim-hydrogen">Hydrogen</button>
-<button id="sim-helium">Helium</button>
-<br/>
-<button id="sim-lithium">Lithium</button>
-<button id="sim-carbon">Carbon</button>
-<button id="sim-nitrogen">Nitrogen</button>
-<button id="sim-oxygen">Oxygen</button>
+
+{% include periodic-table.html %}
+
 <br/>
 <button id="sim-reset">Reset</button>
 </div>
-<label for='input-gravity'>Gravity</label>
-<input type='checkbox' id='input-gravity'/>
+<ul id='sim-force-inputs'><!--  --></ul>
 <label for='input-running'>Running</label>
 <input type='checkbox' id='input-running'/>
 
