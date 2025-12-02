@@ -7,16 +7,16 @@ export class ParticleRender {
         throw new UnimplementedError
     }
 }
+/**
+ * Used to convert between window units and picometers
+ */
+export const UNITS_PER_PM_SCALE = 0.02
 
 /**
  * 
  */
 export class AtomicParticleRender {
 
-    /**
-     * Used to convert between window units and picometers
-     */
-    UNITS_PER_PM_SCALE = 0.02
 
     /**
      * 

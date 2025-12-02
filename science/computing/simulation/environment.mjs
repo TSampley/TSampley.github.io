@@ -1,6 +1,7 @@
 import { NoOp } from '../../../scripts/common/fns.mjs'
 import { COULOMB_CONSTANT, GRAVITY_EARTH_ACCELERATION } from '../../physics/mechanics/constants.mjs'
-import { Particle, UNITS_PER_PM_SCALE } from '../../physics/mechanics/particle.mjs'
+import { Particle } from '../../physics/mechanics/particle.mjs'
+import { UNITS_PER_PM_SCALE } from "../../physics/mechanics/particle-render.mjs";
 
 
 export class Force {

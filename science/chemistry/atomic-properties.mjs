@@ -1,6 +1,6 @@
 
-import { Properties } from "../physics/mechanics/particle.mjs";
-import { UNITS_PER_PM_SCALE } from "../physics/mechanics/particle.mjs";
+import { Properties } from "../physics/mechanics/properties.mjs";
+import { UNITS_PER_PM_SCALE } from "../physics/mechanics/particle-render.mjs";
 import { Element } from "./element.mjs";
 
 /**
