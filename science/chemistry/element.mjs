@@ -24,6 +24,14 @@ export class Element {
         this.electronegativity = electronegativity;
     }
 
+    isLanthanide() {
+        return this.number >= 57 && this.number <= 71
+    }
+
+    isActinide() {
+        return this.number >= 89 && this.number <= 103
+    }
+
     /**
      * 
      * @param {number} number 
