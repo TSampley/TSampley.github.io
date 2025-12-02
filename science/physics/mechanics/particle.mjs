@@ -1,26 +1,10 @@
 
-import { ElementColorScheme } from '../../chemistry/cpk-coloring.mjs'
-import { Element } from '../../chemistry/element.mjs'
-import { AtomicProperties } from '../../chemistry/atomic-properties.mjs'
 
-import { UnimplementedError } from  '../../../scripts/common/errors.mjs'
+import { Element } from '../../chemistry/element.mjs'
+import { ElementColorScheme } from '../../chemistry/cpk-coloring.mjs'
+
 import { Environment } from '../../computing/simulation/environment.mjs'
 
-/**
- * Used to convert between window units and picometers
- */
-export const UNITS_PER_PM_SCALE = 0.02
-
-export class Properties {
-    constructor() {
-
-    }
-    clone() {
-        throw `Abstract Method:${typeof this}`
-    }
-}
-
-export const NullProperties = new Properties()
 
 /**
  * A particle as a general entity has only a position, (x,y).
@@ -37,7 +21,7 @@ export class Particle {
      * given properties.
      * @param {Number} x 
      * @param {Number} y 
-     * @param {AtomicProperties|NullProperties} props Default NullProperties
+     * @param {NullProperties} props Default NullProperties
      */
     constructor(x, y, props = NullProperties) {
         this.x = x;
@@ -111,16 +95,6 @@ export class Particle {
      * @param {Environment} environment The environment the particles exist within.
      */
     checkParticleCollision(beta,environment) {
-        // TODO: check collision energy directed along normal to overcome bond energy + ionization energy
-        // TODO: e.g. Na+ Cl- formation requires free Na particle and Cl particle
-        /*
-        Na-Na-Na + Cl-Cl Cl-Cl : initial state
-        Na-Na Na + Cl-Cl Cl-Cl : Sodium atom dissociates from bulk
-        Na-Na Na + Cl Cl Cl-Cl : Chlorine atom dissociates from diatom
-        Na-Na + Na Cl + Cl Cl-Cl : Free sodium and chlorine atoms depart bulks
-        Na-Na + Na+ Cl- + Cl Cl-Cl : Charge exchanged upon collision
-        Na-Na + Na+Cl- + Cl Cl-Cl : Ions drawn to each other by charge
-        */
        const alpha = this
         // Calculate vector between particles
         const deltaX = beta.x - alpha.x
@@ -166,16 +140,7 @@ export class Particle {
 
     /**
      * 
-     * @param {CanvasRenderingContext2D} context 
-     * @param {ElementColorScheme} colorScheme
      */
     draw(context,colorScheme) {
-        const radius = this.props.collisionRadius
-
-        const elementColor = colorScheme.colorForElement(this.props.element);
-        context.fillStyle = elementColor
-        context.beginPath();
-        context.ellipse(this.x, this.y, radius, radius, 0, 0, 2*Math.PI);
-        context.fill();
     }
 }

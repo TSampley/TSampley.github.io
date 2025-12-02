@@ -5,8 +5,6 @@ import { Element } from "./element.mjs";
 
 /**
  * https://en.wikipedia.org/wiki/Chemical_bond
- * 
- * TODO: move to AtomicProperties file
  */
 export class AtomicProperties extends Properties {
 
