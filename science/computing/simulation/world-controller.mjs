@@ -23,6 +23,8 @@ export class WorldController {
         this.onSetCharge = (charge)=>{}
 
         this.colorScheme = CPKColorScheme
+
+        this.isRunning = true
     }
 
     reset() {
@@ -65,10 +67,6 @@ export class WorldController {
      */
     addParticle(particle) {
         this.simulation.particleList.push(particle)
-    }
-
-    setGravityOn(value) {
-        this.simulation.environment.forceMatrix.gravity.isEnabled = value
     }
 
     /**
