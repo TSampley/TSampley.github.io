@@ -28,7 +28,8 @@ const uiElements = {
     inputRunning: document.getElementById('input-running'),
     buttonReset: document.getElementById('sim-reset'),
     table: Object.values(Elements).map((value)=>{
-        document.getElementById(`sim-${value.name.toLowerCase()}`)
+        console.log(`retrieved: ${value.name}`)
+        document.getElementById(`ptable-${value.name.toLowerCase()}`)
     })
 }
 
@@ -80,22 +81,22 @@ uiElements.inputRunning.onchange = (event)=>{
 buttonReset.onclick = ()=>{
     controller.reset()
 }
-document.getElementById('sim-hydrogen').onclick = ()=>{
+document.getElementById('ptable-hydrogen').onclick = ()=>{
     controller.setParticle(hydrogenParticle)
 }
-document.getElementById('sim-helium').onclick = ()=>{
+document.getElementById('ptable-helium').onclick = ()=>{
     controller.setParticle(new Particle(0,0,new AtomicProperties(Elements.Helium, 0, 2)))
 }
-document.getElementById('sim-lithium').onclick = ()=>{
+document.getElementById('ptable-lithium').onclick = ()=>{
     controller.setParticle(new Particle(0,0,new AtomicProperties(Elements.Lithium, 0, 3)))
 }
-document.getElementById('sim-carbon').onclick = ()=>{
+document.getElementById('ptable-carbon').onclick = ()=>{
     controller.setParticle(new Particle(0,0,new AtomicProperties(Elements.Carbon, 0, 6)))
 }
-document.getElementById('sim-nitrogen').onclick = ()=>{
+document.getElementById('ptable-nitrogen').onclick = ()=>{
     controller.setParticle(new Particle(0,0,new AtomicProperties(Elements.Nitrogen, 0, 7)))
 }
-document.getElementById('sim-oxygen').onclick = ()=>{
+document.getElementById('ptable-oxygen').onclick = ()=>{
     controller.setParticle(new Particle(0,0,new AtomicProperties(Elements.Oxygen, 0, 8)))
 }
 demo.addMouseDownListener((event)=>{
