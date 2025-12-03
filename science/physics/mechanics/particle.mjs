@@ -5,6 +5,8 @@ import { ElementColorScheme } from '../../chemistry/cpk-coloring.mjs'
 
 import { Environment } from '../../computing/simulation/environment.mjs'
 
+import { AtomicParticleRender } from './particle-render.mjs';
+
 
 /**
  * A particle as a general entity has only a position, (x,y).
@@ -79,11 +81,11 @@ export class Particle {
 
         if (this.y > environment.height) {
             environment.onBounce();
-            this.vy *= -environment.bounceRestitution;
+            this.vy *= -environment.forceMatrix.boundaries.value;
             this.y = 2*environment.height - this.y;
         } else if (this.y < 0) {
             environment.onBounce();
-            this.vy *= -environment.bounceRestitution;
+            this.vy *= -environment.forceMatrix.boundaries.value;
             this.y = -this.y;
         }
     }
@@ -138,9 +140,12 @@ export class Particle {
         }
     }
 
+    #render = new AtomicParticleRender()
+
     /**
      * 
      */
     draw(context,colorScheme) {
+        this.#render.render(context,colorScheme,this)
     }
 }
