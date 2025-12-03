@@ -37,7 +37,7 @@ export class AtomicParticleRender {
         const elementColor = colorScheme.colorForElement(atomicProps.element);
         context.fillStyle = elementColor
         context.beginPath();
-        context.ellipse(this.x, this.y, radius, radius, 0, 0, 2*Math.PI);
+        context.ellipse(particle.x, particle.y, radius, radius, 0, 0, 2*Math.PI);
         context.fill();
     }
 }
