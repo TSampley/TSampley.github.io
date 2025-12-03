@@ -1,21 +1,26 @@
 ---
 ---
 
-.ptable {
-    border-spacing: 2px;
+table.ptable {
+    table-layout: fixed;
+    width: auto;
+    border: 1px solid black;
+
+    border-collapse: separate;
+    border-spacing: 16px;
+}
+
+td.ptable-element {
+    border: 2px solid transparent;
+    padding: 0;
+    border-radius: 8px;
+    background-color: aqua;
+    width: 30px;
+    height: 50px;
+
+    font-size: 12pt;
 }
 
 .ptable-gap {
-
-}
-
-.ptable .ptable-dt .ptable-row {
-    
-}
-
-th.ptable tr.ptable td.ptable {
-    padding-top: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-bottom: 0;
+    visibility: hidden;
 }
