@@ -24,6 +24,11 @@ const uiElements = {
     buttonChargeUp: document.getElementById('sim-charge-up'),
     buttonChargeDown: document.getElementById('sim-charge-down'),
     divForceInputs: document.getElementById('sim-force-inputs'),
+    forceBoundary: document.getElementById('sim-force-boundary'),
+    forceDrag: document.getElementById('sim-force-drag'),
+    forceGravity: document.getElementById('sim-force-gravity'),
+    forceCoulomb: document.getElementById('sim-force-coulomb'),
+    forceLennardJones: document.getElementById('sim-force-lennard-jones'),
     inputGravity: document.getElementById('input-gravity'),
     inputRunning: document.getElementById('input-running'),
     buttonReset: document.getElementById('sim-reset'),
@@ -52,28 +57,44 @@ buttonChargeDown.onclick = ()=>{
     controller.decrementCharge()
 }
 
-Object.values(controller.simulation.environment.forceMatrix).forEach(force => {
-    uiElements.divForceInputs.innerHTML += 
-        `<li><label for='${force.id}'>${force.name}</label><input type='checkbox' id='${force.id}'></li>`
-    const element = document.getElementById(force.id)
-    uiElements[force.id] = element
+// Object.values(controller.simulation.environment.forceMatrix).forEach(force => {
+//     uiElements.divForceInputs.innerHTML += 
+//         `<li><label for='${force.id}'>${force.name}</label><input type='checkbox' id='${force.id}'></li>`
+//     const element = document.getElementById(force.id)
+//     uiElements[force.id] = element
 
-    console.log(`${force.id} returned element: ${element.id}`)
+//     console.log(`${force.id} returned element: ${element.id}`)
 
-    element.checked = true
-        // controller.simulation.environment.forceMatrix[force.id].isEnabled
-        element.onclick = (event)=>{
-            console.log('click')
-        }
-    element.onchange = (event)=>{
-        console.log(`${force.id} checked ${event.target.checked}`)
-        controller.simulation.environment.forceMatrix[force.id].isEnabled = event.target.checked
-    }
-});
-// inputGravity.checked = controller.simulation.environment.forceMatrix.gravity.isEnabled
-// inputGravity.onchange = (event)=>{
-//     controller.simulation.environment.forceMatrix.gravity.isEnabled = event.target.checked
-// }
+//     element.checked = true
+//         // controller.simulation.environment.forceMatrix[force.id].isEnabled
+//         element.onclick = (event)=>{
+//             console.log('click')
+//         }
+//     element.onchange = (event)=>{
+//         console.log(`${force.id} checked ${event.target.checked}`)
+//         controller.simulation.environment.forceMatrix[force.id].isEnabled = event.target.checked
+//     }
+// });
+uiElements.forceBoundary.checked = controller.simulation.environment.forceMatrix.boundaries.isEnabled
+uiElements.forceBoundary.onchange = (event)=>{
+    controller.simulation.environment.forceMatrix.boundaries.isEnabled = event.target.checked
+}
+uiElements.forceDrag.checked = controller.simulation.environment.forceMatrix.drag.isEnabled
+uiElements.forceDrag.onchange = (event)=>{
+    controller.simulation.environment.forceMatrix.drag.isEnabled = event.target.checked
+}
+uiElements.forceGravity.checked = controller.simulation.environment.forceMatrix.gravity.isEnabled
+uiElements.forceGravity.onchange = (event)=>{
+    controller.simulation.environment.forceMatrix.gravity.isEnabled = event.target.checked
+}
+uiElements.forceCoulomb.checked = controller.simulation.environment.forceMatrix.charge.isEnabled
+uiElements.forceCoulomb.onchange = (event)=>{
+    controller.simulation.environment.forceMatrix.charge.isEnabled = event.target.checked
+}
+uiElements.forceLennardJones.checked = controller.simulation.environment.forceMatrix.lennardJones.isEnabled
+uiElements.forceLennardJones.onchange = (event)=>{
+    controller.simulation.environment.forceMatrix.lennardJones.isEnabled = event.target.checked
+}
 uiElements.inputRunning.checked = controller.isRunning
 uiElements.inputRunning.onchange = (event)=>{
     controller.isRunning = event.target.checked
