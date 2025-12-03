@@ -29,7 +29,7 @@ export class AtomicParticleRender {
      * @param {CanvasRenderingContext2D} context 
      * @param {ElementColorScheme} colorScheme
      */
-    render(context,particle) {
+    render(context,colorScheme,particle) {
         const atomicProps = particle.props
 
         const radius = atomicProps.collisionRadius
