@@ -74,6 +74,7 @@ export class WorldController {
      * @param {CanvasRenderingContext2D} context 
      */
     drawParticles(context) {
+        // TODO: pair particles with renderers based on props type-tag
         for (const particle of this.simulation.particleList) {
             particle.draw(context,this.colorScheme)
         }
