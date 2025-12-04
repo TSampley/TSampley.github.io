@@ -11,6 +11,7 @@ import { Simulation } from '../computing/simulation/simulation.mjs';
 import { Particle } from '../physics/mechanics/particle.mjs'
 
 import { Demo } from '../../scripts/components/demo.mjs'
+import { Environment, forceMatricChemistry as forceMatrixChemistry } from '../computing/simulation/environment.mjs';
 
 const displayParagraph = document.getElementById('sim-display')
 const displayCharge = document.getElementById('sim-charge')
@@ -38,7 +39,9 @@ const uiElements = {
     })
 }
 
-let simulation = new Simulation()
+let forces = forceMatrixChemistry()
+let environment = new Environment(500, 500, forces)
+let simulation = new Simulation(environment)
 let timer = new Timer()
 let controller = new WorldController(simulation,timer)
 
@@ -153,9 +156,9 @@ function animate(timestamp) {
 controller.setParticle(hydrogenParticle)
 controller.setCharge(0)
 
-// controller.simulation.environment.forceMatrix.lennardJones.isEnabled = false
+controller.simulation.environment.forceMatrix.lennardJones.isEnabled = false
 // controller.simulation.environment.forceMatrix.charge.isEnabled = false
-// controller.simulation.environment.forceMatrix.drag.isEnabled = false
+controller.simulation.environment.forceMatrix.drag.isEnabled = false
 // controller.simulation.environment.forceMatrix.gravity.isEnabled = true
 // controller.simulation.environment.forceMatrix.boundaries.isEnabled = true
 
