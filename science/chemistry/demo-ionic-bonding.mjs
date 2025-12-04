@@ -8,8 +8,6 @@ import { SoundBoard } from '../../scripts/audio/sound-board.mjs';
 import { WorldController } from '../computing/simulation/world-controller.mjs';
 import { Simulation } from '../computing/simulation/simulation.mjs';
 
-import { Particle } from '../physics/mechanics/particle.mjs'
-
 import { Demo } from '../../scripts/components/demo.mjs'
 import { Environment, forceMatricChemistry as forceMatrixChemistry } from '../computing/simulation/environment.mjs';
 
@@ -109,33 +107,15 @@ uiElements.inputRunning.onchange = (event)=>{
 buttonReset.onclick = ()=>{
     controller.reset()
 }
-// Object.values(Elements).forEach(element=>{
-//     const idName = element.name.toLowerCase()
-//     const elementSquare = document.getElementById(`ptable-${idName}`)
-//     if (elementSquare) {
-//         elementSquare.onclick = ()=>{
-//             controller.setElement(element)
-//         }
-//     }
-// });
-document.getElementById('ptable-hydrogen').onclick = ()=>{
-    controller.setElement(Elements.Hydrogen)
-}
-document.getElementById('ptable-helium').onclick = ()=>{
-    controller.setElement(Elements.Helium)
-}
-document.getElementById('ptable-lithium').onclick = ()=>{
-    controller.setElement(Elements.Lithium)
-}
-document.getElementById('ptable-carbon').onclick = ()=>{
-    controller.setElement(Elements.Carbon)
-}
-document.getElementById('ptable-nitrogen').onclick = ()=>{
-    controller.setElement(Elements.Nitrogen)
-}
-document.getElementById('ptable-oxygen').onclick = ()=>{
-    controller.setElement(Elements.Oxygen)
-}
+Object.values(Elements).forEach(element=>{
+    const idName = element.name.toLowerCase()
+    const elementSquare = document.getElementById(`ptable-${idName}`)
+    if (elementSquare) {
+        elementSquare.onclick = ()=>{
+            controller.setElement(element)
+        }
+    }
+});
 demo.addMouseDownListener((event)=>{
     const x = event.offsetX;
     const y = event.offsetY;
