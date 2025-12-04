@@ -57,7 +57,7 @@ export const Elements = Object.freeze({
     Helium: new Element(2,"Helium","He",4.0026,0.0),
 
     Lithium: new Element(3,"Lithium","Li",6.94,0.0),
-    Berilium: new Element(4,"Berilium","Be",9.0122,0.0),
+    Beryllium: new Element(4,"Beryllium","Be",9.0122,0.0),
     Boron: new Element(5,"Boron","B",10.81,0.0),
     Carbon: new Element(6,"Carbon","C",12.011,0.0),
     Nitrogen: new Element(7,"Nitrogen","N",14.007,0.0),
