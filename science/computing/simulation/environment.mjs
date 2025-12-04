@@ -170,10 +170,19 @@ export class ElasticBoundary extends EnvironmentForce {
     }
 }
 
+/**
+ * $`F
+ * $`F_d = \frac{1}{2} * \rho * u^2 * c_d * A`$
+ * $`\rho`$: mass density of fluid
+ * $`u`$: flow velocity relative to object
+ * $`c_d`$: coefficient of drag
+ * $`A`$: orthographic projection in direction of flow
+ */
 export class Drag extends EnvironmentForce {
     constructor(value) {
         super(value)
-        this.restitution = 1 - value
+        this.dragCoefficient = 1
+        this.rhoCoefHalf = value * this.dragCoefficient * 1/2
     }
 
     get id() {
@@ -185,17 +194,20 @@ export class Drag extends EnvironmentForce {
     }
 
     applyForce(dt,subject) {
-        subject.fx += this.value * subject.vx
-        subject.fy += this.value * subject.vy
-        const dragMag = Math.sqrt(subject.vx**2 + subject.vy**2) * this.value
-        console.log(`drag: ${dragMag}`)
+        // F_d = rho * v^2 * A * C_d * 1/2
+        //     = rho * C_d * 1/2 * (v^2 * A)
+        const flowMagSqr = subject.vx**2 + subject.vy**2
+        const flowMag = Math.sqrt(flowMagSqr)
+        const force = this.rhoCoefHalf * flowMagSqr // * surface area
+        subject.fx += force * subject.vx / flowMag * 0.5
+        subject.fy += force * subject.vy / flowMag * 0.5
     }
 }
 
 export class ForceMatrix {
     constructor() {
         this.boundaries = new ElasticBoundary(0.99,500,500)
-        this.drag = new Drag(0.01)
+        this.drag = new Drag(1E-6)
         this.gravity = new Gravity(GRAVITY_EARTH_ACCELERATION * 1E-5)
 
         this.charge = new CoulombForce(COULOMB_CONSTANT)
