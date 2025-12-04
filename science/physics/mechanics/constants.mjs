@@ -33,11 +33,22 @@ export const MILLIS_PER_DAY =
 // #region Physical Constants
 
 /**
+ * Permitivity of vacuum in terms of coulombs
+ * 
  * https://en.wikipedia.org/wiki/Vacuum_permittivity
  * 
- * @type {number} $`F * m^-1`
+ * @type {number} $`F * m^-1` | $`C^2 * kg^-1 * m^-3 * s^2`$
  */
-export const VACUUM_PERMITIVITY = 8.8541878188E-12
+export const VACUUM_PERMITIVITY_C = 8.8541878188E-12
+
+/**
+ * Permitivity of vacuum in terms of electron volts.
+ * 
+ * https://en.wikipedia.org/wiki/Vacuum_permittivity
+ * 
+ * @type {number} $`e^2 * eV^-1 * um^-1`$
+ */
+export const VACUUM_PERMITIVITY_EV = 55.26349406
 
 /**
  * $`\frac{1}{4 * PI * \epsilon_0}`$
