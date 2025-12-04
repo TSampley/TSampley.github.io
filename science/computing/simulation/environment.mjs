@@ -8,14 +8,38 @@ import { CoulombForce } from '../../physics/mechanics/coulomb.mjs'
 import { LennardJonesPotential } from '../../chemistry/computational/lennard-jones.mjs'
 
 export class ForceMatrix {
-    constructor() {
-        this.boundaries = new ElasticBoundary(0.99,500,500)
-        this.drag = new Drag(1E-6)
-        this.gravity = new Gravity(GRAVITY_EARTH_ACCELERATION * 1E-5)
+    constructor(boundaries,drag,gravity,coulomb,lennardJones) {
+        this.boundaries = boundaries
+        this.drag = drag
+        this.gravity = gravity
 
-        this.charge = new CoulombForce(COULOMB_CONSTANT)
-        this.lennardJones = new LennardJonesPotential(1.0)
+        this.coulomb = coulomb
+        this.lennardJones = lennardJones
     }
+}
+
+export function forceMatrixSim(boundaryRetention,drag,gravity,coulomb,lennardJones) {
+    return new ForceMatrix(
+        new ElasticBoundary(boundaryRetention,500,500),
+        new Drag(drag),
+        new Gravity(gravity),
+        new CoulombForce(coulomb),
+        new LennardJonesPotential(lennardJones)
+    )
+}
+/**
+ * 
+ * @returns A {@link ForceMatrix} with simulation values adjusted for
+ * chemical reaction scale.
+ */
+export function forceMatricChemistry() {
+    return new ForceMatrix(
+        new ElasticBoundary(0.99,500,500),
+        new Drag(1E-6),
+        new Gravity(GRAVITY_EARTH_ACCELERATION * 1E-5),
+        new CoulombForce(COULOMB_CONSTANT * 1E-5),
+        new LennardJonesPotential(1.0)
+    )
 }
 
 /**
@@ -61,7 +85,7 @@ export class Environment {
 
     particleForces() {
         return [
-            this.forceMatrix.charge,
+            this.forceMatrix.coulomb,
             this.forceMatrix.lennardJones
         ]
     }
