@@ -39,8 +39,6 @@ const uiElements = {
     })
 }
 
-const hydrogenParticle = new Particle(0,0,new AtomicProperties(Elements.Hydrogen, 0, 1))
-
 let forces = forceMatrixChemistry()
 forces.lennardJones.isEnabled = false
 forces.drag.isEnabled = false
@@ -48,7 +46,7 @@ let environment = new Environment(500, 500, forces)
 let simulation = new Simulation(environment)
 let timer = new Timer()
 let controller = new WorldController(simulation,timer)
-controller.setParticle(hydrogenParticle)
+controller.setElement(Elements.Hydrogen)
 controller.setCharge(0)
 
 
@@ -111,23 +109,32 @@ uiElements.inputRunning.onchange = (event)=>{
 buttonReset.onclick = ()=>{
     controller.reset()
 }
+// Object.values(Elements).forEach(element=>{
+//     const idName = element.name.toLowerCase()
+//     const elementSquare = document.getElementById(`ptable-${idName}`)
+//     if (elementSquare) {
+//         elementSquare.onclick = ()=>{
+//             controller.setElement(element)
+//         }
+//     }
+// });
 document.getElementById('ptable-hydrogen').onclick = ()=>{
-    controller.setParticle(hydrogenParticle)
+    controller.setElement(Elements.Hydrogen)
 }
 document.getElementById('ptable-helium').onclick = ()=>{
-    controller.setParticle(new Particle(0,0,new AtomicProperties(Elements.Helium, 0, 2)))
+    controller.setElement(Elements.Helium)
 }
 document.getElementById('ptable-lithium').onclick = ()=>{
-    controller.setParticle(new Particle(0,0,new AtomicProperties(Elements.Lithium, 0, 3)))
+    controller.setElement(Elements.Lithium)
 }
 document.getElementById('ptable-carbon').onclick = ()=>{
-    controller.setParticle(new Particle(0,0,new AtomicProperties(Elements.Carbon, 0, 6)))
+    controller.setElement(Elements.Carbon)
 }
 document.getElementById('ptable-nitrogen').onclick = ()=>{
-    controller.setParticle(new Particle(0,0,new AtomicProperties(Elements.Nitrogen, 0, 7)))
+    controller.setElement(Elements.Nitrogen)
 }
 document.getElementById('ptable-oxygen').onclick = ()=>{
-    controller.setParticle(new Particle(0,0,new AtomicProperties(Elements.Oxygen, 0, 8)))
+    controller.setElement(Elements.Oxygen)
 }
 demo.addMouseDownListener((event)=>{
     const x = event.offsetX;

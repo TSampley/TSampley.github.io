@@ -5,6 +5,8 @@ import { Simulation } from './simulation.mjs';
 import { Timer } from '../../../scripts/common/timer.mjs';
 
 import { CPKColorScheme } from '../../chemistry/cpk-coloring.mjs'
+import { Element } from '../../chemistry/element.mjs';
+import { AtomicProperties } from '../../chemistry/atomic-properties.mjs';
 
 /**
  * 
@@ -32,23 +34,28 @@ export class WorldController {
     }
 
     /**
-     * @type {Particle}
+     * 
+     * @type {Element}
      */
-    #particle = null
-    setParticle(particle) {
-        this.#particle = particle
-        this.onSetDisplay(particle.props.element.name)
+    #element
+    setElement(element) {
+        this.#element = element
+        this.onSetDisplay(element.name)
     }
 
+    /**
+     * @type {number} 
+     */
+    #charge
     setCharge(charge) {
-        this.#particle.props.charge = charge
+        this.#charge = charge
         this.onSetCharge(charge)
     }
     incrementCharge() {
-        this.setCharge(this.#particle.props.charge + 1)
+        this.setCharge(this.#charge + 1)
     }
     decrementCharge() {
-        this.setCharge(this.#particle.props.charge - 1)
+        this.setCharge(this.#charge - 1)
     }
 
     /**
@@ -57,7 +64,7 @@ export class WorldController {
      * @param {number} y 
      */
     spawn(x,y) {
-        const newParticle = new Particle(x,y,this.#particle.props.clone())
+        const newParticle = new Particle(x,y,new AtomicProperties(this.#element, this.#charge, this.#element.number))
         this.addParticle(newParticle)
     }
 
