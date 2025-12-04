@@ -71,11 +71,11 @@ export class Particle {
     checkEnvironmentCollision(environment) {
         if (this.x > environment.width) {
             environment.onBounce();
-            this.vx *= -environment.bounceRestitution;
+            this.vx *= -environment.forceMatrix.boundaries.value;
             this.x = 2*environment.width - this.x;
         } else if (this.x < 0) {
             environment.onBounce();
-            this.vx *= -environment.bounceRestitution;
+            this.vx *= -environment.forceMatrix.boundaries.value;
             this.x = -this.x;
         }
 
