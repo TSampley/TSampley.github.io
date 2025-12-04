@@ -42,7 +42,7 @@ export class ArrayColorScheme extends ElementColorScheme {
  * https://en.wikipedia.org/wiki/CPK_coloring#Modern_variants
  */
 export const CPKColorScheme = new ArrayColorScheme(
-    [
+    [   "#000", // 0 padding color for 1-indexing
         "#fff","#aaa","#aaa","#aaa","#aaa",
         "#111","#aaf","#d00","#0f0","#aaa", // 10
         "#aaa","#aaa","#aaa","#aaa","#a0f",
