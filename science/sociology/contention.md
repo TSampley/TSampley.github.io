@@ -13,3 +13,6 @@ Number two highlights the importance of training prior to real-world or high-sta
 
 * - I personally believen that the environment/genetic distinction is largely cultural and otherwise arbitrary like the distinction between nature/artifice.
 ** - Appropriate is extremely subjective and largely determined by the controlling ethnic group; see [Tone Policing](./tone-policing).
+
+- https://www.berghahnjournals.com/view/journals/contention/10/2/cont100205.xml
+- https://journals.sagepub.com/doi/abs/10.1177/07352751221097115
