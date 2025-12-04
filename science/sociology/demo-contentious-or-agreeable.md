@@ -16,3 +16,9 @@ TODO: demonstrate evolutionary advantages of contentious or agreeable individual
 
 
 - can we account for individuals with different levels of confidence/humility?
+
+## Relevant Research
+
+- https://www.sciencedirect.com/science/article/abs/pii/S0191886901001714
+- https://pmc.ncbi.nlm.nih.gov/articles/PMC10285426/
+- https://journals.sagepub.com/doi/10.1177/26339137231158584
