@@ -5,6 +5,10 @@ import { InterparticleForce } from "./force.mjs"
  * 
  */
 export class CoulombForce extends InterparticleForce {
+    /**
+     * 
+     * @param {number} value $`N * m^2 * C^-2`$
+     */
     constructor(value) {
         super(value)
     }
