@@ -1,8 +1,5 @@
 
 
-import { Element } from '../../chemistry/element.mjs'
-import { ElementColorScheme } from '../../chemistry/cpk-coloring.mjs'
-
 import { Environment } from '../../computing/simulation/environment.mjs'
 
 import { AtomicParticleRender } from './particle-render.mjs';
