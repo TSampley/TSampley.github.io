@@ -16,7 +16,7 @@ const DefaultStep = 0.5
  *   with extended functionality
  */
 export class Simulation {
-    constructor() {
+    constructor(environment) {
         this.world = new Timer()
         /**
          * @type {Array<Particle>}
@@ -26,7 +26,7 @@ export class Simulation {
          * @type {Array<Entity>}
          */
         this.entityList = new Array()
-        this.environment = new Environment(500, 500, new ForceMatrix())
+        this.environment = environment
     }
 
     initializeCircle(centerX,centerY,radius) {
