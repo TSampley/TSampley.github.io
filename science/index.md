@@ -9,15 +9,20 @@ description:
 
 
 ## Natural
-- https://en.wikipedia.org/wiki/Chemistry
+- [Chemistry](./chemistry/)
+- [Physics](./physics/)
 - https://en.wikipedia.org/wiki/Geology
 - https://en.wikipedia.org/wiki/Neuroscience
 
 ## Social
 - https://en.wikipedia.org/wiki/Human_science
 - https://en.wikipedia.org/wiki/Psychology
-- https://en.wikipedia.org/wiki/Sociology
+- [Economics](./economics/)
+- [Politics](./politics/)
+- [Sociology](./sociology/)
 
 ## Applied
 - https://en.wikipedia.org/wiki/Clinical_psychology
 - https://en.wikipedia.org/wiki/Psychiatry
+- https://en.wikipedia.org/wiki/Engineering
+
