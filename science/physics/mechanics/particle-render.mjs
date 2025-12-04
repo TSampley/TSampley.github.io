@@ -1,4 +1,6 @@
 
+import { ElementColorScheme } from "../../chemistry/cpk-coloring.mjs"
+
 /**
  * 
  */
