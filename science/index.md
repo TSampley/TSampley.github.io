@@ -16,9 +16,9 @@ description:
 
 ## Social
 - https://en.wikipedia.org/wiki/Human_science
-- https://en.wikipedia.org/wiki/Psychology
 - [Economics](./economics/)
 - [Politics](./politics/)
+- [Psychology](./psychology/)
 - [Sociology](./sociology/)
 
 ## Applied
