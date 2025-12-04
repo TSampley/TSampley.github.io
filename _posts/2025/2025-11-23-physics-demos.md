@@ -19,13 +19,14 @@ Adjust the slider to change the distance between the two hydrogen atoms and obse
 
 When a bunch of atoms are moving about freely in a space, these forces work in aggregate to create the basic properties of matter we can observe in the lab, like gas pressure.
 
+{% include periodic-table.html %}
 
 <canvas class="demo-box" id="hydrogen-bulk" width=500 height=500 style='background-color: black'></canvas>
 <div id='sim-controls'>
-<p id='sim-display'></p>
-<p>Charge: <span id='sim-charge'></span><button id='sim-charge-up'>Up</button><button id='sim-charge-down'>Down</button></p>
 
-{% include periodic-table.html %}
+<p id='sim-display'></p>
+
+<p>Charge: <span id='sim-charge'></span><button id='sim-charge-up'>Up</button><button id='sim-charge-down'>Down</button></p>
 
 <br/>
 <button id="sim-reset">Reset</button>
