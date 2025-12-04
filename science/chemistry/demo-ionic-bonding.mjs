@@ -39,13 +39,19 @@ const uiElements = {
     })
 }
 
+const hydrogenParticle = new Particle(0,0,new AtomicProperties(Elements.Hydrogen, 0, 1))
+
 let forces = forceMatrixChemistry()
+forces.lennardJones.isEnabled = false
+forces.drag.isEnabled = false
 let environment = new Environment(500, 500, forces)
 let simulation = new Simulation(environment)
 let timer = new Timer()
 let controller = new WorldController(simulation,timer)
+controller.setParticle(hydrogenParticle)
+controller.setCharge(0)
 
-const hydrogenParticle = new Particle(0,0,new AtomicProperties(Elements.Hydrogen, 0, 1))
+
 controller.onSetDisplay = (display)=>{
     displayParagraph.innerText = display
 }
@@ -90,9 +96,9 @@ uiElements.forceGravity.checked = controller.simulation.environment.forceMatrix.
 uiElements.forceGravity.onchange = (event)=>{
     controller.simulation.environment.forceMatrix.gravity.isEnabled = event.target.checked
 }
-uiElements.forceCoulomb.checked = controller.simulation.environment.forceMatrix.charge.isEnabled
+uiElements.forceCoulomb.checked = controller.simulation.environment.forceMatrix.coulomb.isEnabled
 uiElements.forceCoulomb.onchange = (event)=>{
-    controller.simulation.environment.forceMatrix.charge.isEnabled = event.target.checked
+    controller.simulation.environment.forceMatrix.coulomb.isEnabled = event.target.checked
 }
 uiElements.forceLennardJones.checked = controller.simulation.environment.forceMatrix.lennardJones.isEnabled
 uiElements.forceLennardJones.onchange = (event)=>{
@@ -152,14 +158,5 @@ function animate(timestamp) {
     
     requestAnimationFrame(animate);
 }
-
-controller.setParticle(hydrogenParticle)
-controller.setCharge(0)
-
-controller.simulation.environment.forceMatrix.lennardJones.isEnabled = false
-// controller.simulation.environment.forceMatrix.charge.isEnabled = false
-controller.simulation.environment.forceMatrix.drag.isEnabled = false
-// controller.simulation.environment.forceMatrix.gravity.isEnabled = true
-// controller.simulation.environment.forceMatrix.boundaries.isEnabled = true
 
 animate(0);
