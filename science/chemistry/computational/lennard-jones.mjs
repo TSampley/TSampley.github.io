@@ -1,8 +1,12 @@
 
 import { InterparticleForce } from "../../physics/mechanics/force.mjs"
 
-import { UNITS_PER_PM_SCALE } from "../../physics/mechanics/particle-render.mjs";
+import { METERS_PER_PICOMETER } from "../../metrics.mjs"
+
+
 /**
+ * 
+ * 
  * https://en.wikipedia.org/wiki/Lennard-Jones_potential
  */
 export class LennardJonesPotential extends InterparticleForce {
@@ -20,8 +24,8 @@ export class LennardJonesPotential extends InterparticleForce {
 
     applyForce(dt,alpha,beta) {
         // Calculate vector between particles for relative forces
-        const deltaX = (beta.x - alpha.x) / UNITS_PER_PM_SCALE
-        const deltaY = (beta.y - alpha.y) / UNITS_PER_PM_SCALE
+        const deltaX = (beta.x - alpha.x) / METERS_PER_PICOMETER
+        const deltaY = (beta.y - alpha.y) / METERS_PER_PICOMETER
         // TODO: explore soft-core potentials
         //   https://pmc.ncbi.nlm.nih.gov/articles/PMC3187911/;
         //   https://www.sciencedirect.com/science/article/abs/pii/S1093326303001967 
