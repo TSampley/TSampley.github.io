@@ -1,6 +1,11 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+# TODO: rename home layout; move posts list to "/blog/" path
 
 layout: home
 ---
+
+
+<a href='./humanities/'>Humanities</a>
+<a href='./math/'>Math</a>
+<a href='./philosophy/'>Philosophy</a>
+<a href='./science/'>Science</a>
