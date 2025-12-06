@@ -1,5 +1,6 @@
 
 import { ElementColorScheme } from "../../chemistry/cpk-coloring.mjs"
+import { Particle } from "./particle.mjs"
 
 /**
  * 
@@ -30,11 +31,12 @@ export class AtomicParticleRender {
      * 
      * @param {CanvasRenderingContext2D} context 
      * @param {ElementColorScheme} colorScheme
+     * @param {Particle} particle
      */
     render(context,colorScheme,particle) {
         const atomicProps = particle.props
 
-        const radius = atomicProps.collisionRadius
+        const radius = atomicProps.atomicRadius
 
         const elementColor = colorScheme.colorForElement(atomicProps.element);
         context.fillStyle = elementColor

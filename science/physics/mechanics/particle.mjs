@@ -2,6 +2,7 @@
 
 import { Environment } from '../../computing/simulation/environment.mjs'
 
+import { Properties, NullProperties } from './properties.mjs';
 import { AtomicParticleRender } from './particle-render.mjs';
 
 
@@ -20,7 +21,7 @@ export class Particle {
      * given properties.
      * @param {Number} x 
      * @param {Number} y 
-     * @param {NullProperties} props Default NullProperties
+     * @param {Properties} props Default NullProperties
      */
     constructor(x, y, props = NullProperties) {
         this.x = x;
@@ -99,8 +100,8 @@ export class Particle {
         const deltaX = beta.x - alpha.x
         const deltaY = beta.y - alpha.y
         const deltaSqr = deltaX*deltaX + deltaY*deltaY;
-        // TODO: calculate soft force progressively with Lennard-Jones force
-        const minRadius = alpha.props.collisionRadius + beta.props.collisionRadius
+
+        const minRadius = alpha.props.atomicRadius + beta.props.atomicRadius
         const minRadiusSqr = minRadius * minRadius
 
         // Ensure particles within collision range
