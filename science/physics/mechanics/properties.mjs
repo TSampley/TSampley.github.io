@@ -8,6 +8,9 @@ export class Properties {
     clone() {
         throw new UnimplementedError(this,'clone')
     }
+    get typeName() {
+        throw new UnimplementedError(this,'typeName')
+    }
 }
 
 export const NullProperties = {
