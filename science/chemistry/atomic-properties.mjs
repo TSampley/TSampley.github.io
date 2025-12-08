@@ -1,6 +1,5 @@
 
 import { Properties } from "../physics/mechanics/properties.mjs";
-import { UNITS_PER_PM_SCALE } from "../physics/mechanics/particle-render.mjs";
 import { Element } from "./element.mjs";
 
 /**
@@ -33,13 +32,6 @@ export class AtomicProperties extends Properties {
      */
     get mass() {
         return this.element.number * 1.0073 + this.neutronCount * 1.0087
-    }
-
-    /**
-     * @returns {Number?} the scaled van der waals radius of this atom or null if none.
-     */
-    get collisionRadius() {
-        return AtomicRadii.vanDerWaals[this.element.number] * UNITS_PER_PM_SCALE;
     }
 
     /**
