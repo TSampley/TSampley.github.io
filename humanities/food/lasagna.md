@@ -3,7 +3,7 @@ layout: recipe
 
 title: Lasagna
 description: 
-publishedDate: 2025-12-06 01:33
+date: 2025-12-06 01:33
 ---
 
 ## Info
