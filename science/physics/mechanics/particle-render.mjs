@@ -10,10 +10,6 @@ export class ParticleRender {
         throw new UnimplementedError
     }
 }
-/**
- * Used to convert between window units and picometers
- */
-export const UNITS_PER_PM_SCALE = 0.02
 
 /**
  * 
@@ -36,7 +32,7 @@ export class AtomicParticleRender {
     render(context,colorScheme,particle) {
         const atomicProps = particle.props
 
-        const radius = atomicProps.atomicRadius
+        const radius = atomicProps.atomicRadius // TODO: modify by 0.02 environment constant
 
         const elementColor = colorScheme.colorForElement(atomicProps.element);
         context.fillStyle = elementColor
