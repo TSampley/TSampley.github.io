@@ -47,7 +47,7 @@ export const Prefixes = {
 }
 
 
-export const METERS_PER_PICOMETER = Prefixes.Pico
+export const METERS_PER_PICOMETER = Prefixes.Pico.factor
 
 export class DerivedUnit {
     constructor(name,symbol,units) {
