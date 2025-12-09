@@ -29,8 +29,8 @@ export class CoulombForce extends InterparticleForce {
 
     applyForce(dt,alpha,beta) {
         // Calculate vector between particles for relative forces
-        const deltaX = (beta.x - alpha.x) / METERS_PER_PICOMETER
-        const deltaY = (beta.y - alpha.y) / METERS_PER_PICOMETER
+        const deltaX = (beta.x - alpha.x) * METERS_PER_PICOMETER
+        const deltaY = (beta.y - alpha.y) * METERS_PER_PICOMETER
         // TODO: explore soft-core potentials
         //   https://pmc.ncbi.nlm.nih.gov/articles/PMC3187911/;
         //   https://www.sciencedirect.com/science/article/abs/pii/S1093326303001967 
