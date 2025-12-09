@@ -37,7 +37,7 @@ export function forceMatricChemistry() {
         new ElasticBoundary(0.99,500,500),
         new Drag(1E-6),
         new Gravity(GRAVITY_EARTH_ACCELERATION * 1E-5),
-        new CoulombForce(COULOMB_CONSTANT * 1E-12),
+        new CoulombForce(COULOMB_CONSTANT),
         new LennardJonesPotential(1.0)
     )
 }
