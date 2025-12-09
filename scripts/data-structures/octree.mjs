@@ -2,7 +2,7 @@
 /**
  * https://en.wikipedia.org/wiki/Octree
  */
-export class OctTree {
+export class Octree {
     constructor() {
 
     }
