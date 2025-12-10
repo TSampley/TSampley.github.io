@@ -35,7 +35,7 @@ One atom completely loses one or more electrons, donating them to another atom, 
 <input type='radio' id='scenario-3'>
 <label for='scenario-3'>Sodium Bulk and Chlorine Gas 🚧</label>
 <input type='radio' id='scenario-4'>
-<label for='scenario-4'>Sodium and Water 🚧</label>
+<label for='scenario-4'>Calcium and Chlorine Gas 🚧</label>
 </fieldset>
 
 </div>
