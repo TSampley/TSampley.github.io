@@ -2,7 +2,7 @@
 import { EnvironmentForce } from "../../physics/mechanics/force.mjs"
 
 /**
- * 
+ * TODO: move ElasticBoundary to special boundaries property instead of force
  */
 export class ElasticBoundary extends EnvironmentForce {
     constructor(value,width,height) {
@@ -20,7 +20,7 @@ export class ElasticBoundary extends EnvironmentForce {
     }
 
     applyForce(dt,subject) {
-
+        // TODO: move implementation here from Simulation.step and Particle.checkEnvironmentCollision
         if (subject.x < 0) {
 
         } else if (subject.x > this.width) {

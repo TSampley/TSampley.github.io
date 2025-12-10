@@ -123,6 +123,7 @@ export class Simulation {
             const alpha = this.particleList[index]
             for (let otherIndex = index + 1; otherIndex < max; otherIndex++) {
                 const beta = this.particleList[otherIndex]
+                // TODO: disable rigid particle collisions
                 alpha.checkParticleCollision(beta,this.environment)
             }
             alpha.checkEnvironmentCollision(this.environment)
