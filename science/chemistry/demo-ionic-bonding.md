@@ -3,12 +3,15 @@ layout: demo
 
 title: Ionic Bonding
 description: A demonstration of ioninc particle interactions
+date: 2025-12-10 08:00 -0600
 ---
 
-
-One of the two in a pair attracts the electron strongly enough that it spends the majority of the time
+One atom completely loses one or more electrons, donating them to another atom, causing the two to become attracted through electrostatic force.
 
 {% include periodic-table.html %}
+<!-- TODO: move periodic table to drop down selector -->
+<!-- TODO: add element/charge/neutrons selector -->
+
 
 <canvas class="demo-box" id="hydrogen-bulk" width=500 height=500 style='background-color: black'></canvas>
 <div id='sim-controls'>
@@ -19,6 +22,22 @@ One of the two in a pair attracts the electron strongly enough that it spends th
 
 <br/>
 <button id="sim-reset">Reset</button>
+<br/>
+
+<fieldset>
+<legend>Choose a Scenario:</legend>
+<input type='radio' id='scenario-0'>
+<label for='scenario-0'>Empty</label>
+<input type='radio' id='scenario-1'>
+<label for='scenario-1'>Sodium and Chlorine Pair</label>
+<input type='radio' id='scenario-2'>
+<label for='scenario-2'>Sodium and Chlorine Gas 🚧</label>
+<input type='radio' id='scenario-3'>
+<label for='scenario-3'>Sodium Bulk and Chlorine Gas 🚧</label>
+<input type='radio' id='scenario-4'>
+<label for='scenario-4'>Sodium and Water 🚧</label>
+</fieldset>
+
 </div>
 <ul id='sim-force-inputs'><!--  --></ul>
 <li>
