@@ -5,6 +5,11 @@ title: Chemistry
 description: 
 ---
 
+## Content
+{: .no_toc}
+1. Generate TOC here
+{:toc}
+
 Chemistry is the field concerned with understanding chemicals, their composition, behaviors and their use for a wide variety of human interests.
 
 ## Applications
@@ -16,4 +21,11 @@ Chemistry is the field concerned with understanding chemicals, their composition
 
 ## Curriculum
 
-- 
+- Intermolecular Forces
+  - Dipole Moments
+  - Van Der Waals
+  - Lennard-Jones for Molecular Dynamics
+- Bonding
+  - [Ionic Bonding](./demo-ionic-bonding)
+  - [Covalent Bonding](./demo-covalent-bonding) 🚧
+  - [Metallic Bonding Demo](./demo-metallic-bonding) 🚧
