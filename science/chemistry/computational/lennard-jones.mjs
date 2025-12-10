@@ -38,9 +38,9 @@ export class LennardJonesPotential extends InterparticleForce {
         // sigma: finite distance where potential is zero, i.e., atoms "collide"
         const sigma = (alpha.props.atomicRadius + beta.props.atomicRadius) // PM
         const sigmaOverDistance = sigma / deltaMag
-        const attraction = -(sigmaOverDistance ** 6)
-        const repulsion = sigmaOverDistance ** 12
-        const total = 4*epsilon*(repulsion + attraction)
+        const s6 = sigmaOverDistance**6
+        const s12 = s6*s6
+        const total = 24 * epsilon / deltaMag * (2*s12 - s6)
         console.log(`lennard jones: ${total}`)
         const forceX = total * deltaX / deltaMag
         const forceY = total * deltaY / deltaMag
