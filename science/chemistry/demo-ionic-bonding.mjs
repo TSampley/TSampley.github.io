@@ -11,6 +11,7 @@ import { SoundBoard } from '../../scripts/audio/sound-board.mjs';
 import { Timer } from '../../scripts/common/timer.mjs';
 import { Demo } from '../../scripts/components/demo.mjs'
 
+// region Get Elements
 const displayParagraph = document.getElementById('sim-display')
 const displayCharge = document.getElementById('sim-charge')
 const buttonChargeUp = document.getElementById('sim-charge-up')
@@ -30,42 +31,28 @@ const uiElements = {
         document.getElementById(`ptable-${value.name.toLowerCase()}`)
     })
 }
+// endregion
 
+// region Model init
 let forces = forceMatrixChemistry()
 forces.lennardJones.isEnabled = false
 forces.drag.isEnabled = false
 forces.gravity.isEnabled = false
 // scaling: width=600 => width=1200E-12
-const scalingFacting = 1 / 2E-12
+const scalingFacting = 1 / 2E-11
 const scaledWidth = demo.canvas.width / scalingFacting
 const scaledHeight = demo.canvas.height / scalingFacting
 let environment = new Environment(scaledWidth, scaledHeight, forces)
 environment.onCollide = SoundBoard.playClack
 environment.onBounce = SoundBoard.playWoop
 let simulation = new Simulation(environment)
+// endregion
+
+// region Adapters
 let timer = new Timer()
 let controller = new WorldController(simulation,timer)
-controller.isRunning = false
-controller.setElement(Elements.Hydrogen)
-controller.setCharge(0)
 
-/** @type {()=>Array<Particle>} */
-const scenario = ()=>{
-    // Initialize Atoms
-    const protium = new AtomicProperties(Elements.Hydrogen, -1, 0)
-    const leftHydrogen = new Particle(200E-12,500E-12,protium)
-    const rightHydrogen = new Particle(1000E-12,500E-12,protium)
-
-    // Direct towards each other
-    const speed = 0 // 10E-15
-    leftHydrogen.vx = speed
-    rightHydrogen.vx = -speed
-
-    return [leftHydrogen, rightHydrogen]
-}
-controller.setScenario(scenario)
-controller.simulation.particleList.push(...scenario())
-
+// Bind Adapter state to UI
 // controller.element.subscribe((value)=>{
 //     // TODO: update element display
 // });
@@ -75,20 +62,43 @@ controller.simulation.particleList.push(...scenario())
 // controller.compound.subscribe((value)=>{
 //     // TODO: update compound display (element, charge, neutron count, total mass, etc.)
 // })
-
 controller.onSetDisplay = (display)=>{
     displayParagraph.innerText = display
 }
 controller.onSetCharge = (charge)=>{
     displayCharge.innerText = charge
 }
-
+// Bind UI Events to Adapter functions
 buttonChargeUp.onclick = (event)=> {
     controller.incrementCharge()
 }
 buttonChargeDown.onclick = (event)=> {
     controller.decrementCharge()
 }
+
+// Initialize Adapter state
+controller.isRunning = false
+controller.setElement(Elements.Hydrogen)
+controller.setCharge(0)
+
+/** @type {()=>Array<Particle>} */
+controller.setScenario(()=>{
+    // Initialize Atoms
+    const protium = new AtomicProperties(Elements.Hydrogen, -1, 0)
+    const leftHydrogen = new Particle(200E-12,500E-11,protium)
+    const rightHydrogen = new Particle(11800E-12,500E-11,protium)
+
+    // Direct towards each other
+    const speed = 10E-6
+    leftHydrogen.vx = speed
+    rightHydrogen.vx = -speed
+
+    return [leftHydrogen, rightHydrogen]
+})
+controller.reset()
+// endregion
+
+
 
 // Object.values(controller.simulation.environment.forceMatrix).forEach(force => {
 //     uiElements.divForceInputs.innerHTML += 
