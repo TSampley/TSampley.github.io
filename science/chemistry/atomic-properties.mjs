@@ -81,27 +81,27 @@ class AtomicRadii {
      * 
      * https://en.wikipedia.org/wiki/Van_der_Waals_radius
      */
-    static vanDerWaals = [ // TODO: convert all to meters
+    static vanDerWaals = [
         null,
-        120, 140, 182, 153, 192,
-        170, 155, 152, 147, 154, // 10
-        227, 173, 184, 210, 180,
-        180, 175, 188, 275, 231, // 20
-        211, null, null, null, null, 
-        null, null, 163, 140, 139, // 30
-        187, 211, 185, 190, 185,
-        202, 303, 249, null, null, // 40
+        120E-12, 140E-12, 182E-12, 153E-12, 192E-12,
+        170E-12, 155E-12, 152E-12, 147E-12, 154E-12, // 10
+        227E-12, 173E-12, 184E-12, 210E-12, 180E-12,
+        180E-12, 175E-12, 188E-12, 275E-12, 231E-12, // 20
+        211E-12, null, null, null, null, 
+        null, null, 163E-12, 140E-12, 139E-12, // 30
+        187E-12, 211E-12, 185E-12, 190E-12, 185E-12,
+        202E-12, 303E-12, 249E-12, null, null, // 40
         null, null, null, null, null, 
-        163, 172, 158, 193, 217, // 50
-        206, 206, 198, 216, 343, 
-        268, null, null, null, null, // 60 
+        163E-12, 172E-12, 158E-12, 193E-12, 217E-12, // 50
+        206E-12, 206E-12, 198E-12, 216E-12, 343E-12, 
+        268E-12, null, null, null, null, // 60 
         null, null, null, null, null, 
         null, null, null, null, null, // 70
         null, null, null, null, null, 
-        null, null, 175, 166, 155, // 80
-        196, 202, 207, 197, 202,
-        220, 348, 283, null, null, // 90
-        null, 186
+        null, null, 175E-12, 166E-12, 155E-12, // 80
+        196E-12, 202E-12, 207E-12, 197E-12, 202E-12,
+        220E-12, 348E-12, 283E-12, null, null, // 90
+        null, 186E-12
     ]
 
     /**
