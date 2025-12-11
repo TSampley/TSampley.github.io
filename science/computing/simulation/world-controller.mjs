@@ -7,6 +7,7 @@ import { Timer } from '../../../scripts/common/timer.mjs';
 import { CPKColorScheme } from '../../chemistry/cpk-coloring.mjs'
 import { Element } from '../../chemistry/element.mjs';
 import { AtomicProperties } from '../../chemistry/atomic-properties.mjs';
+import { AtomicParticleRender } from '../../physics/mechanics/particle-render.mjs';
 
 /**
  * 
@@ -27,6 +28,8 @@ export class WorldController {
         this.colorScheme = CPKColorScheme
 
         this.isRunning = true
+
+        this.atomicRender = new AtomicParticleRender()
     }
 
     reset() {
@@ -82,8 +85,7 @@ export class WorldController {
      */
     drawParticles(context) {
         for (const particle of this.simulation.particleList) {
-            particle.draw(context,this.colorScheme)
-
+            this.atomicRender.render(context, this.colorScheme, particle)
             /* 
             TODO: pair particles with renderers based on props type-tag
               switch (particle.type) {
