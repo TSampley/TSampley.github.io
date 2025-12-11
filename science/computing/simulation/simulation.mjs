@@ -16,6 +16,11 @@ const DefaultStep = 0.5
  *   with extended functionality
  */
 export class Simulation {
+
+    /**
+     * 
+     * @param {Environment} environment 
+     */
     constructor(environment) {
         this.world = new Timer()
         /**
