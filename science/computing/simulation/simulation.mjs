@@ -111,6 +111,7 @@ export class Simulation {
             environmentForces.forEach((force)=>{
                 force.applyForce(dt,alpha)
             })
+            // TODO: check accumulated force here
         }
 
         // Integrate entities
