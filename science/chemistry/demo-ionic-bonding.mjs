@@ -1,4 +1,6 @@
 
+import { fromEvent } from 'rxjs'
+
 import { AtomicProperties } from './atomic-properties.mjs'
 import { Elements } from './element.mjs'
 import { Timer } from '../../scripts/common/timer.mjs';
@@ -47,6 +49,15 @@ let controller = new WorldController(simulation,timer)
 controller.setElement(Elements.Hydrogen)
 controller.setCharge(0)
 
+// controller.element.subscribe((value)=>{
+//     // TODO: update element display
+// });
+// controller.charge.subscribe((value)=>{
+//     // TODO: update element display
+// });
+// controller.compound.subscribe((value)=>{
+//     // TODO: update compound display (element, charge, neutron count, total mass, etc.)
+// })
 
 controller.onSetDisplay = (display)=>{
     displayParagraph.innerText = display
@@ -55,12 +66,12 @@ controller.onSetCharge = (charge)=>{
     displayCharge.innerText = charge
 }
 
-buttonChargeUp.onclick = ()=>{
+fromEvent(buttonChargeUp, 'click').subscribe((event)=> {
     controller.incrementCharge()
-}
-buttonChargeDown.onclick = ()=>{
+});
+fromEvent(buttonChargeDown, 'click').subscribe((event)=> {
     controller.decrementCharge()
-}
+});
 
 // Object.values(controller.simulation.environment.forceMatrix).forEach(force => {
 //     uiElements.divForceInputs.innerHTML += 
