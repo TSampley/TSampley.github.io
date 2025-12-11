@@ -1,15 +1,15 @@
 
 import { AtomicProperties } from './atomic-properties.mjs'
 import { Elements } from './element.mjs'
-import { Timer } from '../../scripts/common/timer.mjs';
+
+import { Environment, forceMatricChemistry as forceMatrixChemistry } from '../computing/simulation/environment.mjs';
+import { Simulation } from '../computing/simulation/simulation.mjs';
+import { WorldController } from '../computing/simulation/world-controller.mjs';
+import { Particle } from '../physics/mechanics/particle.mjs';
 
 import { SoundBoard } from '../../scripts/audio/sound-board.mjs';
-
-import { WorldController } from '../computing/simulation/world-controller.mjs';
-import { Simulation } from '../computing/simulation/simulation.mjs';
-
+import { Timer } from '../../scripts/common/timer.mjs';
 import { Demo } from '../../scripts/components/demo.mjs'
-import { Environment, forceMatricChemistry as forceMatrixChemistry } from '../computing/simulation/environment.mjs';
 
 const displayParagraph = document.getElementById('sim-display')
 const displayCharge = document.getElementById('sim-charge')
@@ -46,6 +46,21 @@ let timer = new Timer()
 let controller = new WorldController(simulation,timer)
 controller.setElement(Elements.Hydrogen)
 controller.setCharge(0)
+
+/** @type {()=>Array<Particle>} */
+const scenario = ()=>{
+    // Initialize Atoms
+    const protium = new AtomicProperties(Elements.Hydrogen, 0, 0)
+    const leftHydrogen = new Particle(10E-18,50E-18,protium)
+    const rightHydrogen = new Particle(490E-18,50E-18,protium)
+
+    // Direct towards each other
+    leftHydrogen.vx = 10E-18
+    rightHydrogen.vy = -10E-18
+
+    return [leftHydrogen, rightHydrogen]
+}
+controller.simulation.particleList.push(...scenario())
 
 // controller.element.subscribe((value)=>{
 //     // TODO: update element display
