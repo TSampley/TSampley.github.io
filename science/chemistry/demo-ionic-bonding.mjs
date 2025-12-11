@@ -154,7 +154,7 @@ Object.values(Elements).forEach(element=>{
 demo.addMouseDownListener((event)=>{
     const x = event.offsetX;
     const y = event.offsetY;
-    controller.spawn(x,y)
+    controller.spawn(x/scalingFacting,y/scalingFacting)
     SoundBoard.playPop()
 })
 
