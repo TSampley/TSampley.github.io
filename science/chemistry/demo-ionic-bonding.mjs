@@ -1,6 +1,4 @@
 
-import { fromEvent } from 'rxjs'
-
 import { AtomicProperties } from './atomic-properties.mjs'
 import { Elements } from './element.mjs'
 import { Timer } from '../../scripts/common/timer.mjs';
@@ -66,12 +64,12 @@ controller.onSetCharge = (charge)=>{
     displayCharge.innerText = charge
 }
 
-fromEvent(buttonChargeUp, 'click').subscribe((event)=> {
+buttonChargeUp.onclick = (event)=> {
     controller.incrementCharge()
-});
-fromEvent(buttonChargeDown, 'click').subscribe((event)=> {
+}
+buttonChargeDown.onclick = (event)=> {
     controller.decrementCharge()
-});
+}
 
 // Object.values(controller.simulation.environment.forceMatrix).forEach(force => {
 //     uiElements.divForceInputs.innerHTML += 
@@ -91,6 +89,23 @@ fromEvent(buttonChargeDown, 'click').subscribe((event)=> {
 //         controller.simulation.environment.forceMatrix[force.id].isEnabled = event.target.checked
 //     }
 // });
+Object.values(controller.simulation.environment.forceMatrix).forEach(force => {
+    const listItem = document.createElement('li')
+    /** @type {HTMLInputElement} */
+    const checkbox = document.createElement('input')
+    checkbox.type = 'checkbox'
+    const label = document.createElement('label')
+    checkbox.id = force.id
+    label.htmlFor = force.id
+    label.textContent = force.name
+    listItem.append(label, checkbox)
+    uiElements.divForceInputs.appendChild(listItem)
+
+    checkbox.checked = controller.simulation.environment.forceMatrix[force.id].isEnabled
+    checkbox.onchange = (event)=> {
+        controller.simulation.environment.forceMatrix[force.id].isEnabled = event.target.checked
+    }
+});
 uiElements.forceBoundary.checked = controller.simulation.environment.forceMatrix.boundaries.isEnabled
 uiElements.forceBoundary.onchange = (event)=>{
     controller.simulation.environment.forceMatrix.boundaries.isEnabled = event.target.checked
