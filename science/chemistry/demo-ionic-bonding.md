@@ -13,7 +13,7 @@ One atom completely loses one or more electrons, donating them to another atom, 
 <!-- TODO: add element/charge/neutrons selector -->
 
 
-<canvas class="demo-box" id="hydrogen-bulk" width=500 height=500 style='background-color: black'></canvas>
+<canvas class="demo-box" id="hydrogen-bulk" width=600 height=500 style='background-color: black'></canvas>
 <div id='sim-controls'>
 
 <p id='sim-display'></p>
