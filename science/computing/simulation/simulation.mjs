@@ -87,6 +87,7 @@ export class Simulation {
      * @param {number} dt
      */
     step(dt) {
+        const step = dt * this.environment.timeScale
         // Clear previous state
         for (const particle of this.particleList) {
             particle.clearForces()
@@ -105,18 +106,18 @@ export class Simulation {
             for (let betaIndex = alphaIndex + 1; betaIndex < max; betaIndex++) {
                 const beta = this.particleList[betaIndex]
                 particleForces.forEach((force)=>{
-                    force.applyForce(dt,alpha,beta)
+                    force.applyForce(step,alpha,beta)
                 })
             }
             environmentForces.forEach((force)=>{
-                force.applyForce(dt,alpha)
+                force.applyForce(step,alpha)
             })
             // TODO: check accumulated force here
         }
 
         // Integrate entities
         for (const particle of this.particleList) {
-            particle.integrate(dt)
+            particle.integrate(step)
         }
 
         // Resolve collisions
