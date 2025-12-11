@@ -179,7 +179,8 @@ function animate(timestamp) {
     }
 
     demo.context.clearRect(0, 0, demo.canvas.width, demo.canvas.height);
-
+    demo.context.resetTransform()
+    demo.context.scale(1E12,1E12)
     controller.drawParticles(demo.context)
     
     lastTime = timestamp;
