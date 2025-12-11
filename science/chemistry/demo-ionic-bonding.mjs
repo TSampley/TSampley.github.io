@@ -32,18 +32,21 @@ const uiElements = {
     inputRunning: document.getElementById('input-running'),
     buttonReset: document.getElementById('sim-reset'),
     table: Object.values(Elements).map((value)=>{
-        console.log(`retrieved: ${value.name}`)
         document.getElementById(`ptable-${value.name.toLowerCase()}`)
     })
 }
 
 let forces = forceMatrixChemistry()
-forces.lennardJones.isEnabled = false
+forces.lennardJones.isEnabled = true
 forces.drag.isEnabled = false
-let environment = new Environment(500, 500, forces)
+forces.gravity.isEnabled = false
+// scaling: width=600 => width=1200E-12
+const scale = 600 / 1200E-12
+let environment = new Environment(1200E-12, 1000E-12, forces)
 let simulation = new Simulation(environment)
 let timer = new Timer()
 let controller = new WorldController(simulation,timer)
+controller.isRunning = false
 controller.setElement(Elements.Hydrogen)
 controller.setCharge(0)
 
@@ -51,12 +54,13 @@ controller.setCharge(0)
 const scenario = ()=>{
     // Initialize Atoms
     const protium = new AtomicProperties(Elements.Hydrogen, 0, 0)
-    const leftHydrogen = new Particle(10E-18,50E-18,protium)
-    const rightHydrogen = new Particle(490E-18,50E-18,protium)
+    const leftHydrogen = new Particle(200E-12,500E-12,protium)
+    const rightHydrogen = new Particle(1000E-12,500E-12,protium)
 
     // Direct towards each other
-    leftHydrogen.vx = 10E-18
-    rightHydrogen.vy = -10E-18
+    const speed = 0 // 10E-15
+    leftHydrogen.vx = speed
+    rightHydrogen.vx = -speed
 
     return [leftHydrogen, rightHydrogen]
 }
@@ -180,7 +184,7 @@ function animate(timestamp) {
 
     demo.context.clearRect(0, 0, demo.canvas.width, demo.canvas.height);
     demo.context.resetTransform()
-    demo.context.scale(1E12,1E12)
+    demo.context.scale(scale,scale)
     controller.drawParticles(demo.context)
     
     lastTime = timestamp;
