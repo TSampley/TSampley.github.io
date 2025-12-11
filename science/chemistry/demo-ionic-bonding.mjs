@@ -52,7 +52,7 @@ controller.setCharge(0)
 /** @type {()=>Array<Particle>} */
 const scenario = ()=>{
     // Initialize Atoms
-    const protium = new AtomicProperties(Elements.Hydrogen, 0, 0)
+    const protium = new AtomicProperties(Elements.Hydrogen, -1, 0)
     const leftHydrogen = new Particle(200E-12,500E-12,protium)
     const rightHydrogen = new Particle(1000E-12,500E-12,protium)
 
