@@ -12,6 +12,7 @@ export class Demo {
      */
     constructor(id) {
         this.canvas = document.getElementById(id);
+        /** @type {CanvasRenderingContext2D} */
         this.context = this.canvas.getContext('2d');
     }
 
