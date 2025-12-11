@@ -1,6 +1,8 @@
 
 import { InterparticleForce } from "../../physics/mechanics/force.mjs"
 
+
+const SOFT_CAP_SQR = 100E-12 ** 2
 /**
  * 
  * 
@@ -26,15 +28,16 @@ export class LennardJonesPotential extends InterparticleForce {
         // TODO: explore soft-core potentials
         //   https://pmc.ncbi.nlm.nih.gov/articles/PMC3187911/;
         //   https://www.sciencedirect.com/science/article/abs/pii/S1093326303001967 
-        const deltaSqr = Math.max(deltaX*deltaX + deltaY*deltaY, 100E-12) // minimum distance 100pm
+        const deltaSqr = Math.max(deltaX*deltaX + deltaY*deltaY, SOFT_CAP_SQR)
         const deltaMag = Math.sqrt(deltaSqr)
 
         // Lennard-Jones Potential
         // epsilon: depth of potential well // TODO: determine depth of well
-        const epsilon = 1 // eV
+        const epsilon = 1E-12 // eV
         // sigma: finite distance where potential is zero, i.e., atoms "collide"
         const sigma = (alpha.props.atomicRadius + beta.props.atomicRadius) // PM
         const sigmaOverDistance = sigma / deltaMag
+        console.log(`${sigma} / ${deltaMag} = ${sigmaOverDistance}`)
         const s6 = sigmaOverDistance**6
         const s12 = s6*s6
         const total = 24 * epsilon / deltaMag * (2*s12 - s6)
