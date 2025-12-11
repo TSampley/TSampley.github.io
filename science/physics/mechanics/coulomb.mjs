@@ -20,7 +20,7 @@ export class CoulombForce extends InterparticleForce {
     }
 
     get id() {
-        return "charge"
+        return "coulomb"
     }
 
     get name() {
