@@ -23,11 +23,6 @@ const uiElements = {
     buttonChargeUp: document.getElementById('sim-charge-up'),
     buttonChargeDown: document.getElementById('sim-charge-down'),
     divForceInputs: document.getElementById('sim-force-inputs'),
-    forceBoundary: document.getElementById('sim-force-boundary'),
-    forceDrag: document.getElementById('sim-force-drag'),
-    forceGravity: document.getElementById('sim-force-gravity'),
-    forceCoulomb: document.getElementById('sim-force-coulomb'),
-    forceLennardJones: document.getElementById('sim-force-lennard-jones'),
     inputGravity: document.getElementById('input-gravity'),
     inputRunning: document.getElementById('input-running'),
     buttonReset: document.getElementById('sim-reset'),
@@ -37,7 +32,7 @@ const uiElements = {
 }
 
 let forces = forceMatrixChemistry()
-forces.lennardJones.isEnabled = true
+forces.lennardJones.isEnabled = false
 forces.drag.isEnabled = false
 forces.gravity.isEnabled = false
 // scaling: width=600 => width=1200E-12
@@ -126,26 +121,6 @@ Object.values(controller.simulation.environment.forceMatrix).forEach(force => {
         controller.simulation.environment.forceMatrix[force.id].isEnabled = event.target.checked
     }
 });
-uiElements.forceBoundary.checked = controller.simulation.environment.forceMatrix.boundaries.isEnabled
-uiElements.forceBoundary.onchange = (event)=>{
-    controller.simulation.environment.forceMatrix.boundaries.isEnabled = event.target.checked
-}
-uiElements.forceDrag.checked = controller.simulation.environment.forceMatrix.drag.isEnabled
-uiElements.forceDrag.onchange = (event)=>{
-    controller.simulation.environment.forceMatrix.drag.isEnabled = event.target.checked
-}
-uiElements.forceGravity.checked = controller.simulation.environment.forceMatrix.gravity.isEnabled
-uiElements.forceGravity.onchange = (event)=>{
-    controller.simulation.environment.forceMatrix.gravity.isEnabled = event.target.checked
-}
-uiElements.forceCoulomb.checked = controller.simulation.environment.forceMatrix.coulomb.isEnabled
-uiElements.forceCoulomb.onchange = (event)=>{
-    controller.simulation.environment.forceMatrix.coulomb.isEnabled = event.target.checked
-}
-uiElements.forceLennardJones.checked = controller.simulation.environment.forceMatrix.lennardJones.isEnabled
-uiElements.forceLennardJones.onchange = (event)=>{
-    controller.simulation.environment.forceMatrix.lennardJones.isEnabled = event.target.checked
-}
 uiElements.inputRunning.checked = controller.isRunning
 uiElements.inputRunning.onchange = (event)=>{
     controller.isRunning = event.target.checked
