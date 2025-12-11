@@ -42,8 +42,8 @@ export class LennardJonesPotential extends InterparticleForce {
         const s12 = s6*s6
         const total = 24 * epsilon / deltaMag * (2*s12 - s6)
         console.log(`lennard jones: ${total}`)
-        const forceX = total * deltaX / deltaMag
-        const forceY = total * deltaY / deltaMag
+        const forceX = - total * deltaX / deltaMag
+        const forceY = - total * deltaY / deltaMag
 
         alpha.fx += forceX
         alpha.fy += forceY
