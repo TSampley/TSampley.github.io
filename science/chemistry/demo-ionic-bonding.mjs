@@ -2,7 +2,7 @@
 import { AtomicProperties } from './atomic-properties.mjs'
 import { Elements } from './element.mjs'
 
-import { Environment, forceMatricChemistry as forceMatrixChemistry } from '../computing/simulation/environment.mjs';
+import { Environment, forceMatrixChemistry } from '../computing/simulation/environment.mjs';
 import { Simulation } from '../computing/simulation/simulation.mjs';
 import { WorldController } from '../computing/simulation/world-controller.mjs';
 import { Particle } from '../physics/mechanics/particle.mjs';

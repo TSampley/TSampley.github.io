@@ -32,9 +32,9 @@ export function forceMatrixSim(boundaryRetention,drag,gravity,coulomb,lennardJon
  * @returns A {@link ForceMatrix} with simulation values adjusted for
  * chemical reaction scale.
  */
-export function forceMatricChemistry() {
+export function forceMatrixChemistry() {
     return new ForceMatrix(
-        new ElasticBoundary(0.99,500,500),
+        new ElasticBoundary(0.99,600E-12,500E-12),
         new Drag(1E-6),
         new Gravity(GRAVITY_EARTH_ACCELERATION * 1E-5),
         new CoulombForce(COULOMB_CONSTANT),
@@ -63,6 +63,7 @@ export class Environment {
         this.height = height
 
         this.forceMatrix = forceMatrix
+        this.timeScale = 1E-6
 
         /** @type {()=>void} */
         this.onCollide = onCollide
