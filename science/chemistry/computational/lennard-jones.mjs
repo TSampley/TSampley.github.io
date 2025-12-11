@@ -1,9 +1,6 @@
 
 import { InterparticleForce } from "../../physics/mechanics/force.mjs"
 
-import { METERS_PER_PICOMETER } from "../../metrics.mjs"
-
-
 /**
  * 
  * 
@@ -29,11 +26,11 @@ export class LennardJonesPotential extends InterparticleForce {
         // TODO: explore soft-core potentials
         //   https://pmc.ncbi.nlm.nih.gov/articles/PMC3187911/;
         //   https://www.sciencedirect.com/science/article/abs/pii/S1093326303001967 
-        const deltaSqr = Math.max(deltaX*deltaX + deltaY*deltaY, 100) // minimum distance 100pm
+        const deltaSqr = Math.max(deltaX*deltaX + deltaY*deltaY, 100E-12) // minimum distance 100pm
         const deltaMag = Math.sqrt(deltaSqr)
 
         // Lennard-Jones Potential
-        // epsilon: depth of potential well
+        // epsilon: depth of potential well // TODO: determine depth of well
         const epsilon = 1 // eV
         // sigma: finite distance where potential is zero, i.e., atoms "collide"
         const sigma = (alpha.props.atomicRadius + beta.props.atomicRadius) // PM
@@ -45,6 +42,7 @@ export class LennardJonesPotential extends InterparticleForce {
         const forceX = - total * deltaX / deltaMag
         const forceY = - total * deltaY / deltaMag
 
+        // TODO: convert eV to newtons or fxy always means eV for atoms?
         alpha.fx += forceX
         alpha.fy += forceY
         beta.fx -= forceX
