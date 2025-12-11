@@ -15,7 +15,7 @@ export class AtomicProperties extends Properties {
     constructor(element,charge,neutronCount) {
         super()
         if (charge > element.number) throw "Charge must be less than or equal to the atomic number."
-        if (neutronCount <= 0) throw "Neutron Count must be greater than 0."
+        if (neutronCount < 0) throw "Neutron Count must greater than or equal to 0."
         this.element = element;
         this.charge = charge;
         this.neutronCount = neutronCount;
