@@ -81,7 +81,7 @@ class AtomicRadii {
      * 
      * https://en.wikipedia.org/wiki/Van_der_Waals_radius
      */
-    static vanDerWaals = [
+    static vanDerWaals = [ // TODO: convert all to meters
         null,
         120, 140, 182, 153, 192,
         170, 155, 152, 147, 154, // 10

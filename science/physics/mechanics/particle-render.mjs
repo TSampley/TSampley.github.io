@@ -32,7 +32,7 @@ export class AtomicParticleRender {
     render(context,colorScheme,particle) {
         const atomicProps = particle.props
 
-        const radius = atomicProps.atomicRadius // TODO: modify by 0.02 environment constant
+        const radius = atomicProps.atomicRadius
 
         const elementColor = colorScheme.colorForElement(atomicProps.element);
         context.fillStyle = elementColor
