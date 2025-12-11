@@ -64,6 +64,7 @@ const scenario = ()=>{
 
     return [leftHydrogen, rightHydrogen]
 }
+controller.setScenario(scenario)
 controller.simulation.particleList.push(...scenario())
 
 // controller.element.subscribe((value)=>{

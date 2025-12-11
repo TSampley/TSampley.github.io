@@ -30,10 +30,20 @@ export class WorldController {
         this.isRunning = true
 
         this.atomicRender = new AtomicParticleRender()
+
+        this.scenario = ()=>{return[]}
+    }
+
+    /**
+     * 
+     * @param {()=>Array<Particle>} scenario 
+     */
+    setScenario(scenario) {
+        this.scenario = scenario
     }
 
     reset() {
-        this.simulation.particleList = []
+        this.simulation.particleList = this.scenario()
     }
 
     /**
