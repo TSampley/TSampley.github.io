@@ -36,8 +36,12 @@ forces.lennardJones.isEnabled = false
 forces.drag.isEnabled = false
 forces.gravity.isEnabled = false
 // scaling: width=600 => width=1200E-12
-const scale = 600 / 1200E-12
-let environment = new Environment(1200E-12, 1000E-12, forces)
+const scalingFacting = 1 / 2E-12
+const scaledWidth = demo.canvas.width / scalingFacting
+const scaledHeight = demo.canvas.height / scalingFacting
+let environment = new Environment(scaledWidth, scaledHeight, forces)
+environment.onCollide = SoundBoard.playClack
+environment.onBounce = SoundBoard.playWoop
 let simulation = new Simulation(environment)
 let timer = new Timer()
 let controller = new WorldController(simulation,timer)
@@ -144,12 +148,6 @@ demo.addMouseDownListener((event)=>{
     SoundBoard.playPop()
 })
 
-controller.simulation.environment.width = demo.canvas.width
-controller.simulation.environment.height = demo.canvas.height
-
-controller.simulation.environment.onCollide = SoundBoard.playClack
-controller.simulation.environment.onBounce = SoundBoard.playWoop
-
 let lastTime = 0;
 function animate(timestamp) {
     let diff = timestamp - lastTime;
@@ -160,7 +158,7 @@ function animate(timestamp) {
 
     demo.context.clearRect(0, 0, demo.canvas.width, demo.canvas.height);
     demo.context.resetTransform()
-    demo.context.scale(scale,scale)
+    demo.context.scale(scalingFacting,scalingFacting)
     controller.drawParticles(demo.context)
     
     lastTime = timestamp;
