@@ -2,7 +2,7 @@
 import { InterparticleForce } from "../../physics/mechanics/force.mjs"
 
 
-const SOFT_CAP_SQR = 100E-12 ** 2
+const SOFT_CAP_SQR = 105E-12 ** 2
 /**
  * 
  * 
