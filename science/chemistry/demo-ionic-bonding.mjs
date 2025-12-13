@@ -89,7 +89,7 @@ controller.setScenario(()=>{
     const rightHydrogen = new Particle(11800E-12,500E-11,protium)
 
     // Direct towards each other
-    const speed = 10E-6
+    const speed = 10E-7
     leftHydrogen.vx = speed
     rightHydrogen.vx = -speed
 
