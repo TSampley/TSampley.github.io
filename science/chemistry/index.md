@@ -24,6 +24,7 @@ Chemistry is the field concerned with understanding chemicals, their composition
 - Intermolecular Forces
   - Dipole Moments
   - Van Der Waals
+    - https://en.wikipedia.org/wiki/London_dispersion_force
   - Lennard-Jones for Molecular Dynamics
 - Bonding
   - [Ionic Bonding](./demo-ionic-bonding)
