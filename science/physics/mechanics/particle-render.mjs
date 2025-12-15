@@ -33,11 +33,22 @@ export class AtomicParticleRender {
         const atomicProps = particle.props
 
         const radius = atomicProps.atomicRadius
+        const charge = atomicProps.charge
+        if (charge > 0) {
+            context.strokeStyle = "red"
+            context.lineWidth = charge * radius / 10
+        } else if (charge < 0) {
+            context.strokeStyle = "rgba(0, 204, 255, 1)"
+            context.lineWidth = -charge * radius / 10
+        } else {
+            context.strokeStyle = null
+        }
 
         const elementColor = colorScheme.colorForElement(atomicProps.element);
         context.fillStyle = elementColor
         context.beginPath();
         context.ellipse(particle.x, particle.y, radius, radius, 0, 0, 2*Math.PI);
         context.fill();
+        context.stroke();
     }
 }
