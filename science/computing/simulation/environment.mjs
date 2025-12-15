@@ -35,9 +35,9 @@ export function forceMatrixSim(boundaryRetention,drag,gravity,coulomb,lennardJon
 export function forceMatrixChemistry() {
     return new ForceMatrix(
         new ElasticBoundary(0.99,600E-12,500E-12),
-        new Drag(1E-6),
+        new Drag(1E46),
         new Gravity(GRAVITY_EARTH_ACCELERATION * 1E-5),
-        new CoulombForce(COULOMB_CONSTANT),
+        new CoulombForce(COULOMB_CONSTANT*1E6),
         new LennardJonesPotential(1.0)
     )
 }
