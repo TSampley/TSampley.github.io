@@ -32,7 +32,6 @@ export class Drag extends EnvironmentForce {
         //     = rho * C_d * 1/2 * (v^2 * A)
         const flowMagSqr = subject.vx**2 + subject.vy**2
         const flowMag = Math.sqrt(flowMagSqr)
-        console.log(`drag-v: ${flowMag}`)
         if (flowMag == 0) return
         let area = subject.props.area
         if (!area) {
@@ -40,7 +39,8 @@ export class Drag extends EnvironmentForce {
         }
         const force = this.rhoCoefHalf * flowMagSqr * area
         const factor = force * 0.5 / flowMag
-        subject.fx += subject.vx * factor
-        subject.fy += subject.vy * factor
+        console.log(`drag-v: ${factor}`)
+        subject.fx += -subject.vx * factor
+        subject.fy += -subject.vy * factor
     }
 }
