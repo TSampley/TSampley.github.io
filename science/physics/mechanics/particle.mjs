@@ -101,11 +101,11 @@ export class Particle {
         const deltaY = beta.y - alpha.y
         const deltaSqr = deltaX*deltaX + deltaY*deltaY;
 
-        const minRadius = alpha.props.atomicRadius + beta.props.atomicRadius
-        const minRadiusSqr = minRadius * minRadius
+        const radiusSum = alpha.props.atomicRadius + beta.props.atomicRadius
+        const radiusSumSqr = radiusSum * radiusSum
 
         // Ensure particles within collision range
-        if (deltaSqr <= minRadiusSqr) {
+        if (deltaSqr <= radiusSumSqr) {
             const velX = beta.vx - alpha.vx
             const velY = beta.vy - alpha.vy
             const dotProd = velX*deltaX + velY*deltaY
@@ -132,6 +132,16 @@ export class Particle {
                 alpha.vy = finalAlphaDiffMag*deltaY + alphaTanMag*(-deltaX)
                 beta.vx = finalBetaDiffMag*deltaX + betaTanMag*deltaY
                 beta.vy = finalBetaDiffMag*deltaY + betaTanMag*(-deltaX)
+
+                // nudge particles
+                const deltaMag = Math.sqrt(deltaSqr)
+                const diff = radiusSum - deltaMag
+                const nudgeX = diff * deltaX / (deltaMag * totalMass);
+                const nudgeY = diff * deltaY / (deltaMag * totalMass);
+                alpha.x -= nudgeX * betaMass;
+                alpha.y -= nudgeY * betaMass;
+                beta.x += nudgeX * alphaMass;
+                beta.y += nudgeY * alphaMass;
 
                 environment.onCollide()
             }
