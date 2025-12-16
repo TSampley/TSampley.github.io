@@ -11,7 +11,7 @@ export class Scenario {
     /**
      * 
      * @param {string} name
-     * @param {ForceMatrix}
+     * @param {ForceMatrix} forceMatrix
      * @param {()=>Array<Particle>} spawner 
      */
     constructor(name,forceMatrix,spawner) {
