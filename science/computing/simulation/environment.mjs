@@ -64,6 +64,7 @@ export class Environment {
 
         this.forceMatrix = forceMatrix
         this.timeScale = 1E-6
+        this.hardCollisions = true
 
         /** @type {()=>void} */
         this.onCollide = onCollide
