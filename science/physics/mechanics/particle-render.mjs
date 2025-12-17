@@ -18,18 +18,17 @@ export class AtomicParticleRender {
 
 
     /**
-     * 
+     * @param {ElementColorScheme} colorScheme
      */
-    constructor() {
-
+    constructor(colorScheme) {
+        this.colorScheme = colorScheme
     }
     /**
      * 
      * @param {CanvasRenderingContext2D} context 
-     * @param {ElementColorScheme} colorScheme
      * @param {Particle} particle
      */
-    render(context,colorScheme,particle) {
+    render(context,particle) {
         const atomicProps = particle.props
 
         const radius = atomicProps.atomicRadius
@@ -44,7 +43,7 @@ export class AtomicParticleRender {
             context.strokeStyle = null
         }
 
-        const elementColor = colorScheme.colorForElement(atomicProps.element);
+        const elementColor = this.colorScheme.colorForElement(atomicProps.element);
         context.fillStyle = elementColor
         context.beginPath();
         context.ellipse(particle.x, particle.y, radius, radius, 0, 0, 2*Math.PI);

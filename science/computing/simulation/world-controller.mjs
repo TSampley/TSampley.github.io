@@ -29,7 +29,7 @@ export class WorldController {
 
         this.isRunning = true
 
-        this.atomicRender = new AtomicParticleRender()
+        this.atomicRender = new AtomicParticleRender(this.colorScheme)
 
         this.scenario = ()=>{return[]}
     }
