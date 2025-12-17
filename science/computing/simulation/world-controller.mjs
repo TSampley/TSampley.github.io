@@ -95,7 +95,7 @@ export class WorldController {
      */
     drawParticles(context) {
         for (const particle of this.simulation.particleList) {
-            this.atomicRender.render(context, this.colorScheme, particle)
+            this.atomicRender.render(context, particle)
             /* 
             TODO: pair particles with renderers based on props type-tag
               switch (particle.type) {
