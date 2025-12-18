@@ -32,6 +32,7 @@ defaults:
       # type: "posts" "pages" "drafts" # or any site collection
     values:
       author: Taush Sampley
+      excerpt_separator: <!--more-->
 
 collections:
   demos:
