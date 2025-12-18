@@ -34,6 +34,12 @@ export class Simulation {
         this.environment = environment
     }
 
+    /**
+     * 
+     * @param {number} centerX 
+     * @param {number} centerY 
+     * @param {number} radius 
+     */
     initializeCircle(centerX,centerY,radius) {
         let radiusSqr = radius*radius
         this.initializePoints(
@@ -131,10 +137,96 @@ export class Simulation {
             if (this.environment.hardCollisions) {
                 for (let otherIndex = index + 1; otherIndex < max; otherIndex++) {
                     const beta = this.particleList[otherIndex]
-                    alpha.checkParticleCollision(beta,this.environment)
+                    checkParticleCollision(alpha,beta,this.environment)
                 }
             }
-            alpha.checkEnvironmentCollision(this.environment)
+            checkEnvironmentCollision(alpha,this.environment)
+        }
+    }
+
+    /**
+     * 
+     * @param {Environment} environment 
+     */
+    checkEnvironmentCollision(subject,environment) {
+        if (subject.x > environment.width) {
+            environment.onBounce();
+            subject.vx *= -environment.forceMatrix.boundaries.value;
+            subject.x = 2*environment.width - subject.x;
+        } else if (subject.x < 0) {
+            environment.onBounce();
+            subject.vx *= -environment.forceMatrix.boundaries.value;
+            subject.x = -subject.x;
+        }
+
+        if (subject.y > environment.height) {
+            environment.onBounce();
+            subject.vy *= -environment.forceMatrix.boundaries.value;
+            subject.y = 2*environment.height - subject.y;
+        } else if (subject.y < 0) {
+            environment.onBounce();
+            subject.vy *= -environment.forceMatrix.boundaries.value;
+            subject.y = -subject.y;
+        }
+    }
+
+    /**
+     * Checks the two particles against each other for collision and resolves
+     * it if detected, applying appropriate forces to each particle.
+     * 
+     * @param {Particle} beta The other particle to check for collision. 
+     * @param {Environment} environment The environment the particles exist within.
+     */
+    checkParticleCollision(alpha,beta,environment) {
+        // Calculate vector between particles
+        const deltaX = beta.x - alpha.x
+        const deltaY = beta.y - alpha.y
+        const deltaSqr = deltaX*deltaX + deltaY*deltaY;
+
+        const radiusSum = alpha.props.atomicRadius + beta.props.atomicRadius
+        const radiusSumSqr = radiusSum * radiusSum
+
+        // Ensure particles within collision range
+        if (deltaSqr <= radiusSumSqr) {
+            const velX = beta.vx - alpha.vx
+            const velY = beta.vy - alpha.vy
+            const dotProd = velX*deltaX + velY*deltaY
+            // ensure velocities are opposed
+            if (dotProd < 0) {
+                // Resolve Collision
+
+                // decompose velocity into parallel and opposing components
+                const alphaDiffMag = (alpha.vx*deltaX + alpha.vy*deltaY) / deltaSqr
+                const alphaTanMag = (alpha.vx*deltaY - alpha.vy*deltaX) / deltaSqr
+                const betaDiffMag = (beta.vx*deltaX + beta.vy*deltaY) / deltaSqr
+                const betaTanMag = (beta.vx*deltaY - beta.vy*deltaX) / deltaSqr
+
+                // calculate new components along collision path
+                const alphaMass = alpha.props.mass
+                const betaMass = beta.props.mass
+                const totalMass = alphaMass + betaMass
+                const massDiff = alphaMass - betaMass
+                const finalAlphaDiffMag = (massDiff/totalMass)*alphaDiffMag + 2*betaMass/totalMass*betaDiffMag
+                const finalBetaDiffMag = 2*alphaMass/totalMass*alphaDiffMag - (massDiff/totalMass)*betaDiffMag
+
+                // recompose new velocities
+                alpha.vx = finalAlphaDiffMag*deltaX + alphaTanMag*deltaY
+                alpha.vy = finalAlphaDiffMag*deltaY + alphaTanMag*(-deltaX)
+                beta.vx = finalBetaDiffMag*deltaX + betaTanMag*deltaY
+                beta.vy = finalBetaDiffMag*deltaY + betaTanMag*(-deltaX)
+
+                // nudge particles
+                const deltaMag = Math.sqrt(deltaSqr)
+                const diff = radiusSum - deltaMag
+                const nudgeX = diff * deltaX / (deltaMag * totalMass);
+                const nudgeY = diff * deltaY / (deltaMag * totalMass);
+                alpha.x -= nudgeX * betaMass;
+                alpha.y -= nudgeY * betaMass;
+                beta.x += nudgeX * alphaMass;
+                beta.y += nudgeY * alphaMass;
+
+                environment.onCollide()
+            }
         }
     }
 }
