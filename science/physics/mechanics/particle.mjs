@@ -147,13 +147,4 @@ export class Particle {
             }
         }
     }
-
-    #render = new AtomicParticleRender()
-
-    /**
-     * 
-     */
-    draw(context,colorScheme) {
-        this.#render.render(context,colorScheme,this)
-    }
 }
