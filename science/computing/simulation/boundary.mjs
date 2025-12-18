@@ -33,10 +33,10 @@ export class ElasticBoundary extends EnvironmentForce {
 
     #onBounce(force) {
         this.appliedForce += force
-        this.onBounce()
     }
 
     applyForce(dt,subject) {
+        return
         // F = m * a
         //   a = dv/dt
         //   dv = 2*{subject.vxy}
