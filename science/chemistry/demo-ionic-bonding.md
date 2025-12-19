@@ -28,15 +28,15 @@ One atom completely loses one or more electrons, donating them to another atom, 
 
 <fieldset>
 <legend>Choose a Scenario:</legend>
-<input type='radio' id='scenario-0'>
+<input type='radio' id='scenario-0' name='scenario'>
 <label for='scenario-0'>Empty</label>
-<input type='radio' id='scenario-1'>
+<input type='radio' id='scenario-1' name='scenario'>
 <label for='scenario-1'>Sodium and Chlorine Pair</label>
-<input type='radio' id='scenario-2'>
+<input type='radio' id='scenario-2' name='scenario'>
 <label for='scenario-2'>Sodium and Chlorine Gas 🚧</label>
-<input type='radio' id='scenario-3'>
+<input type='radio' id='scenario-3' name='scenario'>
 <label for='scenario-3'>Sodium Bulk and Chlorine Gas 🚧</label>
-<input type='radio' id='scenario-4'>
+<input type='radio' id='scenario-4' name='scenario'>
 <label for='scenario-4'>Calcium and Chlorine Gas 🚧</label>
 </fieldset>
 
