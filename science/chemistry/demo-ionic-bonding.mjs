@@ -28,7 +28,8 @@ const uiElements = {
     inputRunning: document.getElementById('input-running'),
     buttonReset: document.getElementById('sim-reset'),
     table: Object.values(Elements).map((value)=>{
-        document.getElementById(`ptable-${value.name.toLowerCase()}`)
+        const element = document.getElementById(`ptable-${value.name.toLowerCase()}`)
+        // TODO: style each element
     })
 }
 // endregion
