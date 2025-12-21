@@ -137,10 +137,10 @@ export class Simulation {
             if (this.environment.hardCollisions) {
                 for (let otherIndex = index + 1; otherIndex < max; otherIndex++) {
                     const beta = this.particleList[otherIndex]
-                    checkParticleCollision(alpha,beta,this.environment)
+                    this.checkParticleCollision(alpha,beta,this.environment)
                 }
             }
-            checkEnvironmentCollision(alpha,this.environment)
+            this.checkEnvironmentCollision(alpha,this.environment)
         }
     }
 
