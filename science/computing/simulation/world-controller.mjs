@@ -2,7 +2,7 @@
 import '../../physics/mechanics/constants.mjs';
 import { Particle } from '../../physics/mechanics/particle.mjs';
 import { Simulation } from './simulation.mjs';
-import { Timer } from '../../../scripts/common/timer.mjs';
+import { Timer } from '../../../js/common/timer.mjs';
 
 import { CPKColorScheme } from '../../chemistry/cpk-coloring.mjs'
 import { Element } from '../../chemistry/element.mjs';

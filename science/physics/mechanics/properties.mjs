@@ -1,5 +1,5 @@
 
-import { UnimplementedError } from  '../../../scripts/common/errors.mjs'
+import { UnimplementedError } from  '../../../js/common/errors.mjs'
 
 /**
  * TODO: add type-tags for UI-level logic/selecting renderers

@@ -8,7 +8,7 @@ import { WorldController } from '../computing/simulation/world-controller.mjs';
 import { Particle } from '../physics/mechanics/particle.mjs';
 
 import { SoundBoard } from '../../scripts/audio/sound-board.mjs';
-import { Timer } from '../../scripts/common/timer.mjs';
+import { Timer } from '../../js/common/timer.mjs';
 import { Demo } from '../../scripts/components/demo.mjs'
 
 // region Get Elements

@@ -1,4 +1,4 @@
-import { NoOp } from '../../../scripts/common/fns.mjs'
+import { NoOp } from '../../../js/common/fns.mjs'
 import { COULOMB_CONSTANT, GRAVITY_EARTH_ACCELERATION } from '../../physics/mechanics/constants.mjs'
 
 import { ElasticBoundary } from './boundary.mjs'

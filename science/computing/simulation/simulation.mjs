@@ -2,7 +2,7 @@
 
 import { Environment, ForceMatrix } from './environment.mjs';
 
-import { Timer } from '../../../scripts/common/timer.mjs'
+import { Timer } from '../../../js/common/timer.mjs'
 import { Particle } from '../../physics/mechanics/particle.mjs'
 import { Entity } from './entity.mjs';
 
