@@ -1,5 +1,5 @@
 
-import { lazy } from '../common/lazy.mjs'
+import { lazy } from '/js/common/lazy.mjs'
 
 const clack = lazy(()=>{return new Audio('/assets/audio/glass-tap-dull.wav')})
 const pop = lazy(()=>{return new Audio('/assets/audio/mouth-pop-short.wav')})
