@@ -3,6 +3,8 @@ layout: wiki
 
 title: Chemistry
 description: 
+date: 2025-12-25 08:00 -0600
+updated: 2025-12-26 08:00 -0600
 ---
 
 ## Content
