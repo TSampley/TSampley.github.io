@@ -1,16 +1,19 @@
 ---
-
+layout: default
+stylesheet: /assets/css/wiki.css
 ---
 
-<!DOCTYPE html>
-<head>
-    {% include tags-as-meta.html %}
-    <link rel="stylesheet" href="/assets/css/wiki.css" />
-</head>
-<body>
-    {% include header.html %}
-    <main>
-        {{ content }}
-    </main>
-    {% include footer.html %}
-</body>
+<article class="wiki h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="wiki-header">
+    <h1 class="wiki-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="wiki-meta">
+      {% include publishing.html %}
+  </header>
+
+  <div class="wiki-content e-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>
