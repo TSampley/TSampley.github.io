@@ -4,6 +4,7 @@ layout: demo
 title: Ionic Bonding
 description: A demonstration of ioninc particle interactions
 date: 2025-12-10 08:00 -0600
+updated: 2025-12-25 08:00 -0600
 ---
 
 One atom completely loses one or more electrons, donating them to another atom, causing the two to become attracted through electrostatic force.
