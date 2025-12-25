@@ -1,7 +1,7 @@
 ---
 ---
 
-@use './default.scss';
+@use './base.scss';
 
 .demo-box {
     background: grey;
@@ -46,4 +46,77 @@ canvas {
 
 @media screen and (min-height: 900px) {
 
+}
+
+.wiki-list-heading {
+    font-size: 28px
+}
+
+.wiki-list {
+    margin-left: 0;
+    list-style: none
+}
+
+.wiki-list>li {
+    margin-bottom: 30px
+}
+
+.wiki-meta {
+    font-size: 14px;
+    color: #828282
+}
+
+.wiki-link {
+    display: block;
+    font-size: 24px
+}
+
+.wiki-header {
+    margin-bottom: 30px
+}
+
+.wiki-title {
+    font-size: 42px;
+    letter-spacing: -1px;
+    line-height: 1
+}
+
+@media screen and (max-width: 800px) {
+    .wiki-title {
+        font-size: 36px
+    }
+}
+
+.wiki-content {
+    margin-bottom: 30px
+}
+
+.wiki-content h2 {
+    font-size: 32px
+}
+
+@media screen and (max-width: 800px) {
+    .wiki-content h2 {
+        font-size: 28px
+    }
+}
+
+.wiki-content h3 {
+    font-size: 26px
+}
+
+@media screen and (max-width: 800px) {
+    .wiki-content h3 {
+        font-size: 22px
+    }
+}
+
+.wiki-content h4 {
+    font-size: 20px
+}
+
+@media screen and (max-width: 800px) {
+    .wiki-content h4 {
+        font-size: 18px
+    }
 }
