@@ -385,77 +385,25 @@ table td {
     font-size: 32px
 }
 
-.post-list-heading {
-    font-size: 28px
-}
-
-.post-list {
-    margin-left: 0;
-    list-style: none
-}
-
-.post-list>li {
+.wiki-header {
     margin-bottom: 30px
 }
 
-.post-meta {
-    font-size: 14px;
-    color: #828282
-}
-
-.post-link {
-    display: block;
-    font-size: 24px
-}
-
-.post-header {
-    margin-bottom: 30px
-}
-
-.post-title {
-    font-size: 42px;
+.wiki-title {
+    font-size: 36px;
     letter-spacing: -1px;
-    line-height: 1
+    line-height: 1;
+    margin-bottom: 15px
 }
 
-@media screen and (max-width: 800px) {
-    .post-title {
-        font-size: 36px
-    }
-}
-
-.post-content {
+.wiki-content {
     margin-bottom: 30px
 }
 
-.post-content h2 {
-    font-size: 32px
-}
-
-@media screen and (max-width: 800px) {
-    .post-content h2 {
-        font-size: 28px
-    }
-}
-
-.post-content h3 {
-    font-size: 26px
-}
-
-@media screen and (max-width: 800px) {
-    .post-content h3 {
-        font-size: 22px
-    }
-}
-
-.post-content h4 {
-    font-size: 20px
-}
-
-@media screen and (max-width: 800px) {
-    .post-content h4 {
-        font-size: 18px
-    }
+.wiki-meta {
+    font-size: 14px;
+    color: #828282;
+    margin-bottom: 15px
 }
 
 .highlight {
