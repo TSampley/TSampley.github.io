@@ -12,9 +12,14 @@
       {%- include google-analytics.html -%}
     {%- endif -%}
     {%- if site.google_ads -%}
-      {%- include google-ads.html -%}
+      {%- unless page.demonetized -%}
+        {%- include google-ads.html -%}
+      {%- endunless -%}
     {%- endif -%}
   {%- else -%}
     <!-- GOOGLE ANALYTICS({{ site.google_analytics }})/ADS({{ site.google_ads }}) HERE -->
+    {%- if page.demonetized -%}
+      <!-- DEMONETIZED PAGE -->
+    {%- endif -%}
   {%- endif -%}
 </head>
