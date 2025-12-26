@@ -7,4 +7,9 @@
   gtag('js', new Date());
 
   gtag('config', '{{ site.google_analytics }}');
+
+  function gtag_event(action, params) {
+    gtag('event', action, params);
+  }
+  // TODO: Add more event types as needed
 </script>
