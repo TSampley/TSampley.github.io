@@ -23,6 +23,8 @@ url: "https://www.taushsampley.com" # the base hostname & protocol for your site
 # permalink: /:categories/:year/:month/:day/:title:output_ext
 twitter_username: SampleyTaush
 github_username:  TSampley
+google_analytics: G-0S1RMMPFVZ
+google_ads: ca-pub-2640513385126692
 show_excerpts: true
 
 defaults:
@@ -53,8 +55,6 @@ theme: minima
 
 plugins:
   - jekyll-feed
-
-google_analytics: GTM-PS65DN32
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
