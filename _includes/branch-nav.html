@@ -2,7 +2,7 @@
   <ul class="branch-nav">
   {%- assign current_branch = page.dir -%}
   {%- assign excluded = 'about,feed.xml,404.html' | split: ',' -%}
-  {%- assign pages_in_branch = site.pages | where 'ext', 'html' -%}
+  {%- assign pages_in_branch = site.html_pages -%}
   {%- for otherPage in pages_in_branch -%}
     {%- assign remainder = otherPage.dir | remove_first: current_branch -%}
     {%- assign segments = remainder | split: '/' -%}

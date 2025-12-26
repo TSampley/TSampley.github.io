@@ -9,10 +9,11 @@ updated: 2025-12-25 08:00 -0600
 
 One atom completely loses one or more electrons, donating them to another atom, causing the two to become attracted through electrostatic force.
 
+{% include ads/multiplex.html %}
+
 {% include periodic-table.html %}
 <!-- TODO: move periodic table to drop down selector -->
 <!-- TODO: add element/charge/neutrons selector -->
-
 
 <canvas class="demo-box" id="hydrogen-bulk" width=600 height=500 style='background-color: black'></canvas>
 <div id='sim-controls'>

@@ -17,6 +17,8 @@ Mandelobrot is one of the earliest visual programs I made based on reading his b
 
 Each project relates to some of the ideas I've been playing with lately, so I thought it would be nice to use these as my test subjects, since I've been wanting to share something (but struggling to find anything worth sharing, always).
 
+{% include ads/in-article.html %}
+
 ## Objectives
 
 Amulet would have been written for desktop using Swing, so converting the UI components would be my primary concern at first. It may be presumptuous to say "components", though.
