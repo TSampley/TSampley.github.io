@@ -14,7 +14,9 @@ export const SoundBoard = {
     quickPlay: function (sound) {
         const clip = sound.value
         clip.pause()
-        clip.seek(0)
+        if (clip.fastSeek) {
+            clip.fastSeek(0)
+        }
         clip.play()
     },
 
