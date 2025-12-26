@@ -4,8 +4,15 @@
 layout: home
 ---
 
+{%- for otherPage in site.pages | where -%}
+  {%- assign excluded = 'about,feed.xml,404.html' | split: ',' -%}
+  {%- assign segments = otherPage.url | split: '/' -%}
 
-<a href='./humanities/'>Humanities</a>
-<a href='./math/'>Math</a>
-<a href='./philosophy/'>Philosophy</a>
-<a href='./science/'>Science</a>
+  {%- unless segments[2] or excluded contains segments[1] -%}
+    {%- if segments[1] -%}
+      {% include components/topic.html topic=otherPage.title url=otherPage.url %}
+    {%- endif -%}
+
+  {%- endunless -%}
+
+{%- endfor -%}
