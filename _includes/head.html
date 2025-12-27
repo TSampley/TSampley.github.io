@@ -22,4 +22,7 @@
       <!-- DEMONETIZED PAGE -->
     {%- endif -%}
   {%- endif -%}
+  {%- if page.noindex or page.nofollow -%}
+    {% include meta/robots.html %}
+  {%- endif -%}
 </head>
