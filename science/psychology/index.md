@@ -1,7 +1,7 @@
 ---
 layout: wiki
 
-title:
+title: Psychology
 description:
 ---
 

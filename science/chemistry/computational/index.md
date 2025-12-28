@@ -1,7 +1,7 @@
 ---
 layout: wiki
 
-title: Computation Chemistry
+title: Computational Chemistry
 description: 
 ---
 

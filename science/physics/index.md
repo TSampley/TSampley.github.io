@@ -1,7 +1,7 @@
 ---
 layout: wiki
 
-title: Mechanics
+title: Physics
 description:
 date: 2025-12-26 02:36 -0600
 ---
