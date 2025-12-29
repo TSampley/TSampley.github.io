@@ -1,6 +1,6 @@
-import { Demo } from "../../scripts/components/demo.mjs";
-import { TimeControls } from "../../scripts/components/time-controls.mjs"
-import { Simulation } from "../../scripts/physics/simulation.mjs";
+import { Demo } from "../../js/components/demo.mjs";
+import { TimeControls } from "../../js/components/time-controls.mjs"
+import { Simulation } from "../../science/computing/simulation/simulation.mjs";
 
 // Collect UI elements
 const demo = new Demo('canvas-dot-product')

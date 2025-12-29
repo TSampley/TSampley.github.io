@@ -7,9 +7,9 @@ import { Simulation } from '../computing/simulation/simulation.mjs';
 import { WorldController } from '../computing/simulation/world-controller.mjs';
 import { Particle } from '../physics/mechanics/particle.mjs';
 
-import { SoundBoard } from '../../scripts/audio/sound-board.mjs';
+import { SoundBoard } from '../../js/audio/sound-board.mjs';
 import { Timer } from '../../js/common/timer.mjs';
-import { Demo } from '../../scripts/components/demo.mjs'
+import { Demo } from '../../js/components/demo.mjs'
 
 // region Get Elements
 const displayParagraph = document.getElementById('sim-display')

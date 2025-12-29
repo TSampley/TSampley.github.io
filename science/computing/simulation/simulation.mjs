@@ -183,15 +183,20 @@ export class Simulation {
         const deltaY = beta.y - alpha.y
         const deltaSqr = deltaX*deltaX + deltaY*deltaY;
 
+        // Calculate Properties
         const radiusSum = alpha.props.atomicRadius + beta.props.atomicRadius
         const radiusSumSqr = radiusSum * radiusSum
+        const alphaMass = alpha.props.mass
+        const betaMass = beta.props.mass
+        const totalMass = alphaMass + betaMass
+        const massDiff = alphaMass - betaMass
 
         // Ensure particles within collision range
         if (deltaSqr <= radiusSumSqr) {
             const velX = beta.vx - alpha.vx
             const velY = beta.vy - alpha.vy
             const dotProd = velX*deltaX + velY*deltaY
-            // ensure velocities are opposed
+            // ensure velocities are opposed before reversing
             if (dotProd < 0) {
                 // Resolve Collision
 
@@ -202,10 +207,6 @@ export class Simulation {
                 const betaTanMag = (beta.vx*deltaY - beta.vy*deltaX) / deltaSqr
 
                 // calculate new components along collision path
-                const alphaMass = alpha.props.mass
-                const betaMass = beta.props.mass
-                const totalMass = alphaMass + betaMass
-                const massDiff = alphaMass - betaMass
                 const finalAlphaDiffMag = (massDiff/totalMass)*alphaDiffMag + 2*betaMass/totalMass*betaDiffMag
                 const finalBetaDiffMag = 2*alphaMass/totalMass*alphaDiffMag - (massDiff/totalMass)*betaDiffMag
 
@@ -215,18 +216,18 @@ export class Simulation {
                 beta.vx = finalBetaDiffMag*deltaX + betaTanMag*deltaY
                 beta.vy = finalBetaDiffMag*deltaY + betaTanMag*(-deltaX)
 
-                // nudge particles
-                const deltaMag = Math.sqrt(deltaSqr)
-                const diff = radiusSum - deltaMag
-                const nudgeX = diff * deltaX / (deltaMag * totalMass);
-                const nudgeY = diff * deltaY / (deltaMag * totalMass);
-                alpha.x -= nudgeX * betaMass;
-                alpha.y -= nudgeY * betaMass;
-                beta.x += nudgeX * alphaMass;
-                beta.y += nudgeY * alphaMass;
-
                 environment.onCollide()
             }
+
+            // nudge particles unconditionally
+            const deltaMag = Math.sqrt(deltaSqr)
+            const diff = radiusSum - deltaMag
+            const nudgeX = diff * deltaX / (deltaMag * totalMass);
+            const nudgeY = diff * deltaY / (deltaMag * totalMass);
+            alpha.x -= nudgeX * betaMass;
+            alpha.y -= nudgeY * betaMass;
+            beta.x += nudgeX * alphaMass;
+            beta.y += nudgeY * alphaMass;
         }
     }
 }
