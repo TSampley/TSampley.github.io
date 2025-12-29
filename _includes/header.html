@@ -40,7 +40,7 @@
                 {%- endif -%}
               {%- endfor -%}
             {%- else -%}
-              {%- assign is_subdir = false -%}
+              {%- continue -%}
             {%- endif -%}
 
             {%- assign size_diff = other_dir_segments.size | minus: current_dir_segments.size -%}
