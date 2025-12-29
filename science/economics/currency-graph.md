@@ -22,4 +22,4 @@ graph TD
 ```
 {: .language-mermaid }
 
-{% include mermaid-script.html %}
+{% include code/mermaid-script.html %}
