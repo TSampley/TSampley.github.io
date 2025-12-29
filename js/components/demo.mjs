@@ -1,6 +1,4 @@
 
-import { SoundBoard } from "../audio/sound-board.mjs";
-
 /**
  * A Demo captures the essential HTML Elements for the base demo
  * functionality.
