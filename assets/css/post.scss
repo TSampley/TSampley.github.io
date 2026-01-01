@@ -1,7 +1,8 @@
 ---
 ---
 
-@import 'base';
+@use 'base.scss';
+@import 'minima';
 
 .post-list-heading {
     font-size: 28px
