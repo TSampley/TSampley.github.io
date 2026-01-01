@@ -1,11 +1,10 @@
 
-@use "nav.scss";
+@use 'nav';
 
-@use "footer.scss";
-@use "page.scss";
+@use 'footer';
+@use 'page';
 
-@use "wiki.scss";
-@use "highlight.scss";
+@use 'highlight';
 
 body,
 h1,
