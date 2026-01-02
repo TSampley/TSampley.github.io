@@ -1,0 +1,23 @@
+---
+
+---
+
+{
+  "branches": [
+    {%- assign included = 'index.md,index.html' | split: ',' -%}
+    {%- assign excluded = '404.md' | split: ',' -%}
+
+    {%- assign indices = site.pages | where_exp: 'page', 'included contains page.name' -%}
+    {%- assign wikis = indices | where: 'layout', 'wiki' -%}
+    {%- for wiki in wikis -%}
+
+      {%- assign wiki_prop = wiki.wiki_cat | default: 'none' -%}
+
+      {
+        "name": "{{ wiki.name }}",
+        "url": "{{ wiki.url }}",
+        "category": "{{ wiki_prop }}"
+      }{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ]
+}
