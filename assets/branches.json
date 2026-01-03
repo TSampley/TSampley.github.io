@@ -13,9 +13,17 @@
 
       {%- assign wiki_prop = wiki.wiki_cat | default: 'none' -%}
 
+      {%- assign desc = wiki.description | escape -%}
+      {%- assign title = wiki.title | escape | default: 'Untitled' -%}
+      {%- assign canonical_url = site.url | append: wiki.url -%}
+
       {
-        "name": "{{ wiki.name }}",
-        "url": "{{ wiki.url }}",
+        "title": "{{ title }}",
+        "title-aria": "{{ title }}",
+        "description": "{{ desc }}",
+        "description-aria": "{{ desc | default: 'No description provided' }}",
+        "path": "{{ wiki.url }}",
+        "canonical-url": "{{ canonical_url }}",
         "category": "{{ wiki_prop }}"
       }{%- unless forloop.last -%},{%- endunless -%}
     {%- endfor -%}
