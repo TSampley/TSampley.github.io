@@ -6,5 +6,6 @@ layout: default
 
 <script async src='./sitemap.mjs' type="module"></script>
 <script>
-  (sitemap_queue = window.sitemap_queue || []).push('sitemap-canvas')
+  console.log('Pushing Canvas Id: sitemap-canvas');
+  (sitemap_queue = window.sitemap_queue || []).push('sitemap-canvas');
 </script>
