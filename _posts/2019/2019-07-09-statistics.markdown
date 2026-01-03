@@ -37,6 +37,6 @@ uses your cookies.
 <p id="label_covar"></p>
 <p id="label_corr"></p>
 
-<script src="/scripts/stat/DiscretePDF.js"></script>
-<script src="/scripts/stat/Graph.js"></script>
-<script src="/scripts/stat/main.js"></script>
+<script src="/math/statistics/DiscretePDF.js"></script>
+<script src="/math/statistics/Graph.js"></script>
+<script src="/math/statistics/main.js"></script>
