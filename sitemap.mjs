@@ -5,9 +5,14 @@ window.onload = async () => {
   processSitemapQueue();
 }
 
+class Point {
+  constructor(x=0,y=0){this.x=x;this.y=y;}
+}
+
 class Entity {
-  constructor(position={x:0,y:0}) {
+  constructor(position=new Point(),velocity=new Point()) {
     this.position = position
+    this.velocity = velocity
   }
 }
 
@@ -44,7 +49,7 @@ class Sitemap {
      * Spring force between nodes. $`F=k*d`$
      * @type {number}
      */
-    this.springConstant = 1E-3
+    this.springConstant = 0
     /**
      * Repel force between nodes. $`F=k/d^2`$
      * @type {number}
@@ -54,7 +59,8 @@ class Sitemap {
      * Center force on all nodes. $`F=k*d^2`$
      * @type {number}
      */
-    this.centerForce = 1E3
+    this.centerForceConstant = 1E-3
+    this.centerForceMax = 5
     this.boundaryMargin = this.nodeRadius
 
     this.canvas = document.getElementById(this.hostId)
@@ -152,22 +158,24 @@ class Sitemap {
       // Calculate independent forces
       const centerDx = center.x - alphaPos.x
       const centerDy = center.y - alphaPos.y
-      const centerOffsetSqr = centerDx * centerDx + centerDy * centerDy
-      const centerOffset = Math.sqrt(centerOffsetSqr)
+      const centerDistSqr = centerDx * centerDx + centerDy * centerDy
+      const centerDist = Math.sqrt(centerDistSqr)
 
-      if (centerOffset != 0) {
-        // Attract all towards center (0,0) to keep graph together  
-        const centerForce = this.centerForce / centerOffsetSqr
-        const centerForceX = centerForce * centerDx / centerOffset
-        const centerForceY = centerForce * centerDy / centerOffset
+      if (centerDist != 0) {
+        // Attract all towards center (0,0) to keep graph together
+        const centerForce = Math.min(this.centerForceConstant * centerDistSqr, this.centerForceMax)
+        const centerForceX = centerForce * centerDx / centerDist
+        const centerForceY = centerForce * centerDy / centerDist
 
         alphaForce.fx += centerForceX
         alphaForce.fy += centerForceY
       }
 
       // Update node positions or other properties here; after all forces calculated
-      alphaPos.x += alphaForce.fx * dt
-      alphaPos.y += alphaForce.fy * dt
+      alpha.velocity.x += alphaForce.fx * dt
+      alpha.velocity.y += alphaForce.fy * dt
+      alphaPos.x += alpha.velocity.x * dt
+      alphaPos.y += alpha.velocity.y * dt
 
       // Keep Nodes in bounds
       if (alphaPos.x < this.boundaryMargin) {
