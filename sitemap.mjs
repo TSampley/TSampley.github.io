@@ -31,6 +31,7 @@ class Sitemap {
      * @type {Array<PageNodeEntity>}
      */
     this.nodes = []
+    this.nodeRadius = 10
 
     /**
      * Minimum distance between nodes for calculations.
@@ -38,9 +39,23 @@ class Sitemap {
      */
     this.minDistance = 1
     // We will allow different methods of determining length beteween nodes later
-    this.idealDistance = 50 // Node spring ideal distance
-    this.repelStrength = 1E-1
-    this.centerForce = 1E-1
+    this.springDistance = 50 // Node spring ideal distance
+    /**
+     * Spring force between nodes. $`F=k*d`$
+     * @type {number}
+     */
+    this.springConstant = 1E-3
+    /**
+     * Repel force between nodes. $`F=k/d^2`$
+     * @type {number}
+     */
+    this.repelForce = 0
+    /**
+     * Center force on all nodes. $`F=k*d^2`$
+     * @type {number}
+     */
+    this.centerForce = 1E3
+    this.boundaryMargin = this.nodeRadius
 
     this.canvas = document.getElementById(this.hostId)
     if(!this.canvas) {
@@ -78,25 +93,35 @@ class Sitemap {
   step(dt) {
     const limit = this.nodes.length
     const forces = []
-    const maxForce = this.minDistance * this.repelStrength
+    const maxForce = this.minDistance * this.springConstant
     const width = this.canvas.width
     const height = this.canvas.height
+    const maxX = width - this.boundaryMargin
+    const maxY = height - this.boundaryMargin
     const center = {x: width / 2, y: height / 2}
     for (let index = 0; index < limit; index++) {
       const alpha = this.nodes[index]
       const alphaPos = alpha.position
-      const alphaForce = (forces[index] = forces[index] || {fx:0,fy:0})
+      if (forces[index] === undefined) {
+        forces[index] = {fx:0,fy:0}
+      }
+      const alphaForce = forces[index]
       for (let otherIndex = index + 1; otherIndex < limit; otherIndex++) {
         const beta = this.nodes[otherIndex]
         const betaPos = beta.position
-        const betaForce = (forces[index] = forces[otherIndex] || {fx:0,fy:0})
-        // Calculate forces between alpha and beta nodes here
+        if (forces[otherIndex] === undefined) {
+          forces[otherIndex] = {fx:0,fy:0}
+        }
+        const betaForce = forces[otherIndex]
+        // ==Calculate forces between alpha and beta nodes here==
 
         // Calculate vector between particles for relative forces
         const dx = betaPos.x - alphaPos.x
         const dy = betaPos.y - alphaPos.y
         const distanceSq = dx * dx + dy * dy
         const distance = Math.sqrt(distanceSq)
+
+        // Calculate universal repelling force and spring force
         if (distance == 0) { // soft-core to avoid singularity
           // displace randomly to avoid zero-distance
           const angle = Math.random() * 2 * Math.PI
@@ -110,10 +135,12 @@ class Sitemap {
           betaForce.fy += fy
         } else {
           // Calculate force towards ideal distance
-          const forceDistance = Math.max(this.idealDistance - distance, this.minDistance)
-          const forceMagnitude = forceDistance * this.repelStrength
-          const fx = (dx / distance) * forceMagnitude
-          const fy = (dy / distance) * forceMagnitude
+          const springDisplacement = this.springDistance - distance
+          const springForce = springDisplacement * this.springConstant
+          const repelForce = this.repelForce / distanceSq
+          const total = springForce + repelForce
+          const fx = (dx / distance) * total
+          const fy = (dy / distance) * total
           // Attract alpha towards beta
           alphaForce.fx += fx
           alphaForce.fy += fy
@@ -122,34 +149,37 @@ class Sitemap {
           betaForce.fy -= fy
         }
       }
-      // Keep Nodes in bounds
-      const boundaryMargin = 50
-      const boundaryForce = 1E-1
-      if (alphaPos.x < boundaryMargin) {
-        alphaForce.fx += (boundaryMargin - alphaPos.x) * boundaryForce
-      } else if (alphaPos.x > width - boundaryMargin) {
-        alphaForce.fx -= (alphaPos.x - (width - boundaryMargin)) * boundaryForce
-      }
-      if (alphaPos.y < boundaryMargin) {
-        alphaForce.fy += (boundaryMargin - alphaPos.y) * boundaryForce
-      } else if (alphaPos.y > height - boundaryMargin) {
-        alphaForce.fy -= (alphaPos.y - (height - boundaryMargin)) * boundaryForce
-      }
-
-      // Attract all towards center (0,0) to keep graph together
+      // Calculate independent forces
       const centerDx = center.x - alphaPos.x
       const centerDy = center.y - alphaPos.y
-      const centerOffsetSqr = Math.max(centerDx * centerDx + centerDy * centerDy, this.minDistance)
+      const centerOffsetSqr = centerDx * centerDx + centerDy * centerDy
       const centerOffset = Math.sqrt(centerOffsetSqr)
-      const centerForce = this.centerForce / centerOffsetSqr
-      const centerForceX = centerForce * -alphaPos.x / centerOffset
-      const centerForceY = centerForce * -alphaPos.y / centerOffset
-      alphaForce.fx += centerForceX
-      alphaForce.fy += centerForceY
+
+      if (centerOffset != 0) {
+        // Attract all towards center (0,0) to keep graph together  
+        const centerForce = this.centerForce / centerOffsetSqr
+        const centerForceX = centerForce * centerDx / centerOffset
+        const centerForceY = centerForce * centerDy / centerOffset
+
+        alphaForce.fx += centerForceX
+        alphaForce.fy += centerForceY
+      }
 
       // Update node positions or other properties here; after all forces calculated
       alphaPos.x += alphaForce.fx * dt
       alphaPos.y += alphaForce.fy * dt
+
+      // Keep Nodes in bounds
+      if (alphaPos.x < this.boundaryMargin) {
+        alphaPos.x = this.boundaryMargin
+      } else if (alphaPos.x > maxX) {
+        alphaPos.x = maxX
+      }
+      if (alphaPos.y < this.boundaryMargin) {
+        alphaPos.y = this.boundaryMargin
+      } else if (alphaPos.y > maxY) {
+        alphaPos.y = maxY
+      }
 
       alpha.force = alphaForce
     }
@@ -211,7 +241,7 @@ function drawSitemap(sitemap) {
     // draw node circle
     ctx.fillStyle = '#0077cc'
     ctx.beginPath()
-    ctx.arc(pos.x, pos.y, 10, 0, 2 * Math.PI)
+    ctx.arc(pos.x, pos.y, sitemap.nodeRadius, 0, 2 * Math.PI)
     ctx.fill()
     // draw node text
     ctx.fillStyle = '#000000'
@@ -286,4 +316,3 @@ sitemap_list.forEach((sitemap) => {
 });
 
 // TODO: process data and node dependencies based on hierarchies
-// TODO: 
