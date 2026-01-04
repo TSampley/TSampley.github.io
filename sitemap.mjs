@@ -469,7 +469,7 @@ function bindSitemaps() {
  */
 function processSiteData(sitemap,data) {
   const duplicatedBranches = [...data.branches]
-  duplicatedBranches.push(...duplicatedBranches)
+  // duplicatedBranches.push(...duplicatedBranches)
   const nodeEntities = duplicatedBranches.map((branch) => {
     // TODO: branch.path split / into hierarchy levels
     // 
