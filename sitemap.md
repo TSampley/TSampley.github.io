@@ -2,9 +2,9 @@
 layout: default
 ---
 
-<div style='position: relative;'>
-  <canvas id='sitemap-canvas' width=400 height=400 style='border: 2px solid black;'></canvas>
-  <div id='controls' style='position: absolute; top: 0px; left: 0px; display: flex; flex-direction: column; opacity: 0.60'>
+<div class='container'>
+  <canvas id='sitemap-canvas' class='demo-view' width=400 height=400></canvas>
+  <div id='controls' class='controls-overlay controls-container'>
     <span id='display-node'> </span>
     <button id='button-time-control'>Start</button>
     <button id='button-save'>Save</button>

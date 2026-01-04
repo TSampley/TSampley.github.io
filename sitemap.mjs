@@ -58,21 +58,27 @@ class SitemapPresenter {
     this.rangeDragRestitution = document.getElementById(rangeDragRestitutionId)
     this.checkboxDebug = document.getElementById(checkboxDebugId)
 
+    this.rangeRepulsionForce.value = sitemap.repelForce
     this.rangeRepulsionForce.oninput = (event) => {
       sitemap.repelForce = event.target.value
     }
+    this.rangeCenterForce.value = sitemap.centerForceConstant
     this.rangeCenterForce.oninput = (event) => {
       sitemap.centerForceConstant = event.target.value
     }
+    this.rangeSpringForce.value = sitemap.springConstant
     this.rangeSpringForce.oninput = (event) => {
       sitemap.springConstant = event.target.value
     }
+    this.rangeSpringLength.value = sitemap.springDistance
     this.rangeSpringLength.oninput = (event) => {
       sitemap.springDistance = event.target.value
     }
+    this.rangeDragRestitution.value = 1 - sitemap.dragRestitution
     this.rangeDragRestitution.oninput = (event) => {
       sitemap.dragRestitution = 1 - event.target.value
     }
+    this.checkboxDebug.checked = sitemap.debug
     this.checkboxDebug.onchange = (event) => {
       sitemap.debug = event.target.checked == true
     }
@@ -107,7 +113,7 @@ class Sitemap {
      * Spring force between nodes. $`F=k*d`$
      * @type {number}
      */
-    this.springConstant = 0 //1E-5
+    this.springConstant = 1E-5
     /**
      * Repel force between nodes. $`F=k/d^2`$
      * @type {number}
@@ -121,7 +127,7 @@ class Sitemap {
     this.centerForceMax = 500
     this.dragRestitution = 0.99
     this.boundaryMargin = this.nodeRadius
-    this.debug = false
+    this.debug = true
 
     this.canvas = document.getElementById(this.hostId)
     if(!this.canvas) {
