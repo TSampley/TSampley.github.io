@@ -19,12 +19,8 @@
   flex-direction: column;
 }
 
-input[type='range'] {
+.controls-container > input[type='range'] {
   margin: 0px 10px;
-}
-
-label:hover {
-  background-color: yellow;
 }
 
 .demo-view {
