@@ -70,6 +70,8 @@ class Sitemap {
     /** @type {CanvasRenderingContext2D} */
     this.context = this.canvas.getContext('2d')
 
+    this.nodeDisplay = document.getElementById('display-node')
+
     this.selectedNode = null
     this.canvas.onclick = (event) => {
       this.onSelectNode(event.offsetX, event.offsetY)
@@ -119,6 +121,11 @@ class Sitemap {
       }
     }
     this.selectedNode = closest
+    if (closest) {
+      this.nodeDisplay.innerHTML = closest.title
+    } else {
+      this.nodeDisplay.innerHTML = ""
+    }
   }
 
   /**
@@ -275,15 +282,6 @@ function drawSitemap(sitemap) {
   ctx.lineWidth = 2
   ctx.strokeRect(0,0,width,height)
 
-  // draw text
-  ctx.fillStyle = '#000000'
-  ctx.font = '16px Arial'
-  ctx.fillText(`Sitemap for: ${sitemap.root}`,10,30)
-  ctx.fillText(`Running: ${sitemap.isRunning}`,10,60)
-  if (sitemap.selectedNode) {
-    ctx.fillText(`Selected node: ${sitemap.selectedNode.title}`, 10,90)
-  }
-
   // draw nodes
   for(const node of sitemap.nodes) {
     const pos = node.position
@@ -299,9 +297,11 @@ function drawSitemap(sitemap) {
       const offsetY = sitemap.hoverPoint.y - pos.y
       const radius = 100.0
       const opacity = 1 - Math.min(1.0, Math.max(Math.abs(offsetX), Math.abs(offsetY))/radius)
-      ctx.fillStyle = `rgba(0, 0, 0, ${opacity})`
-      ctx.font = '12px Arial'
-      ctx.fillText(node.title, pos.x + 15, pos.y + 5)
+      if (opacity > 0.1) {
+        ctx.fillStyle = `rgba(0, 0, 0, ${opacity})`
+        ctx.font = '12px Arial'
+        ctx.fillText(node.title, pos.x + 15, pos.y + 5)
+      }
     }
 
     // draw force vector for debugging
