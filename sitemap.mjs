@@ -49,7 +49,7 @@ class Sitemap {
      * Spring force between nodes. $`F=k*d`$
      * @type {number}
      */
-    this.springConstant = 0
+    this.springConstant = 0 //1E-5
     /**
      * Repel force between nodes. $`F=k/d^2`$
      * @type {number}
@@ -97,8 +97,11 @@ class Sitemap {
     timeControlButton.onclick = (event) => {
       this.isRunning = !this.isRunning
       if (this.isRunning) {
+        timeControlButton.innerHTML = "Stop"
         this.#lastTsl = 0 // avoid accumulating paused time
         requestAnimationFrame((tsl) => this.animate(tsl))
+      } else {
+        timeControlButton.innerHTML = "Start"
       }
     }
   }
@@ -178,7 +181,10 @@ class Sitemap {
         } else {
           // Calculate spring force
           const springDisplacement = this.springDistance - distance
-          const springForce = springDisplacement * this.springConstant
+          const springForce = Math.max(
+            -this.maxForce,
+            Math.min(this.maxForce, springDisplacement * this.springConstant)
+          )
           // Calculate repulsion force
           const repelForce = - this.repelForce / distanceSq
           // Sum all forces
