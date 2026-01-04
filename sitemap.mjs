@@ -180,13 +180,17 @@ class Sitemap {
       // Keep Nodes in bounds
       if (alphaPos.x < this.boundaryMargin) {
         alphaPos.x = this.boundaryMargin
+        alpha.velocity.x = 0
       } else if (alphaPos.x > maxX) {
         alphaPos.x = maxX
+        alpha.velocity.x = 0
       }
       if (alphaPos.y < this.boundaryMargin) {
         alphaPos.y = this.boundaryMargin
+        alpha.velocity.y = 0
       } else if (alphaPos.y > maxY) {
         alphaPos.y = maxY
+        alpha.velocity.y = 0
       }
 
       alpha.force = alphaForce
