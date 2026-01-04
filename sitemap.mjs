@@ -80,7 +80,8 @@ class Sitemap {
       }
       // TODO: setup click to select nodes for editing
     }
-    // TODO: setup click and drag to move nodes
+
+    this.hoverPoint = null
     this.canvas.onmousedown = (event) => {
       console.log(`Sitemap canvas mouse down at (${event.offsetX},${event.offsetY})`)
     }
@@ -88,7 +89,12 @@ class Sitemap {
       console.log(`Sitemap canvas mouse up at (${event.offsetX},${event.offsetY})`)
     }
     this.canvas.onmousemove = (event) => {
-      console.log(`Sitemap canvas mouse move at (${event.offsetX},${event.offsetY})`)
+      if (!this.hoverPoint) this.hoverPoint = new Point();
+      this.hoverPoint.x = event.offsetX
+      this.hoverPoint.y = event.offsetY
+    }
+    this.canvas.onmouseleave = (event) => {
+      this.hoverPoint = null
     }
   }
 
@@ -261,10 +267,17 @@ function drawSitemap(sitemap) {
     ctx.beginPath()
     ctx.arc(pos.x, pos.y, sitemap.nodeRadius, 0, 2 * Math.PI)
     ctx.fill()
+
     // draw node text
-    ctx.fillStyle = '#000000'
-    ctx.font = '12px Arial'
-    ctx.fillText(node.title, pos.x + 15, pos.y + 5)
+    if (sitemap.hoverPoint) {
+      const offsetX = sitemap.hoverPoint.x - pos.x
+      const offsetY = sitemap.hoverPoint.y - pos.y
+      const radius = 100.0
+      const opacity = 1 - Math.min(1.0, Math.max(Math.abs(offsetX), Math.abs(offsetY))/radius)
+      ctx.fillStyle = `rgba(0, 0, 0, ${opacity})`
+      ctx.font = '12px Arial'
+      ctx.fillText(node.title, pos.x + 15, pos.y + 5)
+    }
 
     // draw force vector for debugging
     if (node.force) {
