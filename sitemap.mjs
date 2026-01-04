@@ -54,13 +54,13 @@ class Sitemap {
      * Repel force between nodes. $`F=k/d^2`$
      * @type {number}
      */
-    this.repelForce = 1E3
+    this.repelForce = 1E5
     /**
      * Center force on all nodes. $`F=k*d^2`$
      * @type {number}
      */
-    this.centerForceConstant = 1E-3
-    this.centerForceMax = 5
+    this.centerForceConstant = 1E-1
+    this.centerForceMax = 500
     this.boundaryMargin = this.nodeRadius
 
     this.canvas = document.getElementById(this.hostId)
@@ -140,10 +140,12 @@ class Sitemap {
           betaForce.fx += fx
           betaForce.fy += fy
         } else {
-          // Calculate force towards ideal distance
+          // Calculate spring force
           const springDisplacement = this.springDistance - distance
           const springForce = springDisplacement * this.springConstant
+          // Calculate repulsion force
           const repelForce = - this.repelForce / distanceSq
+          // Sum all forces
           const total = springForce + repelForce
           const fx = (dx / distance) * total
           const fy = (dy / distance) * total
@@ -176,6 +178,10 @@ class Sitemap {
       alpha.velocity.y += alphaForce.fy * dt
       alphaPos.x += alpha.velocity.x * dt
       alphaPos.y += alpha.velocity.y * dt
+
+      // Calculate drag
+      alpha.velocity.x *= 0.99
+      alpha.velocity.y *= 0.99
 
       // Keep Nodes in bounds
       if (alphaPos.x < this.boundaryMargin) {
