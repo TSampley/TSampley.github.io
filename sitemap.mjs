@@ -54,7 +54,7 @@ class Sitemap {
      * Repel force between nodes. $`F=k/d^2`$
      * @type {number}
      */
-    this.repelForce = 0
+    this.repelForce = 1E3
     /**
      * Center force on all nodes. $`F=k*d^2`$
      * @type {number}
@@ -263,6 +263,16 @@ function drawSitemap(sitemap) {
       ctx.beginPath()
       ctx.moveTo(pos.x, pos.y)
       ctx.lineTo(pos.x + node.force.fx, pos.y + node.force.fy)
+      ctx.stroke()
+    }
+
+    // draw velocity vector for debugging
+    if (node.velocity) {
+      ctx.strokeStyle = '#00ff00'
+      ctx.lineWidth = 1
+      ctx.beginPath()
+      ctx.moveTo(pos.x, pos.y)
+      ctx.lineTo(pos.x + node.velocity.x, pos.y + node.velocity.y)
       ctx.stroke()
     }
   }
