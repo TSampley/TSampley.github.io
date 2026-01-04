@@ -27,6 +27,11 @@ class PageNodeEntity extends Entity {
 }
 
 class Sitemap {
+  /**
+   * 
+   * @param {string} hostId 
+   * @param {string} root 
+   */
   constructor(hostId,root) {
     this.hostId = hostId
     this.root = root
@@ -167,7 +172,7 @@ class Sitemap {
         const distance = Math.sqrt(distanceSq)
 
         // Calculate universal repelling force and spring force
-        if (distance == 0) { // soft-core to avoid singularity
+        if (distance == 0) {
           // displace randomly to avoid zero-distance
           const angle = Math.random() * 2 * Math.PI
           const fx = Math.cos(angle) * maxForce
@@ -181,9 +186,12 @@ class Sitemap {
         } else {
           // Calculate spring force
           const springDisplacement = this.springDistance - distance
+           // soft-core to avoid singularity
           const springForce = Math.max(
-            -this.maxForce,
-            Math.min(this.maxForce, springDisplacement * this.springConstant)
+            -maxForce,
+            Math.min(maxForce, 
+              springDisplacement * this.springConstant
+            )
           )
           // Calculate repulsion force
           const repelForce = - this.repelForce / distanceSq
@@ -270,6 +278,10 @@ class Sitemap {
  */
 const sitemap_list = []
 
+const debug = false
+
+const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+
 /**
  * 
  * @param {Sitemap} sitemap 
@@ -305,24 +317,26 @@ function drawSitemap(sitemap) {
       }
     }
 
-    // draw force vector for debugging
-    if (node.force) {
-      ctx.strokeStyle = '#ff0000'
-      ctx.lineWidth = 1
-      ctx.beginPath()
-      ctx.moveTo(pos.x, pos.y)
-      ctx.lineTo(pos.x + node.force.fx, pos.y + node.force.fy)
-      ctx.stroke()
-    }
+    if (debug) {
+      // draw force vector for debugging
+      if (node.force) {
+        ctx.strokeStyle = '#ff0000'
+        ctx.lineWidth = 1
+        ctx.beginPath()
+        ctx.moveTo(pos.x, pos.y)
+        ctx.lineTo(pos.x + node.force.fx, pos.y + node.force.fy)
+        ctx.stroke()
+      }
 
-    // draw velocity vector for debugging
-    if (node.velocity) {
-      ctx.strokeStyle = '#00ff00'
-      ctx.lineWidth = 1
-      ctx.beginPath()
-      ctx.moveTo(pos.x, pos.y)
-      ctx.lineTo(pos.x + node.velocity.x, pos.y + node.velocity.y)
-      ctx.stroke()
+      // draw velocity vector for debugging
+      if (node.velocity) {
+        ctx.strokeStyle = '#00ff00'
+        ctx.lineWidth = 1
+        ctx.beginPath()
+        ctx.moveTo(pos.x, pos.y)
+        ctx.lineTo(pos.x + node.velocity.x, pos.y + node.velocity.y)
+        ctx.stroke()
+      }
     }
   }
 }
@@ -367,11 +381,18 @@ const sitemap_data_promise = async function() {
 };
 const sitemap_data = await sitemap_data_promise();
 
+class WikiIndex {
+  constructor(path,title,url) {
+    this.path = path
+    this.title = title
+    this.url = url
+  }
+}
+
 console.log('Sitemap data loaded:' + sitemap_data.branches.length + ' branches');
 sitemap_list.forEach((sitemap) => {
   const nodeEntities = sitemap_data.branches.map((branch) => {
     // TODO: branch.path split / into hierarchy levels
-    // 
     return new PageNodeEntity(
       branch.path,
       branch.title,
@@ -381,5 +402,23 @@ sitemap_list.forEach((sitemap) => {
   });
   sitemap.nodes = nodeEntities
 });
+
+/**
+ * 
+ * @param {Sitemap} sitemap 
+ * @param {WikiIndex} data 
+ */
+function processSiteData(sitemap,data) {
+  const nodeEntities = data.branches.map((branch) => {
+    // TODO: branch.path split / into hierarchy levels
+    // 
+    return new PageNodeEntity(
+      branch.path,
+      branch.title,
+      branch.url,
+      {x: Math.random() * sitemap.canvas.width, y: Math.random() * sitemap.canvas.height}
+    )
+  });
+}
 
 // TODO: process data and node dependencies based on hierarchies
