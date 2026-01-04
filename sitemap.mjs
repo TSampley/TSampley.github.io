@@ -143,7 +143,7 @@ class Sitemap {
           // Calculate force towards ideal distance
           const springDisplacement = this.springDistance - distance
           const springForce = springDisplacement * this.springConstant
-          const repelForce = this.repelForce / distanceSq
+          const repelForce = - this.repelForce / distanceSq
           const total = springForce + repelForce
           const fx = (dx / distance) * total
           const fy = (dy / distance) * total
