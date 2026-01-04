@@ -395,6 +395,7 @@ console.log('Sitemap data loaded:' + sitemap_data.branches.length + ' branches')
 bindSitemaps()
 
 function bindSitemaps() {
+  console.log(`binding site maps: ${sitemap_list.length}`)
   sitemap_list.forEach((sitemap) => {
     const nodeEntities = sitemap_data.branches.map((branch) => {
       // TODO: branch.path split / into hierarchy levels
@@ -407,6 +408,7 @@ function bindSitemaps() {
     });
     sitemap.nodes = nodeEntities
   });
+  drawAllSitemaps()
 }
 
 /**
