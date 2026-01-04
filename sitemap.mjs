@@ -277,11 +277,6 @@ function drawSitemap(sitemap) {
   ctx.fillStyle = '#ffffff'
   ctx.fillRect(0,0,width,height)
 
-  // draw border
-  ctx.strokeStyle = '#000000'
-  ctx.lineWidth = 2
-  ctx.strokeRect(0,0,width,height)
-
   // draw nodes
   for(const node of sitemap.nodes) {
     const pos = node.position
