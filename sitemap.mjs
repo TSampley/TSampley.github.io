@@ -70,15 +70,9 @@ class Sitemap {
     /** @type {CanvasRenderingContext2D} */
     this.context = this.canvas.getContext('2d')
 
+    this.selectedNode = null
     this.canvas.onclick = (event) => {
-      console.log(`Sitemap canvas clicked at (${event.offsetX},${event.offsetY})`)
-      // TODO: move running control to button
-      this.isRunning = !this.isRunning
-      if (this.isRunning) {
-        this.#lastTsl = 0 // avoid accumulating paused time
-        requestAnimationFrame((tsl) => this.animate(tsl))
-      }
-      // TODO: setup click to select nodes for editing
+      this.onSelectNode(event.offsetX, event.offsetY)
     }
 
     this.hoverPoint = null
@@ -96,6 +90,35 @@ class Sitemap {
     this.canvas.onmouseleave = (event) => {
       this.hoverPoint = null
     }
+
+    const timeControlButton = document.getElementById('button-time-control')
+    timeControlButton.onclick = (event) => {
+      this.isRunning = !this.isRunning
+      if (this.isRunning) {
+        this.#lastTsl = 0 // avoid accumulating paused time
+        requestAnimationFrame((tsl) => this.animate(tsl))
+      }
+    }
+  }
+
+  onSelectNode(x,y) {
+    const selectionDistance = 50
+    const minDistSqr = selectionDistance**2
+    let closest = null
+    let closestDistance = null
+    for (const node of this.nodes) {
+      const dx = x - node.position.x
+      const dy = y - node.position.y
+      const distanceSqr = dx*dx + dy*dy
+      if (distanceSqr <= minDistSqr) {
+        const distance = Math.sqrt(distanceSqr)
+        if (!closestDistance || distance < closestDistance) {
+          closest = node
+          closestDistance = distance
+        }
+      }
+    }
+    this.selectedNode = closest
   }
 
   /**
@@ -214,7 +237,6 @@ class Sitemap {
   animate(tsl) {
     if (this.#lastTsl === 0) {
       this.#lastTsl = tsl
-      console.log("Time reset")
     }
 
     const dt = (tsl - this.#lastTsl) / 1000.0
@@ -258,6 +280,9 @@ function drawSitemap(sitemap) {
   ctx.font = '16px Arial'
   ctx.fillText(`Sitemap for: ${sitemap.root}`,10,30)
   ctx.fillText(`Running: ${sitemap.isRunning}`,10,60)
+  if (sitemap.selectedNode) {
+    ctx.fillText(`Selected node: ${sitemap.selectedNode.title}`, 10,90)
+  }
 
   // draw nodes
   for(const node of sitemap.nodes) {

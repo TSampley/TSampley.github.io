@@ -2,7 +2,11 @@
 layout: default
 ---
 
-<canvas id='sitemap-canvas' width=400 height=400></canvas>
+<div style='display: flex;'>
+  <canvas id='sitemap-canvas' width=400 height=400>
+  </canvas>
+  <button id='button-time-control'>Start/Stop</button>
+</div>
 
 <script async src='./sitemap.mjs' type="module"></script>
 <script>
