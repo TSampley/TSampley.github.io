@@ -26,6 +26,59 @@ class PageNodeEntity extends Entity {
   }
 }
 
+/**
+ * Responsible for capturing all UI widgets to add
+ * event listeners and bind model updates.
+ */
+class SitemapPresenter {
+  /**
+   * 
+   * @param {Sitemap} sitemap Business model
+   */
+  constructor(
+    sitemap,
+    canvasId='canvas',
+    spanSelectedNodeId='display-selected-node',
+    buttonTimeControlId='button-time-control',
+    rangeRepulsionForceId='range-repulsion-force',
+    rangeSpringForceId='range-spring-force',
+    rangeSpringLengthId='range-spring-length',
+    rangeCenterForceId='range-center-force',
+    rangeDragRestitutionId='range-drag-restitution',
+    checkboxDebugId='checkbox-debug'
+  ) {
+    this.sitemap = sitemap
+    this.canvas = document.getElementById(canvasId)
+    this.displaySelectedNode = document.getElementById(spanSelectedNodeId)
+    this.buttonTimeControl = document.getElementById(buttonTimeControlId)
+    this.rangeRepulsionForce = document.getElementById(rangeRepulsionForceId)
+    this.rangeCenterForce = document.getElementById(rangeCenterForceId)
+    this.rangeSpringForce = document.getElementById(rangeSpringForceId)
+    this.rangeSpringLength = document.getElementById(rangeSpringLengthId)
+    this.rangeDragRestitution = document.getElementById(rangeDragRestitutionId)
+    this.checkboxDebug = document.getElementById(checkboxDebugId)
+
+    this.rangeRepulsionForce.oninput = (event) => {
+      sitemap.repelForce = event.target.value
+    }
+    this.rangeCenterForce.oninput = (event) => {
+      sitemap.centerForceConstant = event.target.value
+    }
+    this.rangeSpringForce.oninput = (event) => {
+      sitemap.springConstant = event.target.value
+    }
+    this.rangeSpringLength.oninput = (event) => {
+      sitemap.springDistance = event.target.value
+    }
+    this.rangeDragRestitution.oninput = (event) => {
+      sitemap.dragRestitution = 1 - event.target.value
+    }
+    this.checkboxDebug.onchange = (event) => {
+      sitemap.debug = event.target.checked == true
+    }
+  }
+}
+
 class Sitemap {
   /**
    * 
@@ -66,7 +119,9 @@ class Sitemap {
      */
     this.centerForceConstant = 1E-1
     this.centerForceMax = 500
+    this.dragRestitution = 0.99
     this.boundaryMargin = this.nodeRadius
+    this.debug = false
 
     this.canvas = document.getElementById(this.hostId)
     if(!this.canvas) {
@@ -190,7 +245,7 @@ class Sitemap {
           const springForce = Math.max(
             -maxForce,
             Math.min(maxForce, 
-              springDisplacement * this.springConstant
+              -springDisplacement * this.springConstant
             )
           )
           // Calculate repulsion force
@@ -230,23 +285,23 @@ class Sitemap {
       alphaPos.y += alpha.velocity.y * dt
 
       // Calculate drag
-      alpha.velocity.x *= 0.99
-      alpha.velocity.y *= 0.99
+      alpha.velocity.x *= this.dragRestitution
+      alpha.velocity.y *= this.dragRestitution
 
       // Keep Nodes in bounds
       if (alphaPos.x < this.boundaryMargin) {
-        alphaPos.x = this.boundaryMargin
-        alpha.velocity.x = 0
+        if (alpha.velocity.x < 0) alphaPos.x += width
+        // alpha.velocity.x = 0
       } else if (alphaPos.x > maxX) {
-        alphaPos.x = maxX
-        alpha.velocity.x = 0
+        if (alpha.velocity.x > 0) alphaPos.x -= width
+        // alpha.velocity.x = 0
       }
       if (alphaPos.y < this.boundaryMargin) {
-        alphaPos.y = this.boundaryMargin
-        alpha.velocity.y = 0
+        if (alpha.velocity.y < 0) alphaPos.y += height;
+        // alpha.velocity.y = 0
       } else if (alphaPos.y > maxY) {
-        alphaPos.y = maxY
-        alpha.velocity.y = 0
+        if (alpha.velocity.y > 0) alphaPos.y -= height
+        // alpha.velocity.y = 0
       }
 
       alpha.force = alphaForce
@@ -277,8 +332,6 @@ class Sitemap {
  * @type {Array<Sitemap>}
  */
 const sitemap_list = []
-
-const debug = false
 
 const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
@@ -317,7 +370,7 @@ function drawSitemap(sitemap) {
       }
     }
 
-    if (debug) {
+    if (sitemap.debug) {
       // draw force vector for debugging
       if (node.force) {
         ctx.strokeStyle = '#ff0000'
@@ -354,6 +407,7 @@ function processSitemapQueue() {
     console.log(`Processing canvas id:${canvas_id}`)
     try {
       const newSitemap = new Sitemap(canvas_id,'/')
+      const presenter = new SitemapPresenter(newSitemap)
 
       // initialize sitemap
       drawSitemap(newSitemap)
@@ -397,16 +451,7 @@ bindSitemaps()
 function bindSitemaps() {
   console.log(`binding site maps: ${sitemap_list.length}`)
   sitemap_list.forEach((sitemap) => {
-    const nodeEntities = sitemap_data.branches.map((branch) => {
-      // TODO: branch.path split / into hierarchy levels
-      return new PageNodeEntity(
-        branch.path,
-        branch.title,
-        branch.url,
-        {x: Math.random() * sitemap.canvas.width, y: Math.random() * sitemap.canvas.height}
-      )
-    });
-    sitemap.nodes = nodeEntities
+    processSiteData(sitemap,sitemap_data)
   });
   drawAllSitemaps()
 }
@@ -417,7 +462,9 @@ function bindSitemaps() {
  * @param {WikiIndex} data 
  */
 function processSiteData(sitemap,data) {
-  const nodeEntities = data.branches.map((branch) => {
+  const duplicatedBranches = [...data.branches]
+  duplicatedBranches.push(...duplicatedBranches)
+  const nodeEntities = duplicatedBranches.map((branch) => {
     // TODO: branch.path split / into hierarchy levels
     // 
     return new PageNodeEntity(
@@ -427,6 +474,17 @@ function processSiteData(sitemap,data) {
       {x: Math.random() * sitemap.canvas.width, y: Math.random() * sitemap.canvas.height}
     )
   });
+
+  sitemap.nodes.push(...nodeEntities)
 }
 
 // TODO: process data and node dependencies based on hierarchies
+
+
+// Construct UI Elements - done by HTML
+
+// Construct Business Model
+// const sitemap = new Sitemap()
+
+// Pair through presenter
+// const presenter = new SitemapPresenter(sitemap)
