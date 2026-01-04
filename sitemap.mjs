@@ -363,6 +363,7 @@ function processSitemapQueue() {
     }
   }
   sitemap_queue.length = 0
+  bindSitemaps()
 }
 
 console.log('Sitemap data load initiated');
@@ -379,7 +380,8 @@ const sitemap_data_promise = async function() {
     return []
   }
 };
-const sitemap_data = await sitemap_data_promise();
+let sitemap_data = {branches:[]}
+sitemap_data = await sitemap_data_promise();
 
 class WikiIndex {
   constructor(path,title,url) {
@@ -390,18 +392,22 @@ class WikiIndex {
 }
 
 console.log('Sitemap data loaded:' + sitemap_data.branches.length + ' branches');
-sitemap_list.forEach((sitemap) => {
-  const nodeEntities = sitemap_data.branches.map((branch) => {
-    // TODO: branch.path split / into hierarchy levels
-    return new PageNodeEntity(
-      branch.path,
-      branch.title,
-      branch.url,
-      {x: Math.random() * sitemap.canvas.width, y: Math.random() * sitemap.canvas.height}
-    )
+bindSitemaps()
+
+function bindSitemaps() {
+  sitemap_list.forEach((sitemap) => {
+    const nodeEntities = sitemap_data.branches.map((branch) => {
+      // TODO: branch.path split / into hierarchy levels
+      return new PageNodeEntity(
+        branch.path,
+        branch.title,
+        branch.url,
+        {x: Math.random() * sitemap.canvas.width, y: Math.random() * sitemap.canvas.height}
+      )
+    });
+    sitemap.nodes = nodeEntities
   });
-  sitemap.nodes = nodeEntities
-});
+}
 
 /**
  * 
