@@ -19,7 +19,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   This is the place where I update my progress cleaning up old incomplete
   projects. Hopefully some new projects as well.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://www.taushsampley.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://taushsampley.com" # the base hostname & protocol for your site, e.g. http://example.com
 # permalink: /:categories/:year/:month/:day/:title:output_ext
 twitter_username: SampleyTaush
 github_username:  TSampley
