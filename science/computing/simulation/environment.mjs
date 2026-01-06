@@ -49,9 +49,17 @@ export function forceMatrixChemistry() {
  * TODO: rename Environment=>DynamicEnvironment; BaseEnvironment=>Environment
  */
 export class BaseEnvironment {
-    constructor() {
-        this.width = width
-        this.height = height
+    constructor(width=100,height=100) {
+        this.width = single(width)
+        this.height = single(height)
+    }
+
+    setWidth(width) {
+        this.width.value = width
+    }
+
+    setHeight(height) {
+        this.height.value = height
     }
 }
 

@@ -8,9 +8,10 @@ export class BallWorld extends BaseEnvironment {
   /**
    * @param {*} 
    */
-  constructor() {
-    this.
+  constructor(width,height) {
+    super(width,height)
+    
   }
 
-  
+
 }
