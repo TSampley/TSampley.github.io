@@ -151,21 +151,21 @@ export class Simulation {
     checkEnvironmentCollision(subject,environment) {
         if (subject.x > environment.width) {
             environment.onBounce();
-            subject.vx *= -environment.forceMatrix.boundaries.value;
+            subject.vx *= -environment.forceMatrix.value.boundaries.value;
             subject.x = 2*environment.width - subject.x;
         } else if (subject.x < 0) {
             environment.onBounce();
-            subject.vx *= -environment.forceMatrix.boundaries.value;
+            subject.vx *= -environment.forceMatrix.value.boundaries.value;
             subject.x = -subject.x;
         }
 
         if (subject.y > environment.height) {
             environment.onBounce();
-            subject.vy *= -environment.forceMatrix.boundaries.value;
+            subject.vy *= -environment.forceMatrix.value.boundaries.value;
             subject.y = 2*environment.height - subject.y;
         } else if (subject.y < 0) {
             environment.onBounce();
-            subject.vy *= -environment.forceMatrix.boundaries.value;
+            subject.vy *= -environment.forceMatrix.value.boundaries.value;
             subject.y = -subject.y;
         }
     }

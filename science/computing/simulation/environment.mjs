@@ -1,4 +1,6 @@
 import { NoOp } from '../../../js/common/fns.mjs'
+import { Observable, single } from '../../../js/common/observables.mjs'
+
 import { COULOMB_CONSTANT, GRAVITY_EARTH_ACCELERATION } from '../../physics/mechanics/constants.mjs'
 
 import { ElasticBoundary } from './boundary.mjs'
@@ -6,6 +8,7 @@ import { Drag } from '../../physics/mechanics/drag.mjs'
 import { Gravity } from '../../physics/mechanics/gravity.mjs'
 import { CoulombForce } from '../../physics/mechanics/coulomb.mjs'
 import { LennardJonesPotential } from '../../chemistry/computational/lennard-jones.mjs'
+import { Force } from '../../physics/mechanics/force.mjs'
 
 export class ForceMatrix {
     constructor(boundaries,drag,gravity,coulomb,lennardJones) {
@@ -43,6 +46,16 @@ export function forceMatrixChemistry() {
 }
 
 /**
+ * TODO: rename Environment=>DynamicEnvironment; BaseEnvironment=>Environment
+ */
+export class BaseEnvironment {
+    constructor() {
+        this.width = width
+        this.height = height
+    }
+}
+
+/**
  * 
  */
 export class Environment {
@@ -62,7 +75,8 @@ export class Environment {
         this.onSetHeight = NoOp.f1
         this.height = height
 
-        this.forceMatrix = forceMatrix
+        /** @type {Observable<ForceMatrix>} */
+        this.forceMatrix = single(forceMatrix)
         this.timeScale = 1E-6
         this.hardCollisions = true
 
@@ -87,16 +101,16 @@ export class Environment {
 
     particleForces() {
         return [
-            this.forceMatrix.coulomb,
-            this.forceMatrix.lennardJones
+            this.forceMatrix.value.coulomb,
+            this.forceMatrix.value.lennardJones
         ]
     }
 
     environmentForces() {
         return [
-            this.forceMatrix.boundaries,
-            this.forceMatrix.drag,
-            this.forceMatrix.gravity
+            this.forceMatrix.value.boundaries,
+            this.forceMatrix.value.drag,
+            this.forceMatrix.value.gravity
         ]
     }
 }
