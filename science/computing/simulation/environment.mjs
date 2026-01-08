@@ -9,6 +9,7 @@ import { Gravity } from '../../physics/mechanics/gravity.mjs'
 import { CoulombForce } from '../../physics/mechanics/coulomb.mjs'
 import { LennardJonesPotential } from '../../chemistry/computational/lennard-jones.mjs'
 import { Force } from '../../physics/mechanics/force.mjs'
+import { Size } from '../../../js/common/geom.mjs'
 
 export class ForceMatrix {
     constructor(boundaries,drag,gravity,coulomb,lennardJones) {
@@ -49,9 +50,12 @@ export function forceMatrixChemistry() {
  * TODO: rename Environment=>DynamicEnvironment; BaseEnvironment=>Environment
  */
 export class BaseEnvironment {
-    constructor(width=100,height=100) {
-        this.width = single(width)
-        this.height = single(height)
+    /**
+     * 
+     * @param {Size} size 
+     */
+    constructor(size) {
+        this.size = single(size)
     }
 
     setWidth(width) {
