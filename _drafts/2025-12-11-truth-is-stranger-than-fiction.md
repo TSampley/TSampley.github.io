@@ -3,7 +3,7 @@ layout: post
 
 title: Truth is Stranger Than Fiction
 description:
-date: 
+date: 2025-12-11 1200 -0600
 ---
 
 Our ability to comprehend the world will always fall short.
