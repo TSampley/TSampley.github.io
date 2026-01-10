@@ -26,3 +26,22 @@
 .demo-view {
   border: 2px solid black;
 }
+
+img {
+    max-width: 100%;
+    vertical-align: middle
+}
+
+figure {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+figure>img {
+    display: block
+}
+
+figcaption {
+    font-size: 14px
+}
