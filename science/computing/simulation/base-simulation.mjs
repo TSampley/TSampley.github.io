@@ -42,7 +42,7 @@ export class BaseSimulation {
         const deltaMs = tsl - this.#lastTime
 
         while (this.#simulationPhase >= this.simulationDelta) {
-            this.step()
+            this.step(this.simulationDelta)
         }
 
         const offset = (this.#animationPhase + deltaMs) % this.animationDelta
@@ -54,15 +54,11 @@ export class BaseSimulation {
         this.isRunning.value = false
     }
 
-    #unimplemented(method) {
-        throw new UnimplementedError('BaseSimulation',method)
-    }
-
-    step() {
-        this.#unimplemented('step')
+    step(delta) {
+        this.subject.step(delta)
     }
 
     draw() {
-        this.#unimplemented('draw')
+        this.subject.draw(context,0)
     }
 }

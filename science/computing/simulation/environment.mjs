@@ -10,6 +10,7 @@ import { CoulombForce } from '../../physics/mechanics/coulomb.mjs'
 import { LennardJonesPotential } from '../../chemistry/computational/lennard-jones.mjs'
 import { Force } from '../../physics/mechanics/force.mjs'
 import { Size } from '../../../js/common/geom.mjs'
+import { UnimplementedError } from '../../../js/common/errors.mjs'
 
 export class ForceMatrix {
     constructor(boundaries,drag,gravity,coulomb,lennardJones) {
@@ -50,21 +51,33 @@ export function forceMatrixChemistry() {
  * TODO: rename Environment=>DynamicEnvironment; BaseEnvironment=>Environment
  */
 export class BaseEnvironment {
-    /**
-     * 
-     * @param {Size} size 
-     */
-    constructor(size) {
-        this.size = single(size)
-    }
+  /**
+   * 
+   * @param {Size} size 
+   */
+  constructor(size) {
+    this.size = single(size)
+  }
 
-    setWidth(width) {
-        this.width.value = width
-    }
+  setWidth(width) {
+    this.width.value = width
+  }
 
-    setHeight(height) {
-        this.height.value = height
-    }
+  setHeight(height) {
+    this.height.value = height
+  }
+
+  #unimplemented(method) {
+    throw new UnimplementedError('BaseEnvironment',method)
+  }
+
+  step(delta) {
+    this.#unimplemented('step')
+  }
+
+  draw(context,offset) {
+    this.#unimplemented('draw')
+  }
 }
 
 /**
