@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "{{ site.url}}/{{ page.url }}",
+  "type": "object",
+  "properties": {
+    "name": { "$ref": "{{ site.url }}/humanities"}
+  }
+}

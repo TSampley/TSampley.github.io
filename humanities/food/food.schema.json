@@ -1,0 +1,15 @@
+---
+---
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "{{ page.url | relative_url }}",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "ingredients": { "type": "array", "items": { "$ref": "{{ site.url }}/"}},
+    "inception": { "$ref": "{{ humanities/history/date | relative_url }}" }
+  },
+  "required": [
+    "name"
+  ]
+}

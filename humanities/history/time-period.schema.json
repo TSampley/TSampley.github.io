@@ -1,0 +1,11 @@
+---
+---
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "{{ site.url }}/{{ page.dir }}time-period",
+  "type": "object",
+  "properties": {
+    "start": { "$ref": "{{ site.url }}/humanities/history/date" },
+    "end": { "$ref": "{{ site.url }}/humanities/history/date" }
+  }
+}

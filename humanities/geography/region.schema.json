@@ -1,0 +1,12 @@
+---
+---
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "{{ site.url }}/{{ page.url }}",
+  "type": "object",
+  "properties": {
+    "id": { "$ref": "{{ site.url }}/science/computing/uuid.schema.json" },
+    "name": { "$ref": "{{ site.url }}/humanities/anthropology/name.schema.json" },
+    "parent": { "$ref": "{{ site.url }}/science/computing/uuid.schema.json" }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "{{ site.url }}/{{ page.dir }}date",
+  "type": "string",
+  "anyOf": [
+    { "$ref": "{{ site.url }}/science/computing/standards/ISO-8601" }
+  ],
+  "$comment": "TODO: extend date with specific formats in relevant context, e.g. /science/computing/standards/ISO8661"
+}
