@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "{{ site.url }}/{{ page.url }}",
+  "properties": {
+    "name": { "$ref": "{{ site.url }}/humanities/anthropology/name.schema.json"},
+    "regions": { 
+      "type": "array",
+      "items": { "$ref": "{{ site.url }}/humanities/geography/region.schema.json" }
+    },
+    "period": { "$ref": "{{ site.url }}/humanities/anthropology/time-period.schema.json" }
+  }
+}
