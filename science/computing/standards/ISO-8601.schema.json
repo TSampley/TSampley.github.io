@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "{{ page.url | relative_url }}",
+  "type": "string",
+  "pattern": "^\\d{4}-\\d\\d-\\d\\d( T)\\d\\d[h:]\\d\\d[m:]\\d\\d(\\.\\d+)s?(([+-]\\d\\d:\\d\\d)|Z)$"
+}
