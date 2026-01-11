@@ -1,0 +1,18 @@
+---
+---
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "{{ site.url }}/{{ page.path }}",
+  "properties": {
+    "name": { "$ref": "{{ site.url }}/" },
+    "region": {
+
+    },
+    "title": {
+
+    },
+    "page": {
+
+    }
+  }
+}
