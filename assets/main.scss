@@ -39,13 +39,17 @@ figure {
 }
 
 figure>img {
-    display: block
+    display: block;
 }
 
 figcaption {
-    font-size: 14px
+    font-size: 14px;
 }
 
 embed[type="text/javascript"] {
   border: 1px solid black;
+}
+
+canvas {
+  font-size: 24px;
 }
