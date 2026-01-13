@@ -1,16 +1,6 @@
 ---
-
+layout: default
+stylesheet: /assets/css/wiki.css
 ---
 
-<!DOCTYPE html>
-<head>
-    {% include tags-as-meta.html %}
-    <link rel="stylesheet" href="/assets/css/wiki.css" />
-</head>
-<body>
-    {% include header.html %}
-    <main>
-        {{ content }}
-    </main>
-    {% include footer.html %}
-</body>
+{{ content }}
