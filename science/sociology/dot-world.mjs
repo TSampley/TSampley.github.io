@@ -3,7 +3,7 @@ import { BaseEnvironment } from "../computing/simulation/environment.mjs";
 /**
  * A world full of dots, interacting in social (or ecological) simulations.
  */
-export class DotWorld extends BaseEnvironment {
+export class DotWorld extends Environment {
 
   /**
    * @param {number} width
