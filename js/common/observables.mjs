@@ -6,12 +6,13 @@ const UNSET = {}
  */
 export class Observable {
 
+  #value
   /**
    * 
    * @param {Type} initialValue
    */
   constructor(initialValue=UNSET) {
-    this.value = initialValue
+    this.#value = initialValue
     /**
      * @type {Array<(Type)=>void>}
      */
@@ -25,10 +26,10 @@ export class Observable {
    */
   set value(newValue) {
     // Do nothing on repeated values
-    if (this.value === newValue) return;
+    if (this.#value === newValue) return;
     // Do nothing on equal values
-    if (this.value == newValue) return;
-    this.value = newValue
+    if (this.#value == newValue) return;
+    this.#value = newValue
 
     this.subscribers.forEach((subscriber)=> {
       subscriber(newValue)
