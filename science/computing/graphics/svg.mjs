@@ -34,6 +34,7 @@ Spec List:
 /**
  * 
  * TODO: create page for SVG with ediotr
+ * https://www.w3.org/TR/SVG2/
  * 
  * Example from wikipedia: https://en.wikipedia.org/wiki/SVG
  * ```svg
