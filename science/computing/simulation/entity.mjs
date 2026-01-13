@@ -1,23 +1,31 @@
 
 import { UnimplementedError } from '../../../js/common/errors.mjs'
-import { Environment } from '../simulation/environment.mjs'
+import { Point } from '../../../js/common/geom.mjs'
 
 /**
- * A {@link Simulation} consists of an {@link Environment} and 
- * the `Entity` instances that populate it.
+ * An `Entity` is the basic discrete unit of interaction in a 
+ * simulated environment.
  */
 export class Entity {
     /**
-     * Progresses the entity by `dt` in the given `environment`.
-     * @param {number} dt Change in time for this simulation step.
-     * @param {Environment} environment The encompassing {@link Environment}
+     * 
+     * @param {Point} position 
      */
-    step(dt,environment) {
+    constructor(position) {
+        this.position = position
+    }
+
+    /**
+     * Progresses the entity's internal state by `delta`.
+     * @param {number} delta Change in time for this simulation step.
+     */
+    step(delta) {
         throw new UnimplementedError(this,'step')
     }
 
     /**
      * Draws the entity within the given rendering context.
+     * TODO: consider moving to different rendering objects
      * @param {CanvasRenderingContext2D} context 
      */
     draw(context) {

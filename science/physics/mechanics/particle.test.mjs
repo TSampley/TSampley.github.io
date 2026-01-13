@@ -1,5 +1,6 @@
 
-import { Particle, Properties } from './particle.mjs';
+import { Particle } from './particle.mjs';
+import { Properties } from './properties.mjs';
 
 test("x coordinate should be first constructor arg", () => {
     let testPart = new Particle(0, 5, {})

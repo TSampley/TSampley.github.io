@@ -1,141 +1,75 @@
 import { NoOp } from '../../../js/common/fns.mjs'
 import { Observable, single } from '../../../js/common/observables.mjs'
 
-import { COULOMB_CONSTANT, GRAVITY_EARTH_ACCELERATION } from '../../physics/mechanics/constants.mjs'
-
-import { ElasticBoundary } from './boundary.mjs'
-import { Drag } from '../../physics/mechanics/drag.mjs'
-import { Gravity } from '../../physics/mechanics/gravity.mjs'
-import { CoulombForce } from '../../physics/mechanics/coulomb.mjs'
-import { LennardJonesPotential } from '../../chemistry/computational/lennard-jones.mjs'
-import { Force } from '../../physics/mechanics/force.mjs'
 import { Size } from '../../../js/common/geom.mjs'
-import { UnimplementedError } from '../../../js/common/errors.mjs'
-
-export class ForceMatrix {
-    constructor(boundaries,drag,gravity,coulomb,lennardJones) {
-        this.boundaries = boundaries
-        this.drag = drag
-        this.gravity = gravity
-
-        this.coulomb = coulomb
-        this.lennardJones = lennardJones
-    }
-}
-
-export function forceMatrixSim(boundaryRetention,drag,gravity,coulomb,lennardJones) {
-    return new ForceMatrix(
-        new ElasticBoundary(boundaryRetention,500,500),
-        new Drag(drag),
-        new Gravity(gravity),
-        new CoulombForce(coulomb),
-        new LennardJonesPotential(lennardJones)
-    )
-}
-/**
- * 
- * @returns A {@link ForceMatrix} with simulation values adjusted for
- * chemical reaction scale.
- */
-export function forceMatrixChemistry() {
-    return new ForceMatrix(
-        new ElasticBoundary(0.99,600E-12,500E-12),
-        new Drag(1E46),
-        new Gravity(GRAVITY_EARTH_ACCELERATION * 1E-5),
-        new CoulombForce(COULOMB_CONSTANT*1E6),
-        new LennardJonesPotential(1.0)
-    )
-}
-
-/**
- * TODO: rename Environment=>DynamicEnvironment; BaseEnvironment=>Environment
- */
-export class BaseEnvironment {
-  /**
-   * 
-   * @param {Size} size 
-   */
-  constructor(size) {
-    this.size = single(size)
-  }
-
-  setWidth(width) {
-    this.width.value = width
-  }
-
-  setHeight(height) {
-    this.height.value = height
-  }
-
-  #unimplemented(method) {
-    throw new UnimplementedError('BaseEnvironment',method)
-  }
-
-  step(delta) {
-    this.#unimplemented('step')
-  }
-
-  draw(context,offset) {
-    this.#unimplemented('draw')
-  }
-}
 
 /**
  * 
  */
 export class Environment {
-    /**
-     * 
-     * @param {number} width 
-     * @param {number} height 
-     * @param {ForceMatrix} forceMatrix
-     * @param {()=>void} onCollide 
-     * @param {()=>void} onBounce 
-     */
-    constructor(width,height,forceMatrix,onCollide=NoOp.f0,onBounce=NoOp.f0) {
-        /** @type {(number)=>void} */
-        this.onSetWidth = NoOp.f1
-        this.width = width
-        /** @type {(number)=>void} */
-        this.onSetHeight = NoOp.f1
-        this.height = height
+  /**
+   * 
+   * @param {Size} size 
+   */
+  constructor(size) {
+    /** @type {Observable<Size>} */
+    this.size = single(size)
+    /** @type {(w:number)=>void} */
+    this.onSetWidth = NoOp.f1
+    /** @type {(h:number)=>void} */
+    this.onSetHeight = NoOp.f1
+  }
 
-        /** @type {Observable<ForceMatrix>} */
-        this.forceMatrix = single(forceMatrix)
-        this.timeScale = 1E-6
-        this.hardCollisions = true
+  setWidth(width) {
+    this.size.value.width = width
+  }
 
-        /** @type {()=>void} */
-        this.onCollide = onCollide
-        /** @type {()=>void} */
-        this.onBounce = onBounce
-    }
+  setHeight(height) {
+    this.size.value.height = height
+  }
 
-    #width = 0
-    set width(value) {
-        this.#width = value
-        this.onSetWidth()
-    }
-    get width() { return this.#width }
-    #height = 0
-    set height(value) {
-        this.#height = value
-        this.onSetHeight()
-    }
-    get height() { return this.#height }
+  set width(value) {
+    this.size.value.width = value
+    this.onSetWidth()
+  }
+  get width() { return this.size.value.width }
 
-    particleForces() {
-        return [
-            this.forceMatrix.value.coulomb,
-            this.forceMatrix.value.lennardJones
-        ]
-    }
+  set height(value) {
+    this.size.value.height = value
+    this.onSetHeight()
+  }
+  get height() { return this.size.value.height }
 
-    environmentForces() {
-        return [
-            this.forceMatrix.value.boundaries,
-            this.forceMatrix.value.drag,
-            this.forceMatrix.value.gravity
-        ]
-    }
+  #unimplemented(method) {
+    throw new UnimplementedError('BaseEnvironment', method)
+  }
+
+  /**
+   * Progresses the environment by some amount of time in seconds.
+   * 
+   * @param {number} delta 
+   */
+  step(delta) {
+    this.#unimplemented('step')
+  }
+
+  /**
+   * Draws the environment to the canvas context.
+   * 
+   * @param {CanvasRenderingContext2D} context HTML Canvas simple context.
+   * @param {number} offset Seconds offset since the last calculation frame.
+   */
+  draw(context, offset) {
+    this.#unimplemented('draw')
+  }
+
+  /**
+   * Draws the environment to the webgl context.
+   * 
+   * @param {WebGL2RenderingContext} context HTML Canvas WebGL 2 Context.
+   * @param {*} offset 
+   */
+  draw3d(context,offset) {
+    this.#unimplemented('draw3d')
+  }
 }

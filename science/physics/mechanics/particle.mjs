@@ -1,7 +1,5 @@
-
-
-import { Environment } from '../../computing/simulation/environment.mjs'
-
+import { Entity } from '../../computing/simulation/entity.mjs'
+import { Point } from '../../../js/common/geom.mjs';
 import { Properties, NullProperties } from './properties.mjs';
 
 
@@ -13,16 +11,17 @@ import { Properties, NullProperties } from './properties.mjs';
  * https://en.wikipedia.org/wiki/Particle
  * https://www.etymonline.com/word/particle
  */
-export class Particle {
+export class Particle extends Entity {
 
     /**
      * Create a new particle centered at `x` and `y` with the
      * given properties.
-     * @param {Number} x 
-     * @param {Number} y 
+     * @param {number} x 
+     * @param {number} y 
      * @param {Properties} props Default NullProperties
      */
     constructor(x, y, props = NullProperties) {
+        super(new Point(x, y))
         this.x = x;
         this.y = y;
         
