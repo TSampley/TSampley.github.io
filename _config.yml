@@ -24,6 +24,7 @@ url: "https://taushsampley.com" # the base hostname & protocol for your site, e.
 # permalink: /:categories/:year/:month/:day/:title:output_ext
 twitter_username: SampleyTaush
 github_username:  TSampley
+rss: Feed
 google_analytics: G-0S1RMMPFVZ
 google_ads: ca-pub-2640513385126692
 paypal_link: https://www.paypal.com/donate/?business=LET9YEHVRUVEL&no_recurring=0&item_name=Creating+Free%2C+Open-Source+Software+%28FOSS%29+to+disempower+our+various+tech-lord+monopolies.&currency_code=USD
