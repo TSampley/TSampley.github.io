@@ -7,11 +7,13 @@
   "type": "object",
   "properties": {
     "name": { "type": "string" },
-    "food": { "type": "array", "items": { "$ref": "{{ humanities/food/food | relative_url }}"} },
+    "food": { "type": "array", "items": { 
+      "$ref": "{{ 'humanities/food/food' | relative_url }}"} 
+    },
     "music": { "type": "array", "items": { "anyOf" [
-      { "$ref": "{{ humanities/music/song | relative_url }}" },
-      { "$ref": "{{ humanities/music/album | relative_url }}" },
-      { "$ref": "{{ humanities/music/artist | relative_url }}" }
+      { "$ref": "{{ 'humanities/music/song' | relative_url }}" },
+      { "$ref": "{{ 'humanities/music/album' | relative_url }}" },
+      { "$ref": "{{ 'humanities/music/artist' | relative_url }}" }
     ]}},
 
   }

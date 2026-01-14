@@ -7,7 +7,7 @@
   "properties": {
     "name": { "type": "string" },
     "ingredients": { "type": "array", "items": { "$ref": "{{ site.url }}/"}},
-    "inception": { "$ref": "{{ humanities/history/date | relative_url }}" }
+    "inception": { "$ref": "{{ 'humanities/history/date' | relative_url }}" }
   },
   "required": [
     "name"
