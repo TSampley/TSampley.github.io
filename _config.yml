@@ -72,10 +72,13 @@ exclude:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
-  # Node
-  - node_modules
   # NPM
+  - node_modules
   - package-lock.json
   - package.json
   # Intermediate
   # - html # apparently used during generation phase
+  # - **/*.mjs # Exclude precompiled modules
+
+include:
+  # - _gen/js/**/*.js
