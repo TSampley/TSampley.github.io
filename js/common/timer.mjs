@@ -7,7 +7,6 @@
 export class Timer {
 
     constructor() {
-        this.milliseconds = 0;
         this.seconds = 0;
         this.minutes = 0;
         this.hours = 0;
@@ -17,7 +16,7 @@ export class Timer {
 
     /**
      * 
-     * @param {number} delta milliseconds elapsed in this frame
+     * @param {number} delta seconds elapsed in this frame
      */
     step(delta) {
         if (!(delta instanceof Number)) {
@@ -25,35 +24,33 @@ export class Timer {
             return;
         }
 
-        this.milliseconds += delta;
-        if (this.milliseconds > constants.MILLIS_PER_SECOND) {
-            extraSeconds = this.milliseconds / constants.MILLIS_PER_SECOND;
-            this.milliseconds %= constants.MILLIS_PER_SECOND;
+        this.seconds += delta
+        if (this.seconds > constants.SECONDS_PER_MINUTE) {
+            extraMinutes = this.seconds / constants.SECONDS_PER_MINUTE;
+            this.seconds %= constants.SECONDS_PER_MINUTE;
 
-            this.seconds += extraSeconds 
-            if (this.seconds > constants.SECONDS_PER_MINUTE) {
-                extraMinutes = this.seconds / constants.SECONDS_PER_MINUTE;
-                this.seconds %= constants.SECONDS_PER_MINUTE;
+            this.minutes += extraMinutes;
+            if (this.minutes > constants.MINUTES_PER_HOUR) {
+                extraHours = this.minutes / constants.MINUTES_PER_HOUR;
+                this.minutes %= constants.MINUTES_PER_HOUR;
 
-                this.minutes += extraMinutes;
-                if (this.minutes > constants.MINUTES_PER_HOUR) {
-                    extraHours = this.minutes / constants.MINUTES_PER_HOUR;
-                    this.minutes %= constants.MINUTES_PER_HOUR;
+                this.hours += extraHours;
+                if (this.hours > constants.HOURS_PER_DAY) {
+                    extraDays = this.hours / constants.HOURS_PER_DAY;
+                    this.hours %= constants.HOURS_PER_DAY;
 
-                    this.hours += extraHours;
-                    if (this.hours > constants.HOURS_PER_DAY) {
-                        extraDays = this.hours / constants.HOURS_PER_DAY;
-                        this.hours %= constants.HOURS_PER_DAY;
-
-                        if (this.days > constants.DAYS_PER_YEAR) {
-                            extraYears = this.days / constants.DAYS_PER_YEAR;
-                            this.days %= constants.DAYS_PER_YEAR;
-                            
-                            this.years += extraYears;
-                        }
+                    if (this.days > constants.DAYS_PER_YEAR) {
+                        extraYears = this.days / constants.DAYS_PER_YEAR;
+                        this.days %= constants.DAYS_PER_YEAR;
+                        
+                        this.years += extraYears;
                     }
                 }
             }
         }
+    }
+
+    timeString() {
+        return `${this.years}y${this.days}d${this.hours}h${this.minutes}m${this.seconds}`
     }
 }
