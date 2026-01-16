@@ -37,6 +37,12 @@ While most of humanity is actually in conflict with the rest in some ideological
       when: 2025-
   actions:
     -
+- name: Stephen Miller
+  region: US
+  titles:
+    - title: Deputy Chief of Staff for Policy and Homeland Security Advisor
+      company: Trump Cabinet
+      when: 2025-
 - name: Paul Ryan
   region: US
   titles:
