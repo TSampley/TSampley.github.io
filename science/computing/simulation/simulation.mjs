@@ -10,7 +10,7 @@ import { Scenario } from './scenario.mjs';
  * It also retains a reference to a rendering context to
  * pass to the environment at the appropriate time.
  * 
- * @type {E extends Environment}
+ * @template {Environment} E
  */
 export class Simulation {
 
@@ -18,7 +18,7 @@ export class Simulation {
      * 
      * @param {Environment} environment 
      * @param {CanvasRenderingContext2D} context
-     * @param {Array<Scenario>} scenarios
+     * @param {Array<Scenario<E>>} scenarios
      */
     constructor(environment,context,scenarios) {
         this.world = new Timer()

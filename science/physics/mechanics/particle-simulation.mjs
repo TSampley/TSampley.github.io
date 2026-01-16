@@ -7,13 +7,15 @@ const DefaultStep = 0.5
 
 /**
  * 
+ * @template {Environment} E
  */
 export class ParticleSimulation extends Simulation {
   /**
-   * @param {}
+   * @param {E} environment
+   * @param {Array<Scenario<E>>} scenarios
    */
-  constructor() {
-    super()
+  constructor(environment,context,scenarios) {
+    super(environment,context,scenarios)
   }
 
   /**
