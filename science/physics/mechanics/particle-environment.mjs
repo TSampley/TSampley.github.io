@@ -7,6 +7,8 @@ export class ParticleEnvironment extends Environment {
 
   constructor(size) {
     super(size)
+    /** @type {Array<Particle>} */
+    this.particleList = new Array()
   }
 
   step(delta) {

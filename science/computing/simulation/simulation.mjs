@@ -22,8 +22,6 @@ export class Simulation {
      */
     constructor(environment,context,scenarios) {
         this.timer = new Timer()
-        /** @type {Array<Particle>} */
-        this.particleList = new Array()
         /** @type {Array<Entity>} */
         this.entityList = new Array()
         this.environment = environment
