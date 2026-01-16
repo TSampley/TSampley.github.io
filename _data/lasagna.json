@@ -1,0 +1,110 @@
+{
+  "name": "Lasagna",
+  "ingredients": [
+    {
+      "name": "Ricotta Filling",
+      "components": [
+        {
+          "name": "ricotta cheese",
+          "measurement": "15oz"
+        },
+        {
+          "name": "egg, large",
+          "measurement": "1"
+        },
+        {
+          "name": "mozzarella cheese",
+          "measurement": "2 C"
+        },
+        {
+          "name": "parmesan",
+          "measurement": "3/4 C"
+        },
+        {
+          "name": "italian seasoning",
+          "measurement": "2 t"
+        },
+        {
+          "name": "salt",
+          "measurement": "1/2 t"
+        },
+        {
+          "name": "pepper",
+          "measurement": "1/4 t"
+        }
+      ]
+    },
+    {
+      "name": "Meat Filling",
+      "components": [
+        {
+          "name": "olive oil",
+          "measurement": "1 T"
+        },
+        {
+          "name": "yellow onion, finely diced",
+          "measurement": "1"
+        },
+        {
+          "name": "ground beef",
+          "measurement": "3/4 lb"
+        },
+        {
+          "name": "italian sausage, ground",
+          "measurement": "3/4 lb"
+        },
+        {
+          "name": "garlic, minced",
+          "measurement": "3"
+        },
+        {
+          "name": "chicken broth",
+          "measurement": "1/2 C"
+        },
+        {
+          "name": "marinara sauce",
+          "measurement": "40 oz"
+        },
+        {
+          "name": "tomato sauce",
+          "measurement": "1 T"
+        },
+        {
+          "name": "hot sauce",
+          "measurement": "1 t"
+        },
+        {
+          "name": "worcestire sauce",
+          "measurement": "1 t"
+        }
+      ]
+    },
+    {
+      "name": "Pasta",
+      "components": [
+        {
+          "name": "lasagna noodles",
+          "measurement": "12"
+        },
+        {
+          "name": "mozzarella cheese",
+          "measurement": "2+1/2 C"
+        }
+      ]
+    }
+  ],
+  "instructions": [
+    "Combine all ricotta filling ingredients and set aside.",
+    "Heat the olive oil in a pan.",
+    "Add diced onion and let soften ~10 minutes.",
+    "Add ground meats and increase heat to medium for 8-10 minutes.",
+    "Add garlic and cook for 1 minute; drain excess grease.",
+    "Add chicken broth and scrape sides and bottom of pot.",
+    "Add remaining meat filling ingredients and bring to a simmer; cover partially while boiling noodles.",
+    "Cook lasagna noodles in large pot of water till al dente; drain and rinse.",
+    "Spread 1 C meat sauce as a base, then repeat three times: noodles (4), 1/3 cheese mix, 1 1/2 C meat sauce",
+    "Top with mozzarella",
+    "Bake @375ºF for 35 minutes covered then 10 minutes uncovered.",
+    "Allow to cool before serving."
+  ]
+}
