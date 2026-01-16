@@ -21,14 +21,10 @@ export class Simulation {
      * @param {Array<Scenario<E>>} scenarios
      */
     constructor(environment,context,scenarios) {
-        this.world = new Timer()
-        /**
-         * @type {Array<Particle>}
-         */
+        this.timer = new Timer()
+        /** @type {Array<Particle>} */
         this.particleList = new Array()
-        /**
-         * @type {Array<Entity>}
-         */
+        /** @type {Array<Entity>} */
         this.entityList = new Array()
         this.environment = environment
         this.context = context
@@ -51,7 +47,7 @@ export class Simulation {
         if (!this.#lastTime) this.#lastTime = tsl
         const delta = (tsl - this.#lastTime) / 1000.0
 
-        this.world.step(delta)
+        this.timer.step(delta)
         this.environment.step(delta)
         this.environment.draw(this.context,0)
 
