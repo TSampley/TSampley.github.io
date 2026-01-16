@@ -1,6 +1,8 @@
 User-Agent: googlebot
 User-Agent: bingbot
+User-Agent: Claude-User
 Disallow:
+
 
 User-Agent: *
 Disallow: /
