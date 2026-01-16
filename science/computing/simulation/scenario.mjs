@@ -1,30 +1,23 @@
-import { ForceMatrix } from "./environment.mjs"
-import { Particle } from "../../physics/mechanics/particle.mjs"
+import { UnimplementedError } from "../../../js/common/errors.mjs"
+import { Environment } from "./environment.mjs"
 
 /**
  * Generic container class for a configurable simulation
  * scenario, including simulated entities, and environment
  * state.
+ * 
+ * @template {Environment} E
  */
 export class Scenario {
-
-    /**
-     * 
-     * @param {string} name
-     * @param {ForceMatrix} forceMatrix
-     * @param {()=>Array<Particle>} spawner 
-     */
-    constructor(name,forceMatrix,spawner) {
-        this.name=name
-        this.forceMatrix=forceMatrix
-        this.spawner=spawner
+    constructor(name) {
+        this.name = name
     }
 
     /**
      * 
-     * @returns {Array<Particle>}
+     * @param {E} environment The environment
      */
-    spawnParticles() {
-        return this.spawner()
+    init(environment) {
+        throw UnimplementedError('Scenario','init')
     }
 }

@@ -1,6 +1,7 @@
 import { Timer } from '../../../js/common/timer.mjs'
 import { Entity } from './entity.mjs';
 import { Environment } from './environment.mjs';
+import { Scenario } from './scenario.mjs';
 
 /**
  * 
@@ -17,8 +18,9 @@ export class Simulation {
      * 
      * @param {Environment} environment 
      * @param {CanvasRenderingContext2D} context
+     * @param {Array<Scenario>} scenarios
      */
-    constructor(environment,context) {
+    constructor(environment,context,scenarios) {
         this.world = new Timer()
         /**
          * @type {Array<Particle>}
@@ -30,6 +32,7 @@ export class Simulation {
         this.entityList = new Array()
         this.environment = environment
         this.context = context
+        this.scenarios = scenarios
     }
 
     #isRunning = false

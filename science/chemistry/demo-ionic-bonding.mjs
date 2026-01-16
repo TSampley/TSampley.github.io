@@ -10,6 +10,7 @@ import { Particle } from '../physics/mechanics/particle.mjs';
 import { SoundBoard } from '../../js/audio/sound-board.mjs';
 import { Timer } from '../../js/common/timer.mjs';
 import { Demo } from '../../js/components/demo.mjs'
+import { ChemScenario } from '../computing/simulation/scenario.mjs';
 
 // region Get Elements
 const displayParagraph = document.getElementById('sim-display')
@@ -83,7 +84,7 @@ controller.setElement(Elements.Hydrogen)
 controller.setCharge(0)
 
 /** @type {()=>Array<Particle>} */
-controller.setScenario(()=>{
+const defaultScenario = new ChemScenario('default',forceMatrixChemistry(),()=>{
     // Initialize Atoms
     const protium = new AtomicProperties(Elements.Hydrogen, -1, 0)
     const leftHydrogen = new Particle(200E-12,500E-11,protium)
@@ -96,6 +97,7 @@ controller.setScenario(()=>{
 
     return [leftHydrogen, rightHydrogen]
 })
+controller.setScenario(defaultScenario)
 controller.reset()
 // endregion
 

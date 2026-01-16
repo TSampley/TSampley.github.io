@@ -1,6 +1,7 @@
 
 import '../../physics/mechanics/constants.mjs';
 import { Particle } from '../../physics/mechanics/particle.mjs';
+import { Scenario } from './scenario.mjs';
 import { Simulation } from './simulation.mjs';
 import { Timer } from '../../../js/common/timer.mjs';
 
@@ -9,6 +10,9 @@ import { Element } from '../../chemistry/element.mjs';
 import { AtomicProperties } from '../../chemistry/atomic-properties.mjs';
 import { AtomicParticleRender } from '../../physics/mechanics/particle-render.mjs';
 
+const noOpScenario = {
+  init: function() {}
+}
 /**
  * 
  */
@@ -31,19 +35,18 @@ export class WorldController {
 
         this.atomicRender = new AtomicParticleRender(this.colorScheme)
 
-        this.scenario = ()=>{return[]}
+        this.scenario = noOpScenario
     }
 
     /**
-     * 
-     * @param {()=>Array<Particle>} scenario 
+     * @param {Scenario} scenario 
      */
     setScenario(scenario) {
         this.scenario = scenario
     }
 
     reset() {
-        this.simulation.particleList = this.scenario()
+        this.scenario.init(this.simulation.environment)
     }
 
     /**
