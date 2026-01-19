@@ -2,9 +2,14 @@
 layout: post
 
 title: Agile Expanded
+excerpt:
 
+date: 2026-01-16 1400 -0600
 ---
 
+I'm a big fan of both Agile and Scrum; however, unfortunately, Scrum is widely misrepresented and misunderstood within the software development industry – but that's a rant for another time. About two decades ago, practitioners of Scrum came together with those of [Extreme Programming](https://en.wikipedia.org/wiki/Extreme_programming), [DSDM](https://en.wikipedia.org/wiki/Dynamic_systems_development_method), and other early software development methods, to produce a generalized, lighterweight framework, now known as Agile, described by the [Agile Manifesto](https://agilemanifesto.org/), originally published February 2001. Agile isn't a specific process like Scrum, and I referred to it as a framework, but as a set of values and principles, it's really more of a prescriptive philosophy.
+
+{% include ads/in-article.html %}
 
 ## Agile Values
 
@@ -22,6 +27,8 @@ We like balanced documentation. The code itself should attempt to be self-descri
 
 ### 4. Responding to change over following a plan
 The illusion of explanatory depth – one of the essential biases.
+
+{% include ads/in-article.html %}
 
 ## Agile Principles
 Beyond the four values, there are also twelve principles, which seem to actually be better known than the values despite being more numerous. I would guess the higher level of detail makes the principles more actionable for most people
