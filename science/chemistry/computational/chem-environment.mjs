@@ -1,11 +1,13 @@
 import { NoOp } from "../../../js/common/fns.mjs";
 import { Observable, single } from "../../../js/common/observables.mjs";
-import { Environment, ForceMatrix } from "../../computing/simulation/environment.mjs";
+import { ForceMatrix } from "../computational/force-matrix.mjs"
+import { ParticleEnvironment } from "../../physics/mechanics/particle-environment.mjs";
+import { UnimplementedError } from "../../../js/common/errors.mjs";
 
 /**
  * TODO: migrate Simulation particle step logic here
  */
-class ChemEnvironment extends Environment {
+class ChemEnvironment extends ParticleEnvironment {
   /**
    * 
    * @param {number} width 
@@ -29,25 +31,14 @@ class ChemEnvironment extends Environment {
   }
 
   step(delta) {
-
+    super.step(delta)
   }
 
-  draw(context) {
-
+  draw(context,offset) {
+    super.draw(context,offset)
   }
 
-  particleForces() {
-      return [
-          this.forceMatrix.value.coulomb,
-          this.forceMatrix.value.lennardJones
-      ]
-  }
-
-  environmentForces() {
-      return [
-          this.forceMatrix.value.boundaries,
-          this.forceMatrix.value.drag,
-          this.forceMatrix.value.gravity
-      ]
+  draw3d(webgl,offset) {
+    throw new UnimplementedError('ChemEnvironment','draw3d')
   }
 }

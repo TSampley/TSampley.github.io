@@ -22,6 +22,9 @@ const OK_LAT = 35
  * - once plants reach size/cycle, produce flowers
  * - flowers produce seeds that disperse on wind
  * - wind determined by air temperatures driving convection
+ * 
+ * TODO: consider other animals, fungi, members of ecosystem
+ * - 
  */
 export class DotWorld extends Environment {
 

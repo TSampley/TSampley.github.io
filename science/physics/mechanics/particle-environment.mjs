@@ -7,8 +7,6 @@ export class ParticleEnvironment extends Environment {
 
   constructor(size) {
     super(size)
-    /** @type {Array<Particle>} */
-    this.particleList = new Array()
   }
 
   step(delta) {
@@ -16,6 +14,21 @@ export class ParticleEnvironment extends Environment {
   }
 
   draw(context,offset) {
+    
+  }
 
+  particleForces() {
+      return [
+          this.forceMatrix.value.coulomb,
+          this.forceMatrix.value.lennardJones
+      ]
+  }
+
+  environmentForces() {
+      return [
+          this.forceMatrix.value.boundaries,
+          this.forceMatrix.value.drag,
+          this.forceMatrix.value.gravity
+      ]
   }
 }

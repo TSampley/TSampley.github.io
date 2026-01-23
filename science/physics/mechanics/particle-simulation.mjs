@@ -1,5 +1,5 @@
-import { Environment } from "../../computing/simulation/environment.mjs"
 import { Simulation } from "../../computing/simulation/simulation.mjs"
+import { ParticleEnvironment } from "./particle-environment.mjs";
 
 const DefaultGenerator = (x, y) => { return new Particle(x, y); }
 const PassTest = (x, y) => { return true; }
@@ -7,7 +7,7 @@ const DefaultStep = 0.5
 
 /**
  * 
- * @template {Environment} E
+ * @template {ParticleEnvironment} E
  */
 export class ParticleSimulation extends Simulation {
   /**
@@ -16,14 +16,16 @@ export class ParticleSimulation extends Simulation {
    */
   constructor(environment,context,scenarios) {
     super(environment,context,scenarios)
+    /** @type {Array<Particle>} */
+    this.particleList = new Array()
   }
 
   /**
    * 
-   * @param {number} dt
+   * @param {number} delta
    */
-  step(dt) {
-    const step = dt * this.environment.timeScale
+  step(delta) {
+    const step = delta * this.environment.timeScale
     // Clear previous state
     for (const particle of this.particleList) {
       particle.clearForces()
@@ -71,7 +73,7 @@ export class ParticleSimulation extends Simulation {
 
   /**
    * 
-   * @param {Environment} environment 
+   * @param {E} environment 
    */
   checkEnvironmentCollision(subject, environment) {
     if (subject.x > environment.width) {
@@ -100,7 +102,7 @@ export class ParticleSimulation extends Simulation {
    * it if detected, applying appropriate forces to each particle.
    * 
    * @param {Particle} beta The other particle to check for collision. 
-   * @param {Environment} environment The environment the particles exist within.
+   * @param {E} environment The environment the particles exist within.
    */
   checkParticleCollision(alpha, beta, environment) {
     // Calculate vector between particles
