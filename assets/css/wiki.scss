@@ -48,3 +48,13 @@ canvas {
 @media screen and (min-height: 900px) {
 
 }
+
+
+$gradient-start: rgb(0, 0,  0);
+$gradient-end: rgb(255, 255, 255);
+
+$radial-border: radial-gradient($gradient-start, $gradient-end);
+
+.border-black {
+  border: 8px solid $radial-border;
+}
