@@ -9,6 +9,8 @@ description:
 
 classDiagram
 
+namespace Entities {
+
   class Entity {
     position: Point
     step(delta:number)
@@ -18,32 +20,48 @@ classDiagram
     step(delta:number)
     draw(context:Canvas2DContext,offset:number)
   }
-  Environment *--> Entity
 
   class Simulation~Environment~{
     start()
   }
 
   class Particle
-  Entity <|-- Particle
   class ChemEnvironment~Particle~
-  Environment <|-- ChemEnvironment
 
-  Simulation --> Environment
   
   class Dot
-  Entity <|-- Dot
   class DotWorld~Dot~ {
 
   }
-  Environment <|-- DotWorld
 
   class PlantDot
-  Dot <|-- PlantDot
   class FoodDot
-  Dot <|-- FoodDot
   class AutonomousDot
-  Dot <|-- AutonomousDot
+}
+Simulation *--> Environment
+Environment <|-- ChemEnvironment
+Entity <|-- Particle
+Environment <|-- DotWorld
+Entity <|-- Dot
+Dot <|-- PlantDot
+Dot <|-- FoodDot
+Dot <|-- AutonomousDot
+
+namespace Presentation {
+
+  class Renderer~Subject~ {
+    subject: Subject
+    draw(canvas,offset)
+    draw3d(webgl,offset)
+  }
+
+  class SimulationPresenter {
+    state: Observable~State~
+    onStart()
+    onStop()
+    onEvent(name:string)
+  }
+}
 
 ```
 {% include code/mermaid-script.html %}
