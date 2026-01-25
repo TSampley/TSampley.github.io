@@ -8,5 +8,7 @@ module: ./svg-editor.mjs
   <noscript>Please Enable Javascript to use the applet</noscript>
   <canvas id='canvas' class='demo-canvas'>Your browser does not support canvas.</canvas>
   <div id='controls' class=''>
+    <div id='toolbar'></div>
   </div>
 </div>
+<script src='./svg-editor.mjs' type=module></script>
