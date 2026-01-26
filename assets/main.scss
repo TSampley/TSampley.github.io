@@ -3,12 +3,6 @@
 
 @import "minima";
 
-$gradient-start: rgb(0, 0,  0);
-$gradient-end: rgb(255, 255, 255);
-$bar-gradient: linear-gradient(120deg, $gradient-start, $gradient-end);
-
-$radial-border: radial-gradient($gradient-start, $gradient-end);
-
 .container {
   position: relative;
 }
