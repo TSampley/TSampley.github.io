@@ -25,7 +25,6 @@ export class SvgEditor extends Component {
     const height = this.canvas.clientHeight
 
     if (width != this.canvas.width || height != this.canvas.height) {
-      console.info('SvgEditor.resizeCanvas')
       this.canvas.width = width
       this.canvas.height = height
     }
