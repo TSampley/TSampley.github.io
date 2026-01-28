@@ -17,6 +17,8 @@ description:
 ## Social
 - https://en.wikipedia.org/wiki/Human_science
 - [Economics](./economics/)
+- [Law](./law/)
+- [Pedagogy](./pedagogy)
 - [Politics](./politics/)
 - [Psychology](./psychology/)
 - [Sociology](./sociology/)
