@@ -59,6 +59,13 @@ While most of humanity is actually in conflict with the rest in some ideological
       when: 2003-
   actions:
     -
+- name: Elon Musk
+  region: Global
+  title:
+  actions:
+    - Used government power for personal enrichment
+    - 
+    - https://www.youtube.com/shorts/jBJxXoQRmtQ
 - name: Mitch McConnell
   region: Kentucky
   title:
@@ -74,6 +81,11 @@ While most of humanity is actually in conflict with the rest in some ideological
   title: 
   actions:
     - Violated 1st Amend rights of students and teachers by promoting one religion over others
+- name: Dennis Prager
+  region: US
+  titles:
+  actions:
+    - Coordinates disinformation campaigns
 - name: Nicky Oppenheimer
   region: South Africa
   titles:
