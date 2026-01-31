@@ -1,0 +1,26 @@
+
+@import 'colors';
+
+.container {
+  position: relative;
+  background: $bar-gradient;
+}
+
+.controls-overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  opacity: 0.60
+}
+
+.controls-container {
+  display: flex;
+  flex-direction: column;
+
+  
+}
+
+.controls-container > input[type='range'] {
+  margin: 0px 10px;
+}
+

@@ -2,14 +2,14 @@
 ---
 
 @import 'base';
-
-
-$gradient-start: rgb(0, 0,  0);
-$gradient-end: rgb(255, 255, 255);
-$bar-gradient: linear-gradient(120deg, $gradient-start, $gradient-end);
+@import 'base-wiki';
 
 $radial-background: radial-gradient($gradient-start, 0, $gradient-end, 0.9);
 
 .app-background {
   background: $radial-background;
+}
+
+.container {
+  background: $bar-gradient;
 }
