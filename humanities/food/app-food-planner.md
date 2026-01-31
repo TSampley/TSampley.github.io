@@ -2,7 +2,7 @@
 layout: app
 
 title: Food Planner
-
+module: ./app-food-planner.mjs
 ---
 
 Features:
@@ -12,3 +12,5 @@ Features:
 - Shopping (Grocery List)
   - Add Ingredients from Recipe
   - Check off Items
+
+<p id='p-debug'></p>
