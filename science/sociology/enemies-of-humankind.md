@@ -86,6 +86,13 @@ While most of humanity is actually in conflict with the rest in some ideological
   titles:
   actions:
     - Coordinates disinformation campaigns
+- name: Brian Thompson
+  region: US
+  titles:
+    - title: CEO
+      company: United Healthcare
+  actions:
+    - 
 - name: Nicky Oppenheimer
   region: South Africa
   titles:
