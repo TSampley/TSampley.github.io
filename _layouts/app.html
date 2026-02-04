@@ -1,7 +1,12 @@
 ---
 layout: wiki
+stylesheet: /assets/css/app.css
 ---
 
-{{ content }}
-
-<!-- TODO: fullscreen canvas for rendering application -->
+<div class='container'>
+  <canvas id='app-canvas' class='canvas'>Your browser does not support Canvas</canvas>
+  <div class="controls-overlay controls-container">
+    {{ content }}
+  </div>
+</div>
+<script src='{{ layout.script }}' type='module'></script>
