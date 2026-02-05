@@ -17,9 +17,11 @@ date: 2025-12-06 01:33
 ### Ricotta Filling
 - 15 oz ricotta cheese
 - 1 large egg
-- 2 C mozzarella cheese
-- 3/4 C parmesan
+- 1 1/2 bag Tillamook mozzarella/parmesan (~2.5C)
 - 2 t italian seasoning
+- 2 t basil, ground
+- 1 t thyme, ground
+- 1 t oregano, ground
 - 1/2 t salt
 - 1/4 t pepper
 {: .recipe-ingredient-list}
@@ -27,19 +29,18 @@ date: 2025-12-06 01:33
 ### Meat Filling
 - 1 T olive oil
 - 1 yellow onion, finely diced
-- 3/4 lb ground beef
-- 3/4 lb ground, italian sausage
+- 1 lb ground beef
+- 1 lb ground, italian sausage
 - 3 cloves garlic, minced
 - 1/2 C chicken broth
-- 40 oz marinara sauce
-- 1 T tomato paste
-- 1 t hot sauce
-- 1 t worcestire sauce
+- 42 oz Prego
+- 1 T hot sauce (Frank's red hot)
+- 1 T worcestire sauce
 {: .recipe-ingredient-list}
 
 ### Bones
 - 12 lasagna noodles
-- 2 1/2 C mozzarella cheese
+- 2 1/2 C Tillamook mozzarella/parmesan
 {: .recipe-ingredient-list}
 
 ## Instructions
@@ -53,7 +54,7 @@ date: 2025-12-06 01:33
 7. Add remaining meat filling ingredients and bring to a simmer; cover partially while boiling noodles.
 8. Cook lasagna noodles in large pot of water till al dente; drain and rinse.
 9. Spread 1 C meat sauce as a base, then repeat three times: noodles (4), 1/3 cheese mix, 1 1/2 C meat sauce
-10. Top with mozzarella
+10. Top with cheese
 11. Bake @375ºF for 35 minutes covered then 10 minutes uncovered.
 12. Allow to cool before serving.
 {: .recipe-instruction-list}
