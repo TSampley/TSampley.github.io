@@ -2,10 +2,8 @@
 layout: post
 
 title: Travel Planning
-
+date: 2026-02-07 0000 -0700
 ---
-
-
 
 https://www.electrifyamerica.com/pricing/
 7$/month subscription
