@@ -157,66 +157,75 @@ export class ParticleSimulation extends Simulation {
       beta.y += nudgeY * alphaMass;
     }
   }
-
-  // region Generators
-  /**
-   * 
-   * @param {number} centerX 
-   * @param {number} centerY 
-   * @param {number} radius 
-   */
-  initializeCircle(centerX, centerY, radius) {
-    let radiusSqr = radius * radius
-    this.initializePoints(
-      left = centerX - radius,
-      right = centerX + radius,
-      top = centerY - radius,
-      bottom = centerY + radius,
-      test = (x, y) => {
-        let xDif = x - centerX;
-        let yDif = y - centerY;
-        return xDif * xDif + yDif * yDif <= radiusSqr
-      }
-    )
-  }
-
-  /**
-   * Initializes particles within the rectangular bounds defined by
-   * left, right, top, and bottom, with points spaced 
-   * using stepx, and stepy. Only points for which {@link test} 
-   * returns true will be passed to {@link generator} to
-   * create a new particle.
-   * 
-   * @param {Number} left
-   * @param {Number} right
-   * @param {Number} top
-   * @param {Number} bottom
-   * @param {Number} stepx
-   * @param {Number} stepy
-   * @param {(Number,Number)=>Boolean} test
-   * @param {(Number,Number)=>Particle} generator
-   */
-  initializePoints(
-    left, right, top, bottom,
-    stepx = DefaultStep,
-    stepy = DefaultStep,
-    test = PassTest,
-    generator = DefaultGenerator
-  ) {
-    // iterate over bounds to generate points
-    var y = top;
-    while (y < bottom) {
-      var x = left;
-      while (x < right) {
-        // check for points in path
-        if (test(x, y)) {
-          this.particleList.push(generator(x, y));
-        }
-        x += stepx;
-      }
-      y += stepy;
-    }
-  }
-
-  // endregion
 }
+
+// region Generators
+
+/*
+TODO: consider Generator abstract class with common initialization function, each
+  with its own configuration.
+ */
+
+/**
+ * @param {ParticleSimulation} simulation The subject simulation to initialize particles within.
+ * @param {number} centerX The x coordinate of the center of the circle to initialize particles within.
+ * @param {number} centerY The y coordinate of the center of the circle to initialize particles within.
+ * @param {number} radius The radius of the circle to initialize particles within.
+ */
+function initializeCircle(simulation, centerX, centerY, radius) {
+  let radiusSqr = radius * radius
+  initializePoints(
+    simulation,
+    centerX - radius,
+    centerX + radius,
+    centerY - radius,
+    centerY + radius,
+    test = (x, y) => {
+      let xDif = x - centerX;
+      let yDif = y - centerY;
+      return xDif * xDif + yDif * yDif <= radiusSqr
+    }
+  )
+}
+
+/**
+ * Initializes particles within the rectangular bounds defined by
+ * left, right, top, and bottom, with points spaced 
+ * using stepx, and stepy. Only points for which {@link test} 
+ * returns true will be passed to {@link generator} to
+ * create a new particle.
+ * @param {ParticleSimulation} simulation The subject simulation to initialize particles within.
+ * @param {Number} left
+ * @param {Number} right
+ * @param {Number} top
+ * @param {Number} bottom
+ * @param {Number} stepx
+ * @param {Number} stepy
+ * @param {(Number,Number)=>Boolean} test
+ * @param {(Number,Number)=>Particle} generator
+ */
+function initializePoints(
+  simulation,
+  left, right, top, bottom,
+  stepx = DefaultStep,
+  stepy = DefaultStep,
+  test = PassTest,
+  generator = DefaultGenerator
+) {
+  // iterate over bounds to generate points
+  var y = top;
+  while (y < bottom) {
+    var x = left;
+    while (x < right) {
+      // check for points in path
+      if (test(x, y)) {
+        simulation.particleList.push(generator(x, y));
+      }
+      x += stepx;
+    }
+    y += stepy;
+  }
+}
+
+
+// endregion
