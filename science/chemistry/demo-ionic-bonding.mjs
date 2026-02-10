@@ -1,16 +1,18 @@
 
-import { AtomicProperties } from './atomic-properties.mjs'
-import { Elements } from './element.mjs'
-
-import { Environment, forceMatrixChemistry } from '../computing/simulation/environment.mjs';
-import { Simulation } from '../computing/simulation/simulation.mjs';
-import { WorldController } from '../computing/simulation/world-controller.mjs';
-import { Particle } from '../physics/mechanics/particle.mjs';
-
+import { Size } from '../../../js/common/geom.mjs'
 import { SoundBoard } from '../../js/audio/sound-board.mjs';
 import { Timer } from '../../js/common/timer.mjs';
 import { Demo } from '../../js/components/demo.mjs'
-import { ChemScenario } from '../computing/simulation/scenario.mjs';
+
+import { WorldController } from '../computing/simulation/world-controller.mjs';
+import { Particle } from '../physics/mechanics/particle.mjs';
+import { ParticleSimulation } from '../physics/mechanics/particle-simulation.mjs';
+
+import { AtomicProperties } from './atomic-properties.mjs'
+import { Elements } from './element.mjs'
+import { forceMatrixChemistry } from './computational/force-matrix.mjs'
+import { ChemScenario } from './computational/chem-scenario.mjs'
+import { ChemEnvironment } from './computational/chem-environment.mjs';
 
 // region Get Elements
 const displayParagraph = document.getElementById('sim-display')
@@ -44,10 +46,10 @@ forces.gravity.isEnabled = false
 const scalingFacting = 1 / 2E-11
 const scaledWidth = demo.canvas.width / scalingFacting
 const scaledHeight = demo.canvas.height / scalingFacting
-let environment = new Environment(scaledWidth, scaledHeight, forces)
+let environment = new ChemEnvironment(new Size(scaledWidth, scaledHeight), forces)
 environment.onCollide = SoundBoard.playClack
 environment.onBounce = SoundBoard.playWoop
-let simulation = new Simulation(environment)
+let simulation = new ParticleSimulation(environment)
 // endregion
 
 // region Adapters

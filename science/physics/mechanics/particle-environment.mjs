@@ -1,14 +1,20 @@
+import { Size } from "../../../js/common/geom.mjs";
+import { single } from "../../../js/common/observables.mjs";
+import { ForceMatrix } from "../../chemistry/computational/force-matrix.mjs";
 import { Environment } from "../../computing/simulation/environment.mjs";
 
 /**
- * TODO: move particle-specific implementation in simulation here
  */
 export class ParticleEnvironment extends Environment {
-
-  constructor(size) {
+  /**
+   * @param {Size} size 
+   * @param {ForceMatrix} forceMatrix 
+   */
+  constructor(size,forceMatrix) {
     super(size)
+    this.forceMatrix = single(forceMatrix)
   }
-
+  
   step(delta) {
 
   }

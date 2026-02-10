@@ -1,5 +1,6 @@
-import { ChemEnvironment } from '../../chemistry/computational/chem-environment.mjs'
+import { ChemEnvironment } from "./chem-environment.mjs";
 import { Particle } from "../../physics/mechanics/particle.mjs"
+import { Scenario } from "../../computing/simulation/scenario.mjs";
 
 /**
  * @template {ChemEnvironment} E

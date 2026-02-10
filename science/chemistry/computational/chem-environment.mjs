@@ -7,7 +7,7 @@ import { UnimplementedError } from "../../../js/common/errors.mjs";
 /**
  * TODO: migrate Simulation particle step logic here
  */
-class ChemEnvironment extends ParticleEnvironment {
+export class ChemEnvironment extends ParticleEnvironment {
   /**
    * 
    * @param {number} width 
@@ -16,8 +16,8 @@ class ChemEnvironment extends ParticleEnvironment {
    * @param {()=>void} onCollide 
    * @param {()=>void} onBounce 
    */
-  constructor(width,height,forceMatrix,onCollide=NoOp.f0,onBounce=NoOp.f0) {
-    super(width,height)
+  constructor(size,forceMatrix,onCollide=NoOp.f0,onBounce=NoOp.f0) {
+    super(size)
 
     /** @type {Observable<ForceMatrix>} */
     this.forceMatrix = single(forceMatrix)

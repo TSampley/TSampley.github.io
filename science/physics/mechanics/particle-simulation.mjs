@@ -1,10 +1,6 @@
 import { Simulation } from "../../computing/simulation/simulation.mjs"
 import { ParticleEnvironment } from "./particle-environment.mjs";
 
-const DefaultGenerator = (x, y) => { return new Particle(x, y); }
-const PassTest = (x, y) => { return true; }
-const DefaultStep = 0.5
-
 /**
  * 
  * @template {ParticleEnvironment} E
@@ -160,6 +156,10 @@ export class ParticleSimulation extends Simulation {
 }
 
 // region Generators
+
+const DefaultGenerator = (x, y) => { return new Particle(x, y); }
+const PassTest = (x, y) => { return true; }
+const DefaultStep = 0.5
 
 /*
 TODO: consider Generator abstract class with common initialization function, each
