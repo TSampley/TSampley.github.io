@@ -17,12 +17,7 @@ export class ChemEnvironment extends ParticleEnvironment {
    * @param {()=>void} onBounce 
    */
   constructor(size,forceMatrix,onCollide=NoOp.f0,onBounce=NoOp.f0) {
-    super(size)
-
-    /** @type {Observable<ForceMatrix>} */
-    this.forceMatrix = single(forceMatrix)
-    this.timeScale = 1E-6
-    this.hardCollisions = true
+    super(size,forceMatrix)
 
     /** @type {()=>void} */
     this.onCollide = onCollide

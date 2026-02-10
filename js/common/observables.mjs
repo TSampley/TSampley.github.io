@@ -36,6 +36,11 @@ export class Observable {
     })
   }
 
+  get value() {
+    if (this.#value === UNSET) throw "Illegal State - Value is not set"
+    return this.#value
+  }
+
   /**
    * Subscribe to the values of this observable.
    * 

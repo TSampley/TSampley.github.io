@@ -1,4 +1,6 @@
+import { single } from "../../../js/common/observables.mjs";
 import { ChemEnvironment } from "./chem-environment.mjs";
+import { ForceMatrix } from "./force-matrix.mjs";
 import { Particle } from "../../physics/mechanics/particle.mjs"
 import { Scenario } from "../../computing/simulation/scenario.mjs";
 
@@ -19,7 +21,7 @@ export class ChemScenario extends Scenario {
     }
 
     init(environment) {
-        environment.forceMatrix = this.forceMatrix
+        environment.forceMatrix = single(this.forceMatrix)
         environment.particles = this.spawner()
     }
 }

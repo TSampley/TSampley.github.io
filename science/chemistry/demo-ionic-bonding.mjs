@@ -104,7 +104,7 @@ controller.reset()
 // endregion
 
 
-Object.values(controller.simulation.environment.forceMatrix).forEach(force => {
+Object.values(controller.simulation.environment.forceMatrix.value).forEach(force => {
     const listItem = document.createElement('li')
     /** @type {HTMLInputElement} */
     const checkbox = document.createElement('input')
@@ -116,9 +116,9 @@ Object.values(controller.simulation.environment.forceMatrix).forEach(force => {
     listItem.append(label, checkbox)
     uiElements.divForceInputs.appendChild(listItem)
 
-    checkbox.checked = controller.simulation.environment.forceMatrix[force.id].isEnabled
+    checkbox.checked = controller.simulation.environment.forceMatrix.value[force.id].isEnabled
     checkbox.onchange = (event)=> {
-        controller.simulation.environment.forceMatrix[force.id].isEnabled = event.target.checked
+        controller.simulation.environment.forceMatrix.value[force.id].isEnabled = event.target.checked
     }
 });
 uiElements.inputRunning.checked = controller.isRunning
