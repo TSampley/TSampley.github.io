@@ -3,7 +3,7 @@
 
 .container {
   position: relative;
-  background: $bar-gradient;
+  background: var(--bar-gradient);
 }
 
 .controls-overlay {

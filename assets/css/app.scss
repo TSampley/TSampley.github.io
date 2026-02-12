@@ -4,12 +4,12 @@
 @import 'base';
 @import 'base-wiki';
 
-$radial-background: radial-gradient($gradient-start, 0, $gradient-end, 0.9);
+$radial-background: radial-gradient(var(--gradient-start), var(--gradient-end), 0.9);
 
 .app-background {
   background: $radial-background;
 }
 
 .container {
-  background: $bar-gradient;
+  background: var(--bar-gradient);
 }

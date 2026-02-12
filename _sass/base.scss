@@ -1,6 +1,7 @@
 
 @import 'nav';
 
+@import 'header';
 @import 'footer';
 @import 'page';
 
@@ -56,10 +57,6 @@ dl,
 figure,
 .highlight {
     margin-bottom: 15px
-}
-
-main {
-    display: block
 }
 
 img {
@@ -147,10 +144,18 @@ pre>code {
 .wrapper {
     max-width: -webkit-calc(800px - (30px * 2));
     max-width: calc(800px - 30px*2);
-    margin-right: auto;
-    margin-left: auto;
+
     padding-right: 30px;
     padding-left: 30px
+}
+
+.side-bar {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+
+    background-image: url("/assets/img/agents.webp");
+    background-repeat: repeat;
 }
 
 @media screen and (max-width: 800px) {
@@ -210,13 +215,6 @@ table td {
     border: 1px solid #e8e8e8
 }
 
-.site-header {
-    border-top: 5px solid rgb(66.25, 66.25, 66.25);
-    border-bottom: 1px solid #e8e8e8;
-    min-height: 55.95px;
-    position: relative
-}
-
 .site-title {
     font-size: 26px;
     font-weight: 300;
@@ -230,7 +228,6 @@ table td {
 .site-title:visited {
     color: rgb(66.25, 66.25, 66.25)
 }
-
 
 .contact-list,
 .social-media-list {

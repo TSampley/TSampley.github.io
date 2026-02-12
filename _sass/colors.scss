@@ -1,4 +1,27 @@
 
-$gradient-start: rgb(0, 0,  0);
-$gradient-end: rgb(255, 255, 255);
-$bar-gradient: linear-gradient(120deg, $gradient-start, $gradient-end);
+
+
+:root {
+  color-scheme: light dark;
+
+  --gradient-start: rgb(0, 0, 0);
+  --gradient-end: rgb(255, 255, 255);
+
+  --gradient-end: rgb(255, 255, 255);
+  --bar-gradient: linear-gradient(120deg, var(--gradient-start), var(--gradient-end));
+
+  --surface: light-dark(rgb(255, 255, 255), rgb(0, 0, 0));
+  --on-surface: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));
+
+  --primary: light-dark(rgb(11, 168, 0), rgb(11, 168, 0));
+  --primary-light: light-dark(rgb(11, 168, 0), rgb(11, 168, 0));
+  --primary-dark: light-dark(rgb(11, 168, 0), rgb(11, 168, 0));
+
+  --secondary: light-dark(rgb(255, 255, 255), rgb(0, 0, 0));
+  --secondary-light: light-dark(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5));
+  --secondary-dark: light-dark(rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8));
+
+  --tertiary: light-dark(rgb(255, 255, 255), rgb(0, 0, 0));
+  --tertiary-light: light-dark(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5));
+  --tertiary-dark: light-dark(rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8));
+}

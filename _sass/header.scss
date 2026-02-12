@@ -1,0 +1,14 @@
+
+@import 'colors';
+
+.site-header {
+    border-top: 5px solid rgb(66.25, 66.25, 66.25);
+
+    min-height: 55.95px;
+    position: relative;
+
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 1);
+    background-color: theme-color(primary);
+
+    z-index: 1;
+}
