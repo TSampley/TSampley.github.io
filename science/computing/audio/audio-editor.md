@@ -2,7 +2,9 @@
 layout: app
 
 title: Audio Editor
-module: ./audio-editor.mjs
+script: ./audio-editor.mjs
 ---
 
-<!-- TODO: audio editor controls -->
+<button id='record-button'>⏺️</button>
+<button id='play-button'>⏯️</button>
+<button id='stop-button'>⏹️</button>

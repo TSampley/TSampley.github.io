@@ -4,11 +4,8 @@
  * See LICENSE file in the project root for full license information.
  */
 
-import { single, Observable } from "../utils/observable.mjs";
-
-const ui = new AudioEditorUi();
-const model = new AudioEditor();
-const presenter = new AudioEditorPresenter(ui, model);
+import { single, Observable } from "../../../js/common/observables.mjs";
+import Fourier from "../../../math/harmonics/fourier.mjs";
 
 /**
  * The AudioEditorUi class is responsible for encapsulating the HTML elements
@@ -22,7 +19,7 @@ class AudioEditorUi {
      * The audio canvas renders the audio being edited as a spectrogram or
      * waveform, allowing the user to visualize the final result.
      */
-    this.audioCanvas = document.getElementById("audio-canvas");
+    this.audioCanvas = document.getElementById("app-canvas");
 
     /**
      * Allows the user to record new audio clips directly into the editor,
@@ -37,19 +34,31 @@ class AudioEditorUi {
   }
 
   #initUi() {
-    this.recordButton.addClickListener(() => {
+    this.recordButton.addEventListener("click", async () => {
       if (this.presenter) {
-        this.presenter.onRecordButtonClick();
+        try {
+          await this.presenter.onRecordButtonClick();
+        } catch (error) {
+          console.error('Error handling record button click:', error);
+        }
       }
     });
-    this.playButton.addClickListener(() => {
+    this.playButton.addEventListener("click", async () => {
       if (this.presenter) {
-        this.presenter.onPlayButtonClick();
+        try {
+          await this.presenter.onPlayButtonClick();
+        } catch (error) {
+          console.error('Error handling play button click:', error);
+        }
       }
     });
-    this.stopButton.addClickListener(() => {
+    this.stopButton.addEventListener("click", async () => {
       if (this.presenter) {
-        this.presenter.onStopButtonClick();
+        try {
+          await this.presenter.onStopButtonClick();
+        } catch (error) {
+          console.error('Error handling stop button click:', error);
+        }
       }
     });
   }
@@ -70,7 +79,27 @@ class AudioEditorUi {
   }
 
   drawAudioBuffer(buffer) {
-    
+    if (!buffer) return;
+    const fft = new Fourier();
+    fft.transform(buffer)
+      .then(series => {
+        const ctx = this.audioCanvas.getContext("2d");
+        const w = this.audioCanvas.width;
+        const h = this.audioCanvas.height;
+        ctx.clearRect(0, 0, w, h);
+        const len = series.length;
+        // draw amplitude spectrum
+        ctx.beginPath();
+        for (let i = 0; i < len; i++) {
+          const x = (i / len) * w;
+          const y = h - (series.amplitudes[i] / Math.max(...series.amplitudes)) * h;
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = "#00f";
+        ctx.stroke();
+      })
+      .catch(err => console.error("FFT error:", err));
   }
 }
 
@@ -88,6 +117,8 @@ class AudioEditorPresenter {
 
     this.selectedTrack = null;
 
+    this.error = single(null);
+
     this.ui.setPresenter(this);
   }
 
@@ -95,23 +126,46 @@ class AudioEditorPresenter {
 
   onReleaseUi(ui) {}
 
-  onRecordButtonClick() {
-    if (!this.model.isRecording.value) {
-      // start recording
-      this.model.startRecording(this.selectedTrack);
-    } else {
-      // stop recording and create new audio clip with recorded audio data
-      const recording = this.model.stopRecording();
-      this.model.addClip(recording);
+  async onRecordButtonClick() {
+    try {
+      if (!this.model.isRecording.value) {
+        // start recording
+        await this.model.startRecording(this.selectedTrack);
+      } else {
+        // stop recording and create new audio clip with recorded audio data
+        const recording = await this.model.stopRecording();
+        // TODO: manage track and clip state in presenter instead of model
+        // this.model.addClip(recording);
+
+        // render spectrum for the new clip
+        this.ui.drawAudioBuffer(recording.buffer);
+      }
+    } catch (error) {
+      console.error('Error handling record button click:', error);
+      this.error.value = error;
     }
   }
 
-  onPlayButtonClick() {
-    // TODO: toggle play/pause current position
+  async onPlayButtonClick() {
+    try {
+      if (this.model.isPlaying) {
+        this.model.pausePlayback();
+      } else {
+        this.model.startPlayback();
+      }
+    } catch (error) {
+      console.error('Error handling play button click:', error);
+      this.error.value = error;
+    }
   }
   
-  onStopButtonClick() {
-    // TODO: stop playback and reset position to start of track
+  async onStopButtonClick() {
+    try {
+      this.model.stopPlayback();
+    } catch (error) {
+      console.error('Error handling stop button click:', error);
+      this.error.value = error;
+    }
   }
 }
 
@@ -126,6 +180,10 @@ class AudioEditorPresenter {
  * 
  */
 class AudioEditor {
+  /**
+   * 
+   * @param {AudioRecorder} recorder 
+   */
   constructor(recorder) {
     this.recorder = recorder;
 
@@ -217,6 +275,18 @@ class AudioEditor {
       console.error('Failed to stop recording:', error);
       throw error;
     }
+  }
+
+  async startPlayback() {
+
+  }
+
+  async pausePlayback() {
+
+  }
+
+  async stopPlayback() {
+
   }
 }
 
@@ -343,3 +413,9 @@ class AudioRecorder {
     });
   }
 }
+
+// Program Begin
+
+const ui = new AudioEditorUi();
+const model = new AudioEditor(new AudioRecorder());
+const presenter = new AudioEditorPresenter(ui, model);
