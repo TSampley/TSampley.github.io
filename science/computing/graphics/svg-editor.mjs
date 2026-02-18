@@ -14,7 +14,7 @@ export class Component {
 export class SvgEditor extends Component {
   constructor() {
     super()
-    this.canvas = document.getElementById('canvas')
+    this.canvas = document.getElementById('app-canvas')
     this.context = this.canvas.getContext('2d')
 
     this.toolbar = document.getElementById('toolbar')
