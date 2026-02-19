@@ -15,40 +15,6 @@
 
       <div class="trigger">
           <a class="page-link" href="/about">About</a>
-          <div class="separator">—</div>
-          {%- assign current_branch = page.dir -%}
-          {%- assign current_dir_segments = current_branch | split: '/' -%}
-          {%- assign excluded = 'about.html,feed.xml,404.html' | split: ',' -%}
-          {%- assign accepted = 'index.md,index.html' | split: ',' -%}
-          {%- for otherPage in site.html_pages -%}
-            {%- if excluded contains otherPage.name -%}
-              {%- continue -%}
-            {%- endif -%}
-            {%- unless accepted contains otherPage.name -%}
-              {%- continue -%}
-            {%- endunless -%}
-
-            {%- assign other_dir_segments = otherPage.dir | split: '/' -%}
-
-            {%- if other_dir_segments.size > current_dir_segments.size -%}
-              {%- assign is_subdir = true -%}
-              {%- assign limit = current_dir_segments.size | minus: 1 -%}
-              {%- for i in (0..limit) -%}
-                {%- if other_dir_segments[i] != current_dir_segments[i] -%}
-                  {%- assign is_subdir = false -%}
-                  {%- break -%}
-                {%- endif -%}
-              {%- endfor -%}
-            {%- else -%}
-              {%- continue -%}
-            {%- endif -%}
-
-            {%- assign size_diff = other_dir_segments.size | minus: current_dir_segments.size -%}
-            {%- if is_subdir and size_diff == 1 -%}
-                <a class="page-link" href="{{ otherPage.url | relative_url }}">{{ otherPage.title | default: otherPage.slug }}</a>
-            {%- endif -%}
-          {%- endfor -%}
-
       </div>
     </nav>
   </div>
