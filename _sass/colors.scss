@@ -14,14 +14,14 @@
   --on-surface: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));
 
   --primary: light-dark(rgb(11, 168, 0), rgb(11, 168, 0));
-  --primary-light: light-dark(rgb(11, 168, 0), rgb(11, 168, 0));
-  --primary-dark: light-dark(rgb(11, 168, 0), rgb(11, 168, 0));
+  --primary-light: light-dark(rgb(111, 202, 104), rgb(13, 188, 1));
+  --primary-dark: light-dark(rgb(37, 118, 31), rgb(9, 133, 0));
 
-  --secondary: light-dark(rgb(255, 255, 255), rgb(0, 0, 0));
-  --secondary-light: light-dark(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5));
-  --secondary-dark: light-dark(rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8));
+  --secondary: light-dark(rgb(140, 104, 45), rgb(117, 83, 30));
+  --secondary-light: light-dark(rgb(189, 148, 83), rgb(105, 72, 18));
+  --secondary-dark: light-dark(rgb(100, 82, 53), rgb(117, 83, 30));
 
-  --tertiary: light-dark(rgb(255, 255, 255), rgb(0, 0, 0));
-  --tertiary-light: light-dark(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5));
-  --tertiary-dark: light-dark(rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8));
+  --tertiary: light-dark(rgb(146, 0, 0), rgb(123, 1, 1));
+  --tertiary-light: light-dark(rgb(179, 39, 39), rgb(176, 46, 46));
+  --tertiary-dark: light-dark(rgb(96, 21, 21), rgb(87, 1, 1));
 }
