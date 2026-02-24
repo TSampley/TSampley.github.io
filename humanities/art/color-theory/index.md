@@ -46,3 +46,44 @@ Click "Start" to Begin
 <noscript>
 <p>Please Enable Javascript to Use Interactive Demos</p>
 </noscript>
+
+<label for='theme-toggle'>Theme: Light/Dark</label>
+<input id='theme-toggle' type='checkbox'>
+
+<div id='theme-root' style='color-scheme: light; background-color: var(--surface); padding: 10px;'>
+  <p style='color: var(--on-surface);'>Primary Color</p>
+  <div style='background-color: var(--primary); padding: 10px;'>
+    <div style='background-color: var(--primary-light); padding: 10px;'>
+    </div>
+    <div style='background-color: var(--primary-dark); padding: 10px;'>
+    </div>
+  </div>
+
+  <p style='color: var(--on-surface);'>Secondary Color</p>
+  <div style='background-color: var(--secondary); padding: 10px;'>
+    <div style='background-color: var(--secondary-light); padding: 10px;'>
+    </div>
+    <div style='background-color: var(--secondary-dark); padding: 10px;'>
+    </div>
+  </div>
+
+  <p style='color: var(--on-surface);'>Tertiary Color</p>
+  <div style='background-color: var(--tertiary); padding: 10px;'>
+    <div style='background-color: var(--tertiary-light); padding: 10px;'>
+    </div>
+    <div style='background-color: var(--tertiary-dark); padding: 10px;'>
+    </div>
+  </div>
+</div>
+
+<script>
+  const root = document.getElementById('theme-root');
+  const toggle = document.getElementById('theme-toggle');
+  toggle.addEventListener('onchange',(event)=>{
+    if (event.target.checked) {
+      root.style['color-scheme']='dark'
+    } else {
+      root.style['color-scheme']='light'
+    }
+  });
+</script>

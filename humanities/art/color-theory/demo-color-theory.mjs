@@ -52,12 +52,22 @@ class ColorTheoryDemo extends Demo {
     this.toggle.onchange = (element)=>{
       if (element.target.checked) {
         // HSV to CMYK
-        (this.value1, this.value2, this.value3, this.value4) = hsvToCmyk(this.value1, this.value2, this.value3)
+        const [c, m, y, k] = hsvToCmyk(this.value1, this.value2, this.value3)
+        this.value1 = c
+        this.value2 = m
+        this.value3 = y
+        this.value4 = k
       } else {
         // CMYK to HSV
-        (this.value1, this.value2, this.value3) = cmykToHsv(this.value1, this.value2, this.value3, this.value4)
+        const [h, s, v] = cmykToHsv(this.value1, this.value2, this.value3, this.value4)
+        this.value1 = h
+        this.value2 = s
+        this.value3 = v 
       }
-      (this.value1, this.value2, this.value3, this.value4) = (0, 0, 0, 0)
+      this.value1 = 0
+      this.value2 = 0
+      this.value3 = 0
+      this.value4 = 0
       this.setColorModel(
         element.target.checked ? 'cymk' : 'hsv'
       )
