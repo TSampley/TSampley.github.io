@@ -2,14 +2,13 @@
 @import 'colors';
 
 .site-header {
-    background-color: #f0f;
-    border-top: 5px solid rgb(66.25, 66.25, 66.25);
+  background-color: inherit;
+  border-top: 5px solid rgb(66.25, 66.25, 66.25);
 
-    min-height: 55.95px;
-    position: relative;
+  min-height: 55.95px;
+  position: relative;
 
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 1);
-    background-color: theme-color(primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 1);
 
-    z-index: 1;
+  z-index: 10;
 }
