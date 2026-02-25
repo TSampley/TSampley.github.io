@@ -101,6 +101,29 @@ class AudioEditorUi {
       })
       .catch(err => console.error("FFT error:", err));
   }
+
+  /**
+   * 
+   */
+  drawSpectrumSlice(amps, index) {
+    const ctx = this.audioCanvas.getContext("2d");
+    // TODO: change slice width depending on playback speed and zoom level
+    const sliceWidth = this.audioCanvas.width / 100;
+    const ampHeight = this.audioCanvas.height / amps.length;
+    const w = this.audioCanvas.width;
+    const h = this.audioCanvas.height;
+    const x = index * sliceWidth;
+    const len = amps.length;
+    const maxAmp = 100; // TODO: calculate max amplitude for scaling
+    // draw amplitude spectrum vertically for this slice
+    ctx.clearRect(x, 0, sliceWidth, h);
+    for (let i = 0; i < len; i++) {
+      const amp = Math.min(amps[i] / maxAmp, 1);
+      const y = h - i*ampHeight;
+      ctx.fillStyle = `rgb(0, 0, ${255 * amp})`;
+      ctx.fillRect(x, y, sliceWidth, ampHeight);
+    }
+  }
 }
 
 /**
@@ -138,7 +161,8 @@ class AudioEditorPresenter {
         // this.model.addClip(recording);
 
         // render spectrum for the new clip
-        this.ui.drawAudioBuffer(recording.buffer);
+        // this.ui.drawAudioBuffer(recording.buffer);
+        analyseBuffer(recording.buffer);
       }
     } catch (error) {
       console.error('Error handling record button click:', error);
@@ -209,7 +233,9 @@ class AudioEditor {
     return Math.max(...this.tracks.map(track => track.end));
   }
 
+  /** @type {AudioTrack?} */
   #recordingTrack = null;
+  /** @type {AudioClip?} */
   #recordingClip = null;
   /**
    * 
@@ -256,6 +282,7 @@ class AudioEditor {
       const audioContext = new (window.AudioContext || window.webkitAudioContext)();
       const arrayBuffer = await audioBlob.arrayBuffer();
       this.#recordingClip.buffer = await audioContext.decodeAudioData(arrayBuffer);
+      analyseBuffer(this.#recordingClip.buffer);
       
       // Set clip timing based on track position
       if (this.#recordingTrack) {
@@ -321,14 +348,17 @@ class AudioClip {
   constructor() {
     /**
      * The audio data for this clip, which may be a portion of the original audio buffer or a separate recording.
+     * @type {AudioBuffer}
      */
     this.buffer = null;
     /**
      * The start time of the clip within the track, in seconds.
+     * @type {number}
      */
     this.startTime = 0;
     /**
      * The end time of the clip within the track, in seconds.
+     * @type {number}
      */
     this.endTime = 0;
   }
@@ -414,8 +444,35 @@ class AudioRecorder {
   }
 }
 
+const audioWorker = new Worker('../../../../math/harmonics/fast-fourier-worker.mjs');
+/**
+ * 
+ * @param {AudioBuffer} buffer 
+ */
+async function analyseBuffer(buffer) {
+  const channel = buffer.getChannelData(0);
+  const win = 2048;
+  let index = 0;
+  for (let offset = 0; offset + win <= channel.length; offset += win/2) {
+    const slice = channel.subarray(offset, offset + win);
+    // Transfer the slice so the worker can own the memory
+    audioWorker.postMessage({ type: 'window', payload: slice, index }, [slice.buffer]);
+    index++;
+    // yield to browser so it can repaint before queuing the next slice
+    await new Promise(r => requestAnimationFrame(r));
+  }
+}
+
 // Program Begin
 
+audioWorker.onmessage = ({ data }) => {
+  if (data.type === 'spectrum') {
+    ui.drawSpectrumSlice(data.amps, data.index);
+  }
+};
+// Capture HTML Elements
 const ui = new AudioEditorUi();
+// Create domain model
 const model = new AudioEditor(new AudioRecorder());
+// Connect UI and model with presenter
 const presenter = new AudioEditorPresenter(ui, model);
