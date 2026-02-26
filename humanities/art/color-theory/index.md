@@ -79,7 +79,7 @@ Click "Start" to Begin
 <script>
   const root = document.getElementById('theme-root');
   const toggle = document.getElementById('theme-toggle');
-  toggle.addEventListener('onchange',(event)=>{
+  toggle.addEventListener('change',(event)=>{
     if (event.target.checked) {
       root.style['color-scheme']='dark'
     } else {

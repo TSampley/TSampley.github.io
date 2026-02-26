@@ -12,15 +12,26 @@ import { Demo } from "../../../js/components/demo.mjs"
  * Mode 3 - Other Color Models: Explore colors using HSL and CMYK models.
  */
 class ColorTheoryDemo extends Demo {
+
+  /**
+   * @type {(number)=>void} assignValue 
+   */
+  #colorUpdater(assignValue) {
+    return (element)=>{
+      const floatValue = parseFloat(element.target.value)
+      assignValue(floatValue)
+      updateColor()
+    }
+  }
+
   constructor(
-    canvasId='canvas',
     slider1Id='slider1',
     slider2Id='slider2',
     slider3Id='slider3',
     slider4Id='slider4',
     toggleId='toggle'
   ) {
-    super(canvasId)
+    super('app-canvas')
 
     this.slider1 = document.getElementById(slider1Id)
     this.slider2 = document.getElementById(slider2Id)
@@ -33,22 +44,11 @@ class ColorTheoryDemo extends Demo {
     this.value3 = 0
     this.value4 = 0
     
-    this.slider1.onchange = (element)=>{
-      this.value1 = parseFloat(element.target.value)
-      updateColor()
-    }
-    this.slider2.onchange = (element)=>{
-      this.value2 = parseFloat(element.target.value)
-      updateColor()
-    }
-    this.slider3.onchange = (element)=>{
-      this.value3 = parseFloat(element.target.value)
-      updateColor()
-    }
-    this.slider4.onchange = (element)=>{
-      this.value4 = parseFloat(element.target.value)
-      updateColor()
-    }
+    this.slider1.addEventListener('change',this.#colorUpdater((v)=>this.value1=v))
+    this.slider2.addEventListener('change',this.#colorUpdater((v)=>this.value2=v))
+    this.slider3.addEventListener('change',this.#colorUpdater((v)=>this.value3=v))
+    this.slider4.addEventListener('change',this.#colorUpdater((v)=>this.value4=v))
+    
     this.toggle.onchange = (element)=>{
       if (element.target.checked) {
         // HSV to CMYK
@@ -242,3 +242,9 @@ class ColorTheoryDemoController {
     this.timer = timer
   }
 }
+
+// Program Start
+
+const demo = new ColorTheoryDemo()
+demo.setColorModel('rgb')
+demo.setMode(1)
