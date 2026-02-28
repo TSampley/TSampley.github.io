@@ -7,6 +7,14 @@ date: 2025-12-29 09:39 -0600
 updated: 2025-12-29 09:39 -0600
 ---
 
+## Demo 1 - Color Quiz
+
+Try to match the color shown.
+Move the sliders to adjust each red, green, or blue component.
+When you're ready, hit "Submit" to see how close you were.
+
+Click "Start" to Begin
+
 <style>
   .container {
     display: flex;
@@ -20,15 +28,6 @@ updated: 2025-12-29 09:39 -0600
     background-color: #0000007f
   }
 </style>
-
-## Demo 1 - Color Quiz
-
-Try to match the color shown.
-Move the sliders to adjust each red, green, or blue component.
-When you're ready, hit "Submit" to see how close you were.
-
-Click "Start" to Begin
-
 <div id='controls' class='container'>
   <input id='slider1' class='item' type='range' min=0 max=255 step=1>
   <input id='slider2' class='item' type='range' min=0 max=255 step=1>
@@ -40,12 +39,15 @@ Click "Start" to Begin
 
 ## Demo 2 - 
 
-<canvas id='demo-color-theory' width=800 height=600></canvas>
+<canvas id='demo-color-theory'>Your browswer does not support Canvas.</canvas>
 
 <script type="module" src="/humanities/art/color-theory/demo-color-theory.mjs"></script>
-<noscript>
-<p>Please Enable Javascript to Use Interactive Demos</p>
-</noscript>
+{% include code/no-script.html %}
+
+## Site Theme
+
+The divs below are styled using the site's theme colors for light and dark. Toggle the
+checkbox to see dark mode.
 
 <label for='theme-toggle'>Theme: Light/Dark</label>
 <input id='theme-toggle' type='checkbox'>
