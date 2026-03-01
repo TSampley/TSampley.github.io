@@ -37,3 +37,5 @@ Let's get hands-on! You can record or upload a sample, or choose one of the pre-
 "What does a tangent feel like to you? A side-step? or a rotation? Zooming in for more detail?" Allow users to select their tangent representation.
 
 note on sampling program implementation: A program that allows modules to use each other must allow abstract object references and resolve cycles dynamically. Worth researching just for my own edification.
+
+[^1]: https://en.wikipedia.org/wiki/Cooley%E2%80%93Tukey_FFT_algorithm

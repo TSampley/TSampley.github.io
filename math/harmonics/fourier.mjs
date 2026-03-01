@@ -65,32 +65,10 @@ export default class Fourier {
   }
 
   /**
-   * 
-   * 
-   * @param {Float32Array} input real-valued signal
-   */
-  static async fastTransform(input) {
-    // TODO: move transform logic to here
-    const { re, im } = Fourier.fft(input);
-    const freqs = new Float32Array(re.length);
-    const amps = new Float32Array(re.length);
-    const phases = new Float32Array(re.length);
-    for (let k = 0; k < re.length; k++) {
-      freqs[k] = k * 44100 / re.length;
-      amps[k] = Math.hypot(re[k], im[k]);
-      phases[k] = Math.atan2(im[k], re[k]);
-    }
-    return new FourierSeries(freqs, amps, phases);
-  }
-
-  /**
    * In-place radix‑2 Cooley‑Tukey FFT, returning separate real/imag arrays.
    * @param {Float32Array} input real-valued signal (length power of two)
-   * @returns {{re: Float32Array,im: Float32Array}}
-   * TODO: refactor to return FourierSeries instead of separate arrays.
-   * @deprecated use 
    */
-  static async fft(input) {
+  static async fastTransform(input) {
     const n = input.length;
     const re = new Float32Array(n);
     const im = new Float32Array(n);
@@ -132,7 +110,11 @@ export default class Fourier {
         }
       }
     }
-    return { re, im };
+    const freqs = new Float32Array(re.length);
+    for (let k = 0; k < re.length; k++) {
+      freqs[k] = k * 44100 / re.length;
+    }
+    return new FourierSeries(real, imag, freqs);
   }
 
   /**
@@ -205,7 +187,7 @@ export default class Fourier {
     /**
      * 
      * ## Example 1
-     * given: windowSize=1024, hopSize=1024; sample=
+     * given: windowSize=1024, hopSize=1024; sampleSize=409600 => 
      * 
      * @param {Float32Array} chunk The most recent chunk of audio data to process.
      */
@@ -257,21 +239,31 @@ export class FourierSeries {
    * @param {Float32Array} imag imaginary part of the FFT output
    * @param {Float32Array} frequencies frequency bin for each element
    */
-  constructor(real,imag,frequencies) {
+  constructor(real,imag,frequencies,amps,phases) {
+    console.assert(real.length == imag.length)
+    console.assert(imag.length == frequencies.length)
+
     this.real = real;
     this.imag = imag;
     this.frequencies = frequencies;
 
-    /** @type {Float32Array} magnitude of each bin */
-    this.amplitudes = new Float32Array(frequencies.length);
-    /** @type {Float32Array} phase in radians for each bin */
-    this.phases = new Float32Array(frequencies.length);
-  }
+    // calculate amplitude and phase if either is missing
+    if (!amps || !phases) {
+      /** @type {Float32Array} magnitude of each bin */
+      this.amplitudes = new Float32Array(frequencies.length);
+      /** @type {Float32Array} phase in radians for each bin */
+      this.phases = new Float32Array(frequencies.length);
 
-  constructor(frequencies, amplitudes, phases) {
-    this.frequencies = frequencies;
-    this.amplitudes = amplitudes;
-    this.phases = phases;
+      for (let k = 0; k < re.length; k++) {
+        this.amplitudes[k] = Math.hypot(re[k], im[k]);
+        this.phases[k] = Math.atan2(im[k], re[k]);
+      }
+    } else {
+      console.assert(amps.length == real.length)
+      console.assert(amps.length == phases.length)
+      this.amplitudes = amps;
+      this.phases = phases;
+    }
   }
 
   /**
@@ -289,6 +281,8 @@ export class FourierSeries {
    */
   slice(start, end) {
     return new FourierSeries(
+      this.real.slice(start, end),
+      this.imag.slice(start, end),
       this.frequencies.slice(start, end),
       this.amplitudes.slice(start, end),
       this.phases.slice(start, end)

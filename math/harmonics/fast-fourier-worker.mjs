@@ -14,15 +14,15 @@
 
 import { Fourier } from './fourier.mjs';
 
-function processWindow(data) {
-  const { real, imag } = Fourier.fft(data.payload);
-  const amps = new Float32Array(real.length);
-  for (let i = 0; i < real.length; i++) {
-    amps[i] = Math.hypot(real[i], imag[i]);
-  }
+async function processWindow(data) {
+  const series = await Fourier.fastTransform(data.payload);
   self.postMessage(
-    { type: 'spectrum', amps, index: data.index }, 
-    [amps.buffer]
+    {
+      type: 'spectrum',
+      amps: series.amps, imag: series.imag, real: series.real,
+      index: data.index
+    },
+    [series.amps.buffer, series.imag.buffer, series.real.buffer]
   );
 }
 
