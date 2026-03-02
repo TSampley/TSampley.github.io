@@ -33,6 +33,7 @@ Click "Start" to Begin
   <input id='slider2' class='item' type='range' min=0 max=255 step=1>
   <input id='slider3' class='item' type='range' min=0 max=255 step=1>
   <input id='slider4' class='item' type='range' min=0 max=255 step=1>
+  <input id='toggle' class='item' type='checkbox'>
   <button>Submit</button>
   <button>Start</button>
 </div>

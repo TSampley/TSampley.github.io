@@ -1,4 +1,5 @@
 
+import { Scenario } from "/science/computing/simulation/scenario.mjs"
 import { Timer } from "../../../js/common/timer.mjs"
 import { Demo } from "../../../js/components/demo.mjs"
 
@@ -24,20 +25,14 @@ class ColorTheoryDemo extends Demo {
     }
   }
 
-  constructor(
-    slider1Id='slider1',
-    slider2Id='slider2',
-    slider3Id='slider3',
-    slider4Id='slider4',
-    toggleId='toggle'
-  ) {
-    super('app-canvas')
+  constructor() {
+    super('demo-color-theory')
 
-    this.slider1 = document.getElementById(slider1Id)
-    this.slider2 = document.getElementById(slider2Id)
-    this.slider3 = document.getElementById(slider3Id)
-    this.slider4 = document.getElementById(slider4Id)
-    this.toggle = document.getElementById(toggleId)
+    this.slider1 = document.getElementById('slider1')
+    this.slider2 = document.getElementById('slider2')
+    this.slider3 = document.getElementById('slider3')
+    this.slider4 = document.getElementById('slider4')
+    this.toggle = document.getElementById('toggle')
 
     this.value1 = 0
     this.value2 = 0
@@ -240,6 +235,14 @@ export const ColorTheoryScenarios = {
 class ColorTheoryDemoController {
   constructor(timer) {
     this.timer = timer
+  }
+
+  /**
+   * 
+   * @param {Scenario} scenario 
+   */
+  setScenario(scenario) {
+
   }
 }
 
