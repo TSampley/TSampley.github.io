@@ -32,3 +32,19 @@ Chemistry is the field concerned with understanding chemicals, their composition
   - [Ionic Bonding](./demo-ionic-bonding)
   - [Covalent Bonding](./demo-covalent-bonding) 🚧
   - [Metallic Bonding Demo](./demo-metallic-bonding) 🚧
+
+
+- Acids and Bases
+  - Bronsted-Lowry: https://en.wikipedia.org/wiki/Br%C3%B8nsted%E2%80%93Lowry_acid%E2%80%93base_theory
+  - Lewis: https://en.wikipedia.org/wiki/Lewis_acids_and_bases
+
+
+Toxicology:
+  - https://www.etymonline.com/word/toxicology
+  - https://en.wikipedia.org/wiki/Toxicology
+  - https://www.niehs.nih.gov/health/topics/science/toxicology
+
+vs Medicine:
+  - "the dose makes the poison"
+  - https://www.etymonline.com/word/medicine
+  - https://en.wikipedia.org/wiki/Medicine
