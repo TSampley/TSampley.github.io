@@ -7,6 +7,8 @@ description:
 
 ---
 
+Discussing ontology without some kind of pre-existing ontology, specifically the one this page's language expresses, would be impossible https://en.wikipedia.org/wiki/Upper_ontology
+
 ## Exercises
 
 ### Document Your Personal Ontology

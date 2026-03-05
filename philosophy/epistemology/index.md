@@ -2,7 +2,9 @@
 layout: wiki
 
 title: Epistemology
-description: 
+description: The study of the history of words and their meaning.
+date: 2025-11-29 03:02:24 -0600
+updated: 2026-02-28 0800 -0600
 ---
 
 ## Introduction
@@ -15,3 +17,12 @@ I personally think it's important for people to be able to qualify their stateme
 - Believe - a lower level of certainty; still at the intuitive level, but based on consistent experience.
 - Think - a higher level of certainty; more rational than intuitive at this point.
 - Know - a high level of certainty, based on sound reasoning grounded with strong evidence.
+
+
+
+https://philpapers.org/
+
+[^1]: https://en.wikipedia.org/wiki/Epistemology
+[^2]: Picard, Michael (2007). This is Not a Book: Adventures in Popular Philosophy. Quid.
+[^3]: https://philpeople.org/profiles/michael-picard
+[^4]: Picard, Michael (ed.) (2024). Cafe Conversations: Participatory Philosophy in Public Spaces. Oakville, Ontario, Canada: Rocks' Mills Press. Translated by Michael Picard.
