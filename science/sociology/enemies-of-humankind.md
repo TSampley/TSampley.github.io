@@ -10,92 +10,192 @@ Humankind - derived from "human" and "kind"[^2], where "kind" ultimately refers 
 
 While most of humanity is actually in conflict with the rest in some ideological form, "civil society" operates around setting aside these differences to avoid violent conflict. Despite this, some individuals have demonstrated through their actions that they can be broadly considered enemies of humankind as a whole, usually through personal enrichment at the expense of the general populace of one or more regions.
 
+It is tantamount to our survival to carefully watch these people and manage their ability to continue influencing our world. We will list any legal options for managing these individuals as we become aware of them. Unfortunately, many of these people act the way they do because of a systemic lack of accountability, hence there is usually no legal recourse. States operate through a majority ownership of legitimate violence, while civilian options are usually limited to *civil* recourse, such as: filing a complaint, suit, or other formal paperwork. Such recourse relies on the system to review the claim and enforce any adjudication on itself, and so is biased towards lenient or nonexistent correction.
+
+For a more uplifting version, see the [heroes page](./heroes-of-humankind).
+
 ```people
+- name: Elon Musk
+  region: Global
+  roles:
+    - title: CEO
+      organization: Twitter
+    - title: CEO
+      organization: Tesla
+    - title: CEO
+      organization: SpaceX
+  harm:
+    - Used government power for personal enrichment
+    - https://www.youtube.com/shorts/jBJxXoQRmtQ
+
 - name: Donald Trump
   region: US
-  title: United States President
-  actions:
+  roles:
+    - title: President
+      organization: United States
+  harm:
     - 
 - name: JD Vance
   region: US
-  title: United States Vice President
-  actions:
+  roles:
+    - title: Vice President
+      organization: United States
+  harm:
     - 
 - name: Marco Rubio
   region: US
-  titles:
+  roles:
     - title: United States Secretary of State
-      company: Trump Cabinet
+      organization: Trump Cabinet
       when: 2025-
-  actions:
+  harm:
     -
 - name: Pete Hegseth
   region: US
-  titles:
+  roles:
     - title: United States Secretary of War
-      company: Trump Cabinet
+      organization: Trump Cabinet
       when: 2025-
-  actions:
+  harm:
     -
 - name: Stephen Miller
   region: US
-  titles:
+  roles:
     - title: Deputy Chief of Staff for Policy and Homeland Security Advisor
-      company: Trump Cabinet
+      organization: Trump Cabinet
       when: 2025-
 - name: Paul Ryan
   region: US
-  titles:
+  roles:
     - title: Speaker of the House
-      company: US House of Representatives
+      organization: US House of Representatives
       when: 2015-2019
-  actions:
+  harm:
     -
-- name: Peter Thiel
-  region: Colorado
-  titles:
-    - title: Chairman
-      company: Palentir
-      when: 2003-
-  actions:
-    -
-- name: Elon Musk
-  region: Global
-  title:
-  actions:
-    - Used government power for personal enrichment
-    - 
-    - https://www.youtube.com/shorts/jBJxXoQRmtQ
-- name: Mitch McConnell
-  region: Kentucky
-  title:
-  actions:
-    -
-- name: Kevin Stitt
-  region: Oklahoma
-  title:
-  actions:
-    -
-- name: Ryan Walters
-  region: Oklahoma
-  title: 
-  actions:
-    - Violated 1st Amend rights of students and teachers by promoting one religion over others
+- name: Larry Ellison
+  region: US
+  roles:
+    - title: CEO
+      organization: Oracle
+- name: Mike Johnson
+  region: US
+  roles:
+    - title: Speaker
+      organization: Congressional House of the USA
+  harm:
+    - promotes ethnic states
 - name: Dennis Prager
   region: US
-  titles:
-  actions:
+  roles:
+    - title: CEO
+      organization: PragerU
+  harm:
     - Coordinates disinformation campaigns
 - name: Brian Thompson
   region: US
-  titles:
+  roles:
     - title: CEO
       company: United Healthcare
-  actions:
+  harm:
+    - promotes beuracratized murder
+
+- name: Peter Thiel
+  region: Colorado, US
+  roles:
+    - title: Chairman
+      company: Palentir
+      when: 2003-
+  harm:
     - 
+    
+- name: Mitch McConnell
+  region: Kentucky, US
+  roles:
+    - title: Senator
+      organization: US Congress
+      when: 
+  harm:
+    - 
+  refs:
+    - 
+
+- name: Kerry McCormack
+  region: Cleveland, Ohio, US
+  roles:
+    - title: Councilman
+      organization: Cleveland City
+      when: - to 2025-10-03
+    - title: Eastern US public affairs lead
+      organization: Flock Safety
+      when: 2025-10-03 to -
+  harm:
+    - obvious conflict of interest between former position, connections in city government and 
+  refs:
+    - https://www.youtube.com/watch?v=vuQqNkYgVqE
+- name: Justin Bibb
+  region: Cleveland, Ohio, US
+  roles:
+    - title: Mayor
+      organization: Cleveland City
+  harm:
+    - 
+  refs:
+    - https://en.wikipedia.org/wiki/Justin_Bibb
+    - https://www.clevelandohio.gov/mayor
+
+- name: Kevin Stitt
+  region: Oklahoma, US
+  roles:
+    - title: Governor
+      organization: Oklahoma State
+  harm:
+    - 
+    - promotes religion in state
+- name: Ryan Walters
+  region: Oklahoma, US
+  roles:
+    - title: State Superintendent
+      organization: Oklahoma Public Schools
+  harm:
+    - Violated 1st Amend rights of students and teachers by promoting one religion over others
+    - promotes religion in state
+- name: Mark Jennings
+  region: Oklahoma, US
+  roles: []
+  harm:
+    - promoting racial violence
+    - conspiring racial murder
+  refs:
+    - https://www.pbs.org/newshour/show/oklahoma-county-officials-recorded-making-racist-remarks-discussing-killing-reporter
+- name: Kevin Clardy
+  region: Oklahoma, US
+  roles: []
+  harm:
+    - promoting racial violence
+    - conspiring racial murder
+  refs:
+    - https://www.pbs.org/newshour/show/oklahoma-county-officials-recorded-making-racist-remarks-discussing-killing-reporter
+- name: Alicia Manning
+  region: Oklahoma
+  roles: []
+  harm:
+    - promoting racial violence
+    - conspiring racial murder
+  refs:
+    - https://www.pbs.org/newshour/show/oklahoma-county-officials-recorded-making-racist-remarks-discussing-killing-reporter
+
+- name: John Fetterman
+  region: Pennsylvania, US
+  roles:
+    - title: Representative
+      organization: Congressional House of the USA
+  harm:
+    - voted to continue war with Iran
+    - promotes ethnic states
+
 - name: Nicky Oppenheimer
   region: South Africa
-  titles:
+  roles:
     - title: Chairman
       company: De Beers
       when: 1998-2012
@@ -105,8 +205,8 @@ While most of humanity is actually in conflict with the rest in some ideological
     - title: Director
       company: Anglo American
       when: 1974-1983
-  actions:
-    - Blood Diamonds 
+  harm:
+    - Blood Diamonds
 ```
 
 [^1]: https://www.etymonline.com/word/enemy
