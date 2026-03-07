@@ -29,3 +29,24 @@ We'll try to keep things simple and fun as long as we can – before we get to t
 - https://readingdecoloniality.warwick.ac.uk/this-is-the-oppressors-language-yet-i-need-it-to-talk-to-you/
 - https://en.wikipedia.org/wiki/Pedagogy_of_the_Oppressed
  -->
+
+Sociology:
+
+| Word | Lexeme | Language | Origin |
+|---|---|---|---|
+| Common | - | English |  |
+| Community | - | English | Communis |
+| Communis | - | Latin | |
+| Public | | |
+| Political | | | |
+| Polis | | | |
+| Person(s) | | | |
+| Persona | | | |
+| People | | | |
+| Populae | | | |
+
+Create a timeline/graph-slice-of-time of words and their relations to others across time.
+
+https://www.etymonline.com/word/common
+
+https://www.etymonline.com/word/public
