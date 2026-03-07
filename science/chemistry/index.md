@@ -43,8 +43,27 @@ Toxicology:
   - https://www.etymonline.com/word/toxicology
   - https://en.wikipedia.org/wiki/Toxicology
   - https://www.niehs.nih.gov/health/topics/science/toxicology
+  - combines:
+    - biology
+    - chemistry
+    - medicine
+    - pharmacology
+
+
+pharmacology:
+- 
+
+microbiology: 
+- https://en.wikipedia.org/wiki/Bacillus_anthracis
+
+botany:
+- California Poppy: https://pmc.ncbi.nlm.nih.gov/articles/PMC10017456/
+
+pathology:
+- https://www.cdc.gov/anthrax/about/index.html
 
 vs Medicine:
   - "the dose makes the poison"
   - https://www.etymonline.com/word/medicine
   - https://en.wikipedia.org/wiki/Medicine
+
