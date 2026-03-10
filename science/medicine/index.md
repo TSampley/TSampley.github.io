@@ -14,6 +14,11 @@ biology:
 - includes cytology, microbiology, physiology
 - https://www.ncbi.nlm.nih.gov/books/NBK518735/
 
+biochemistry:
+- study of biological chemicals
+- prions exist in intermediate between life and nonlife
+  - https://pmc.ncbi.nlm.nih.gov/articles/PMC1303448/
+
 cytology:
 - study of cells, their structure, and function
 - 
@@ -38,6 +43,7 @@ pathology:
 - study of diseases in living organisms
 - https://www.ncbi.nlm.nih.gov/books/NBK518792/
 - https://www.britannica.com/science/pathology
+- prions: https://vet.ucalgary.ca/news/chronic-wasting-disease-may-transmit-humans-research-finds
 
 pharmacology:
 - study of chemical compounds effects on biology
