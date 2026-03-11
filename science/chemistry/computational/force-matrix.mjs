@@ -1,12 +1,12 @@
 
-import { COULOMB_CONSTANT, GRAVITY_EARTH_ACCELERATION } from '../../physics/mechanics/constants.mjs'
+import { COULOMB_CONSTANT, GRAVITY_EARTH_ACCELERATION } from '/science/physics/mechanics/constants.mjs'
 
-import { ElasticBoundary } from '../../computing/simulation/boundary.mjs'
-import { Drag } from '../../physics/mechanics/drag.mjs'
-import { Gravity } from '../../physics/mechanics/gravity.mjs'
-import { CoulombForce } from '../../physics/mechanics/coulomb.mjs'
-import { LennardJonesPotential } from '../../chemistry/computational/lennard-jones.mjs'
-import { Force } from '../../physics/mechanics/force.mjs'
+import { ElasticBoundary } from '/science/computing/simulation/boundary.mjs'
+import { Drag } from '/science/physics/mechanics/drag.mjs'
+import { Gravity } from '/science/physics/mechanics/gravity.mjs'
+import { CoulombForce } from '/science/physics/mechanics/coulomb.mjs'
+import { LennardJonesPotential } from '/science/chemistry/computational/lennard-jones.mjs'
+import { Force } from '/science/physics/mechanics/force.mjs'
 
 /**
  * // TODO: move back to computing domain to generalize environments/simulations

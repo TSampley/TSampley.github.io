@@ -1,7 +1,7 @@
-import { NoOp } from '../../../js/common/fns.mjs'
-import { Observable, single } from '../../../js/common/observables.mjs'
+import { NoOp } from '/js/common/fns.mjs'
+import { Observable, single } from '/js/common/observables.mjs'
 
-import { Size } from '../../../js/common/geom.mjs'
+import { Size } from '/js/common/geom.mjs'
 
 /**
  * 

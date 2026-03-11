@@ -1,6 +1,6 @@
 
-import { UnimplementedError } from '../../../js/common/errors.mjs'
-import { Point } from '../../../js/common/geom.mjs'
+import { UnimplementedError } from '/js/common/errors.mjs'
+import { Point } from '/js/common/geom.mjs'
 
 /**
  * An `Entity` is the basic discrete unit of interaction in a 

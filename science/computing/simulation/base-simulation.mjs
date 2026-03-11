@@ -1,5 +1,5 @@
-import { UnimplementedError } from "../../../js/common/errors.mjs"
-import { Observable, single } from '../../../js/common/observables.mjs';
+import { UnimplementedError } from "/js/common/errors.mjs"
+import { Observable, single } from '/js/common/observables.mjs';
 import { Environment } from "./environment.mjs"
 
 

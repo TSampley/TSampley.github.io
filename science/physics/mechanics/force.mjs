@@ -1,5 +1,5 @@
 
-import { Particle } from '../../physics/mechanics/particle.mjs'
+import { Particle } from '/science/physics/mechanics/particle.mjs'
 
 /**
  * 

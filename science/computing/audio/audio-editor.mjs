@@ -4,8 +4,8 @@
  * See LICENSE file in the project root for full license information.
  */
 
-import { single, Observable } from "../../../js/common/observables.mjs";
-import Fourier from "../../../math/harmonics/fourier.mjs";
+import { single, Observable } from "/js/common/observables.mjs";
+import Fourier from "/math/harmonics/fourier.mjs";
 
 /**
  * The AudioEditorUi class is responsible for encapsulating the HTML elements
@@ -444,7 +444,7 @@ class AudioRecorder {
   }
 }
 
-const audioWorker = new Worker('../../../../math/harmonics/fast-fourier-worker.mjs');
+const audioWorker = new Worker('/math/harmonics/fast-fourier-worker.mjs');
 /**
  * 
  * @param {AudioBuffer} buffer 
@@ -470,6 +470,19 @@ audioWorker.onmessage = ({ data }) => {
     ui.drawSpectrumSlice(data.amps, data.index);
   }
 };
+audioWorker.onmessageerror = (event) => {
+  console.error('Message error from worker:', event);
+}
+audioWorker.onerror = (event) => {
+  console.error('Error in worker:', event);
+  if (event.message) {
+    const { message, filename, lineno, colno } = event;
+    console.error(`Error details: ${message} at ${filename}:${lineno}:${colno}`);
+  }
+  // Prevent the default handling of the error (e.g., logging to console)
+  event.preventDefault();
+}
+
 // Capture HTML Elements
 const ui = new AudioEditorUi();
 // Create domain model

@@ -1,4 +1,4 @@
-import { Timer } from '../../../js/common/timer.mjs'
+import { Timer } from '/js/common/timer.mjs'
 import { Entity } from './entity.mjs';
 import { Environment } from './environment.mjs';
 import { Scenario } from './scenario.mjs';

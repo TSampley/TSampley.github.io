@@ -1,14 +1,14 @@
 
-import '../../physics/mechanics/constants.mjs';
-import { Particle } from '../../physics/mechanics/particle.mjs';
+import '/science/physics/mechanics/constants.mjs';
+import { Particle } from '/science/physics/mechanics/particle.mjs';
 import { Scenario } from './scenario.mjs';
 import { Simulation } from './simulation.mjs';
-import { Timer } from '../../../js/common/timer.mjs';
+import { Timer } from '/js/common/timer.mjs';
 
-import { CPKColorScheme } from '../../chemistry/cpk-coloring.mjs'
-import { Element } from '../../chemistry/element.mjs';
-import { AtomicProperties } from '../../chemistry/atomic-properties.mjs';
-import { AtomicParticleRender } from '../../physics/mechanics/particle-render.mjs';
+import { CPKColorScheme } from '/science/chemistry/cpk-coloring.mjs'
+import { Element } from '/science/chemistry/element.mjs';
+import { AtomicProperties } from '/science/chemistry/atomic-properties.mjs';
+import { AtomicParticleRender } from '/science/physics/mechanics/particle-render.mjs';
 
 const noOpScenario = {
   init: function() {}

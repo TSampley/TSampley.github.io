@@ -1,7 +1,7 @@
 
-import '../constants.mjs'
+import 'science/physics/mechanics/constants.mjs'
 
-import { Entity } from '../../../computing/simulation/entity.mjs'
+import { Entity } from '/science/computing/simulation/entity.mjs'
 
 /**
  * TODO: create Pendulum demo section in simulation integrators page

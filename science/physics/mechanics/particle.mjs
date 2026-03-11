@@ -1,5 +1,5 @@
-import { Entity } from '../../computing/simulation/entity.mjs'
-import { Point } from '../../../js/common/geom.mjs';
+import { Entity } from '/science/computing/simulation/entity.mjs'
+import { Point } from '/js/common/geom.mjs';
 import { Properties, NullProperties } from './properties.mjs';
 
 

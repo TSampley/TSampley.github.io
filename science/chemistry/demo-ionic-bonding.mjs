@@ -1,12 +1,12 @@
 
-import { Size } from '../../../js/common/geom.mjs'
-import { SoundBoard } from '../../js/audio/sound-board.mjs';
-import { Timer } from '../../js/common/timer.mjs';
-import { Demo } from '../../js/components/demo.mjs'
+import { Size } from '/js/common/geom.mjs'
+import { SoundBoard } from '/js/audio/sound-board.mjs';
+import { Timer } from '/js/common/timer.mjs';
+import { Demo } from '/js/components/demo.mjs'
 
-import { WorldController } from '../computing/simulation/world-controller.mjs';
-import { Particle } from '../physics/mechanics/particle.mjs';
-import { ParticleSimulation } from '../physics/mechanics/particle-simulation.mjs';
+import { WorldController } from '/science/computing/simulation/world-controller.mjs';
+import { Particle } from '/science/physics/mechanics/particle.mjs';
+import { ParticleSimulation } from '/science/physics/mechanics/particle-simulation.mjs';
 
 import { AtomicProperties } from './atomic-properties.mjs'
 import { Elements } from './element.mjs'
