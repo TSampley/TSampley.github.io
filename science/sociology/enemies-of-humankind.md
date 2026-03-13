@@ -14,6 +14,23 @@ It is tantamount to our survival to carefully watch these people and manage thei
 
 For a more uplifting version, see the [heroes page](./heroes-of-humankind).
 
+```
+# Inline Format
+- FirstName LastName, Region, Title, Organization, Start-End, Harm, RefLink
+
+# Detailed Format
+- name: FirstName LastName
+  region: Region
+  roles:
+    - title: Title
+      organization: Organization
+      when: Start to End
+  harm:
+    - Harm
+  refs:
+    - 
+```
+
 ```people
 - name: Elon Musk
   region: Global
@@ -35,6 +52,8 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
       organization: United States
   harm:
     - 
+  refs:
+    - 
 - name: JD Vance
   region: US
   roles:
@@ -42,41 +61,57 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
       organization: United States
   harm:
     - 
+  refs:
+    - 
 - name: Marco Rubio
   region: US
   roles:
     - title: United States Secretary of State
       organization: Trump Cabinet
-      when: 2025-
+      when: 2025 to 
   harm:
     -
+  refs:
+    - 
 - name: Pete Hegseth
   region: US
   roles:
     - title: United States Secretary of War
       organization: Trump Cabinet
-      when: 2025-
+      when: 2025 to 
   harm:
     -
+  refs:
+    - 
 - name: Stephen Miller
   region: US
   roles:
     - title: Deputy Chief of Staff for Policy and Homeland Security Advisor
       organization: Trump Cabinet
-      when: 2025-
+      when: 2025 to 
+  harm:
+    - 
+  refs:
+    - 
 - name: Paul Ryan
   region: US
   roles:
     - title: Speaker of the House
       organization: US House of Representatives
-      when: 2015-2019
+      when: 2015 to 2019
   harm:
     -
+  refs:
+    - 
 - name: Larry Ellison
   region: US
   roles:
     - title: CEO
       organization: Oracle
+  harm:
+    -
+  refs:
+    - 
 - name: Mike Johnson
   region: US
   roles:
@@ -84,6 +119,8 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
       organization: Congressional House of the USA
   harm:
     - promotes ethnic states
+  refs:
+    - 
 - name: Dennis Prager
   region: US
   roles:
@@ -91,6 +128,8 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
       organization: PragerU
   harm:
     - Coordinates disinformation campaigns
+  refs:
+    - 
 - name: Brian Thompson
   region: US
   roles:
@@ -98,6 +137,8 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
       company: United Healthcare
   harm:
     - promotes beuracratized murder
+  refs:
+    - 
 
 - name: Peter Thiel
   region: Colorado, US
@@ -106,6 +147,8 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
       company: Palentir
       when: 2003-
   harm:
+    - 
+  refs:
     - 
     
 - name: Mitch McConnell
@@ -143,6 +186,42 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - https://en.wikipedia.org/wiki/Justin_Bibb
     - https://www.clevelandohio.gov/mayor
 
+- name:
+  region: US
+  roles:
+    - organization: Heritage Foundation
+  harm:
+    - project 2025; literal conspiracy to overtake nation with religious fundamentalism
+  refs:
+    - 
+
+- name: Kristi Noem
+  region: US
+  roles:
+    - title: Secretary
+      organization: Homeland Security
+      when: 2025 to 2026
+  harm:
+    - 
+  refs: 
+    - https://en.wikipedia.org/wiki/Kristi_Noem
+- name: Troy Edgar
+  region:
+  roles:
+    - titles: Deputy Secretary
+      organization: Homeland Security
+      when: 2025-03-08 to -
+  refs:
+    - https://en.wikipedia.org/wiki/Troy_Edgar
+
+- name: Jake Paul
+  region: 
+  roles:
+    - 
+  harm:
+    - 
+  refs:
+    - 
 - name: Kevin Stitt
   region: Oklahoma, US
   roles:
@@ -151,6 +230,8 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   harm:
     - 
     - promotes religion in state
+  refs:
+    - 
 - name: Ryan Walters
   region: Oklahoma, US
   roles:
@@ -159,6 +240,8 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   harm:
     - Violated 1st Amend rights of students and teachers by promoting one religion over others
     - promotes religion in state
+  refs:
+    - 
 - name: Mark Jennings
   region: Oklahoma, US
   roles: []
@@ -198,13 +281,13 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   roles:
     - title: Chairman
       company: De Beers
-      when: 1998-2012
+      when: 1998 to 2012
     - title: Deputy Chairman
       company: Anglo American
-      when: 1983-2011
+      when: 1983 to 2011
     - title: Director
       company: Anglo American
-      when: 1974-1983
+      when: 1974 to 1983
   harm:
     - Blood Diamonds
 ```
