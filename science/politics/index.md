@@ -14,3 +14,10 @@ Politics concerns any human activity related to organizing for the sake of regul
 
 - https://en.wikipedia.org/wiki/Politics
 
+
+
+- democracy: 
+- republic: 
+- regime: 
+- totalitarian: 
+- inverted-totalitarian: https://en.wikipedia.org/wiki/Inverted_totalitarianism
