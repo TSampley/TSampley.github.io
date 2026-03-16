@@ -28,3 +28,91 @@ layout: default
   console.log('Pushing Canvas Id: sitemap-canvas');
   (sitemap_queue = window.sitemap_queue || []).push('sitemap-canvas');
 </script>
+
+```mermaid
+%% domains
+%% add domain dependencies to respective pages
+%% generate dependencies navigation on each domain page
+classDiagram
+
+art --> philosophy
+
+astronomy --> physics
+
+biology --> chemistry
+biology <|-- botany
+biology <|-- cytology
+biology <|-- microbiology
+biology <|-- pathology
+biology <|-- physiology
+biology <|-- zoology
+
+chemistry --> math
+chemistry --> physics
+
+cognition --> philosophy
+
+computing --> math
+
+ecology --> biology
+ecology --> chemistry
+ecology --> geology
+
+economics --> math
+
+etymology --> linguistics
+
+geology --> astronomy
+geology --> chemistry
+geology --> physics
+
+humanities <|-- history
+
+linguistics --> philosophy
+linguistics ..> ontology
+
+math --> philosophy
+
+medicine --> biology
+medicine --> chemistry
+
+microbiology --> chemistry
+microbiology --> cytology
+microbiology --> physiology
+
+pharmacology --> chemistry
+pharmacology --> biology
+pharmacology ..> pathology
+pharmacology ..> physiology
+
+philosophy <|-- epistemology
+philosophy <|-- ethics
+philosophy <|-- ontology
+
+physics --> math
+physics --> philosophy
+physics ..> ontology
+physics ..> epistemology
+
+physiology --> cytology
+physiology --> physics
+
+politics --> philosophy
+politics ..> ethics
+politics ..> ontology
+
+psychology --> philosophy
+
+sociology --> economics
+sociology --> politics
+
+software --> computing
+
+therapy --> pathology
+therapy --> physiology
+
+toxicology --> pathology
+toxicology --> pharmacology
+
+```
+{% include code/mermaid-script.html %}
