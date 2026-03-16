@@ -25,7 +25,15 @@ We'll try to keep things simple and fun as long as we can – before we get to t
   controller.onStart()
 </script>
 
-<!-- Notes to Organize
-- https://readingdecoloniality.warwick.ac.uk/this-is-the-oppressors-language-yet-i-need-it-to-talk-to-you/
-- https://en.wikipedia.org/wiki/Pedagogy_of_the_Oppressed
- -->
+
+## Language of the Oppressors
+- decorum: virtue signalling; dramaturgy; performative; elitism/classism; wealth-chasing[^1]
+
+[^1]: https://readingdecoloniality.warwick.ac.uk/this-is-the-oppressors-language-yet-i-need-it-to-talk-to-you/
+[^2]: https://en.wikipedia.org/wiki/Pedagogy_of_the_Oppressed
+
+An eye for an eye makes the whole world blind.
+
+We're taught the lesson is to "turn the other cheek", 
+
+So don't take the first eye.
