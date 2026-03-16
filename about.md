@@ -8,7 +8,9 @@ permalink: /about/
 
 This site hosts all the original, unobfuscated source files alongside the pages that use them. The source-code is organized in a way that is atypical for most software development projects. Since all the code on this site serves to power interactive demonstrations, while serving as demonstrations itself, each implementation exists in the domain it is most relevant to, with abstractions existing where they are most generally relevant without specific application. A "simulation" without qualification only exists as an abstract computing concept, and so is implemented in the abstract directly within that domain. A chemistry or molecular dynamics simulation might exist in the computation chemistry domain, but it can be implemented in many ways, one of which is a particle simulation, in general applicable to mechanics, so the implementation it borrows resides in that domain.
 
-In the below example, ParticleSimulation is the main class used to control a chemistry simulation, whose behavior is dictated by a ChemEnvironment. ParticleSimulation is in the `/science/physics/mechanics` path, implementing Simulation – itself on the `/science/computing/simulation` path – while ChemEnvironment is on the `/science/chemistry/computational` path.
+In the below example, ParticleSimulation is the main class used to control a chemistry simulation, whose behavior is dictated by a ChemEnvironment.
+ParticleSimulation is in the `/science/physics/mechanics` path, implementing Simulation – itself on the `/science/computing/simulation` path – while ChemEnvironment is on the `/science/chemistry/computational` path. 
+Path segments should not redundantly respecify the domain or subdomain they belong to, e.g., the "Computer Science" page is under the path `science/computing` rather than `science/computer_science`.
 
 - science
   - chemistry
