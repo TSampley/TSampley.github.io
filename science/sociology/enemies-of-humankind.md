@@ -10,7 +10,7 @@ Humankind - derived from "human" and "kind"[^2], where "kind" ultimately refers 
 
 While most of humanity is actually in conflict with the rest in some ideological form, "civil society" operates around setting aside these differences to avoid violent conflict. Despite this, some individuals have demonstrated through their actions that they can be broadly considered enemies of humankind as a whole, usually through personal enrichment at the expense of the general populace of one or more regions.
 
-It is tantamount to our survival to carefully watch these people and manage their ability to continue influencing our world. We will list any legal options for managing these individuals as we become aware of them. Unfortunately, many of these people act the way they do because of a systemic lack of accountability, hence there is usually no legal recourse. States operate through a majority ownership of legitimate violence, while civilian options are usually limited to *civil* recourse, such as: filing a complaint, suit, or other formal paperwork. Such recourse relies on the system to review the claim and enforce any adjudication on itself, and so is biased towards lenient or nonexistent correction.
+It is tantamount to our survival to carefully watch these people and manage their ability to continue influencing our world. We will list any legal options for managing these individuals as we become aware of them. Unfortunately, many of these people act the way they do because of a systemic lack of accountability, hence there is usually no legal recourse. States operate through a majority ownership of legitimate violence, while civilian options are usually limited to *civil* recourse, such as: filing a complaint, suit, or other formal paperwork. Such recourse relies on the system to review the claim and enforce any adjudication on itself, and so is biased towards lenient or nonexistent correction. Therefore we do not expect there to be any *legal* recourse.
 
 For a more uplifting version, see the [heroes page](./heroes-of-humankind).
 
@@ -139,6 +139,45 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - promotes beuracratized murder
   refs:
     - 
+- name: Kristi Noem
+  region: US
+  roles:
+    - title: Secretary
+      organization: Homeland Security
+      when: 2025 to 2026
+  harm:
+    - 
+  refs: 
+    - https://en.wikipedia.org/wiki/Kristi_Noem
+
+- name: 
+  region: US
+  roles:
+    - organization: Heritage Foundation
+  harm:
+    - project 2025; literal conspiracy to overtake nation with religious fundamentalism
+  refs:
+    - 
+- name: Jake Paul
+  region: 
+  roles:
+    - 
+  harm:
+    - 
+  refs:
+    - 
+
+- name: Casey Stefanski, John Read, Dawn Hawkins, Molly Hogan, Dina Alexander
+  region: US
+  roles:
+    - 
+  harm:
+    - using children as an excuse to further authoritarian legislation and support fascism
+  refs:
+    - https://www.digitalchildhoodalliance.org/our-team/
+    - https://www.digitalchildhoodalliance.org/
+    - https://ifstudies.org/in-the-news/over-50-conservative-groups-form-digital-childhood-alliance-to-push-for-child-safety-online
+
 
 - name: Peter Thiel
   region: Colorado, US
@@ -186,25 +225,16 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - https://en.wikipedia.org/wiki/Justin_Bibb
     - https://www.clevelandohio.gov/mayor
 
-- name:
-  region: US
+- name: Andy Ogles
+  region: Tennessee, US
   roles:
-    - organization: Heritage Foundation
+    - title: Representative
+      organization: US House
   harm:
-    - project 2025; literal conspiracy to overtake nation with religious fundamentalism
+    - promotes fascism
   refs:
-    - 
+    - https://www.youtube.com/watch?v=ZBVmEYRFetg
 
-- name: Kristi Noem
-  region: US
-  roles:
-    - title: Secretary
-      organization: Homeland Security
-      when: 2025 to 2026
-  harm:
-    - 
-  refs: 
-    - https://en.wikipedia.org/wiki/Kristi_Noem
 - name: Troy Edgar
   region:
   roles:
@@ -214,14 +244,6 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - https://en.wikipedia.org/wiki/Troy_Edgar
 
-- name: Jake Paul
-  region: 
-  roles:
-    - 
-  harm:
-    - 
-  refs:
-    - 
 - name: Kevin Stitt
   region: Oklahoma, US
   roles:
