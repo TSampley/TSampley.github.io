@@ -1,16 +1,16 @@
 ---
 layout: post
 
-title: Suspicious Networks
+title: Service Networks
 ---
-
-<!-- TODO: look into networks -->
 
 ```
 whois <domain>
 dig <domain>
 
 ```
+
+<!-- TODO: look into networks -->
 
 TLDs:
 - generic
