@@ -82,3 +82,4 @@ exclude:
 
 include:
   # - _gen/js/**/*.js
+  - README.md
