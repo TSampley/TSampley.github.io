@@ -1,5 +1,5 @@
 
-import { Parser } from "../../../computing/compilers/parser.mjs";
+import { Parser } from '/science/computing/compilers/parser.mjs'
 
 
 /**
@@ -133,6 +133,7 @@ class TokenSequence {
 export default class YamlParser extends Parser {
 
   constructor() {
+    super()
 
   }
   

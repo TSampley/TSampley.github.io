@@ -1,4 +1,4 @@
-import { UnimplementedError } from "../../../../js/common/errors.mjs";
+import { UnimplementedError } from '/js/common/errors.mjs'
 
 /**
  * 

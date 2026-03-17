@@ -89,7 +89,7 @@ export class WorldController {
      * @param {Particle} particle 
      */
     addParticle(particle) {
-        this.simulation.particleList.push(particle)
+        this.simulation.entityList.push(particle)
     }
 
     /**
@@ -97,7 +97,7 @@ export class WorldController {
      * @param {CanvasRenderingContext2D} context 
      */
     drawParticles(context) {
-        for (const particle of this.simulation.particleList) {
+        for (const particle of this.simulation.entityList) {
             this.atomicRender.render(context, particle)
             /* 
             TODO: pair particles with renderers based on props type-tag

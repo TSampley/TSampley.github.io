@@ -9,8 +9,8 @@ test('WorldController.addParticle should add the given particle', ()=>{
     const timer = new Timer()
     const controller = new WorldController(simulation, timer)
 
-    expect(simulation.particleList.length).toBe(0)
+    expect(simulation.entityList.length).toBe(0)
 
     controller.addParticle(new Particle(0, 0, {}))
-    expect(simulation.particleList.length).toBe(1)
+    expect(simulation.entityList.length).toBe(1)
 })
