@@ -28,4 +28,4 @@ Languages are primarily identified by their ISO-639-1 code[^1].
 
 
 [^1]: [ISO-639-1](https://www.iso.org/standard/74575.html)
-
+[^wiki]: https://en.wikipedia.org/wiki/Hebrew_language
