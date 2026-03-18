@@ -35,6 +35,11 @@ layout: default
 %% generate dependencies navigation on each domain page
 classDiagram
 
+humanities --> root
+math --> root
+philosophy --> root
+science --> root
+
 art --> philosophy
 
 astronomy --> physics
@@ -66,6 +71,7 @@ geology --> astronomy
 geology --> chemistry
 geology --> physics
 
+humanities <|-- art
 humanities <|-- history
 
 linguistics --> philosophy
@@ -102,6 +108,12 @@ politics ..> ethics
 politics ..> ontology
 
 psychology --> philosophy
+
+science <|-- astronomy
+science <|-- biology
+science <|-- chemistry
+science <|-- geology
+science <|-- physics
 
 sociology --> economics
 sociology --> politics
