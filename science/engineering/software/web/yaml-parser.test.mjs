@@ -8,33 +8,6 @@ import YamlParser from "./yaml-parser.mjs"
 
 const parserUnderTest = new YamlParser()
 
-/**
- * 
- * @param {Array<any>} cases An array of cases to test.
- * @param {Array<any>|any} expected One or more expected return values.
- * @param {async (any)=>any} unit The unit under test.
- */
-async function testCases(cases,expected,unit) {
-  if (cases.length === undefined) {
-    throw "Cases must be an array"
-  }
-  if (expected === null || expected.length === undefined) { // single expectation
-    cases.forEach(async (e)=>{
-      const result = await unit(e)
-      
-    })
-  } else { // array of expectations
-    if (cases.length === expected.length) throw "Cases and Expected must be same length";
-
-    const length = cases.length
-    for (let index = 0; index < length; index++) {
-      const result = await(unit(cases[index]))
-      
-      if (result != expected[index]) throw `Result did not match expectations: (${result}) != (${expected[index]})`
-    }
-  }
-}
-
 test('parsing empty or blank input produces null', async ()=>{
   let cases = [
     '',
@@ -44,10 +17,7 @@ test('parsing empty or blank input produces null', async ()=>{
   ]
 
   let expected = null
-
-  testCases(cases,expected, async (input) => {
-    await parserUnderTest.parse(input)
-  });
+  expect(await parserUnderTest.parse('')).toBe(null)
 })
 
 test('parsing true produces boolean true', async () => {

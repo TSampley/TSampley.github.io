@@ -20,11 +20,15 @@ class Token {
     string: 'string',
     indent: 'indent',
     dedent: 'dedent',
+    comma: 'comma',
+    colon: 'colon',
     listItem: 'hyphen',
-    listStart: 'sqrOp',
-    listEnd: 'sqrCl',
-    mapStart: '{',
-    mapEnd: '}',
+    squareOpen: 'sqrOp',
+    squareClose: 'sqrCl',
+    curlyOpen: 'crlOp',
+    curlyClose: 'crlCl',
+    parenOpen: 'parOp',
+    parenClose: 'parenCl',
   })
 }
 
@@ -45,6 +49,7 @@ class YamlLexer {
    * @param {string} input 
    */
   *lex(input) {
+    "use strict";
     const length = input.length
     let lastPosition = -1
     let position = 0
@@ -55,17 +60,47 @@ class YamlLexer {
       line++
       column = 0
     }
+    function advancePosition() {
+      lastPosition = position
+    }
+
+    function* yieldType(type) {
+      yield new Token(line, column, input.substring(lastPosition+1, position+1), type);
+      advancePosition()
+    }
     while (position < length) {
       let char = input[position]
       switch (char) {
+        case '(':
+          yield* yieldType(Token.Type.parenOpen);
+          break;
+        case ')':
+          yield* yieldType(Token.Type.parenClose);
+          break;
+        case '{':
+          yield* yieldType(Token.Type.curlyOpen);
+          break;
+        case '}':
+          yield* yieldType(Token.Type.curlyClose);
+          break;
+        case '[':
+          yield* yieldType(Token.Type.squareOpen);
+          break;
+        case ']':
+          yield* yieldType(Token.Type.squareClose);
+          break;
         case ':':
+          yield* yieldType(Token.Type.colon);
+          break;
+        case ',':
+          yield* yieldType(Token.Type.comma);
+          break;
+        case '-':
+          yield* yieldType(Token.Type.listItem);
           break;
         case '\n':
-          // produce NEWLINE
-          yield new Token(line, column)
-          // advance line
-          line++
-          column = 0
+          yield* yieldType(Token.Type.newline);
+          advanceLine()
           break;
         default:
           if (char >= 'a' && char <= 'z') {
@@ -121,8 +156,16 @@ class TokenSequence {
    * advancing the cursor.
    */
   peek() {
-
+    return new Token(0, 0, '', Token.Type.null)
   }
+}
+
+/**
+ * @param {string} input
+ * @returns {TokenSequence}
+ */
+function conversionFunction(input) {
+  return new TokenSequence(input)
 }
 
 /**
@@ -141,11 +184,12 @@ export default class YamlParser extends Parser {
    * Parsing this document starts at the top-level document definition,
    * invoked by private method {@link #doc(tokenInput)}.
    * @param {*} input 
+   * @returns {Promise<any>}
    */
   async parse(input) {
     // TODO: convert input to tokenInput stream for parser internals
     const tokenInput = conversionFunction(input);
-    this.#doc(tokenInput)
+    return this.#doc(tokenInput)
   }
 
   /**
@@ -153,7 +197,8 @@ export default class YamlParser extends Parser {
    * --> <property>\ndoc
    * --> <blank>\ndoc
    * --> ε
-   * @param {*} tokenInput 
+   * @param {TokenSequence} tokenInput 
+   * @returns {Promise<any>}
    */
   async #doc(tokenInput) {
     // TODO: expect property followed by doc OR blank followed by doc OR nothing
@@ -162,6 +207,7 @@ export default class YamlParser extends Parser {
      && !tokenInput.hasNext()) {
       throw `Unrecognized Input Sequence. Expected <property>, <blank>, or <eof>, but found ${tokenInput.next()}`
     }
+    return null;
   }
 
   /**
