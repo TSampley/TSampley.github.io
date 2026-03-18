@@ -75,3 +75,4 @@ def-liberal: Liberal[^liberal_1], meaning the idea that human beings all
 ```
 
 [^1]: https://en.wikipedia.org/wiki/Democracy
+[^wiki-tyranny]: https://en.wikipedia.org/wiki/Tyranny_of_the_majority
