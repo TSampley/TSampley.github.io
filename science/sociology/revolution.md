@@ -27,4 +27,4 @@ Contrast with a fascist revolution, which, by its exclusionary nature, easily op
 A democratic revolution is probably the most difficult to carry out successfully, because most – if not all – efforts and coordination is done in public, easily scrutinized and potentially disrupted by enemies.
 
 [^1]: https://en.wikipedia.org/wiki/Neocolonialism
-[^2]: 
+[^2]: https://en.wikipedia.org/wiki/French_Revolution
