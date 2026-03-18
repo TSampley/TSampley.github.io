@@ -10,4 +10,4 @@ Behaviorism maintains that the only thing relevant to an individual's mental hea
 
 Because of this, the pseudoscience of behaviorism is used frequently to justify authoritarianism. An individual's internal state, i.e. "feelings", do not matter to an oppressor – only their compliance. Any devious behavior is therefore easily pathologized, using the lack of dissent from the general populous as a false justification 
 
-Being superseded almost entirely by [neurscience](/science/neuroscience/).
+Being superseded almost entirely by [neurscience](/science/neuro/).
