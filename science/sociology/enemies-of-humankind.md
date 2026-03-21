@@ -45,6 +45,22 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - Used government power for personal enrichment
     - https://www.youtube.com/shorts/jBJxXoQRmtQ
 
+- name: Lawrence Goldman
+  region: UK
+  roles:
+    - title: Director
+      organization: Oxford Dictionary of National Biography
+      when: 2004 to 2014
+    - title: Director
+      organization: Institute of Historical Research, University of London
+      when 2014 to 2017
+  harm:
+    - colonial apologist
+    - racial apologist
+  refs:
+    - https://www.youtube.com/watch?v=SZvkTmNQSy4
+    - https://en.wikipedia.org/wiki/Lawrence_Goldman
+
 - name: Donald Trump
   region: US
   roles:
@@ -80,7 +96,7 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
       organization: Trump Cabinet
       when: 2025 to 
   harm:
-    -
+    - promotes senseless mass murder of innocents
   refs:
     - 
 - name: Stephen Miller
