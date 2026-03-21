@@ -8,7 +8,6 @@ description:
 ## Best Practices
 
 
-
 ### Delegation over Conditions
 https://www.youtube.com/watch?v=ZPcgaZIWwqk
 
