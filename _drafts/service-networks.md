@@ -4,9 +4,25 @@ layout: post
 title: Service Networks
 ---
 
-```
-whois <domain>
-dig <domain>
+```sh
+# domain='some-site.com'
+file="whois-$1.txt"
+date > "$file"
+echo '---------' >> "$file"
+whois $1 >> "$file"
+dig $1 >> "$file"
+find() {
+  cat "$file" | grep "$1"
+}
+find "Updated Date"
+find "Registry Expiry Date"
+find "Creation Date"
+find "^created"
+find "^changed"
+find "^source"
+find "Registrar"
+find "Registrar URL"
+
 
 ```
 
@@ -19,8 +35,6 @@ TLDs:
 
 
 ```mermaid
-
-site:bazaarvoice.com --> org:verisign
 
 - tld: .com
   owner: 
@@ -57,7 +71,16 @@ site:bazaarvoice.com --> org:verisign
   registrar: verisign
   registrant: 
 
-
+- org: Euro DNS
+  id: eurodns
+  address:
+    country: 
+    region: 
+    city: 
+    pc: 
+    st: 
+  contact:
+    - url: 
 - org: Gandi SAS
   id: gandi
   address:
@@ -150,6 +173,33 @@ site:bazaarvoice.com --> org:verisign
   created: 1997-09-12T04:00:00Z
   updated: 2024-08-10T10:17:48Z
   expires: 2026-09-11T00:00:00Z
+
+
+- site: sadbaguette.com
+  registrar: godaddy
+  created: 2025-12-08T07:41:01Z
+  updated: 2025-12-08T07:41:01Z
+  expires: 2026-12-08T07:41:01Z
+  
+- site: porngameshub.com
+  scripts:
+    - adtng.com
+    - adcsrv.com
+    - googletagmanager.com
+    - juicychat.net
+    - sadbaguette.com
+  registrar: godaddy
+
+- site: erome.com
+  scripts:
+    - googletagmanager.com
+    - gstatic.com
+    - tsyndicate.com
+  registrar: eurodns
+- site: pornhub.com
+  scripts:
+    - 
+  registrar: eurodns
 
 ```
 
