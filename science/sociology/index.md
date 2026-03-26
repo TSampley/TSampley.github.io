@@ -29,6 +29,8 @@ We'll try to keep things simple and fun as long as we can – before we get to t
 
 Societal norms are related and similar to behavioral norms in the way that they're determined by prevalence. A structure, practice, or behavior being normal should never be seen as a justification alone for the continuance of that thing.
 
+[^etym-normal]: https://www.etymonline.com/word/normal
+
 ## Language of the Oppressors
 - decorum: virtue signalling; dramaturgy; performative; elitism/classism; wealth-chasing[^1]
 
