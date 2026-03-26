@@ -66,3 +66,7 @@ map(obj) -> {
 - spatial representation/exploration of conceptual space in-line with Aristotle's original coinage
 - build n-dimensional space of topics based on distance/relatedness/hierarchy
 - [related to](#topology-demo)
+
+## Example Democracy
+- Break down primary argument in https://www.reddit.com/r/CapitalismVSocialism/comments/lhw4p4/problems_with_the_tyranny_of_the_majority/
+- 

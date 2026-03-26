@@ -48,6 +48,8 @@ def-liberal: Liberal[^liberal_1], meaning the idea that human beings all
 
 ```
 
+TODO: [Breakdown Example Discussion](/issues#example-democracy)
+
 
 [^ideal_1]: Ideal(1)
 [^ideal_2]: Ideal(2)
