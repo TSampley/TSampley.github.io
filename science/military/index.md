@@ -29,6 +29,7 @@ A form of terrorism formalized in US military policy in 1997[^2][^3], based on e
 ## Terrorism
 Terrorism is any action or ideology intended to accomplish some political purpose by inciting terror. This is often conflated with [bombings](#bombing), which **are** often employed in acts of terrorism, but the use of "bombs", better known as explosives, is ubiquitous throughout the world's militaries, usually to destroy hard targets like buildings or vehicles, a side-effect of which, is often fear or terror, which is alluded to—and more generously referred to—in ["shock-and-awe"](#shock-and-awe) when used as a military strategy.
 
+[^wiki-rico]: https://en.wikipedia.org/wiki/Racketeer_Influenced_and_Corrupt_Organizations_Act
 
 ## Military Branches
 
