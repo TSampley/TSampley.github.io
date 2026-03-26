@@ -43,7 +43,18 @@ map(obj) -> {
 
 ## Android Version History Timeline
 - Build history of android versions
-- include 
+- display as diagram
+- [depends on](#timeline-diagrams)
+
+## Computing History
+- build history of major computing events
+- display as diagram
+- [depends on](#timeline-diagrams)
+
+## Internet History
+- build history of major internet events
+- display as diagram
+- [depends on](#timeline-diagrams)
 
 ## Clean Up Todos
 - Add Issue Links to existing TODO notes
