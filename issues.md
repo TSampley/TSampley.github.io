@@ -41,6 +41,12 @@ map(obj) -> {
 
 ```
 
+## Sitemap Graph
+- Fix sitemap page
+- Add leaf/branch toggle
+- group subdomains
+- experiment with hypergraph where domains contain subdomains as hyperedges
+
 ## Android Version History Timeline
 - Build history of android versions
 - display as diagram
