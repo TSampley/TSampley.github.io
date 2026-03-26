@@ -1,34 +1,46 @@
 ---
 layout: wiki
 
-title: Image Formats
-
+title: Computer Graphics
+description:
+date: 
 ---
 
-## Color Models
+[SVG Editor](./svg-editor)
+
+## Formats
+
+### Color Models
 
 <!-- Link to Art/Color Models Page -->
 
-## Rasterized Formats
+### Rasterized Formats
 
 <!-- Demo: Grid with "Paintable" Integer Values -->
 <!-- Demo: Grid with Adjustable Number of Integer Channels -->
 
-### Raw
+#### Raw
 
 <!-- Demo: Color Model Selector to Paint Colors + Data Output Grid -->
 
-### PNG
+#### PNG
 
 <!-- Demo: Image Compression (Lossless) -->
 
-### JPeg
+#### JPeg
 
 <!-- Demo: Image Compression (Lossy) -->
 
-## Vector Formats
+### Vector Formats
 
-### SVG
+#### SVG
 
 <!-- Demo: Infinite Zoom Fractal -->
 [SVG Page](./svg)
+
+
+## Platforms
+
+https://www.opengl.org/
+https://developer.apple.com/metal/
+https://vulkan-tutorial.com/
