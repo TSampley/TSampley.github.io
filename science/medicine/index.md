@@ -64,3 +64,8 @@ phytotherapy:
 - the application of plant-derived compounds to treat ailments
 - subfield of therapy
 - depends on botany (phytology)
+
+## Sexism in Medicine
+
+Why I avoid male doctors - https://www.youtube.com/watch?v=n3G0W4UL3yQ
+
