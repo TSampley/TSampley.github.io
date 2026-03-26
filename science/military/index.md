@@ -75,4 +75,7 @@ Useful Terminology:
 [^2]: https://en.wikipedia.org/wiki/Shock_and_awe
 [^3]: https://www.oxfordreference.com/display/10.1093/oi/authority.20110803100502693
 [^4]: https://origins.osu.edu/history-news/limits-shock-and-awe#:~:text=to%20escape%20this%20terror
-[^5]: https://flagsusa.com/blogs/news/usmilitarybirthdays
+[^5]: https://flagsusa.com/blogs/news/usmilitarybirthdays'
+
+[^wiki-airborne]: https://en.wikipedia.org/wiki/82nd_Airborne_Division
+[^wiki-division]: https://en.wikipedia.org/wiki/Division_(military)
