@@ -58,3 +58,11 @@ map(obj) -> {
 
 ## Clean Up Todos
 - Add Issue Links to existing TODO notes
+
+## Symplectic Demo
+- 
+
+## Topic Demo
+- spatial representation/exploration of conceptual space in-line with Aristotle's original coinage
+- build n-dimensional space of topics based on distance/relatedness/hierarchy
+- [related to](#topology-demo)

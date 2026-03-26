@@ -10,8 +10,8 @@ Differential geometry, similar to [topology](./topology).
 
 ## Symplectic Manifold
 
+TODO: [symplectic demo](/issues#symplectic-demo)
+TODO: [topic demo](/issues#topic-demo)
 
 https://en.wikipedia.org/wiki/Symplectic_manifold
 
-<!-- TODO: add symplectic demo -->
-<!-- TODO: add Topic demo - spatial representation/exploration of conceptual space in-line with Aristotle's original coinage -->
