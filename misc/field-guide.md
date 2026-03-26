@@ -11,45 +11,45 @@ date: 2026-03-16 0342 -0500
 ## Sections
 
 ### Yellow - Tier 3
-Chemistry
+- Chemistry
 
 ### Orange - Tier 2 - Applications of Tier 1
-Physics
-Medicine
+- Physics
+- Medicine
 - Toxicology
 - Therapy
-Software
+- Software
 
 ### Red - Tier 1 - Applications of Tier 0
-Math
-History
+- Math
+- History
 
 ### Blue - Tier 4 - World - 
-Sociology
-Politics
-Psychology
-Astronomy
-Geology
-Ecology
-Economics
-- Micro
-- Marco
-Biology
-- Botony
-- Cytology
-- Microbiology
-- Mycology
-- Physiology
-- Zoology
+- Sociology
+- Politics
+- Psychology
+- Astronomy
+- Geology
+- Ecology
+- Economics
+  - Micro
+  - Marco
+- Biology
+  - Botony
+  - Cytology
+  - Microbiology
+  - Mycology
+  - Physiology
+  - Zoology
 
 ### Purple - Tier 0 - Axioms - 
-Philosophy
-- Ontology
-- Epistemology
-- Aesthetics
-Linguistics
-- Etymology
-History
+- Philosophy
+  - Ontology
+  - Epistemology
+  - Aesthetics
+- Linguistics
+  - Etymology
+- History
 
 
 
