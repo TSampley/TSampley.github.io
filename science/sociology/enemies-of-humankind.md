@@ -165,6 +165,55 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - 
   refs: 
     - https://en.wikipedia.org/wiki/Kristi_Noem
+- name: Sarah Huckabee Sanders
+  region: US
+  roles:
+    - title: Press Secretary
+      organization: Trump Cabinet
+      when: 
+  harm:
+    - promoted national disinformation
+  refs:
+    - https://en.wikipedia.org/wiki/Sarah_Huckabee_Sanders
+
+- name: Markwayne Mullin
+  region: US
+  roles:
+    - 
+  harm:
+    - 
+  refs:
+    - https://en.wikipedia.org/wiki/Markwayne_Mullin
+    - https://www.youtube.com/watch?v=9E6Iy0oDfI4
+
+- name: 
+  region: US
+  roles:
+  harm:
+    - advocated for use of dangerous pesticides at expense of the general public's health for the benefit of corporate shareholders
+  refs:
+    - https://www.epa.gov/aboutepa/about-office-chemical-safety-and-pollution-prevention
+    - https://www.youtube.com/watch?v=m7uuRBsnXR8
+
+- name: Alex Karp
+  region: US
+  roles:
+    - title: CEO
+      organization: Palentir
+  harm:
+    - advocates physical violence as a primary means of diplomacy
+  refs:
+    - 
+- name: Palmer Luckey
+  region: US
+  roles:
+    - title: CEO
+      organization: Andural Industries
+  harm:
+    - advocates physical violence as a primary means of diplomacy
+    - advocates for indiscriminate mass murder
+  refs:
+    - https://en.wikipedia.org/wiki/Palmer_Luckey
 
 - name: 
   region: US
@@ -193,7 +242,16 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - https://www.digitalchildhoodalliance.org/our-team/
     - https://www.digitalchildhoodalliance.org/
     - https://ifstudies.org/in-the-news/over-50-conservative-groups-form-digital-childhood-alliance-to-push-for-child-safety-online
-
+- name: Jared Kushner
+  region: US
+  roles:
+    - 
+  harm:
+    - abused authority to enrich himself at the expense of the general public
+    - fascilitated 
+    - justified murder of a journalist for political purposes
+  refs:
+    - https://www.youtube.com/shorts/CGOQQK6_di8
 
 - name: Peter Thiel
   region: Colorado, US
@@ -304,6 +362,86 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - conspiring racial murder
   refs:
     - https://www.pbs.org/newshour/show/oklahoma-county-officials-recorded-making-racist-remarks-discussing-killing-reporter
+
+- name: 
+  region: Tulsa, Ok
+  roles:
+    - title: Therapist
+      organization: Tulsa Crisis Center
+  harm:
+    - dismissed philosophical evidence of evangelical pedophilia as trauma response
+    - dismissed importance of care-taker religion in role of providing support
+  refs:
+    - personal experience
+
+- name: Zach _Unkown_
+  region: 
+  roles:
+    - title: Therapist
+      organization: Grand, Stillwater
+  harm:
+    - defended rape of children as religious virtue
+    - 
+  refs:
+    - personal experience
+- name: 
+  region: Stillwater, Ok
+  roles:
+    - title: 
+      organization: Grand, Stillwater
+    - title: Trainer
+      organization: Grand, Stillwater
+- name: Jason _Unkown_
+  roles:
+    - title: Therapist
+      organization: Tulsa Crisis Center
+  harm:
+    - abused position of authority
+    - covered up abuse by lying about events
+  refs:
+    - personal experience
+- name: _Unknown 1_
+  roles:
+    - title: _Unknown Staff 1_
+      organization: Tulsa Crisis Center
+  harm:
+    - assisted therapist in abuse of patient
+    - conspired to cover up their abuse by getting their story straight before releasing patient
+  refs:
+    - personal experience
+- name: _Unknown 2_
+  roles:
+    - title: _Unknown Staff 2_
+      organization: Tulsa Crisis Center
+  harm:
+    - assisted therapist in abuse of patient
+    - conspired to cover up their abuse by getting their story straight before releasing patient
+  refs:
+    - personal experience
+- name: _Unknown 3_
+  roles:
+    - title: _Unknown Staff 3_
+      organization: Tulsa Crisis Center
+  harm:
+    - assisted therapist in abuse of patient
+    - conspired to cover up their abuse by getting their story straight before releasing patient
+- name: _Unknown 4_
+  roles:
+    - title: Nurse
+      organization: Tulsa Crisis Center
+  harm:
+    - assisted therapist in abuse of patient
+    - conspired to cover up their abuse by getting their story straight before releasing patient
+  refs:
+    - personal experience
+- name:
+  roles:
+    - title: Director
+      region: Tulsa Crisis Center
+  harm:
+    - disposed of patient report about therapist abuse of authority and battery on patient
+  refs:
+    - personal experience
 
 - name: John Fetterman
   region: Pennsylvania, US
