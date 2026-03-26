@@ -7,8 +7,7 @@ date: 2026-02-28 0800 -0600
 update: 2026-03-26 1623 -0500
 ---
 
-
-<!-- TODO: Manifold Demo -->
+TODO: [Topology Demo](/issues#topology-demo)
 
 Start with 1 dimension.
 

@@ -7,6 +7,11 @@ date: 2026-03-26 1604 -0500
 
 These are project issues, linked from other pages where they are relevant.
 
+## Topology Demo
+- demonstrate multiple dimensions
+- relate points by number of connections based on dimensionality
+- demonstrate stress relieved by raising to higher dimension
+
 ## Timeline Diagrams
 - Visualize Timeline with data mapped to events
 - class event
