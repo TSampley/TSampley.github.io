@@ -45,5 +45,7 @@ Arrange points within 3-dimensional structure embedded within:
 Application to Vector Databases - https://en.wikipedia.org/wiki/Vector_database
 
 
+[^wiki-forms]: https://en.wikipedia.org/wiki/Closed_and_exact_differential_forms
+[^wiki-difftopo]: https://en.wikipedia.org/wiki/Differential_topology
 [^wiki-difman]: https://en.wikipedia.org/wiki/Differentiable_manifold
 [^wiki-topo]: https://en.wikipedia.org/wiki/Topology
