@@ -16,7 +16,7 @@ export class Simulation {
 
     /**
      * 
-     * @param {Environment} environment 
+     * @param {E} environment 
      * @param {CanvasRenderingContext2D} context
      * @param {Array<Scenario<E>>} scenarios
      */
