@@ -2,9 +2,9 @@
 import 'science/physics/mechanics/constants.mjs'
 
 import { Entity } from '/science/computing/simulation/entity.mjs'
+import { Render2D } from 'science/computing/simulation/simulation.mjs'
 
 /**
- * TODO: create Pendulum demo section in simulation integrators page
  * 
  * TODO: create other pendulums
  *   - charged pendulum: weight also affected by charge
@@ -38,19 +38,30 @@ export class Pendulum extends Entity {
 
         this.angle += this.angularVelocity * dt
     }
+}
 
-    draw(context) {
-        const weightX = Math.cos(this.angle) * this.length
-        const weightY = Math.sin(this.angle) * this.length
+/**
+ * Renders a {@codelink Pendulum} in a 2D context.
+ */
+export class PendulumRender extends Render2D {
+    /**
+     * 
+     * @param {CanvasRenderingContext2D} context 
+     * @param {Pendulum} subject The subject to render.
+     * @param {number} offset 
+     */
+    render(context, subject, offset) {
+        const weightX = Math.cos(subject.angle) * subject.length
+        const weightY = Math.sin(subject.angle) * subject.length
 
         // draw rope
         context.strokeStyle = "white"
-        context.moveTo(this.anchorX, this.anchorY)
+        context.moveTo(subject.anchorX, tsubjecthis.anchorY)
         context.lineTo(weightX, weightY)
         context.stroke()
         // draw anchor
         context.fillStyle = "white"
-        context.ellipse(this.anchorX, this.anchorY, 10, 10, 0, 0, Math.PI*2)
+        context.ellipse(subject.anchorX, subject.anchorY, 10, 10, 0, 0, Math.PI*2)
         context.fill()
         // draw weight
         context.fillStyle = "white"
