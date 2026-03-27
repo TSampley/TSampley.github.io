@@ -5,7 +5,6 @@ import { ForceMatrix } from "/science/computational/force-matrix.mjs"
 import { ParticleEnvironment } from "/science/physics/mechanics/particle-environment.mjs";
 
 /**
- * TODO: migrate Simulation particle step logic here
  */
 export class ChemEnvironment extends ParticleEnvironment {
   /**
