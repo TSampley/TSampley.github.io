@@ -41,7 +41,7 @@ export class Environment {
   get height() { return this.size.value.height }
 
   #unimplemented(method) {
-    throw new UnimplementedError('BaseEnvironment', method)
+    throw new UnimplementedError('Environment', method)
   }
 
   /**
