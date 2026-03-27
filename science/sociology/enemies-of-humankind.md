@@ -375,7 +375,7 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - personal experience
 
 - name: Zach _Unkown_
-  region: 
+  region: Stillwater, Ok
   roles:
     - title: Therapist
       organization: Grand, Stillwater
@@ -387,11 +387,12 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
 - name: 
   region: Stillwater, Ok
   roles:
-    - title: 
+    - title: Receptionist
       organization: Grand, Stillwater
     - title: Trainer
       organization: Grand, Stillwater
 - name: Jason _Unkown_
+  region: Tulsa, Ok
   roles:
     - title: Therapist
       organization: Tulsa Crisis Center
@@ -401,6 +402,7 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - personal experience
 - name: _Unknown 1_
+  region: Tulsa, Ok
   roles:
     - title: _Unknown Staff 1_
       organization: Tulsa Crisis Center
@@ -410,6 +412,7 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - personal experience
 - name: _Unknown 2_
+  region: Tulsa, Ok
   roles:
     - title: _Unknown Staff 2_
       organization: Tulsa Crisis Center
@@ -419,6 +422,7 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - personal experience
 - name: _Unknown 3_
+  region: Tulsa, Ok
   roles:
     - title: _Unknown Staff 3_
       organization: Tulsa Crisis Center
@@ -426,6 +430,7 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - assisted therapist in abuse of patient
     - conspired to cover up their abuse by getting their story straight before releasing patient
 - name: _Unknown 4_
+  region: Tulsa, Ok
   roles:
     - title: Nurse
       organization: Tulsa Crisis Center
@@ -435,6 +440,7 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - personal experience
 - name:
+  region: Tulsa, Ok
   roles:
     - title: Director
       region: Tulsa Crisis Center
