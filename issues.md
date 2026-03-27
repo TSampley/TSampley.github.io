@@ -7,15 +7,15 @@ date: 2026-03-26 1604 -0500
 
 These are project issues, linked from other pages where they are relevant.
 
-## Tasks
-{: .no_toc}
+**Table of Contents**{: .no_toc}
 1. Generate TOC here
 {:toc}
 
 ## Scenarios
-- name
-- description
-- setup function; takes environment to setup
+- [x] name
+- [x] description
+- [x] setup function; takes environment to setup
+- [ ] transfer particle-simulation logic to particle-environment; remove particle-simulation
 
 ## Demos
 - allow multiple demos per page; each has one canvas

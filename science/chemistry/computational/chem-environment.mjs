@@ -1,8 +1,8 @@
-import { NoOp } from "../../../js/common/fns.mjs";
-import { Observable, single } from "../../../js/common/observables.mjs";
-import { ForceMatrix } from "../computational/force-matrix.mjs"
-import { ParticleEnvironment } from "../../physics/mechanics/particle-environment.mjs";
-import { UnimplementedError } from "../../../js/common/errors.mjs";
+import { UnimplementedError } from "/js/common/errors.mjs";
+import { NoOp } from "/js/common/fns.mjs";
+import { Observable, single } from "/js/common/observables.mjs";
+import { ForceMatrix } from "/science/computational/force-matrix.mjs"
+import { ParticleEnvironment } from "/science/physics/mechanics/particle-environment.mjs";
 
 /**
  * TODO: migrate Simulation particle step logic here
