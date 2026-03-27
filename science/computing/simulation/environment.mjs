@@ -52,24 +52,4 @@ export class Environment {
   step(delta) {
     this.#unimplemented('step')
   }
-
-  /**
-   * Draws the environment to the canvas context.
-   * 
-   * @param {CanvasRenderingContext2D} context HTML Canvas simple context.
-   * @param {number} offset Seconds offset since the last calculation frame.
-   */
-  draw(context, offset) {
-    this.#unimplemented('draw')
-  }
-
-  /**
-   * Draws the environment to the webgl context.
-   * 
-   * @param {WebGL2RenderingContext} context HTML Canvas WebGL 2 Context.
-   * @param {*} offset 
-   */
-  draw3d(context,offset) {
-    this.#unimplemented('draw3d')
-  }
 }
