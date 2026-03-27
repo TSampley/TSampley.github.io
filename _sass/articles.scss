@@ -2,12 +2,12 @@
 @import 'colors';
 
 a {
-    color: #2a7ae2;
+    color: var(--link);
     text-decoration: none
 }
 
 a:visited {
-    color: rgb(22.9483471074, 86.2541322314, 168.5516528926)
+    color: var(--link-open)
 }
 
 a:hover {
