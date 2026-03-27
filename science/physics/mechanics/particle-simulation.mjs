@@ -195,14 +195,14 @@ function initializeCircle(simulation, centerX, centerY, radius) {
  * returns true will be passed to {@link generator} to
  * create a new particle.
  * @param {ParticleSimulation} simulation The subject simulation to initialize particles within.
- * @param {Number} left
- * @param {Number} right
- * @param {Number} top
- * @param {Number} bottom
- * @param {Number} stepx
- * @param {Number} stepy
- * @param {(Number,Number)=>Boolean} test
- * @param {(Number,Number)=>Particle} generator
+ * @param {number} left
+ * @param {number} right
+ * @param {number} top
+ * @param {number} bottom
+ * @param {number} stepx
+ * @param {number} stepy
+ * @param {(x:number,y:number)=>Boolean} test
+ * @param {(x:number,y:number)=>Particle} generator
  */
 function initializePoints(
   simulation,
