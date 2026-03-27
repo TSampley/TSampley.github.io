@@ -17,6 +17,10 @@ These are project issues, linked from other pages where they are relevant.
 - [x] setup function; takes environment to setup
 - [ ] transfer particle-simulation logic to particle-environment; remove particle-simulation
 
+## Linter
+- [ ] setup linter command
+- [ ] add to workflow
+
 ## Demos
 - allow multiple demos per page; each has one canvas
 - reset demo
@@ -117,4 +121,9 @@ map(obj) -> {
 
 ## Etymology Demo
 - chart lemmas and their senses across time from PIE
+- [depends on](#demos)
+
+## Pendulum Demo
+- allow selecting different integrators to demonstrate numerical instability
+- display phase-space for symplectic manifold reference
 - [depends on](#demos)
