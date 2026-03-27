@@ -1,8 +1,10 @@
 
+@import 'colors';
+
 .site-footer {
   background-color: inherit;
   padding: 30px 0;
-  box-shadow: 0 -1px 3px 3px rgba(0, 0, 0, 1);
+  box-shadow: 0 -1px 3px 3px var(--shadow);
   z-index: 10;
 }
 

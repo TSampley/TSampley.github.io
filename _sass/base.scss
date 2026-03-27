@@ -35,8 +35,8 @@ figure {
 
 body {
     font: 400 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    color: #111;
-    background-color: #fdfdfd;
+    color: var(--on-surface);
+    background-color: var(--surface);
     -webkit-text-size-adjust: 100%;
     -webkit-font-feature-settings: "kern" 1;
     -moz-font-feature-settings: "kern" 1;
@@ -146,7 +146,7 @@ pre>code {
 .center {
     background-color: inherit;
 
-    box-shadow: 2px 1px 5px 0px rgba(0, 0, 0, 1);
+    box-shadow: 2px 1px 5px 0px var(--shadow);
     z-index: 5;
 
     padding: 30px;
@@ -157,7 +157,7 @@ pre>code {
     position: sticky;
     top: 0;
 
-    background-image: url("/assets/img/patterns/grass.jpg");
+    background-image: var(--image-url);
     background-repeat: repeat;
 
     z-index: 0;

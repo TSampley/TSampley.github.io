@@ -3,15 +3,26 @@
 
 :root {
   color-scheme: light dark;
+  
+  $grass-url: '/assets/img/patterns/grass.jpg';
+  --image-url: url($grass-url); // TODO: create night asset
 
-  --gradient-start: rgb(0, 0, 0);
-  --gradient-end: rgb(255, 255, 255);
+  --black: rgba(0, 0, 0);
+  --soft-black: rgb(16, 16, 16)
+  --soft-white: rgb(252, 252, 252)
+  --white: rgb(255, 255, 255);
 
-  --gradient-end: rgb(255, 255, 255);
+  --gradient-start: var(--black);
+  --gradient-end: var(--white);
+
+  --gradient-end: var(--white);
   --bar-gradient: linear-gradient(120deg, var(--gradient-start), var(--gradient-end));
 
-  --surface: light-dark(rgb(255, 255, 255), rgb(0, 0, 0));
-  --on-surface: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));
+  --shadow: var(--black);
+  --radial-border: radial-gradient(--gradient-start, --gradient-end);
+
+  --surface: light-dark(var(--soft-white), var(--soft-black));
+  --on-surface: light-dark(var(--soft-white), var(--soft-white));
 
   --primary: light-dark(rgb(11, 168, 0), rgb(11, 168, 0));
   --primary-light: light-dark(rgb(111, 202, 104), rgb(13, 188, 1));
