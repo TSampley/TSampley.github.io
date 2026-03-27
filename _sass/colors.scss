@@ -4,8 +4,7 @@
 :root {
   color-scheme: light dark;
   
-  $grass-url: '/assets/img/patterns/grass.jpg';
-  --image-url: url($grass-url); // TODO: create night asset
+  --image-url: url(/assets/img/patterns/grass.jpg); // TODO: create night asset
 
   --black: rgba(0, 0, 0);
   --soft-black: rgb(16, 16, 16)
