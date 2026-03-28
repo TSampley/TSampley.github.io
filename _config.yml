@@ -76,6 +76,8 @@ exclude:
   - node_modules
   - package-lock.json
   - package.json
+  - jsconfig.json
+  - eslint.config.js
   # Intermediate
   # - html # apparently used during generation phase
   # - **/*.mjs # Exclude precompiled modules
