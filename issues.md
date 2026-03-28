@@ -22,11 +22,14 @@ These are project issues, linked from other pages where they are relevant.
 - [depends on](#scenarios)
 
 ## Chemistry Scenarios
-- 
+- [ ] define sodium and chlorine gas reaction
+- [ ] define hydrogen and oxygen gas reaction
+- [ ] define water scenario
 - [depends on](#demos)
 
 ## Chemistry Demos
-- include 
+- [ ] transfer particle-simulation logic to particle-environment; remove particle-simulation
+- [ ] include 
 - [depends on](#chemistry-scenarios)
 
 ## Topology Demo
