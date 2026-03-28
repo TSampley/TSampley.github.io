@@ -1,7 +1,7 @@
 import { UnimplementedError } from "/js/common/errors.mjs";
 import { NoOp } from "/js/common/fns.mjs";
 import { Observable, single } from "/js/common/observables.mjs";
-import { ForceMatrix } from "/science/computational/force-matrix.mjs"
+import { ForceMatrix } from "./force-matrix.mjs";
 import { ParticleEnvironment } from "/science/physics/mechanics/particle-environment.mjs";
 
 /**

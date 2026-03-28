@@ -11,12 +11,6 @@ These are project issues, linked from other pages where they are relevant.
 1. Generate TOC here
 {:toc}
 
-## Scenarios
-- [x] name
-- [x] description
-- [x] setup function; takes environment to setup
-- [ ] transfer particle-simulation logic to particle-environment; remove particle-simulation
-
 ## Linter
 - [ ] setup linter command
 - [ ] add to workflow

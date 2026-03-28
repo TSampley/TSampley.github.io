@@ -12,6 +12,7 @@ export class Environment {
    * @param {Size} size 
    */
   constructor(size) {
+    console.assert(size != undefined, "Size must be defined")
     /** @type {Observable<Size>} */
     this.size = single(size)
     /** @type {(w:number)=>void} */

@@ -19,7 +19,27 @@ export class Scenario {
      * @param {E} environment The environment
      */
     init(environment) {
-        throw UnimplementedError('Scenario','init')
+        throw new UnimplementedError('Scenario','init')
+    }
+}
+
+/**
+ * @template {Environment} E
+ */
+export class FunctionalScenario extends Scenario {
+    /**
+     * @param {string} name
+     * @param {string} description
+     * @param {(enviro:E)=>void} setup
+     */
+    constructor(name,description,setup) {
+        super(name,description)
+        this.setup = setup
+    }
+
+    /** @param {Environment} environment */
+    init(environment) {
+        this.setup(environment)
     }
 }
 
@@ -28,18 +48,8 @@ export class Scenario {
  * @param {string} name
  * @param {string} description
  * @param {(enviro:E)=>void} setup
+ * @returns {Scenario<E>}
  */
-export function scenario(name,description,setup) {
-    /**
-     * @returns {Scenario<E>}
-     */
-    return class extends Scenario {
-        constructor(name,description) {
-            super(name,description)
-        }
-
-        init(environemt) {
-            setup(environemt)
-        }
-    }
+export function scenarioFun(name,description,setup) {
+    return new FunctionalScenario(name,description,setup)
 }

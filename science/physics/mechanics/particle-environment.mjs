@@ -1,7 +1,7 @@
 import { Size } from "/js/common/geom.mjs";
 import { NoOp } from "/js/common/fns.mjs";
 import { Observable, single } from "/js/common/observables.mjs";
-import { ForceMatrix } from "/chemistry/computational/force-matrix.mjs";
+import { ForceMatrix } from "/science/chemistry/computational/force-matrix.mjs";
 import { Environment } from "/science/computing/simulation/environment.mjs";
 
 /**
@@ -13,6 +13,8 @@ export class ParticleEnvironment extends Environment {
    */
   constructor(size,forceMatrix) {
     super(size)
+    console.assert(forceMatrix != undefined, "ForceMatrix must be defined")
+
     /** @type {Observable<ForceMatrix>} */
     this.forceMatrix = single(forceMatrix)
     console.log("Creating force matrix observable with value: " + JSON.stringify(forceMatrix))
