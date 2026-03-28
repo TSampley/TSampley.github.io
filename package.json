@@ -7,7 +7,8 @@
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "bundle": "./node_modules/webpack --mode production",
-    "serve": "~/.rbenv/versions/3.3.10/bin/bundle exec jekyll serve --trace --drafts"
+    "serve": "~/.rbenv/versions/3.3.10/bin/bundle exec jekyll serve --trace --drafts",
+    "lint": "npx eslint"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,11 @@
     "rxjs": "^7.8.2"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.1.0",
+    "globals": "^17.4.0",
     "jest": "^30.2.0",
+    "typescript-eslint": "^8.57.2",
     "webpack": "^5.104.1"
   },
   "jest": {
