@@ -12,7 +12,7 @@ updated: 2025-12-26 08:00 -0600
 1. Generate TOC here
 {:toc}
 
-Chemistry is the field concerned with understanding chemicals, their composition, behaviors and their use for a wide variety of human interests.
+Chemistry is the field concerned with understanding chemicals, their composition, behaviors and their use for a wide variety of human interests[^ncbi-chem].
 
 ## Applications
 
@@ -39,31 +39,22 @@ Chemistry is the field concerned with understanding chemicals, their composition
   - Lewis: https://en.wikipedia.org/wiki/Lewis_acids_and_bases
 
 
-Toxicology:
-  - https://www.etymonline.com/word/toxicology
-  - https://en.wikipedia.org/wiki/Toxicology
-  - https://www.niehs.nih.gov/health/topics/science/toxicology
-  - combines:
-    - biology
-    - chemistry
-    - medicine
-    - pharmacology
+## Pharmacology
+Primarily a chemistry discipline, informed by biology, pharmacology studies the effect of chemical compounds on biological systems.
+
+[^wiki-pharma]: https://en.wikipedia.org/wiki/Pharmacology
+
+### Pharmacokinetics
+
+### Pharmacodynamics
+
+### Pharmacotherapy
+
+### Toxicology
+A subfield of pharmacology, toxicology studies the harmful effects of chemical compounds on biological systems.
+- https://www.etymonline.com/word/toxicology
+- https://en.wikipedia.org/wiki/Toxicology
+- https://www.niehs.nih.gov/health/topics/science/toxicology
 
 
-pharmacology:
-- 
-
-microbiology: 
-- https://en.wikipedia.org/wiki/Bacillus_anthracis
-
-botany:
-- California Poppy: https://pmc.ncbi.nlm.nih.gov/articles/PMC10017456/
-
-pathology:
-- https://www.cdc.gov/anthrax/about/index.html
-
-vs Medicine:
-  - "the dose makes the poison"
-  - https://www.etymonline.com/word/medicine
-  - https://en.wikipedia.org/wiki/Medicine
-
+[^ncbi-chem]: https://www.ncbi.nlm.nih.gov/books/NBK518691/
