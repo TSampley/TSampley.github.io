@@ -449,6 +449,15 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - personal experience
 
+- name: City Council Member 1-13
+  region: Joliet, IL
+  harm:
+    - voted in favor of corporate interest projects at the expense of their constituents
+    - tyrannically suppressed dissent against capitalist project
+  refs:
+    - https://www.youtube.com/watch?v=h6SOwQrAp8w
+    - https://www.joliet.gov/government/city-council-3189
+
 - name: John Fetterman
   region: Pennsylvania, US
   roles:
