@@ -11,10 +11,6 @@ These are project issues, linked from other pages where they are relevant.
 1. Generate TOC here
 {:toc}
 
-## Linter
-- [ ] setup linter command
-- [ ] add to workflow
-
 ## Demos
 - allow multiple demos per page; each has one canvas
 - reset demo
