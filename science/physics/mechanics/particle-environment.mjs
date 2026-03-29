@@ -23,7 +23,7 @@ export class ParticleEnvironment extends Environment {
     this.hardCollisions = true
 
     /** @type {Array<Particle>} */
-    this.particleList = new Array()
+    this.particleList = []
 
     /** @type {()=>void} */
     this.onBounce = NoOp.f0

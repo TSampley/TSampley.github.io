@@ -51,7 +51,7 @@ export class Simulation {
     constructor(environment,context,scenarios) {
         this.timer = new Timer()
         /** @type {Array<Entity>} */
-        this.entityList = new Array()
+        this.entityList = []
         this.environment = environment
         this.context = context
         this.scenarios = scenarios
