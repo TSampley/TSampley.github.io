@@ -8,7 +8,25 @@ date: 2026-03-27 1142 -0500
 
 Evolution works through selection, the unfolding of events in the natural world that allow some organisms to reproduce while preventing others.
 
+## Evolutionary Development
+
+### Optimization
+Adaptive Walk/Maximization[^youtube-evo]
+
+### Co-Option
+Exaptation/Moonlight/Pre-adaptation/Conversion[^youtube-evo]
+
+### Duplication
+
+[^youtube-evo]
+
+### Recruitment
+
+[^youtube-evo]
+
 <!-- Evolution Demos -->
+
+## Mutation/Natural Selection/Genetic Drift/Gene Flow/Nonrandom Mating
 
 ## Direct Selection
 Direct selection, or individual selection, works at the individual level.
@@ -26,3 +44,5 @@ Sibling effects include selection that depends on the interactions between an or
 Parentage effects include selection that depends on the behavior
 
 ### Grandparent Effects
+
+[^youtube-evo]: https://www.youtube.com/watch?v=dRxukbA5jFI

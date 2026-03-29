@@ -16,6 +16,7 @@ study of cells, their structure, and function
 ## Microbiology
 study of microorganisms, or organisms on the microscopic scale, usually much smaller than 1mm.
 - https://en.wikipedia.org/wiki/Bacillus_anthracis
+- https://en.wikipedia.org/wiki/Eukaryotic_large_ribosomal_subunit_(60S)
 
 ## Physiology
 biological mechanisms and interactions, focused on physical dynamics.
