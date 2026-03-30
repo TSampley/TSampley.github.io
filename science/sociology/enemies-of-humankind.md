@@ -179,7 +179,9 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
 - name: Markwayne Mullin
   region: US
   roles:
-    - 
+    - title:
+      organization: Department of Homeland Security
+      when: 
   harm:
     - 
   refs:
