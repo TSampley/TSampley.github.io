@@ -129,5 +129,8 @@ I have a wide range of interests and find it difficult to study just one thing a
 
 ```
 
- -->
+-->
  
+## Issues
+
+If you notice any issues with the site, please let me know by filing a ticket at [the repo](https://github.com/TSampley/tsampley.github.io/).

@@ -26,7 +26,6 @@ post --> demo
 demo -.-> propModule
 
 ```
-{%- include code/mermaid-script.html -%}
 
 ## Building
 
