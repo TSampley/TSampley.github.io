@@ -44,6 +44,15 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   harm:
     - Used government power for personal enrichment
     - https://www.youtube.com/shorts/jBJxXoQRmtQ
+- name: Various
+  region: Global
+  roles:
+    - title:
+      organization: OPEC
+  harm:
+    - literal conspiracy to control global oil markets for the enrichment of members at the expense of all citizens globally
+  refs:
+    - https://www.opec.org/member-countries.html
 
 - name: Lawrence Goldman
   region: UK
@@ -254,6 +263,16 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - justified murder of a journalist for political purposes
   refs:
     - https://www.youtube.com/shorts/CGOQQK6_di8
+
+- name: Rob Schneider
+  region: US
+  roles:
+    - title: Actor
+  harm:
+    - advocated for military draft in war of genocide
+    - supports ethnocentrist/racist state of Israel
+  refs:
+    - https://www.usatoday.com/story/entertainment/celebrities/2026/03/30/rob-schneider-draft-military-comments/89386885007/
 
 - name: Peter Thiel
   region: Colorado, US
