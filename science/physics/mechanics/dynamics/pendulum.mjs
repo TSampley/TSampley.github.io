@@ -2,7 +2,7 @@
 import 'science/physics/mechanics/constants.mjs'
 
 import { Entity } from '/science/computing/simulation/entity.mjs'
-import { Render2D } from 'science/computing/simulation/simulation.mjs'
+import { Render2D } from '/science/computing/simulation/render.mjs'
 
 /**
  * 
