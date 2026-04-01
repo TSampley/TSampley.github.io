@@ -24,17 +24,17 @@ export class Simulation {
 
     /**
      * 
-     * @param {E} environment 
-     * @param {CanvasRenderingContext2D} context
+     * @param {E} environment
      * @param {Array<Scenario<E>>} scenarios
+     * @param {(Environment,offset)=>void} onDraw
      */
-    constructor(environment,context,scenarios) {
+    constructor(environment,scenarios,onDraw) {
         this.timer = new Timer()
         /** @type {Array<Entity>} */
         this.entityList = []
         this.environment = environment
-        this.context = context
-        this.scenarios = scenarios
+        this.scenarios = scenarios || []
+        this.onDraw = onDraw || (()=>{})
     }
 
     #isRunning = false
@@ -55,7 +55,7 @@ export class Simulation {
 
         this.timer.step(delta)
         this.environment.step(delta)
-        this.environment.draw(this.context,0)
+        this.onDraw(this.environment, 0)
 
         if (this.#isRunning) this.#step()
     }
