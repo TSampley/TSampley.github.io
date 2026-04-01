@@ -1,42 +1,107 @@
 
-
+import { Render2D } from 'science/computing/simulation/render.mjs';
+import { Point, Size } from '/js/common/geom.mjs'
+import { Entity } from '/science/computing/simulation/entity.mjs'
+import { Environment } from 'science/computing/simulation/environment.mjs';
 
 window.onload = async () => {
   processSitemapQueue();
 }
 
-class Point {
-  constructor(x=0,y=0){this.x=x;this.y=y;}
-}
-
-class Entity {
-  constructor(position=new Point(),velocity=new Point()) {
-    this.position = position
-    this.velocity = velocity
-  }
-}
-
-class PageNodeEntity extends Entity {
-  constructor(path,title,url,position) {
-    super()
-    this.path = path
-    this.title = title
-    this.url = url
-    this.position = position
-  }
-}
-
 /**
- * Responsible for capturing all UI widgets to add
- * event listeners and bind model updates.
+ * Binder between the UI and Model (Sitemap). Responsible for forwarding UI
+ * events to the model and notifying the UI of state changes.
  */
 class SitemapPresenter {
   /**
    * 
    * @param {Sitemap} sitemap Business model
+   * @param {SitemapUi} ui User interface for rendering and event capture
    */
   constructor(
     sitemap,
+    ui
+  ) {
+    this.sitemap = sitemap
+    this.ui = ui
+  }
+}
+
+/**
+ * Used by the SitemapUi to render the model Sitemap.
+ */
+class SitemapRender extends Render2D {
+  /**
+   * 
+   * @param {*} context 
+   * @param {Sitemap} subject 
+   */
+  render(context,subject) {
+    const width = subject.width
+    const height = subject.height
+    
+    // clear canvas
+    context.fillStyle = '#ffffff'
+    context.fillRect(0,0,width,height)
+
+    // draw nodes
+    for(const node of subject.nodes) {
+      const pos = node.position
+      // draw node circle
+      context.fillStyle = '#0077cc'
+      context.beginPath()
+      context.arc(pos.x, pos.y, subject.nodeRadius, 0, 2 * Math.PI)
+      context.fill()
+
+      // draw node text
+      if (subject.hoverPoint) {
+        const offsetX = subject.hoverPoint.x - pos.x
+        const offsetY = subject.hoverPoint.y - pos.y
+        const radius = 100.0
+        const opacity = 1 - Math.min(1.0, Math.max(Math.abs(offsetX), Math.abs(offsetY))/radius)
+        if (opacity > 0.1) {
+          context.fillStyle = `rgba(0, 0, 0, ${opacity})`
+          context.font = '12px Arial'
+          context.fillText(node.title, pos.x + 15, pos.y + 5)
+        }
+      }
+
+      if (subject.debug) {
+        // draw force vector for debugging
+        if (node.force) {
+          context.strokeStyle = '#ff0000'
+          context.lineWidth = 1
+          context.beginPath()
+          context.moveTo(pos.x, pos.y)
+          context.lineTo(pos.x + node.force.fx, pos.y + node.force.fy)
+          context.stroke()
+        }
+
+        // draw velocity vector for debugging
+        if (node.velocity) {
+          context.strokeStyle = '#00ff00'
+          context.lineWidth = 1
+          context.beginPath()
+          context.moveTo(pos.x, pos.y)
+          context.lineTo(pos.x + node.velocity.x, pos.y + node.velocity.y)
+          context.stroke()
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Resonposible for rendering the sitemap and capturing HTMLElements that
+ * compose the UI. Will bind event listeners to the UI and notify the presenter
+ * of interactions.
+ */
+class SitemapUi {
+  /**
+   * @param {SitemapPresenter} presenter The presenter object that notifies of 
+   * state changes and receives events.
+   */
+  constructor(
     canvasId='canvas',
     spanSelectedNodeId='display-selected-node',
     buttonTimeControlId='button-time-control',
@@ -47,7 +112,6 @@ class SitemapPresenter {
     rangeDragRestitutionId='range-drag-restitution',
     checkboxDebugId='checkbox-debug'
   ) {
-    this.sitemap = sitemap
     this.canvas = document.getElementById(canvasId)
     this.displaySelectedNode = document.getElementById(spanSelectedNodeId)
     this.buttonTimeControl = document.getElementById(buttonTimeControlId)
@@ -58,46 +122,108 @@ class SitemapPresenter {
     this.rangeDragRestitution = document.getElementById(rangeDragRestitutionId)
     this.checkboxDebug = document.getElementById(checkboxDebugId)
 
-    this.rangeRepulsionForce.value = sitemap.repelForce
+    this.render = new SitemapRender()
+
+    this.canvas = document.getElementById(this.hostId)
+    if(!this.canvas) {
+      throw `Sitemap: No canvas found with id:${this.hostId}`
+    }
+    /** @type {CanvasRenderingContext2D} */
+    this.context = this.canvas.getContext('2d')
+
+    this.nodeDisplay = document.getElementById('display-node')
+    this.selectedNode = null
+    this.canvas.onclick = (event) => {
+      this.onSelectNode(event.offsetX, event.offsetY)
+    }
+
+    this.hoverPoint = null
+    this.canvas.onmousedown = (event) => {
+      console.log(`Sitemap canvas mouse down at (${event.offsetX},${event.offsetY})`)
+    }
+    this.canvas.onmouseup = (event) => {
+      console.log(`Sitemap canvas mouse up at (${event.offsetX},${event.offsetY})`)
+    }
+    this.canvas.onmousemove = (event) => {
+      if (!this.hoverPoint) this.hoverPoint = new Point();
+      this.hoverPoint.x = event.offsetX
+      this.hoverPoint.y = event.offsetY
+    }
+    this.canvas.onmouseleave = (event) => {
+      this.hoverPoint.x = event.offsetX
+      this.hoverPoint.y = event.offsetY
+    }
+
+    const timeControlButton = document.getElementById('button-time-control')
+    timeControlButton.onclick = () => {
+      this.isRunning = !this.isRunning
+      if (this.isRunning) {
+        timeControlButton.innerHTML = "Stop"
+        this.#lastTsl = 0 // avoid accumulating paused time
+        requestAnimationFrame((tsl) => this.animate(tsl))
+      } else {
+        timeControlButton.innerHTML = "Start"
+      }
+    }
+  }
+
+  /**
+   * 
+   * @param {SitemapPresenter} presenter 
+   */
+  bind(presenter) {
+    this.presenter = presenter
+
+    this.rangeRepulsionForce.value = presenter.sitemap.repelForce
     this.rangeRepulsionForce.oninput = (event) => {
-      sitemap.repelForce = event.target.value
+      presenter.sitemap.repelForce = event.target.value
     }
-    this.rangeCenterForce.value = sitemap.centerForceConstant
+    this.rangeCenterForce.value = presenter.sitemap.centerForceConstant
     this.rangeCenterForce.oninput = (event) => {
-      sitemap.centerForceConstant = event.target.value
+      presenter.sitemap.centerForceConstant = event.target.value
     }
-    this.rangeSpringForce.value = sitemap.springConstant
+    this.rangeSpringForce.value = presenter.sitemap.springConstant
     this.rangeSpringForce.oninput = (event) => {
-      sitemap.springConstant = event.target.value
+      presenter.sitemap.springConstant = event.target.value
     }
-    this.rangeSpringLength.value = sitemap.springDistance
+    this.rangeSpringLength.value = presenter.sitemap.springDistance
     this.rangeSpringLength.oninput = (event) => {
-      sitemap.springDistance = event.target.value
+      presenter.sitemap.springDistance = event.target.value
     }
-    this.rangeDragRestitution.value = 1 - sitemap.dragRestitution
+    this.rangeDragRestitution.value = 1 - presenter.sitemap.dragRestitution
     this.rangeDragRestitution.oninput = (event) => {
-      sitemap.dragRestitution = 1 - event.target.value
+      presenter.sitemap.dragRestitution = 1 - event.target.value
     }
-    this.checkboxDebug.checked = sitemap.debug
+    this.checkboxDebug.checked = presenter.sitemap.debug
     this.checkboxDebug.onchange = (event) => {
-      sitemap.debug = event.target.checked == true
+      presenter.sitemap.debug = event.target.checked == true
     }
   }
 }
 
-class Sitemap {
+class PageNodeEntity extends Entity {
+  constructor(path,title,url,position) {
+    super(new Point(),new Point())
+    this.path = path
+    this.title = title
+    this.url = url
+    this.position = position
+  }
+}
+
+class Sitemap extends Environment {
   /**
-   * 
-   * @param {string} hostId 
-   * @param {string} root 
+   *  
+   * @param {string} root The point in the hierarchy to start from. For example, "/" for the entire wiki, or "/science" for the science branch.
    */
-  constructor(hostId,root) {
-    this.hostId = hostId
+  constructor(root) {
+    super(new Size(800, 600))
+
     this.root = root
 
     this.isRunning = false
     /**
-     * @type {Array<PageNodeEntity>}
+     * @type {PageNodeEntity[]}
      */
     this.nodes = []
     this.nodeRadius = 10
@@ -128,70 +254,33 @@ class Sitemap {
     this.dragRestitution = 0.99
     this.boundaryMargin = this.nodeRadius
     this.debug = true
-
-    this.canvas = document.getElementById(this.hostId)
-    if(!this.canvas) {
-      throw `Sitemap: No canvas found with id:${this.hostId}`
-    }
-    /** @type {CanvasRenderingContext2D} */
-    this.context = this.canvas.getContext('2d')
-
-    this.nodeDisplay = document.getElementById('display-node')
-
-    this.selectedNode = null
-    this.canvas.onclick = (event) => {
-      this.onSelectNode(event.offsetX, event.offsetY)
-    }
-
-    this.hoverPoint = null
-    this.canvas.onmousedown = (event) => {
-      console.log(`Sitemap canvas mouse down at (${event.offsetX},${event.offsetY})`)
-    }
-    this.canvas.onmouseup = (event) => {
-      console.log(`Sitemap canvas mouse up at (${event.offsetX},${event.offsetY})`)
-    }
-    this.canvas.onmousemove = (event) => {
-      if (!this.hoverPoint) this.hoverPoint = new Point();
-      this.hoverPoint.x = event.offsetX
-      this.hoverPoint.y = event.offsetY
-    }
-    this.canvas.onmouseleave = (event) => {
-      this.hoverPoint = null
-    }
-
-    const timeControlButton = document.getElementById('button-time-control')
-    timeControlButton.onclick = (event) => {
-      this.isRunning = !this.isRunning
-      if (this.isRunning) {
-        timeControlButton.innerHTML = "Stop"
-        this.#lastTsl = 0 // avoid accumulating paused time
-        requestAnimationFrame((tsl) => this.animate(tsl))
-      } else {
-        timeControlButton.innerHTML = "Start"
-      }
-    }
   }
 
+  /**
+   * 
+   * TODO: move to Presenter and replace with query and mutator methods on Sitemap for selection and other interactions
+   * @param {number} x 
+   * @param {number} y 
+   */
   onSelectNode(x,y) {
     const selectionDistance = 50
     const minDistSqr = selectionDistance**2
-    let closest = null
-    let closestDistance = null
-    for (const node of this.nodes) {
-      const dx = x - node.position.x
-      const dy = y - node.position.y
+    const closest = this.nodes.reduce((closest, current) => {
+      const dx = x - current.node.position.x
+      const dy = y - current.node.position.y
       const distanceSqr = dx*dx + dy*dy
       if (distanceSqr <= minDistSqr) {
         const distance = Math.sqrt(distanceSqr)
-        if (!closestDistance || distance < closestDistance) {
-          closest = node
-          closestDistance = distance
+        if (!closest.dist || distance < closest.dist) {
+          return {node: current.node, dist: distance}
         }
       }
-    }
-    this.selectedNode = closest
-    if (closest) {
-      this.nodeDisplay.innerHTML = closest.title
+      return closest
+    }, /** @type {{closest: PageNodeEntity|null, closestDistance: number|null}} */ { node: null, dist: null})
+
+    this.selectedNode = closest.node
+    if (closest.node) {
+      this.nodeDisplay.innerHTML = closest.node.title
     } else {
       this.nodeDisplay.innerHTML = ""
     }
@@ -325,7 +414,7 @@ class Sitemap {
     this.#lastTsl = tsl
 
     this.step(dt)
-    drawSitemap(this)
+    // TODO: allow Simulation to handle this and move drawing to render
 
     // Loop
     if(this.isRunning) {
@@ -335,74 +424,14 @@ class Sitemap {
 }
 
 /**
- * @type {Array<Sitemap>}
+ * @type {SitemapPresenter[]}
  */
 const sitemap_list = []
 
-const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
-
-/**
- * 
- * @param {Sitemap} sitemap 
- */
-function drawSitemap(sitemap) {
-  const ctx = sitemap.context
-  const width = sitemap.canvas.width
-  const height = sitemap.canvas.height
-  
-  // clear canvas
-  ctx.fillStyle = '#ffffff'
-  ctx.fillRect(0,0,width,height)
-
-  // draw nodes
-  for(const node of sitemap.nodes) {
-    const pos = node.position
-    // draw node circle
-    ctx.fillStyle = '#0077cc'
-    ctx.beginPath()
-    ctx.arc(pos.x, pos.y, sitemap.nodeRadius, 0, 2 * Math.PI)
-    ctx.fill()
-
-    // draw node text
-    if (sitemap.hoverPoint) {
-      const offsetX = sitemap.hoverPoint.x - pos.x
-      const offsetY = sitemap.hoverPoint.y - pos.y
-      const radius = 100.0
-      const opacity = 1 - Math.min(1.0, Math.max(Math.abs(offsetX), Math.abs(offsetY))/radius)
-      if (opacity > 0.1) {
-        ctx.fillStyle = `rgba(0, 0, 0, ${opacity})`
-        ctx.font = '12px Arial'
-        ctx.fillText(node.title, pos.x + 15, pos.y + 5)
-      }
-    }
-
-    if (sitemap.debug) {
-      // draw force vector for debugging
-      if (node.force) {
-        ctx.strokeStyle = '#ff0000'
-        ctx.lineWidth = 1
-        ctx.beginPath()
-        ctx.moveTo(pos.x, pos.y)
-        ctx.lineTo(pos.x + node.force.fx, pos.y + node.force.fy)
-        ctx.stroke()
-      }
-
-      // draw velocity vector for debugging
-      if (node.velocity) {
-        ctx.strokeStyle = '#00ff00'
-        ctx.lineWidth = 1
-        ctx.beginPath()
-        ctx.moveTo(pos.x, pos.y)
-        ctx.lineTo(pos.x + node.velocity.x, pos.y + node.velocity.y)
-        ctx.stroke()
-      }
-    }
-  }
-}
-
 function drawAllSitemaps() {
-  for(const sitemap of sitemap_list) {
-    drawSitemap(sitemap)
+  for(const presenter of sitemap_list) {
+    // TODO: list presenters instead to capture UI elemnts
+    presenter.ui.render.render(presenter.ui.context, presenter.sitemap, 0)
   }
 }
 
@@ -412,12 +441,14 @@ function processSitemapQueue() {
   for(const canvas_id of sitemap_queue) {
     console.log(`Processing canvas id:${canvas_id}`)
     try {
-      const newSitemap = new Sitemap(canvas_id,'/')
-      const presenter = new SitemapPresenter(newSitemap)
+      const ui = new SitemapUi(canvas_id)
+      const newSitemap = new Sitemap('/')
+      const presenter = new SitemapPresenter(newSitemap, ui)
+      ui.bind(presenter)
 
       // initialize sitemap
-      drawSitemap(newSitemap)
-      sitemap_list.push(newSitemap)
+      ui.render.render(ui.context, newSitemap, 0)
+      sitemap_list.push(presenter)
     } catch (err) {
       console.error(`Error processing canvas id:${canvas_id}`,err)
     }
@@ -427,21 +458,22 @@ function processSitemapQueue() {
 }
 
 console.log('Sitemap data load initiated');
-const sitemap_data_promise = async function() {
+/** @type {{branches: WikiIndex[]}} */
+let sitemap_data = {branches:[new WikiIndex('/','Loading...','#')]} // default data while loading
+sitemap_data = await async function() {
   try {
     const response = await fetch('/assets/branches.json')
     if (!response.ok) {
       throw `HTTP error! status: ${response.status}`
     }
+    /** @type {{branches: WikiIndex[]}} */
     const data = await response.json()
     return data
   } catch (err) {
     console.error('Sitemap: Error fetching branches.json',err)
-    return []
+    return {branches:[new WikiIndex('/','Error loading data','#')]}
   }
-};
-let sitemap_data = {branches:[]}
-sitemap_data = await sitemap_data_promise();
+}();
 
 class WikiIndex {
   constructor(path,title,url) {
@@ -456,14 +488,13 @@ bindSitemaps()
 
 function bindSitemaps() {
   console.log(`binding site maps: ${sitemap_list.length}`)
-  sitemap_list.forEach((sitemap) => {
-    processSiteData(sitemap,sitemap_data)
+  sitemap_list.forEach((presenter) => {
+    processSiteData(presenter.sitemap,sitemap_data)
   });
   drawAllSitemaps()
 }
 
 /**
- * 
  * @param {Sitemap} sitemap 
  * @param {WikiIndex} data 
  */
