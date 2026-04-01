@@ -5,12 +5,13 @@ import { forceMatrixChemistry, forceMatrixSim } from "/science/chemistry/computa
 
 
 test('scenario', async ()=> {
-  const scenario = scenarioFun("name","description",/** @type {(chemEnviro:ChemEnvironment)=>void} enviro */ (chemEnviro)=> {
-    // chemEnviro.forceMatrix.value = forceMatrixSim(0, 0, 0, 0, 0)
+  const scenario = scenarioFun("name","description",(/** @type {ChemEnvironment} */ chemEnviro)=> {
+    chemEnviro.forceMatrix.value = forceMatrixSim(0, 0, 0, 0, 0)
     chemEnviro.hardCollisions = false
   });
   expect(scenario.name).toBe("name")
   expect(scenario.description).toBe("description")
+  expect(scenario.init).toBeDefined()
 
   const matrix = forceMatrixChemistry()
   const size = new Size(800, 400)
@@ -23,6 +24,6 @@ test('scenario', async ()=> {
 
   scenario.init(enviro)
 
-  expect(enviro.forceMatrix.value).toBe(forceMatrixSim(0, 0, 0, 0, 0))
+  expect(enviro.forceMatrix.value).toStrictEqual(forceMatrixSim(0, 0, 0, 0, 0))
   expect(enviro.hardCollisions).toBe(false)
 })
