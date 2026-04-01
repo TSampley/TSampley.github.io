@@ -81,7 +81,7 @@ key7: {}
 `)).toBe({ key1: null, key2: false, key3: true, key4: "foobar", key5: 9001, key6: [], key7: {}})
 })
 
-test('comments are skipped by parser', () => {
+test('comments are skipped by parser', async () => {
   let cases = [
 `
 # Please ignore this line
@@ -94,9 +94,12 @@ beta: hello
   let expected = [
     { alpha: 10, beta: "hello" }
   ]
+
+  const result = await parserUnderTest.parse(cases[0])
+  expect(result).toEqual(expected[0])
 })
 
-test('parsing maps within lists is allowed', () => {
+test('parsing maps within lists is allowed', async () => {
   let cases = [
 `
 - string
@@ -108,22 +111,36 @@ test('parsing maps within lists is allowed', () => {
     [ "string", { key: "value", key2: "value2" }]
   ]
 
+  const result = await parserUnderTest.parse(cases[0])
+  expect(result).toEqual(expected[0])
 })
-/*
-Case Studies:
+
+test('parsing lists on properties is allowed', async () => {
+  let cases = [
+    'key: [element, element2, "element3", 4, "5"]'
+  ]
+
+  let expected = [
+    { key: ["element", "element2", "element3", 4, "5"]}
+  ]
+  const result = await parserUnderTest.parse(cases[0])
+  expect(result).toEqual(expected[0])
+})
 
 
-Case: List property
-`
-key: [element, element2, element3]
-`
+test('parsing maps on properties is allowed', async () => {
+  let cases = [
+    'key: { alpha: value, beta: value }'
+  ]
 
-Case: Map property
-`
-key: { alpha: value, beta: value }
-`
-
-Case: 
+  let expected = [
+    { key: { alpha: "value", beta: "value" }}
+  ]
+  const result = await parserUnderTest.parse(cases[0])
+  expect(result).toEqual(expected[0])
+})
+test('nested properties are allowed', async () => {
+  let cases = [
 `
 key:
   prop: value
@@ -132,16 +149,11 @@ key2:
   prop: value
   prop2: value2
 `
-
-
- */
-
-test('parsing lists on properties is allowed', () => {
-  let cases = [
-    'key: [element, element2, "element3", 4, "5"]'
   ]
 
   let expected = [
-    { key: ["element", "element2", "element3", 4, "5"]}
+    { key: { prop: "value", prop2: "value2" }, key2: { prop: "value", prop2: "value2" }}
   ]
+  const result = await parserUnderTest.parse(cases[0])
+  expect(result).toEqual(expected[0])
 })
