@@ -1,7 +1,8 @@
 import js from "@eslint/js";
+import jest from "eslint-plugin-jest";
 import globals from "globals";
 import tseslint from "typescript-eslint";
-import { defineConfig } from "eslint/config";
+import { defineConfig,globalIgnores } from "eslint/config";
 
 export default defineConfig([
   { 
@@ -12,5 +13,10 @@ export default defineConfig([
       globals: globals.browser,
     }
   },
+  globalIgnores([ "_site/**", "node_modules/**" ]),
   tseslint.configs.recommended,
+  {
+    files: ["**/*.test.{js,mjs,cjs,ts,mts,cts}"],
+    ...jest.configs["flat/recommended"]
+  }
 ]);
