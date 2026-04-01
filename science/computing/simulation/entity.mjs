@@ -17,24 +17,24 @@ import { Point } from '/js/common/geom.mjs'
  */
 export class Entity {
 
-    static NO_POSITION = new Point(Number.NaN,Number.NaN)
+  static NO_POSITION = new Point(Number.NaN,Number.NaN)
 
-    /**
-     * @param {Point} position 
-     */
-    constructor(position,velocity) {
-        this.position = position || Entity.NO_POSITION
-        this.velocity = velocity
-    }
+  /**
+   * @param {Point} position 
+   */
+  constructor(position,velocity) {
+    this.position = position || Entity.NO_POSITION
+    this.velocity = velocity
+  }
 
-    /**
-     * Progresses the entity's internal state by `delta`.
-     * @param {number} delta Change in time for this simulation step.
-     * @abstract
-     */
-    step(delta) {
-        throw new UnimplementedError(this,'step')
-    }
+  /**
+   * Progresses the entity's internal state by `delta`.
+   * @param {number} delta Change in time for this simulation step.
+   * @abstract
+   */
+  step(delta) {
+    throw new UnimplementedError(this,'step')
+  }
 }
 
 /**
@@ -42,18 +42,22 @@ export class Entity {
  * entity's position.
  */
 export class EntityRender extends Render2D {
-    
-    /**
-     * @param {CanvasRenderingContext2D} context 
-     * @param {Entity} subject
-     * @param {number} offset 
-     */
-    render(context,subject,offset) {
-        if (isNaN(subject.position.x) || isNaN(subject.position.y)) {
-            return
-        }
-        context.fillStyle = 'black'
-        context.ellipse(subject.position.x, subject.position.y, 5, 5, 0, 0, 2 * Math.PI)
-        context.fill()
+  
+  /**
+   * @param {CanvasRenderingContext2D} context 
+   * @param {Entity} subject
+   * @param {number} offset 
+   */
+  render(context,subject,offset) {
+    if (isNaN(subject.position.x) || isNaN(subject.position.y)) {
+      return
     }
+    context.fillStyle = 'black'
+    if (subject.velocity) {
+        context.ellipse(subject.position.x + subject.velocity.x * offset, subject.position.y + subject.velocity.y * offset, 5, 5, 0, 0, 2 * Math.PI)
+    } else {
+        context.ellipse(subject.position.x, subject.position.y, 5, 5, 0, 0, 2 * Math.PI)
+    }
+    context.fill()
+  }
 }
