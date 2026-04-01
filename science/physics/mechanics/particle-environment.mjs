@@ -17,8 +17,6 @@ export class ParticleEnvironment extends Environment {
 
     /** @type {Observable<ForceMatrix>} */
     this.forceMatrix = single(forceMatrix)
-    console.log("Creating force matrix observable with value: " + JSON.stringify(forceMatrix))
-    console.log("Property" + JSON.stringify(this.forceMatrix.value))
     this.timeScale = 1E-6
     this.hardCollisions = true
 
