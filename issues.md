@@ -11,29 +11,6 @@ These are project issues, linked from other pages where they are relevant.
 1. Generate TOC here
 {:toc}
 
-## Demos
-- allow multiple demos per page; each has one canvas
-- reset demo
-- set scenario
-- [depends on](#scenarios)
-
-## Chemistry Scenarios
-- [ ] define sodium and chlorine gas reaction
-- [ ] define hydrogen and oxygen gas reaction
-- [ ] define water scenario
-- [depends on](#demos)
-
-## Chemistry Demos
-- [ ] transfer particle-simulation logic to particle-environment; remove particle-simulation
-- [ ] include 
-- [depends on](#chemistry-scenarios)
-
-## Topology Demo
-- demonstrate multiple dimensions
-- relate points by number of connections based on dimensionality
-- demonstrate stress relieved by raising to higher dimension
-- [depends on](#demos)
-
 ## Timeline Diagrams
 - Visualize Timeline with data mapped to events
 - class event
