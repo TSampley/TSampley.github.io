@@ -191,7 +191,7 @@ class SitemapUi {
     }
 
     this.timeControlButton.onclick = () => {
-      // TODO: move to presenter
+      // TODO: move to presenter/simulator
       this.isRunning = !this.isRunning
       if (this.isRunning) {
         this.timeControlButton.innerHTML = "Stop"
