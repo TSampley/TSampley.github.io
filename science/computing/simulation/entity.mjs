@@ -22,8 +22,9 @@ export class Entity {
     /**
      * @param {Point} position 
      */
-    constructor(position) {
+    constructor(position,velocity) {
         this.position = position || Entity.NO_POSITION
+        this.velocity = velocity
     }
 
     /**
