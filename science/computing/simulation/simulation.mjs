@@ -1,35 +1,15 @@
+/*
+ * Copyright (c) 2026 Taush Sampley
+ * This software is released under the GPL-3.0 License.
+ * See LICENSE file in the project root for full license information.
+ * 
+ * simulation.mjs
+ */
+
 import { Timer } from '/js/common/timer.mjs'
 import { Entity } from './entity.mjs';
 import { Environment } from './environment.mjs';
 import { Scenario } from './scenario.mjs';
-
-/**
- * @template {any} Subject
- */
-export class Render2D {
-  /**
-   * Draws the environment to the canvas context.
-   * 
-   * @param {CanvasRenderingContext2D} context HTML Canvas simple context.
-   * @param {Subject} subject The subject to render.
-   * @param {number} offset Seconds offset since the last calculation frame.
-   */
-  render(context,subject,offset) {}
-}
-
-/**
- * @template {any} Subject
- */
-export class Render3D {
-  /**
-   * Draws the environment to the webgl context.
-   * 
-   * @param {WebGL2RenderingContext} context HTML Canvas WebGL 2 Context.
-   * @param {Subject} subject The subject to render.
-   * @param {number} offset Seconds offset since the last calculation frame.
-   */
-  render(context,subject,offset) {}
-}
 
 /**
  * 
