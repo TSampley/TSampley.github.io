@@ -124,47 +124,16 @@ class SitemapUi {
 
     this.render = new SitemapRender()
 
-    this.canvas = document.getElementById(this.hostId)
     if(!this.canvas) {
-      throw `Sitemap: No canvas found with id:${this.hostId}`
+      throw `Sitemap: No canvas found with id:${canvasId}`
     }
     /** @type {CanvasRenderingContext2D} */
     this.context = this.canvas.getContext('2d')
 
+    // TODO: compare with displaySelectedNode and consolidate into one element
     this.nodeDisplay = document.getElementById('display-node')
-    this.selectedNode = null
-    this.canvas.onclick = (event) => {
-      this.onSelectNode(event.offsetX, event.offsetY)
-    }
-
-    this.hoverPoint = null
-    this.canvas.onmousedown = (event) => {
-      console.log(`Sitemap canvas mouse down at (${event.offsetX},${event.offsetY})`)
-    }
-    this.canvas.onmouseup = (event) => {
-      console.log(`Sitemap canvas mouse up at (${event.offsetX},${event.offsetY})`)
-    }
-    this.canvas.onmousemove = (event) => {
-      if (!this.hoverPoint) this.hoverPoint = new Point();
-      this.hoverPoint.x = event.offsetX
-      this.hoverPoint.y = event.offsetY
-    }
-    this.canvas.onmouseleave = (event) => {
-      this.hoverPoint.x = event.offsetX
-      this.hoverPoint.y = event.offsetY
-    }
-
-    const timeControlButton = document.getElementById('button-time-control')
-    timeControlButton.onclick = () => {
-      this.isRunning = !this.isRunning
-      if (this.isRunning) {
-        timeControlButton.innerHTML = "Stop"
-        this.#lastTsl = 0 // avoid accumulating paused time
-        requestAnimationFrame((tsl) => this.animate(tsl))
-      } else {
-        timeControlButton.innerHTML = "Start"
-      }
-    }
+    // TODO: compare with buttonTimeControl and consolidate into one element
+    this.timeControlButton = document.getElementById('button-time-control')
   }
 
   /**
@@ -197,6 +166,40 @@ class SitemapUi {
     this.checkboxDebug.checked = presenter.sitemap.debug
     this.checkboxDebug.onchange = (event) => {
       presenter.sitemap.debug = event.target.checked == true
+    }
+
+    this.selectedNode = null // TODO: move to presenter and replace with query and mutator methods on Sitemap for selection and other interactions
+    this.canvas.onclick = (event) => {
+      presenter.onSelectNode(event.offsetX, event.offsetY)
+    }
+
+    this.hoverPoint = null // TODO: move to presenter 
+    this.canvas.onmousedown = (event) => {
+      console.log(`Sitemap canvas mouse down at (${event.offsetX},${event.offsetY})`)
+    }
+    this.canvas.onmouseup = (event) => {
+      console.log(`Sitemap canvas mouse up at (${event.offsetX},${event.offsetY})`)
+    }
+    this.canvas.onmousemove = (event) => {
+      if (!this.hoverPoint) this.hoverPoint = new Point();
+      this.hoverPoint.x = event.offsetX
+      this.hoverPoint.y = event.offsetY
+    }
+    this.canvas.onmouseleave = (event) => {
+      this.hoverPoint.x = event.offsetX
+      this.hoverPoint.y = event.offsetY
+    }
+
+    this.timeControlButton.onclick = () => {
+      // TODO: move to presenter
+      this.isRunning = !this.isRunning
+      if (this.isRunning) {
+        this.timeControlButton.innerHTML = "Stop"
+        this.#lastTsl = 0 // avoid accumulating paused time
+        requestAnimationFrame((tsl) => this.animate(tsl))
+      } else {
+        this.timeControlButton.innerHTML = "Start"
+      }
     }
   }
 }
