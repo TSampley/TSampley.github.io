@@ -48,6 +48,7 @@ export class Environment {
    * Progresses the environment by some amount of time in seconds.
    * 
    * @param {number} delta 
+   * @abstract
    */
   step(delta) {
     this.#unimplemented('step')
