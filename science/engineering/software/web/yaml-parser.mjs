@@ -5,7 +5,7 @@ import { Parser } from '/science/computing/compilers/parser.mjs'
 /**
  * 
  */
-class Token {
+export class Token {
   constructor(line,column,sequence,type) {
     this.line = line
     this.column = column
@@ -18,6 +18,8 @@ class Token {
     boolean: 'boolean',
     number: 'number',
     string: 'string',
+    key: 'key',
+    newline: 'newline',
     indent: 'indent',
     dedent: 'dedent',
     comma: 'comma',
@@ -126,13 +128,13 @@ class YamlLexer {
  * TokenSequence --[Parser]--> AST/IR
  * AST/IR --[Target/Platform]--> ???
  */
-class TokenSequence {
+export class TokenSequence {
 
   /**
-   * @param {string} input
+   * @param {YamlLexer} lexer
    */
-  constructor(input) {
-    this.input = input
+  constructor(lexer) {
+    this.lexer = lexer
     this.position = 0
   }
 
@@ -165,7 +167,7 @@ class TokenSequence {
  * @returns {TokenSequence}
  */
 function conversionFunction(input) {
-  return new TokenSequence(input)
+  return new TokenSequence(new YamlLexer().lex(input))
 }
 
 /**
@@ -173,7 +175,7 @@ function conversionFunction(input) {
  * This documentation uses the escape sequence '\I' to refer to the current
  * level of indentation.
  */
-export default class YamlParser extends Parser {
+export class YamlParser extends Parser {
 
   constructor() {
     super()
