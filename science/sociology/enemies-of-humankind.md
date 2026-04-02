@@ -274,6 +274,17 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - https://www.usatoday.com/story/entertainment/celebrities/2026/03/30/rob-schneider-draft-military-comments/89386885007/
 
+- name: Mark Zuckerberg
+  region: US
+  roles:
+    - title: Founder
+      organization: Facebook
+  harm:
+    - where the fuck do we begin
+    - exists
+  refs:
+    - 
+
 - name: Peter Thiel
   region: Colorado, US
   roles:
