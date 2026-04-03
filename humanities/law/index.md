@@ -2,14 +2,29 @@
 layout: wiki
 
 title: Law
-
+date: 2026-03-16 03:44 -0500
 ---
 
 Law is traditionally studied under the humanities
 
-
-
 Contrast with [law as a science](/science/sociology/law/)
+
+## Digital Law Efforts
+
+FOLIO - https://openlegalstandard.org/
+
+Computational Law - https://arxiv.org/html/2503.04305v1
+
+List of Ontologies - https://github.com/Liquid-Legal-Institute/Legal-Ontologies
+
+https://www.oasis-open.org/
+https://serviceinnovationlab.github.io/projects/legislation-as-code/
+https://www.edmondok.gov/DocumentCenter/View/5450/Ordinance-3868-Chickens?bidId=
+https://library.municode.com/ok/edmond/codes/code_of_ordinances?nodeId=COOR_TIT7AN_CH7.09AN
+
+### Rules as Code
+http://logic.stanford.edu/complaw/readings/rules_as_code.pdf
+
 
 [^1]: https://www.etymonline.com/word/law
 [^2]: https://www.merriam-webster.com/dictionary/law#legalDictionary
