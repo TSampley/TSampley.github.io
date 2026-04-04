@@ -1,0 +1,14 @@
+---
+# Quiz data in JSON format, generated from wiki pages
+---
+
+[
+  {% assign cards = site.pages | where: "layout", "wiki" %}
+  {% for card in cards %}
+    {
+      "question": "{{ card.title | escape }}",
+      "answer": "{{ card.description | escape }}",
+      "category": "{{ card.dir }}"
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
