@@ -60,9 +60,20 @@ I have a wide range of interests and find it difficult to study just one thing a
   start: 2010
   end: 2011
 
-- section: OU Freshman
+- section: OU Freshman-Senior
   start: 2011
   end: 2015
+  events:
+    - event: Orientation
+      date:
+    - event: Japanese Club
+      date:
+    - event: RA Bullying
+      date:
+    - event: First Time Smoking
+      date:
+    - event: 
+      date:
 
 - section: Legal Trouble
   start: 2015
@@ -75,10 +86,24 @@ I have a wide range of interests and find it difficult to study just one thing a
 - section: Homeless 2 - Kentucky
   start: 2018
   end: 2019
+  events:
+    - event:
+      link: 
+      date:
+    - event:
+      link:
+      date:
 
 - section: Housed - Kentucky
   start: 2020
   end: 2021
+  events:
+    - event: Nightwalking
+      link: /posts/2023
+      date: 2023
+    - event: Laundry
+      link: /posts/2023
+      date: 2023
 
 - section: Housed - Stillwater
   start: 2021
