@@ -43,9 +43,9 @@ export class Quiz {
     // TODO: observe the model for changes and update the UI accordingly.
 
     const capturedUi = this.ui
-    this.model.addEventListener('state', (/** @type {ModelState} */state)=> {
-      console.info(`onState: `, state)
-      capturedUi.setState(state)
+    this.model.addEventListener('state', ({/** @type {ModelState} */ detail })=> {
+      console.info(`onState: `, detail)
+      capturedUi.setState(detail)
     })
   }
 
@@ -157,10 +157,13 @@ export class QuizUi {
       return;
     }
     if (question instanceof Question) {
-      console.info('Expected a Question object, but got: ', question);
       this.questionElement.textContent = question.prompt + "regndterjk";
       for (let i = 0; i < Quiz.CHOICE_COUNT; i++) {
-        this.answerElements[i].textContent = question.choiceList[i] + " mulpoiejkl " + i*20;
+        let text = question.choiceList[i];
+        if (text.trim().length == 0) {
+          text = "No Answer Text"
+        }
+        this.answerElements[i].textContent = text
       }
     } else {
       console.info('Expected a Question object, but got: ', question);
@@ -309,6 +312,12 @@ export class Card {
 }
 
 class Question {
+  /**
+   * 
+   * @param {string} prompt The text expressing the question.
+   * @param {string[]} choiceList An array of options to choose from.
+   * @param {number} answer The index of the choice within the given {choiceList}.
+   */
   constructor(prompt,choiceList,answer) {
     this.prompt = prompt;
     this.choiceList = choiceList;
@@ -364,7 +373,7 @@ export class QuizModel extends EventTarget {
   }
 
   #broadcastState() {
-    this.dispatchEvent(new CustomEvent('state', this.#modelState()))
+    this.dispatchEvent(new CustomEvent('state', { detail: this.#modelState() }))
   }
 
   reset() {
