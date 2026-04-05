@@ -2,10 +2,11 @@
 layout: wiki
 
 title: Law
+description: The study and application of legal theory
 date: 2026-03-16 03:44 -0500
 ---
 
-Law is traditionally studied under the humanities
+Law as a practice and discipline 
 
 Contrast with [law as a science](/science/sociology/law/)
 
@@ -28,6 +29,16 @@ http://logic.stanford.edu/complaw/readings/rules_as_code.pdf
 
 [^1]: https://www.etymonline.com/word/law
 [^2]: https://www.merriam-webster.com/dictionary/law#legalDictionary
+
+## Regulative Norms
+
+a.k.a. policies/rules/conditions/expectations
+
+## Constitutive Norms
+
+a.k.a. definitions
+
+
 
 ```
 
