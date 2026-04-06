@@ -97,3 +97,34 @@ map(obj) -> {
 - allow selecting different integrators to demonstrate numerical instability
 - display phase-space for symplectic manifold reference
 - [depends on](#demos)
+
+## Legal Network Diagram
+- associate efforts with regions
+- 
+
+## Overview
+
+```mermaid
+
+graph
+  Sitemap[Sitemap Graph]:::Task
+  AndroidHistory[Android Version History Timeline]:::Task
+
+  Quiz[Generate Quizzes from Data Points]:::Task
+  Quiz --> A
+  Quiz --> B
+
+  Demo[Demo]:::Task
+  Etym[Etymology Demo]:::Task --> Demo
+  Pend[Pendulum Demo]:::Task --> Demo
+  Econ[Economics Demos]:::Task --> Demo
+
+  Legal[Legal Network Diagram]
+  Legal --> S[Something]
+  Legal --> B["Another thing!"]
+
+  classDef Task fill:#ffd,stroke:#333;
+
+```
+
+{%- include code/mermaid-script.html -%}
