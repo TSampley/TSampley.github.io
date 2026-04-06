@@ -1,4 +1,6 @@
 
+// MARK: Quiz Controller
+
 export class Quiz {
   constructor() {
     this.ui = new QuizUi();
@@ -67,11 +69,13 @@ export class Quiz {
     const result = [];
     if (Array.isArray(data)) {
       data.forEach((element)=> {
-        result.push(mapper(element));
+        const mapped = mapper(element)
+        if (mapped) result.push(mapped)
       })
     } else {
       for (const key in data) {
-        result.push(mapper(data[key]));
+        const mapped = mapper(data[key])
+        if (mapped) result.push(mapped)
       }
     }
     return result;
@@ -86,8 +90,8 @@ export class Quiz {
    */
   async populate(sourceFile, mapper) {
     console.info(`Quiz.populate(${sourceFile},${mapper})`)
-    const questions = await this.load(sourceFile, mapper);
-    this.presenter.onQuizData(questions)
+    const cards = await this.load(sourceFile, mapper);
+    this.presenter.onQuizData(cards)
   }
 
   /**
@@ -101,6 +105,7 @@ export class Quiz {
   }
 }
 
+// MARK: UI
 export class QuizUi {
   constructor() {
   }
@@ -157,7 +162,7 @@ export class QuizUi {
       return;
     }
     if (question instanceof Question) {
-      this.questionElement.textContent = question.prompt + "regndterjk";
+      this.questionElement.textContent = question.prompt;
       for (let i = 0; i < Quiz.CHOICE_COUNT; i++) {
         let text = question.choiceList[i];
         if (text.trim().length == 0) {
@@ -180,6 +185,7 @@ export class QuizUi {
   }
 }
 
+// MARK: Presenter
 /**
  * Passes UI events to the model and updates the UI with any changes to the 
  * model.
@@ -217,23 +223,21 @@ export class QuizPresenter {
 
   #onSelect(choice) {
     // manipulate the model
-    this.model.answer(choice);
+    this.model.respond(choice);
     this.model.pullCard();
   }
     
   /**
    * 
-   * @param {Question[]} questions 
+   * @param {Card[]} cards 
    */
-  onQuizData(questions) {
-    this.model.questions = questions
+  onQuizData(cards) {
+    this.model.cards = cards
     this.model.reset()
   }
 }
 
-// region Interactors
-
-// #pragma mark Interact With Me
+// MARK: Interactors
 
 function selectChoice(model,choice) {
 
@@ -241,9 +245,10 @@ function selectChoice(model,choice) {
 
 /**
  * 
+ * @param {Card[]} cards
  * @returns {Question[]}
  */
-function generateQuestionAnswers(questions) {
+function generateQuestionAnswers(cards) {
   // Start with 4 random card from the list of cards.
   // Select a random card to be the correct answer.
   // Generate a Question with the prompt and answer from the pulled card,
@@ -253,7 +258,7 @@ function generateQuestionAnswers(questions) {
   // Repeat until there are no more extra cards to add, then repeat the process with the previously generated questions until there are no more questions to generate.
   // 
 
-  const candidates = questions.slice().sort(() => Math.random() - 0.5);
+  const candidates = cards.slice().sort(() => Math.random() - 0.5);
   const choices = [];
   for (let i = 0; i < Quiz.CHOICE_COUNT; i++) {
     choices.push(candidates.pop());
@@ -287,7 +292,9 @@ function generateQuestionAnswers(questions) {
     // select the correct answer from the remaining choices
     const correctIndex = Quiz.CHOICE_COUNT - 1 - i;
     const selected = choices[correctIndex];
-    const answers = choices.map((card) => card.answer);
+    const answers = choices.map((card) => {
+      if (card) return card.answer; else throw `Invalid card: ${card}`;
+  });
     questionAnswers.push(new Question(
       selected.prompt,
       answers,
@@ -302,15 +309,26 @@ function generateQuestionAnswers(questions) {
   return questionAnswers;
 }
 
-// endregion
+// MARK: Model
 
+/**
+ * Represents a simple, associative relationship between two pieces of data.
+ */
 export class Card {
+  /**
+   * 
+   * @param {string} prompt Text prompt
+   * @param {string} answer Text answer
+   */
   constructor(prompt,answer) {
     this.prompt = prompt;
     this.answer = answer;
   }
 }
 
+/**
+ * Represents a 
+ */
 class Question {
   /**
    * 
@@ -325,7 +343,15 @@ class Question {
   }
 }
 
-class Answer {
+/**
+ * A student response to a Question.
+ */
+class Response {
+  /**
+   * 
+   * @param {Question} question 
+   * @param {number} choice 
+   */
   constructor(question,choice) {
     this.question = question;
     this.choice = choice;
@@ -348,16 +374,17 @@ export class QuizModel extends EventTarget {
 
   /**
    * 
-   * @param {Card[]} questions 
+   * @param {Card[]} cards 
    */
-  constructor(questions) {
+  constructor(cards) {
     super()
-    this.questions = questions || [];
+    this.cards = cards || [];
 
     this.correctCount = 0;
     this.incorrectCount = 0;
     this.totalAnswered = 0;
 
+    /** @type {Question[]} */
     this.unaskedQuestions = [];
     this.currentQuestion = null;
     this.answers = [];
@@ -381,7 +408,7 @@ export class QuizModel extends EventTarget {
     this.incorrectCount = 0;
     this.totalAnswered = 0;
 
-    this.unaskedQuestions = generateQuestionAnswers(this.questions);
+    this.unaskedQuestions = generateQuestionAnswers(this.cards);
     this.currentQuestion = null;
     this.answers = {};
 
@@ -389,10 +416,16 @@ export class QuizModel extends EventTarget {
   }
 
   /**
+   * Respond to the current question with the given {choice}.
    * 
-   * @param {number} choice Index of the answer selected.
+   * @param {number} choice Index of the response selected.
    */
-  answer(choice) {
+  respond(choice) {
+    if (!this.currentQuestion) {
+      console.warn('No Current Question')
+      return
+    }
+
     if (this.answers.length > 0) {
       if (this.currentQuestion in this.answers) {
         const lastAnswer = this.answers[this.currentQuestion];
@@ -408,7 +441,7 @@ export class QuizModel extends EventTarget {
       } else {
         // add the new answer to the list of answers
       }
-    }
+    }    
     this.answers[this.currentQuestion] = choice;
     if (choice === this.currentQuestion.answer) {
       this.correctCount++;

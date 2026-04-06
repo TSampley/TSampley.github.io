@@ -46,6 +46,14 @@ quiz.bind(
 await quiz.populate(
   '/assets/data/quiz.json',
   (card)=>{
+    if (!card.question) {
+      console.error('missing question: ', card)
+      return null
+    }
+    if (!card.answer) {
+      console.error('missing answer: ', card)
+      return null
+    }
     return new Card(
       card.question,
       card.answer
