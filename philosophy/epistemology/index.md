@@ -2,7 +2,7 @@
 layout: wiki
 
 title: Epistemology
-description: The study of the history of words and their meaning.
+description: The study of knowledge, it's nature and limitations.
 date: 2025-11-29 03:02:24 -0600
 updated: 2026-02-28 0800 -0600
 ---
