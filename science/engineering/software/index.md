@@ -32,9 +32,23 @@ Software engineering encompasses many subdisciplines that are each themselves ex
 
 A subdiscipline of software engineering, focused on providing infrastructure for use by a team or enterprise, to fascilitate other work – often called DevOps.
 
+#### Github Actions
+
+GitHub Actions organizes all platform logic into the top-level entity, **workflows**. Workflows are composed of jobs, each of which runs as a separate process. Each job can either invoke another workflow or specify its logic in a sequence of steps. Steps can either invoke **actions** or run terminal scripts. Actions are themselves reusable units of logic, composed of a sequence of steps. All steps within a job and any reusable actions run in the same process.
+
 [^pe]: https://platformengineering.org/
 [^wiki-pe]: https://en.wikipedia.org/wiki/Platform_engineering
 [^micro-pe]: https://learn.microsoft.com/en-us/platform-engineering/what-is-platform-engineering
+
+### Quality Engineering
+
+### Test Engineering
+
+#### Validation vs Verification
+
+Validation is a process where specifications are checked to ensure they match customer expectations.
+Verification is the process of ensuring some product matches that specification.
+They are often conflated because they go hand-in-hand: validation is important, but meaningless without verification, and verification is equally critical, and equally meaningless without a valid specification. Ultimately, end-users will verify a published product through use; however, discovery of an issue earlier in the pipeline is always cheaper. The art of specification is providing enough detail to remove ambiguities for an implementer, while not wasting time overspecifying or overcomplicating a feature. The science of verification is choosing the critical elements to cover with automated testing – the elements to "pin-down".
 
 ### Games
 
