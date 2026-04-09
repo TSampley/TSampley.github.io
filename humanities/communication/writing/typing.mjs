@@ -1,17 +1,10 @@
 
-/**
- * 
- */
-class WebApp {
-  constructor(canvasId) {
-
-  }
-}
+import { WebApp } from "/js/components/web-app.mjs"
 
 /**
  * 
  */
-class TypingApp extends WebApp {
+export class TypingApp extends WebApp {
   constructor() {
     super()
   }
