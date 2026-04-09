@@ -22,30 +22,22 @@ export class ColorTheoryDemo extends Demo {
     this.slider3 = document.getElementById('slider3')
     this.slider4 = document.getElementById('slider4')
     this.toggle = document.getElementById('toggle')
-    
-    this.slider1.addEventListener('change',this.#colorUpdater((v)=>this.value1=v))
-    this.slider2.addEventListener('change',this.#colorUpdater((v)=>this.value2=v))
-    this.slider3.addEventListener('change',this.#colorUpdater((v)=>this.value3=v))
+  }
+
+  bind(
+    onPrimaryChange,
+    onSecondaryChange,
+    onTertiaryChange,
+    onQuaternaryChange,
+    onToggleChange
+  ) {
+    this.ui.slider1.addEventListener('change',this.#colorUpdater((v)=>this.value1=v))
+    this.ui.slider2.addEventListener('change',this.#colorUpdater((v)=>this.value2=v))
+    this.ui.slider3.addEventListener('change',this.#colorUpdater((v)=>this.value3=v))
     this.slider4.addEventListener('change',this.#colorUpdater((v)=>this.value4=v))
-    
+
     this.toggle.onchange = (element)=>{
-      if (element.target.checked) {
-        // HSV to CMYK
-        const [c, m, y, k] = hsvToCmyk(this.value1, this.value2, this.value3)
-        this.value1 = c
-        this.value2 = m
-        this.value3 = y
-        this.value4 = k
-      } else {
-        // CMYK to HSV
-        const [h, s, v] = cmykToHsv(this.value1, this.value2, this.value3, this.value4)
-        this.value1 = h
-        this.value2 = s
-        this.value3 = v 
-      }
-      this.setColorModel(
-        element.target.checked ? 'cymk' : 'hsv'
-      )
+      onToggleChange(element.target.checked == true)
     }
   }
 
@@ -58,73 +50,6 @@ export class ColorTheoryDemo extends Demo {
       const floatValue = parseFloat(element.target.value)
       assignValue(floatValue)
       updater()
-    }
-  }
-
-  #updateColor() {
-    /*
-    TODO: get latest color from model in whatever color mode
-    */
-  }
-
-
-  setScenario() {
-    this.scenario = ColorTheoryScenarios.primaryColors
-  }
-
-  /**
-   * 
-   * @param {'rgb'|'hsv'|'cymk'} model Color model string
-   */
-  setColorModel(model) {
-    switch (model) {
-      case 'rgb':
-        // Set red slider label
-        // set green slider label
-        // set blue slider label
-        // hide fourth slider
-        break
-      case 'hsv':
-        // set hue slider label
-        // set saturation slider label
-        // set value slider label
-        // hide fourth slider
-        break
-      case 'cymk':
-        // set cyan slider label
-        // set yellow slider label
-        // set magenta slider label
-        // set black slider label
-        break
-      default:
-        console.warn(`Unknown color model: ${model}`)
-    }
-  }
-
-  /**
-   * 
-   * @param {number} mode 
-   */
-  setMode(mode) {
-    switch(mode) {
-      case 1:
-        this.worldController.setScenario(ColorTheoryScenarios.quizMode)
-        this.setColorModel('rgb')
-        break
-      case 2:
-        this.worldController.setScenario(ColorTheoryScenarios.explorationMode)
-        this.setColorModel('rgb')
-        break
-      case 3:
-        this.worldController.setScenario(ColorTheoryScenarios.otherColorModels)
-        if (this.toggle.checked) {
-          this.setColorModel('cymk')
-        } else {
-          this.setColorModel('hsv')
-        }
-        break
-      default:
-        console.warn(`Unknown mode: ${mode}`)
     }
   }
 }
@@ -263,6 +188,79 @@ export class ColorTheoryModel {
     /** @type {ColorSpace} */
     this.colorSpace = COLOR_SPACE.rgb
   }
+
+  setScenario() {
+    this.scenario = ColorTheoryScenarios.primaryColors
+  }
+
+  /**
+   * 
+   * @param {'rgb'|'hsv'|'cymk'} model Color model string
+   */
+  setColorModel(model) {
+    // const oldModel = this.model // TODO: convert based on old model
+    this.model = model
+    switch (model) {
+      case 'rgb':
+        // TODO: convert between all three
+        break
+      case 'hsv': {
+        // set hue slider label
+        // set saturation slider label
+        // set value slider label
+        // hide fourth slider
+        // CMYK to HSV
+        const [h, s, v] = cmykToHsv(this.value1, this.value2, this.value3, this.value4)
+        this.value1 = h
+        this.value2 = s
+        this.value3 = v 
+        break
+      }
+      case 'cymk': {
+        // set cyan slider label
+        // set yellow slider label
+        // set magenta slider label
+        // set black slider label
+        // HSV to CMYK
+        const [c, m, y, k] = hsvToCmyk(this.value1, this.value2, this.value3)
+        this.value1 = c
+        this.value2 = m
+        this.value3 = y
+        this.value4 = k
+        break
+      }
+      default:
+        console.warn(`Unknown color model: ${model}`)
+        break;
+    }
+  }
+
+  /**
+   * 
+   * @param {number} mode 
+   */
+  setMode(mode) {
+    switch(mode) {
+      case 1:
+        this.worldController.setScenario(ColorTheoryScenarios.quizMode)
+        this.setColorModel('rgb')
+        break
+      case 2:
+        this.worldController.setScenario(ColorTheoryScenarios.explorationMode)
+        this.setColorModel('rgb')
+        break
+      case 3:
+        this.worldController.setScenario(ColorTheoryScenarios.otherColorModels)
+        if (this.toggle.checked) {
+          this.setColorModel('cymk')
+        } else {
+          this.setColorModel('hsv')
+        }
+        break
+      default:
+        console.warn(`Unknown mode: ${mode}`)
+    }
+  }
 }
 
 // MARK: Presenter
@@ -281,7 +279,32 @@ export class ColorTheoryPresenter {
   }
 
   bind() {
-    // TODO: bind ui to model
+    const onPrimaryChange = (value) => {
+      this.model.setPrimary(value)
+    }
+    const onSecondaryChange = (value) => {
+      this.model.setSecondary(value)
+    }
+    const onTertiaryChange = (value) => {
+      this.model.setTertiary(value)
+    }
+    const onQuaternaryChange = (value) => {
+      this.model.setQuaternary(value)
+    }
+    const onToggleChange = (isOn)=> {
+      if (isOn) {
+        this.model.setColorModel('rgb')
+      } else {
+        this.model.setColorModel('hsv')
+      }
+    }
+    this.ui.bind(
+      onPrimaryChange,
+      onSecondaryChange,
+      onTertiaryChange,
+      onQuaternaryChange,
+      onToggleChange
+    )
   }
 
   /**
@@ -293,15 +316,3 @@ export class ColorTheoryPresenter {
     // TODO: bind scenario (model) to ui (view)
   }
 }
-
-
-
-
-/*
-Platform Agnostic Construction of UIs
-
-1. A View is drafted in some markup language as a collection of components
-2. The state of each component is initially 
-
-
-*/

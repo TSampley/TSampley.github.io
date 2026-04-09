@@ -42,7 +42,15 @@ Click "Start" to Begin
 
 <canvas id='demo-color-theory'>Your browswer does not support Canvas.</canvas>
 
-<script type="module" src="/humanities/art/color-theory/demo-color-theory.mjs"></script>
+<script type="module">
+import { ColorTheoryDemo, ColorTheoryModel, ColorTheoryPresenter } from '/humanities/art/color-theory/demo-color-theory.mjs'
+const ui = new ColorTheoryDemo()
+const model = new ColorTheoryModel()
+const presenter = new ColorTheoryPresenter(ui, model)
+model.setColorModel('rgb')
+model.setMode(1)
+presenter.bind()
+</script>
 {% include code/no-script.html %}
 
 ## Site Theme
