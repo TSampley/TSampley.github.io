@@ -1,4 +1,4 @@
-title: Lint JavaScript files
+name: Lint JavaScript files
 description: Linting workflow for JavaScript files
 on:
   push:
