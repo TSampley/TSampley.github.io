@@ -24,9 +24,9 @@ export class ParticleEnvironment extends Environment {
     this.particleList = []
 
     /** @type {()=>void} */
-    this.onBounce = NoOp.f0
+    this.onBounce = NoOp
     /** @type {()=>void} */
-    this.onCollision = NoOp.f0
+    this.onCollision = NoOp
   }
   
   /** @param {number} delta */

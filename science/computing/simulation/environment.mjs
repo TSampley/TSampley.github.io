@@ -15,9 +15,9 @@ export class Environment {
     /** @type {Observable<Size>} */
     this.size = single(size)
     /** @type {(w:number)=>void} */
-    this.onSetWidth = NoOp.f1
+    this.onSetWidth = NoOp
     /** @type {(h:number)=>void} */
-    this.onSetHeight = NoOp.f1
+    this.onSetHeight = NoOp
   }
 
   setWidth(width) {

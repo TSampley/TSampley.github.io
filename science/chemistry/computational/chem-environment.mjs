@@ -1,6 +1,5 @@
 import { UnimplementedError } from "/js/common/errors.mjs";
 import { NoOp } from "/js/common/fns.mjs";
-import { Observable, single } from "/js/common/observables.mjs";
 import { ForceMatrix } from "./force-matrix.mjs";
 import { ParticleEnvironment } from "/science/physics/mechanics/particle-environment.mjs";
 
@@ -15,7 +14,7 @@ export class ChemEnvironment extends ParticleEnvironment {
    * @param {()=>void} onCollide 
    * @param {()=>void} onBounce 
    */
-  constructor(size,forceMatrix,onCollide=NoOp.f0,onBounce=NoOp.f0) {
+  constructor(size,forceMatrix,onCollide=NoOp,onBounce=NoOp) {
     super(size,forceMatrix)
 
     /** @type {()=>void} */
