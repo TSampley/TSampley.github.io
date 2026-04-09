@@ -184,6 +184,17 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - promoted national disinformation
   refs:
     - https://en.wikipedia.org/wiki/Sarah_Huckabee_Sanders
+- name: Karoline Leavitt
+  region: US
+  roles:
+    - title: Press Secretary
+      organization: Trump Cabinet
+      when: 
+  harm:
+    - promoted national disinformation
+    - defended genocide
+  refs:
+    - https://www.youtube.com/watch?v=GTYZ7LjfOec
 
 - name: Markwayne Mullin
   region: US
