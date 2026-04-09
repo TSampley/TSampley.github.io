@@ -1,4 +1,4 @@
-import { Observable, single } from "../../../js/common/observables.mjs"
+import { single } from "../../../js/common/observables.mjs"
 import { Environment } from "../../../science/computing/simulation/environment.mjs"
 
 console.debug('==start traffic.mjs')
