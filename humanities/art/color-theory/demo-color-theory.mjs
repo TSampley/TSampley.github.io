@@ -1,8 +1,8 @@
 
-import { Scenario } from "/science/computing/simulation/scenario.mjs"
-import { Timer } from "../../../js/common/timer.mjs"
-import { Demo } from "../../../js/components/demo.mjs"
+import { Demo } from "/js/components/demo.mjs"
+import { scenarioFun } from "/science/computing/simulation/scenario.mjs"
 
+// MARK: UI
 /**
  * This demo illustrates basic color theory.
  * 
@@ -12,18 +12,7 @@ import { Demo } from "../../../js/components/demo.mjs"
  * Mode 2 - Exploration: Experiment with RGB values to see resulting colors.
  * Mode 3 - Other Color Models: Explore colors using HSL and CMYK models.
  */
-class ColorTheoryDemo extends Demo {
-
-  /**
-   * @type {(number)=>void} assignValue 
-   */
-  #colorUpdater(assignValue) {
-    return (element)=>{
-      const floatValue = parseFloat(element.target.value)
-      assignValue(floatValue)
-      updateColor()
-    }
-  }
+export class ColorTheoryDemo extends Demo {
 
   constructor() {
     super('demo-color-theory')
@@ -33,11 +22,6 @@ class ColorTheoryDemo extends Demo {
     this.slider3 = document.getElementById('slider3')
     this.slider4 = document.getElementById('slider4')
     this.toggle = document.getElementById('toggle')
-
-    this.value1 = 0
-    this.value2 = 0
-    this.value3 = 0
-    this.value4 = 0
     
     this.slider1.addEventListener('change',this.#colorUpdater((v)=>this.value1=v))
     this.slider2.addEventListener('change',this.#colorUpdater((v)=>this.value2=v))
@@ -59,20 +43,33 @@ class ColorTheoryDemo extends Demo {
         this.value2 = s
         this.value3 = v 
       }
-      this.value1 = 0
-      this.value2 = 0
-      this.value3 = 0
-      this.value4 = 0
       this.setColorModel(
         element.target.checked ? 'cymk' : 'hsv'
       )
     }
+  }
 
-    this.worldController = new ColorTheoryDemoController(
-      new Timer()
-    )
+  /**
+   * @type {(number)=>void} assignValue 
+   */
+  #colorUpdater(assignValue) {
+    const updater = this.#updateColor
+    return (element)=>{
+      const floatValue = parseFloat(element.target.value)
+      assignValue(floatValue)
+      updater()
+    }
+  }
 
-    this.worldController.setScenario(ColorTheoryScenarios.primaryColors)
+  #updateColor() {
+    /*
+    TODO: get latest color from model in whatever color mode
+    */
+  }
+
+
+  setScenario() {
+    this.scenario = ColorTheoryScenarios.primaryColors
   }
 
   /**
@@ -131,6 +128,8 @@ class ColorTheoryDemo extends Demo {
     }
   }
 }
+
+// MARK: Model
 
 function rgbToHsv(r, g, b) {
   const max = Math.max(r, g, b)
@@ -199,42 +198,90 @@ function cmykToHsv(c, m, y, k) {
   return [...rgbToHsv(r, g, b), rgb]
 }
 
-class ColorTheoryScenario {
-  constructor(name, scenarioFunction) {
-    this.name = name
-    this.scenarioFunction = scenarioFunction
-  }
+/**
+ * 
+ * @param {string} name 
+ * @param {string} description 
+ * @param {(ColorTheoryDemo)=>void} setup 
+ * @returns {Scenario<ColorTheoryDemo>}
+ */
+function colorTheoryScenario(name,description,setup) {
+  return scenarioFun(name, description, setup)
 }
 
 export const ColorTheoryScenarios = {
-  primaryColors: new ColorTheoryScenario(
+  primaryColors: colorTheoryScenario(
     "Primary Colors",
+    "",
     ()=>{
     }
   ),
-  quizMode: new ColorTheoryScenario(
+  quizMode: colorTheoryScenario(
     "Quiz Mode",
+    "",
     ()=>{
     }
   ),
-  explorationMode: new ColorTheoryScenario(
+  explorationMode: colorTheoryScenario(
     "Exploration Mode",
+    "",
     ()=>{
     }
   ),
-  otherColorModels: new ColorTheoryScenario(
+  otherColorModels: colorTheoryScenario(
     "Other Color Models",
+    "",
     ()=>{
     }
   )
 }
 
+/** @typedef {'rgb'|'hsv'} ColorSpace */
+const COLOR_SPACE = Object.freeze({
+  rgb: 'rgb',
+  hsv: 'hsv'
+})
+
+
 /**
  * 
  */
-class ColorTheoryDemoController {
-  constructor(timer) {
-    this.timer = timer
+export class ColorTheoryModel {
+  /**
+   * 
+   */
+  constructor() {
+    /** @type {number} */
+    this.value1 = 0
+    /** @type {number} */
+    this.value2 = 0
+    /** @type {number} */
+    this.value3 = 0
+    /** @type {number} */
+    this.value4 = 0
+
+    /** @type {ColorSpace} */
+    this.colorSpace = COLOR_SPACE.rgb
+  }
+}
+
+// MARK: Presenter
+/**
+ * Binds a UI to a Model.
+ */
+export class ColorTheoryPresenter {
+  /**
+   * 
+   * @param {ColorTheoryDemo} ui 
+   * @param {ColorTheoryModel} model 
+   */
+  constructor(ui,model) {
+    this.ui = ui
+    this.model = model
+  }
+
+  bind() {
+    // TODO: bind ui to model
   }
 
   /**
@@ -242,12 +289,19 @@ class ColorTheoryDemoController {
    * @param {Scenario} scenario 
    */
   setScenario(scenario) {
-
+    this.scenario = scenario
+    // TODO: bind scenario (model) to ui (view)
   }
 }
 
-// Program Start
 
-const demo = new ColorTheoryDemo()
-demo.setColorModel('rgb')
-demo.setMode(1)
+
+
+/*
+Platform Agnostic Construction of UIs
+
+1. A View is drafted in some markup language as a collection of components
+2. The state of each component is initially 
+
+
+*/
