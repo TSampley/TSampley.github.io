@@ -14,7 +14,7 @@ export class Observable {
   constructor(initialValue=UNSET) {
     this.#value = initialValue
     /**
-     * @type {Array<(Type)=>void>}
+     * @type {((value:Type)=>void)[]}
      */
     this.subscribers = []
   }
@@ -57,11 +57,11 @@ export class Observable {
 
   /**
    * Removes all instances of the given `subscriber`.
-   * @param {(Type)=>void} subscriber The callback to remove from subscription.
+   * @param {(value:Type)=>void} subscriber The callback to remove from subscription.
    */
   drop(subscriber) {
     this.subscribers = this.subscribers.filter((value)=>{
-      value !== subscriber
+      return value !== subscriber
     })
   }
 }
