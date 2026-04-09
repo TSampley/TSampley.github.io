@@ -1,6 +1,3 @@
----
----
-;
 
 /**
  * Default no-op analytics implementation. Any custom events
@@ -12,19 +9,19 @@ class Analytics {
   event(action, params) {}
 }
 /** @type {Analytics} */
-let analyticsObj = new Analytics();
+export let analyticsObj = new Analytics();
 
-function loadAnalytics() {
+function loadAnalytics(analyticsId) {
   const script = document.createElement('script')
   script.async = true
-  script.src = 'https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}'
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${analyticsId}`
   document.head.appendChild(script)
 
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){window.dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', '{{ site.google_analytics }}', {
+  gtag('config', analyticsId, {
     anonymize_ip: true
   });
 
