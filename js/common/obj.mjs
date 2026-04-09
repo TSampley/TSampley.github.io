@@ -50,6 +50,7 @@ export function typeOf(subject) {
     case 'object':
       if (subject === null) return 'null'
       if (subject.type) return subject.type();
+      // falls through
     default:
       return type
   }
