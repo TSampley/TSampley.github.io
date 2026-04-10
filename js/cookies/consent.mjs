@@ -6,7 +6,8 @@
  * by the user yet.
  */
 class Analytics {
-  event(action, params) {}
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  event(action, params) { }
 }
 /** @type {Analytics} */
 export let analyticsObj = new Analytics();
@@ -37,7 +38,7 @@ const cookieConsentAccepted = 'accepted'
 const cookieConsentDeclined = 'declined'
 const cookieConsentKey = 'cookieConsent'
 const cookieConsentDateKey = 'cookieConsentDate'
-class ConsentController {
+export class ConsentController {
 
   constructor(cookieBannerId='cookie-banner') {
     this.cookieBanner = document.getElementById(cookieBannerId)
@@ -66,15 +67,15 @@ class ConsentController {
       if (daysSince < 365) {
         if (consent === cookieConsentAccepted) {
           loadAnalytics();
-          updateStatus('Analytics enabled (consent given)');
+          this.updateStatus('Analytics enabled (consent given)');
         } else {
-          updateStatus('Analytics disabled (consent declined)');
+          this.updateStatus('Analytics disabled (consent declined)');
         }
       }
     } else {
       // No valid consent, show banner
       this.showBanner()
-      updateStatus('Awaiting consent...');
+      this.updateStatus('Awaiting consent...');
     }
   }
 
