@@ -9,6 +9,8 @@ updated: 2025-11-30 05:53:33 -0600
 
 
 <canvas class="demo-box" id='canvas-vector' width=500 height=500></canvas>
+<div id='vector-list'>
+</div>
 
 https://en.wikipedia.org/wiki/Vector_(mathematics_and_physics)
 
@@ -19,5 +21,5 @@ https://en.wikipedia.org/wiki/Vector_(mathematics_and_physics)
   const ui = new V.VectorDemoUi('canvas-vector')
   const model = new V.VectorDemoModel()
   const presenter = new V.VectorDemoPresenter(model,ui)
-  presenter.bind()
+  presenter.bindView()
 </script>
