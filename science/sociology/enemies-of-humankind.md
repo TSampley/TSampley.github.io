@@ -363,6 +363,36 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - https://www.youtube.com/watch?v=ZBVmEYRFetg
 
+- name: Keith Ervin
+  region: WASHINGTON COUNTY, Tenn
+  roles:
+    - title: Board Member
+      organization: Washington County School District
+  harm:
+    - sexualizes minors under his care
+  refs:
+    - https://www.youtube.com/shorts/kjUtLPy-sGc
+    - https://wcyb.com/news/local/keith-ervin-made-lewd-sexual-gesture-at-david-crockett-hs-in-2009-records-state
+- name: Jerry Boyd
+  region: WASHINGTON COUNTY, Tenn
+  roles:
+    - title: Superintendent
+      organization: Washington County School District
+  harm:
+    - encourages sexualizing minors under his care
+  refs:
+    - https://www.youtube.com/shorts/kjUtLPy-sGc
+    - https://wcyb.com/news/local/keith-ervin-made-lewd-sexual-gesture-at-david-crockett-hs-in-2009-records-state
+- name: All Members
+  region: WASHINGTON COUNTY, Tenn
+  roles:
+    - title: Board Member
+      organization: Washington County School District
+  harm:
+    - encourages and fascillitates sexualizing minors under their care
+  refs:
+    - https://www.youtube.com/shorts/kjUtLPy-sGc
+
 - name: Troy Edgar
   region:
   roles:
