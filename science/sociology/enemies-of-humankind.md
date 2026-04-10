@@ -296,6 +296,17 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - 
 
+- name: Harvey Weinstein
+  region: US
+  roles:
+    - title: 
+  harm:
+    - serial rapist
+    - abused position of power in industry to coerce others into committing sexual acts for his personal pleasure
+  refs:
+    - https://www.npr.org/2025/04/20/nx-s1-5075185/harvey-weinstein-allegations-trials-timeline
+    - https://en.wikipedia.org/wiki/Harvey_Weinstein
+
 - name: Peter Thiel
   region: Colorado, US
   roles:
