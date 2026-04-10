@@ -50,6 +50,12 @@ export class VectorDemoModel extends EventTarget {
 
     this.#emitEvent()
   }
+
+  clearVectors() {
+    this.vectorList = []
+
+    this.#emitEvent()
+  }
 }
 
 /**
@@ -61,12 +67,23 @@ export class VectorDemoUi {
     this.context = this.canvas.getContext('2d')
   }
 
-  bind(
+  bindView(
     onStart,
     onMove,
     onEnd
   ) {
-    
+    this.canvas.addEventListener('mousedown', (event)=> {
+      onStart(event.x,event.y)
+    })
+    this.canvas.addEventListener('mousemove', (event)=> {
+      onMove(event.offsetX,event.offsetY)
+    })
+    this.canvas.addEventListener('mouseup', (event)=> {
+      onEnd(event.offsetX,event.offsetY)
+    })
+    this.canvas.addEventListener('mouseleave', (event) => {
+      onEnd(event.offsetX,event.offsetY)
+    })
   }
 }
 function e(id) { return document.getElementById(id) }
@@ -109,24 +126,23 @@ export class VectorDemoPresenter {
   /**
    * Add listeners to components in `ui` to pass events on to `model`
    */
-  bind() {
+  bindView() {
     // Add listeners to components in `ui`
-    this.ui.canvas.addEventListener('mousedown', (event)=> {
-      const position = { x: event.clientX, y: event.clientY }
-      console.info(`mousedown: ${event.clientX}, ${event.clientY}`)
+    this.ui.bindView(
+      (x,y)=> {
+        const position = { x: x, y: y }
 
-      this.model.setPosition(position)
-    })
-    this.ui.canvas.addEventListener('mousemove', (event)=> {
-      const position = { x: event.clientX, y: event.clientY }
-      console.info(`mousemove: ${event.clientX}, ${event.clientY}`)
-      
-      this.model.setPosition(position)
-    })
-    this.ui.canvas.addEventListener('mouseup', (event)=> {
-      console.info(`mouseup: ${event.clientX}, ${event.clientY}`)
-      
-    })
+        this.model.setPosition(position)
+      },
+      (x,y) => {
+        const position = { x: x, y: y }
+
+        this.model.setPosition(position)
+      },
+      () => {
+        this.model.clearVectors()
+      }
+    )
 
     // add model event listeners to update ui state
     const vectorRender = new VectorRender()
@@ -136,7 +152,9 @@ export class VectorDemoPresenter {
       
       requestAnimationFrame((time) => {
         const vectorList = detail.vectorList
-
+        const w = this.ui.canvas.width
+        const h = this.ui.canvas.height
+        this.ui.context.clearRect(0, 0, w, h)
         vectorList.forEach((vector)=>{
           vectorRender.render(this.ui.context, vector)
         })
