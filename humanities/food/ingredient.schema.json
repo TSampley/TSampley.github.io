@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://taushsampley.com/humanities/food/food.schema.json",
+  "$id": "https://taushsampley.com/humanities/food/ingredient.schema.json",
   "type": "object",
   "properties": {
     "name": { "type": "string" },
