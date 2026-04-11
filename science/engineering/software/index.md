@@ -56,27 +56,7 @@ Video game development is a beast of its own, with many of the practices that ha
 
 ## Best Practices
 
-### Delegation over Conditions
-https://www.youtube.com/watch?v=ZPcgaZIWwqk
-
-
-## Patterns
-
-Software patterns are ways of organizing code that have been rediscovered countless times and found to have utility (or problems for "anti-patterns") across a broad range of contexts.
-They capture generalized solutions to problems prevalent across domains and provide us with a language to discuss them.
-
-## Power Patterns
-
-Power patterns are arrangements of patterns that are found together frequently because of the way they compliment each other, often specific to a platform.
-
-### Observer
-
-
-
-### Pipeline, Decorator, and Factory
-The core of your logic is implemented as a more-or-less static pipeline with points of abstraction to implement each stage of the pipeline, using a series of factories or abstract factory to decorate the pipeline.
-
-#### Comparison with Strategy Pattern
+See [patterns](./patterns/) and [principles](./principles).
 
 ## Katas
 

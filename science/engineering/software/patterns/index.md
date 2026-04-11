@@ -7,6 +7,9 @@ description: The application of predefined methods to solve regularly occuring
 date: 2026-04-10 0307 -0500
 ---
 
+Software patterns are ways of organizing code that have been rediscovered countless times and found to have utility (or problems for "anti-patterns") across a broad range of contexts.
+They capture generalized solutions to problems prevalent across domains and provide us with a language to discuss them.
+
 ## History
 
 ```timeline
@@ -30,9 +33,15 @@ MVVM+
 
 [^wiki]: https://en.wikipedia.org/wiki/Design_Patterns
 
-## Patterns
+## Procedural
 
+## Structured
 
+## Funtional
+
+## Object Oriented
+
+The most popular software patterns in the object-oriented world were established by the Gang of Four in their book with 23 patterns; however, even the authors criticized the inclusion of the interpreter pattern as a sort of practical joke, so only 22 are considered useful patterns, and even amongst those, most professional developers don't seem to be aware of more than maybe 4: factory, builder, iterator, and observer
 
 ### Structural
 
@@ -72,3 +81,12 @@ MVVM+
 [^gang]: https://springframework.guru/gang-of-four-design-patterns/
 [^martin]: https://martinfowler.com/
 [^guru]: https://refactoring.guru/design-patterns/catalog
+
+### Power Patterns
+
+Power patterns are arrangements of patterns that are found together frequently because of the way they compliment each other, often specific to a platform.
+
+#### Pipeline, Decorator, and Factory
+The core of your logic is implemented as a more-or-less static pipeline with points of abstraction to implement each stage of the pipeline, using a series of factories or abstract factory to decorate the pipeline.
+
+##### Comparison with Strategy Pattern
