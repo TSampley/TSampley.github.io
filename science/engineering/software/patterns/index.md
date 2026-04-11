@@ -69,6 +69,6 @@ MVVM+
 [^guru-blog]: https://feedback.refactoring.guru/en/knowledge-bases/5/articles/1878-why-dont-the-book-include-the-interpreter-pattern
 [^guru-reason]: https://blogs.perl.org/users/jeffrey_kegler/2013/03/the-interpreter-design-pattern.html
 
-[^gang]: gang-of-four
+[^gang]: https://springframework.guru/gang-of-four-design-patterns/
 [^martin]: https://martinfowler.com/
 [^guru]: https://refactoring.guru/design-patterns/catalog
