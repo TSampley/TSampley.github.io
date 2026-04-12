@@ -315,6 +315,40 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - https://www.youtube.com/watch?v=TpusuhQXUAE
 
+- name: Tarek Mansour
+  region: US
+  roles:
+    - title: CEO
+      organization: Kalshi
+  harm:
+    - perpetuates capitalist myths
+    - facillitates betting on significant geopolitical events treating lives as assets
+  refs:
+    - https://www.youtube.com/watch?v=h_IgrRIvZOc
+    - https://en.wikipedia.org/wiki/Kalshi
+    - https://en.wikipedia.org/wiki/Tarek_Mansour
+- name: Luana Lopes Lara
+  region: US
+  roles:
+    - title: COO
+      organization: Kalshi
+  harm:
+    - perpetuates capitalist myths
+    - facillitates betting on significant geopolitical events treating lives as assets
+  refs:
+    - https://www.youtube.com/watch?v=h_IgrRIvZOc
+    - https://en.wikipedia.org/wiki/Kalshi
+    - https://en.wikipedia.org/wiki/Luana_Lopes_Lara
+- name: Several Others
+  region: US
+  roles:
+    - title: Board Member(s)
+      organization: Kalshi
+  harm:
+    - facillitates betting on significant geopolitical events treating lives as assets
+  refs:
+    - https://en.wikipedia.org/wiki/Kalshi=
+
 - name: Peter Thiel
   region: Colorado, US
   roles:
