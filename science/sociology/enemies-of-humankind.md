@@ -307,6 +307,14 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - https://www.npr.org/2025/04/20/nx-s1-5075185/harvey-weinstein-allegations-trials-timeline
     - https://en.wikipedia.org/wiki/Harvey_Weinstein
 
+- name: Mark Andreeson
+  region: US
+  roles:
+  harm:
+    - discourages introspection to avoid personal discomfort at the expense of all the people he exploits
+  refs:
+    - https://www.youtube.com/watch?v=TpusuhQXUAE
+
 - name: Peter Thiel
   region: Colorado, US
   roles:
