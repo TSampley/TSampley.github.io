@@ -80,6 +80,9 @@ class DigitalLawUi {
     }
   }
 }
+/**
+ * Callback object to convey intents to the model.
+ */
 class DigitalLawIntent {
   start() {}
   stop() {}
@@ -99,11 +102,11 @@ class DigitalLawPresenter {
   }
 
   bindViewAndModel() {
-    this.ui.bindEventsAndIntents({
-      start: function() {
+    this.ui.bindEventsAndIntents(new class extends DigitalLawIntent {
+      start() {
         this.model.startSimulation()
-      },
-      stop: function() {
+      }
+      stop() {
         this.model.stopSimulation()
       }
     })
