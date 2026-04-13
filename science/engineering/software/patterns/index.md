@@ -90,3 +90,63 @@ Power patterns are arrangements of patterns that are found together frequently b
 The core of your logic is implemented as a more-or-less static pipeline with points of abstraction to implement each stage of the pipeline, using a series of factories or abstract factory to decorate the pipeline.
 
 ##### Comparison with Strategy Pattern
+
+
+
+## Enterprise
+
+The following is a more complete list of patterns from Martin Fowler's Enterprise Application book[^martin], which Martin Fowler points out includes many patterns now commonly implemented by frameworks or libraries; although he also points out that knowledge of these patterns aids understanding of the frameworks that use them, even if you never implement them yourself.
+
+- Active Record
+- Application Controller
+- Association Table Mapping
+- Class Table Inheritance
+- Client Session State
+- Coarse-Grained Lock
+- Concrete Table Inhereitance
+- Data Mapper
+- Data Transfer Object
+- Database Session State
+- Dependent Mapping
+- Domain Model
+- Embedded Value
+- Foreign Key Mapping
+- Front Controller
+- Gateway
+- Identify Field
+- Identify map
+- Implicit Lock
+- Inheritance Mappers
+- Layer Supertype
+- Lazy Load
+- Mapper
+- Metadata Mapping
+- Model View Controller
+- Money
+- Optimistic Offline Lock
+- Page Controller
+- Pessimistic Offline Lock
+- Plugin
+- Query Object
+- Record Set
+- Registyr
+- Remote Facade
+- Repository
+- Row Data Gateway
+- Seperated Interface
+- Serialized LOB
+- Server Session State
+- Service Layer
+- Service Stub
+- Single Table Inheritance
+- Special Case
+- Table Data Gateway
+- Table Module
+- Template View
+- Transaction Script
+- Transform View
+- Two Step View
+- Unit of Work
+- Value Object
+
+[^martin]: https://martinfowler.com/books/eaa.html
