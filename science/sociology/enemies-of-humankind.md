@@ -118,6 +118,17 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - 
   refs:
     - 
+- name: Emil Michael
+  region: US
+  roles:
+    - title: Under Secretary of Defense
+      organization: Trump Cabinet
+      when:
+  harm:
+    - used position of power in government to grant contract to company he owned shares in
+    - used position of power in government to abuse company willing to push back against their use in weapons
+  refs:
+    - https://en.wikipedia.org/wiki/Emil_Michael
 - name: Paul Ryan
   region: US
   roles:
