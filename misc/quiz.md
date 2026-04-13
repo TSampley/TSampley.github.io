@@ -34,16 +34,7 @@ QUIZ MODEL:
 
 <script type=module>
 import { Quiz, Card } from './quiz.mjs'
-const quiz = new Quiz()
-quiz.bind(
-  'question',
-  'answer-list',
-  'answer-a',
-  'answer-b',
-  'answer-c',
-  'answer-d'
-)
-await quiz.populate(
+const quiz = new Quiz(
   '/assets/data/quiz.json',
   (card)=>{
     if (!card.question) {
@@ -60,5 +51,6 @@ await quiz.populate(
     )
   }
 )
+// configure
 quiz.start()
 </script>

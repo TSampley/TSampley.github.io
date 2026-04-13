@@ -1,55 +1,26 @@
 
-// MARK: Quiz Controller
+// MARK: Facade
 
 export class Quiz {
-  constructor() {
-    this.ui = new QuizUi();
+  constructor(
+    sourceUrl,
+    mapper
+  ) {
+    this.sourceUrl = sourceUrl
+    this.mapper = mapper
+
+    this.ui = new QuizUi(
+      'question',
+      'answer-list',
+      'answer-a',
+      'answer-b',
+      'answer-c',
+      'answer-d'
+    );
     this.model = new QuizModel();
     this.presenter = new QuizPresenter(this.model);
   }
   static CHOICE_COUNT = 4;
-
-  bind(
-    questionId,
-    answerListId,
-    answerAId,
-    answerBId,
-    answerCId,
-    answerDId
-  ) {
-    console.info('Quiz.bind()')
-    // causes the UI to retrieve document elements and bind event listeners to the presenter methods
-    this.ui.bind(
-      questionId,answerListId,
-      answerAId,answerBId,answerCId, answerDId,
-      (choice)=>{
-        switch (choice) {
-          case 0:
-            this.presenter.onSelectA()
-            break;
-          case 1:
-            this.presenter.onSelectB()
-            break;
-          case 2:
-            this.presenter.onSelectC()
-            break;
-          case 3:
-            this.presenter.onSelectD()
-            break;
-          default:
-            throw `Unexpected case ${choice}`
-        }
-      });
-    // update the UI with the current model state
-    this.ui.setQuestion(this.model.currentQuestion);
-    // TODO: observe the model for changes and update the UI accordingly.
-
-    const capturedUi = this.ui
-    this.model.addEventListener('state', ({/** @type {ModelState} */ detail })=> {
-      console.info(`onState: `, detail)
-      capturedUi.setState(detail)
-    })
-  }
 
   /**
    * Fetches a file from {sourceFile} and applies the given {mapper} to each
@@ -96,9 +67,19 @@ export class Quiz {
 
   /**
    * Starts the quiz. This method should be called after the quiz has been populated with cards.
+   * 
+   * TODO: refactor to preferred approach
+   *   1. UI collects and/or creates HTML elements in constructor
+   *   2. define __Ui.bindEventsToIntents(Intent)
+   *   3. define __Presenter.bindViewToModel
+   *   4. define __Model.#state function and object
    */
-  start() {
+  async start() {
     console.info(`Quiz.start()`)
+
+    this.presenter.bindViewToModel()
+    await this.populate(this.sourceUrl,this.mapper)
+
     // TODO: update the model and presenter to start the quiz and update the UI accordingly.
     this.presenter.model.reset();
     this.presenter.onStart();
@@ -107,9 +88,6 @@ export class Quiz {
 
 // MARK: UI
 export class QuizUi {
-  constructor() {
-  }
-
   /**
    * 
    * @param {string} questionId 
@@ -118,13 +96,11 @@ export class QuizUi {
    * @param {string} answerBId 
    * @param {string} answerCId 
    * @param {string} answerDId 
-   * @param {(choice:number)=>void} onSelectChoice 
    */
-  bind(
+  constructor(
     questionId,
     answerListId,
-    answerAId,answerBId,answerCId,answerDId,
-    onSelectChoice
+    answerAId,answerBId,answerCId,answerDId
   ) {
     this.questionElement = document.getElementById(questionId);
     this.answerListElement = document.getElementById(answerListId);
@@ -134,7 +110,13 @@ export class QuizUi {
       document.getElementById(answerCId),
       document.getElementById(answerDId)
     ];
+  }
 
+  /**
+   * 
+   * @param {(choice:number)=>void} onSelectChoice 
+   */
+  bindEventsToIntents(onSelectChoice) {
     this.answerElements[0].addEventListener('click', () => {
       onSelectChoice(0);
     })
@@ -147,6 +129,15 @@ export class QuizUi {
     this.answerElements[3].addEventListener('click', () => {
       onSelectChoice(3);
     })
+  }
+
+  /**
+   * 
+   * @param {ModelState} state 
+   */
+  setState(state) {
+    console.info(`QuizUi.setState(${state})`)
+    this.setQuestion(state.currentQuestion)
   }
 
   /**
@@ -174,15 +165,6 @@ export class QuizUi {
       console.info('Expected a Question object, but got: ', question);
     }
   }
-
-  /**
-   * 
-   * @param {ModelState} state 
-   */
-  setState(state) {
-    console.info(`QuizUi.setState(${state})`)
-    this.setQuestion(state.currentQuestion)
-  }
 }
 
 // MARK: Presenter
@@ -194,9 +176,11 @@ export class QuizPresenter {
   /**
    * 
    * @param {QuizModel} model 
+   * @param {QuizUi} ui
    */
-  constructor(model) {
-    this.model = model;
+  constructor(model,ui) {
+    this.model = model
+    this.ui = ui
   }
 
   onStart() {
@@ -235,13 +219,45 @@ export class QuizPresenter {
     this.model.cards = cards
     this.model.reset()
   }
+
+  /**
+   * 
+   */
+  bindViewToModel() {
+    console.info('Quiz.bind()')
+    // causes the UI to retrieve document elements and bind event listeners to the presenter methods
+    this.ui.bindEventsToIntents(
+      (choice)=>{
+        switch (choice) {
+          case 0:
+            this.onSelectA()
+            break;
+          case 1:
+            this.onSelectB()
+            break;
+          case 2:
+            this.onSelectC()
+            break;
+          case 3:
+            this.onSelectD()
+            break;
+          default:
+            throw `Unexpected case ${choice}`
+        }
+      });
+    // update the UI with the current model state
+    this.ui.setQuestion(this.model.currentQuestion);
+
+    // bindChangesToUpdates
+    const capturedUi = this.ui
+    this.model.addEventListener('state', ({/** @type {ModelState} */ detail })=> {
+      console.info(`onState: `, detail)
+      capturedUi.setState(detail)
+    })
+  }
 }
 
 // MARK: Interactors
-
-function selectChoice(model,choice) {
-
-}
 
 /**
  * 
@@ -387,7 +403,7 @@ export class QuizModel extends EventTarget {
     /** @type {Question[]} */
     this.unaskedQuestions = [];
     this.currentQuestion = null;
-    this.answers = [];
+    this.answers = {};
   }
 
   #modelState() {
