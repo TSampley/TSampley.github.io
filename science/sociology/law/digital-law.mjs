@@ -113,6 +113,7 @@ class DigitalLawPresenter {
     this.model.addEventListener('state', (event) => {
       const detail = event.detail
       // TODO: update UI
+      console.info("State Updated: ", detail)
     })
   }
 }
