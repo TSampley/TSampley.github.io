@@ -7,10 +7,10 @@ date: 2025-12-04 03:46 -0600
 updated: 2026-03-29 1528 -0500
 ---
 
-Software engineering is 
+Software engineering is the disciplined application of computer science to plan, build, and analyze software systems.
 
 ## Software Development
-Software development is both a subfield of software engineering and a separate practice on its own. There is often a distinction made between software developers and software engineers, with the engineering title conveying special esteem.
+Software development is both a subfield of software engineering and a separate practice on its own. There is often a distinction made between software developers and software engineers, with the engineering title conveying special esteem. In short, software development is generally more relaxed than true engineering.
 
 ## Disciplines
 
@@ -155,3 +155,5 @@ Features:
 - 
 
 Concepts Covered:
+
+[^wiki-hof]: https://en.wikipedia.org/wiki/Douglas_Hofstadter
