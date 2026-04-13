@@ -47,8 +47,13 @@ A specific implementation will depend mostly on the development language and the
 
 [^wiki-tree]: https://en.wikipedia.org/wiki/Tree_(abstract_data_type)
 
+### Sorted Trees
+
+Typically considered synonymous with binary-search trees, any tree which produces a sorted list of elements from an inline evaluation is a sorted tree.
+
 ### Trie
 
+Similar to a sorted tree
 
 #### Suffix Trie
 [^wiki-trie]: https://en.wikipedia.org/wiki/Trie
@@ -59,5 +64,19 @@ A specific implementation will depend mostly on the development language and the
 
 [^wiki-suf-tree]: https://en.wikipedia.org/wiki/Suffix_tree
 
-## Heap
+
+### Rope
+
+Ropes are often used in text-editor programs to allow quick insertion and modification of sections of text.
+
+Each tree node contains only the following information:
+- each leaf node is either a text segment or null
+- each branch node stores the sum of length of left elements
+- left and right children nodes which can be null
+- length of node (based on content, usually text)
+- length or span of all left descendents (corresponding to the preceding string or section)
+
+[^wiki-rope]: https://en.wikipedia.org/wiki/Rope_(data_structure)
+
+### Heap
 
