@@ -8,12 +8,15 @@ description:
 The study of language, it's origins, function, and applications.
 
 
-
 ```timeline
 
-- event: 
+- event: structuralism
   when: 
-- event: 
+- event: functionalism
+  when: 
+- event: generativism
+  when: 
+- event: cognitivism
   when: 
 
 ```
