@@ -447,13 +447,23 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - https://www.youtube.com/shorts/kjUtLPy-sGc
 
 - name: Troy Edgar
-  region:
+  region: US
   roles:
     - titles: Deputy Secretary
       organization: Homeland Security
       when: 2025-03-08 to -
   refs:
     - https://en.wikipedia.org/wiki/Troy_Edgar
+
+- name: Kathy Hochul
+  region: New York, US
+  roles:
+    - title: 
+      organization: 
+  harm:
+    - rejects legislation with popular support across the aisle for the benefit of donor corporations
+  refs:
+    - https://www.youtube.com/shorts/pjPqXM45Nss
 
 - name: Kevin Stitt
   region: Oklahoma, US
