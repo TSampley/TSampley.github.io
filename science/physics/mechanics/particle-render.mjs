@@ -1,26 +1,42 @@
 
-import { ElementColorScheme } from "../../chemistry/cpk-coloring.mjs"
-import { Particle } from "./particle.mjs"
+
+import { Render2D } from "/science/computing/simulation/render.mjs"
+
+/**
+ * @typedef {import("./particle.mjs").Particle} Particle
+ */
 
 /**
  * 
  */
-export class ParticleRender {
+export class ParticleRender extends Render2D {
+    /**
+     * @param {CanvasRenderingContext2D} context 
+     * @param {Particle} particle 
+     */
     render(context,particle) {
-        throw new UnimplementedError
+        const radius = particle.radius || 8
+
+        context.fillStyle = particle.color || "black"
+        context.beginPath();
+        context.ellipse(particle.x, particle.y, radius, radius, 0, 0, 2*Math.PI);
+        context.closePath();
+        context.fill();
+        context.stroke();
     }
 }
 
 /**
  * 
  */
-export class AtomicParticleRender {
+export class AtomicParticleRender extends ParticleRender {
 
 
     /**
-     * @param {ElementColorScheme} colorScheme
+     * @param {import("/science/chemistry/cpk-coloring.mjs").ElementColorScheme} colorScheme
      */
     constructor(colorScheme) {
+        super()
         this.colorScheme = colorScheme
     }
     /**
