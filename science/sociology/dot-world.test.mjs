@@ -1,6 +1,6 @@
 
 import { Size } from '/js/common/geom.mjs'
-import { DotWorld, OK_LAT, SUN_ENERGY, EARTH_TILT } from './dot-world.mjs'
+import { DotWorld, OK_LAT, SUN_POWER_FLUX, EARTH_TILT } from './dot-world.mjs'
 
 // TODO: nested test hierarchy for smaller unit tests
 describe('dot world', () => {
@@ -19,13 +19,13 @@ describe('dot world', () => {
   test('irradiance at latitude', () => {
     const irradiance = DotWorld.irradianceAtLatitude(EARTH_TILT, OK_LAT, 0, 0)
     // should be close to the solar constant at Oklahoma's latitude during the summer solstice
-    expect(irradiance).toBeCloseTo(SUN_ENERGY * Math.cos(OK_LAT - EARTH_TILT))
+    expect(irradiance).toBeCloseTo(SUN_POWER_FLUX * Math.cos(OK_LAT - EARTH_TILT))
   })
 
   test('irradiance at latitude with tilt', () => {
     const irradiance = DotWorld.irradianceAtLatitude(EARTH_TILT, OK_LAT, Math.PI, 0)
     // should be close to the solar constant at Oklahoma's latitude during the winter solstice
-    expect(irradiance).toBeCloseTo(SUN_ENERGY * Math.cos(OK_LAT + EARTH_TILT))
+    expect(irradiance).toBeCloseTo(SUN_POWER_FLUX * Math.cos(OK_LAT + EARTH_TILT))
   })
 
   test('irradiance at latitude with tilt and at midnight', () => {

@@ -6,7 +6,7 @@
  * dot-world.mjs
  */
 
-import { Size } from "/js/common/geom.mjs";
+import { Point, Size } from "/js/common/geom.mjs";
 import { Render2D } from "/science/computing/simulation/render.mjs";
 import { Simulation } from "/science/computing/simulation/simulation.mjs";
 import { Environment } from "/science/computing/simulation/environment.mjs";
@@ -30,15 +30,6 @@ const YEAR_PERIOD = 100
  * https://en.wikipedia.org/wiki/Axial_tilt
  */
 export const EARTH_TILT = 23.5 * Math.PI / 180
-/** 
- * Earth's average radius in kilometers. 
- * https://en.wikipedia.org/wiki/Earth_radius */
-const EARTH_RADIUS = 6_371
-/**
- * Earth's distance from the sun in kilometers.
- * https://en.wikipedia.org/wiki/Astronomical_unit
- */
-const EARTH_DISTANCE = 149_600_000 // km
 /**
  * Oklahoma's approximate latitude in radians.
  * https://en.wikipedia.org/wiki/Oklahoma
@@ -46,10 +37,10 @@ const EARTH_DISTANCE = 149_600_000 // km
 export const OK_LAT = 35 * Math.PI / 180
 
 /**
- * Solar energy in kilowatts emitted by the sun.
+ * Solar flux in kilowatts per square meter emitted by the sun.
  * https://en.wikipedia.org/wiki/Solar_constant
  */
-export const SUN_ENERGY = 1.361 // kW/m^2
+export const SUN_POWER_FLUX = 1.361 // kW/m^2
 
 /**
  * A world full of dots, interacting in social (or ecological) simulations.
@@ -95,7 +86,7 @@ export class DotWorld extends Environment {
     const dayPhase = seconds / DAY_PERIOD
     const days = Math.floor(this.time / DAY_PERIOD)
     /** [0, YEAR_PERIOD) */
-    const year = Math.floor(days / YEAR_PERIOD)
+    // const year = Math.floor(days / YEAR_PERIOD)
     /** [0, YEAR_PERIOD) */
     const dayOfYear = days % YEAR_PERIOD
     /** [0, 1) */
@@ -109,8 +100,8 @@ export class DotWorld extends Environment {
     const precipitation = this.precipitation(this.latitude, this.longitude)
     // determine light transmission through atmosphere - simply use cloud cover for now, but could be more complex with dust, pollution, etc.
     // const reflectionFactor = 0.3
-    const absorptionFactor = 0.7
-    const absorbedEnergy = irradiance * cloudCover * absorptionFactor // heats clouds
+    // const absorptionFactor = 0.7
+    // const absorbedEnergy = irradiance * cloudCover * absorptionFactor // heats clouds
     // const reflectedEnergy = irradiance * cloudCover * reflectionFactor // reflected back to space
 
     // determine energy contributed across environment
@@ -137,6 +128,18 @@ export class DotWorld extends Environment {
     }
   }
 
+  spawnPlant(x, y) {
+    this.plants.push(new Plant(new Point(x, y)))
+  }
+
+  spawnBunny(x, y) {
+    this.plants.push(new Bunny(new Point(x, y)))
+  }
+
+  spawnWolf(x, y) {
+    this.plants.push(new Wolf(new Point(x, y)))
+  }
+
   /**
    * Calculates the irradiance at a given latitude and season phase in kilowatts per square meter.
    * 
@@ -150,7 +153,7 @@ export class DotWorld extends Environment {
     const declination = axisOffset * Math.cos(seasonPhase)
     const zenithAngle = Math.acos(Math.sin(latitude) * Math.sin(declination) +
       Math.cos(latitude) * Math.cos(declination) * Math.cos(hourAngle))
-    return SUN_ENERGY * Math.max(0, Math.cos(zenithAngle))
+    return SUN_POWER_FLUX * Math.max(0, Math.cos(zenithAngle))
   }
 
   /**
@@ -201,10 +204,11 @@ export class DotWorldController {
     this.canvas = document.getElementById(canvasId)
     /** @type {CanvasRenderingContext2D} */
     this.context = this.canvas.getContext('2d')
+    this.dotRender = new DotRender()
 
     const size = new Size(this.canvas.width, this.canvas.height)
     this.dotWorld = new DotWorld(size)
-    this.simulation = new Simulation(this.dotWorld, this.context)
+    this.simulation = new Simulation(this.dotWorld, this.context, this.onDraw)
   }
 
   onStart() {
@@ -213,6 +217,10 @@ export class DotWorldController {
 
   onStop() {
     this.simulation.stop()
+  }
+
+  onDraw(environment, offset) {
+    this.dotRender.render(this.context, environment, offset)
   }
 }
 
@@ -242,7 +250,7 @@ class DotRender extends Render2D {
    * @param {DotWorld} subject
    * @param {number} offset 
    */
-  render(context,subject,offset) {
+  render(context,subject) {
     // clear area
     context.clearRect(this.width, this.height)
     context.save()
