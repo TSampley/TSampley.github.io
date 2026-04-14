@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "jest",
+    "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js",
     "bundle": "webpack --mode production",
     "serve": "~/.rbenv/versions/3.3.10/bin/bundle exec jekyll serve --trace --drafts",
     "lint": "eslint"
