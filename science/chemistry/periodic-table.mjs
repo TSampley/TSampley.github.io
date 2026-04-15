@@ -6,76 +6,76 @@ import { Elements } from "./element.mjs";
  * 
  */
 export class PeriodicTable {
-    constructor() {
+  constructor() {
 
-    }
+  }
 
-    rows = [
-        [Elements.Hydrogen, Elements.Helium],
-        [],
-        [],
-        [],
-        [],
-    ]
+  rows = [
+    [Elements.Hydrogen, Elements.Helium],
+    [],
+    [],
+    [],
+    [],
+  ]
 
-    groups = {
-        'Hydrogen': [
-            Elements.Hydrogen,
-            Elements.Lithium,
-            Elements.Sodium,
-            Elements.Potassium,
-            Elements.Rubidium,
-            // Elements.Cesium,
-            // Elements.Francium
-        ],
-        'Beryllium': [
+  groups = {
+    'Hydrogen': [
+      Elements.Hydrogen,
+      Elements.Lithium,
+      Elements.Sodium,
+      Elements.Potassium,
+      Elements.Rubidium,
+      // Elements.Cesium,
+      // Elements.Francium
+    ],
+    'Beryllium': [
 
-        ],
-        'Scandium': [
+    ],
+    'Scandium': [
 
-        ],
-        'Titanium': [
+    ],
+    'Titanium': [
 
-        ],
-        'Vanadium': [
+    ],
+    'Vanadium': [
 
-        ],
-        'Chromium': [
+    ],
+    'Chromium': [
 
-        ],
-        'Manganese':[],
-        'Iron':[],
-        'Cobalt':[],
-        'Nickel':[],
-        'Copper':[],
-        'Zinc':[],
-        'Boron':[],
-        'Carbon':[],
-        'Nitrogen':[],
-        'Oxygen':[],
-        'Fluorine':[Elements.Fluorine, Elements.Chlorine, Elements.Bromine, Elements.Iodine],
-        'Helium':[Elements.Helium, Elements.Neon, Elements.Argon, 
-            Elements.Krypton, Elements.Xenon, 
-            // Elements.Radon
-        ],
-    }
+    ],
+    'Manganese':[],
+    'Iron':[],
+    'Cobalt':[],
+    'Nickel':[],
+    'Copper':[],
+    'Zinc':[],
+    'Boron':[],
+    'Carbon':[],
+    'Nitrogen':[],
+    'Oxygen':[],
+    'Fluorine':[Elements.Fluorine, Elements.Chlorine, Elements.Bromine, Elements.Iodine],
+    'Helium':[Elements.Helium, Elements.Neon, Elements.Argon, 
+      Elements.Krypton, Elements.Xenon, 
+      // Elements.Radon
+    ],
+  }
 
-    nobles = groups['Hydrogen']
-    alkaliMetals = [
-        Elements.Lithium, Elements.Sodium, Elements.Potassium, Elements.Rubidium
-    ]
-    alkalineEarthMetals = groups['Beryllium']
-    transitionMetals = [
-        Elements.Scandium, Elements.Titanium, Elements.Vanadium, Elements.Chromium,
-        Elements.Manganese, Elements.Iron, Elements.Cobalt, Elements.Nickel,
-        Elements.Copper, Elements.Zinc, Elements.Yttrium, Elements.Zirconium,
-        Elements.Niobium, Elements.Molybdenum, Elements.Technetium, Elements.Rubidium,
-        Elements.Rhodium, Elements.Palladium, Elements.Silver, Elements.Cadmium,
-        // Elements.Hafnium, Elements.Tantalum, Elements.Tungsten, ...
-    ]
-    halogens = groups['Fluorine']
-    lanthanides = []
-    actinides = []
+  nobles = groups['Hydrogen']
+  alkaliMetals = [
+    Elements.Lithium, Elements.Sodium, Elements.Potassium, Elements.Rubidium
+  ]
+  alkalineEarthMetals = groups['Beryllium']
+  transitionMetals = [
+    Elements.Scandium, Elements.Titanium, Elements.Vanadium, Elements.Chromium,
+    Elements.Manganese, Elements.Iron, Elements.Cobalt, Elements.Nickel,
+    Elements.Copper, Elements.Zinc, Elements.Yttrium, Elements.Zirconium,
+    Elements.Niobium, Elements.Molybdenum, Elements.Technetium, Elements.Rubidium,
+    Elements.Rhodium, Elements.Palladium, Elements.Silver, Elements.Cadmium,
+    // Elements.Hafnium, Elements.Tantalum, Elements.Tungsten, ...
+  ]
+  halogens = groups['Fluorine']
+  lanthanides = []
+  actinides = []
 }
 
 /**
@@ -83,18 +83,18 @@ export class PeriodicTable {
  * @param {PeriodicTable} table 
  */
 function renderTable(table) {
-    return `<table>
+  return `<table>
     ${renderRow()}
     ${renderRow()}
     </table>`
 }
 
 function renderRow() {
-    let rowContent = ''
-    for (const element in list) {
-        rowContent += renderElement(element)
-    }
-    return `<tr class='ptable-row'>${rowContent}</tr>`
+  let rowContent = ''
+  for (const element in list) {
+    rowContent += renderElement(element)
+  }
+  return `<tr class='ptable-row'>${rowContent}</tr>`
 }
 
 /**
@@ -103,5 +103,5 @@ function renderRow() {
  * @returns 
  */
 function renderElement(element) {
-    return `<td class='ptable-element'><button>${element.id}</button></td>`
+  return `<td class='ptable-element'><button>${element.id}</button></td>`
 }

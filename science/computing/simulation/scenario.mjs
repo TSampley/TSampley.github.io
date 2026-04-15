@@ -9,38 +9,38 @@ import { Environment } from "./environment.mjs"
  * @template {Environment} E
  */
 export class Scenario {
-    constructor(name,description) {
-        this.name = name
-        this.description = description
-    }
+  constructor(name,description) {
+    this.name = name
+    this.description = description
+  }
 
-    /**
-     * Initialize the given {@linkcode Environment} according to the `Scenario`.
-     * @param {E} environment The environment
-     */
-    init(environment) {
-        throw new UnimplementedError('Scenario','init')
-    }
+  /**
+   * Initialize the given {@linkcode Environment} according to the `Scenario`.
+   * @param {E} environment The environment
+   */
+  init(environment) {
+    throw new UnimplementedError('Scenario','init')
+  }
 }
 
 /**
  * @template {Environment} E
  */
 export class FunctionalScenario extends Scenario {
-    /**
-     * @param {string} name
-     * @param {string} description
-     * @param {(enviro:E)=>void} setup
-     */
-    constructor(name,description,setup) {
-        super(name,description)
-        this.setup = setup
-    }
+  /**
+   * @param {string} name
+   * @param {string} description
+   * @param {(enviro:E)=>void} setup
+   */
+  constructor(name,description,setup) {
+    super(name,description)
+    this.setup = setup
+  }
 
-    /** @param {Environment} environment */
-    init(environment) {
-        this.setup(environment)
-    }
+  /** @param {Environment} environment */
+  init(environment) {
+    this.setup(environment)
+  }
 }
 
 /**
@@ -51,5 +51,5 @@ export class FunctionalScenario extends Scenario {
  * @returns {Scenario<E>}
  */
 export function scenarioFun(name,description,setup) {
-    return new FunctionalScenario(name,description,setup)
+  return new FunctionalScenario(name,description,setup)
 }

@@ -5,21 +5,21 @@
  * @type V 
  */
 class LazyValue {
-    /**
-     * 
-     * @param {()=>V} provider 
-     */
-    constructor(provider) {
-        this.provider = provider;
-    }
+  /**
+   * 
+   * @param {()=>V} provider 
+   */
+  constructor(provider) {
+    this.provider = provider;
+  }
 
-    #value
-    get value() {
-        if (this.#value === undefined) {
-            this.#value = this.provider()
-        }
-        return this.#value
+  #value
+  get value() {
+    if (this.#value === undefined) {
+      this.#value = this.provider()
     }
+    return this.#value
+  }
 }
 
 /**
@@ -29,5 +29,5 @@ class LazyValue {
  * @returns {LazyValue}
  */
 export function lazy(provider) {
-    return new LazyValue(provider)
+  return new LazyValue(provider)
 }

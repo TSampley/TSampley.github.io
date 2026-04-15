@@ -13,50 +13,50 @@ import { NullProperties } from './properties.mjs';
  */
 export class Particle extends Entity {
 
-    /**
-     * Create a new particle centered at `x` and `y` with the
-     * given properties.
-     * @param {number} x 
-     * @param {number} y 
-     * @param {Properties} props Default NullProperties
-     */
-    constructor(x, y, props = NullProperties) {
-        super(new Point(x, y))
-        this.x = x;
-        this.y = y;
+  /**
+   * Create a new particle centered at `x` and `y` with the
+   * given properties.
+   * @param {number} x 
+   * @param {number} y 
+   * @param {Properties} props Default NullProperties
+   */
+  constructor(x, y, props = NullProperties) {
+    super(new Point(x, y))
+    this.x = x;
+    this.y = y;
         
-        this.vx = 0;
-        this.vy = 0;
+    this.vx = 0;
+    this.vy = 0;
 
-        this.fx = 0;
-        this.fy = 0;
+    this.fx = 0;
+    this.fy = 0;
         
-        this.props = props;
-    }
+    this.props = props;
+  }
 
-    clearForces() {
-        this.fx = 0
-        this.fy = 0
-    }
+  clearForces() {
+    this.fx = 0
+    this.fy = 0
+  }
 
-    addForce(fx, fy) {
-        this.fx += fx
-        this.fy += fy
-    }
+  addForce(fx, fy) {
+    this.fx += fx
+    this.fy += fy
+  }
 
-    /**
-     * TODO: swap with replaceable Integrators
-     * @param {number} dt The span of time to integrate over.
-     */
-    integrate(dt) {
-        console.log(`integrate: ${this.fx}, ${this.fy} / ${this.props.mass}`)
-        const ax = this.fx / this.props.mass
-        const ay = this.fy / this.props.mass
+  /**
+   * TODO: swap with replaceable Integrators
+   * @param {number} dt The span of time to integrate over.
+   */
+  integrate(dt) {
+    console.log(`integrate: ${this.fx}, ${this.fy} / ${this.props.mass}`)
+    const ax = this.fx / this.props.mass
+    const ay = this.fy / this.props.mass
 
-        this.vx += ax * dt
-        this.vy += ay * dt
+    this.vx += ax * dt
+    this.vy += ay * dt
 
-        this.x += this.vx * dt
-        this.y += this.vy * dt
-    }
+    this.x += this.vx * dt
+    this.y += this.vy * dt
+  }
 }

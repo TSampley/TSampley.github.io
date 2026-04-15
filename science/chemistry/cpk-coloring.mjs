@@ -6,35 +6,35 @@ import { Element } from './element.mjs'
  * 
  */
 export class ElementColorScheme {
-    constructor() {}
-    /**
-     * 
-     * @param {Element} element
-     * @returns {string?} The color to render this element.
-     */
-    colorForElement(element) {
-        throw new UnimplementedError(this,'colorForElement')
-    }
+  constructor() {}
+  /**
+   * 
+   * @param {Element} element
+   * @returns {string?} The color to render this element.
+   */
+  colorForElement(element) {
+    throw new UnimplementedError(this,'colorForElement')
+  }
 }
 
 /**
  * 
  */
 export class ArrayColorScheme extends ElementColorScheme {
-    /**
-     * 
-     * @param {Array<string>} scheme 
-     */
-    constructor(scheme) {
-        super()
-        this.scheme = scheme
-    }
-    colorForElement(element) {
-        if (element.number in this.scheme)
-            return this.scheme[element.number]
-        else
-            return null
-    }
+  /**
+   * 
+   * @param {Array<string>} scheme 
+   */
+  constructor(scheme) {
+    super()
+    this.scheme = scheme
+  }
+  colorForElement(element) {
+    if (element.number in this.scheme)
+      return this.scheme[element.number]
+    else
+      return null
+  }
 }
 
 
@@ -42,22 +42,22 @@ export class ArrayColorScheme extends ElementColorScheme {
  * https://en.wikipedia.org/wiki/CPK_coloring#Modern_variants
  */
 export const CPKColorScheme = new ArrayColorScheme(
-    [   "#000", // 0 padding color for 1-indexing
-        "#fff","#aaa","#aaa","#aaa","#aaa",
-        "#111","#aaf","#d00","#0f0","#aaa", // 10
-        "#aaa","#aaa","#aaa","#aaa","#a0f",
-        "#dd0","#0b0","#f0f","#aaa","#aaa", // 20
-        "#aaa","#aaa","#aaa","#aaa","#aaa",
-        "#aaa","#aaa","#aaa","#aaa","#aaa", // 30
-        "#aaa","#aaa","#aaa","#aaa","#080",
-        "#aaa","#aaa","#aaa","#aaa","#aaa", // 40
-        "#aaa","#aaa","#aaa","#aaa","#aaa",
-        "#aaa","#aaa","#aaa","#aaa","#aaa", // 50
-        "#aaa","#aaa","#050","#acd",'#000',
-        '#000','#000','#000','#000','#000', // 60
-        '#000','#000','#000','#000','#000',
-        '#000','#000','#000','#000','#000', // 70
-        '#000','#000','#000','#000','#000',
-        '#000','#000','#000','#000','#000', // 80
-    ]
+  [   "#000", // 0 padding color for 1-indexing
+    "#fff","#aaa","#aaa","#aaa","#aaa",
+    "#111","#aaf","#d00","#0f0","#aaa", // 10
+    "#aaa","#aaa","#aaa","#aaa","#a0f",
+    "#dd0","#0b0","#f0f","#aaa","#aaa", // 20
+    "#aaa","#aaa","#aaa","#aaa","#aaa",
+    "#aaa","#aaa","#aaa","#aaa","#aaa", // 30
+    "#aaa","#aaa","#aaa","#aaa","#080",
+    "#aaa","#aaa","#aaa","#aaa","#aaa", // 40
+    "#aaa","#aaa","#aaa","#aaa","#aaa",
+    "#aaa","#aaa","#aaa","#aaa","#aaa", // 50
+    "#aaa","#aaa","#050","#acd",'#000',
+    '#000','#000','#000','#000','#000', // 60
+    '#000','#000','#000','#000','#000',
+    '#000','#000','#000','#000','#000', // 70
+    '#000','#000','#000','#000','#000',
+    '#000','#000','#000','#000','#000', // 80
+  ]
 )

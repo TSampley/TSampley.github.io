@@ -310,7 +310,7 @@ function generateQuestionAnswers(cards) {
     const selected = choices[correctIndex];
     const answers = choices.map((card) => {
       if (card) return card.answer; else throw `Invalid card: ${card}`;
-  });
+    });
     questionAnswers.push(new Question(
       selected.prompt,
       answers,

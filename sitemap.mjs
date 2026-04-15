@@ -339,7 +339,7 @@ class Sitemap extends Environment {
         } else {
           // Calculate spring force
           const springDisplacement = this.springDistance - distance
-           // soft-core to avoid singularity
+          // soft-core to avoid singularity
           const springForce = Math.max(
             -maxForce,
             Math.min(maxForce, 

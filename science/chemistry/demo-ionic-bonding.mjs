@@ -22,18 +22,18 @@ const buttonChargeDown = document.getElementById('sim-charge-down')
 const buttonReset = document.getElementById('sim-reset')
 const demo = new Demo('hydrogen-bulk');
 const uiElements = {
-    displayParagraph: document.getElementById('sim-display'),
-    displayCharge: document.getElementById('sim-charge'),
-    buttonChargeUp: document.getElementById('sim-charge-up'),
-    buttonChargeDown: document.getElementById('sim-charge-down'),
-    divForceInputs: document.getElementById('sim-force-inputs'),
-    inputGravity: document.getElementById('input-gravity'),
-    inputRunning: document.getElementById('input-running'),
-    buttonReset: document.getElementById('sim-reset'),
-    table: Object.values(Elements).map((value)=>{
-        const element = document.getElementById(`ptable-${value.name.toLowerCase()}`)
-        // TODO: style each element
-    })
+  displayParagraph: document.getElementById('sim-display'),
+  displayCharge: document.getElementById('sim-charge'),
+  buttonChargeUp: document.getElementById('sim-charge-up'),
+  buttonChargeDown: document.getElementById('sim-charge-down'),
+  divForceInputs: document.getElementById('sim-force-inputs'),
+  inputGravity: document.getElementById('input-gravity'),
+  inputRunning: document.getElementById('input-running'),
+  buttonReset: document.getElementById('sim-reset'),
+  table: Object.values(Elements).map((value)=>{
+    const element = document.getElementById(`ptable-${value.name.toLowerCase()}`)
+    // TODO: style each element
+  })
 }
 // endregion
 
@@ -67,17 +67,17 @@ let controller = new WorldController(simulation,timer)
 //     // TODO: update compound display (element, charge, neutron count, total mass, etc.)
 // })
 controller.onSetDisplay = (display)=>{
-    displayParagraph.innerText = display
+  displayParagraph.innerText = display
 }
 controller.onSetCharge = (charge)=>{
-    displayCharge.innerText = charge
+  displayCharge.innerText = charge
 }
 // Bind UI Events to Adapter functions
 buttonChargeUp.onclick = (event)=> {
-    controller.incrementCharge()
+  controller.incrementCharge()
 }
 buttonChargeDown.onclick = (event)=> {
-    controller.decrementCharge()
+  controller.decrementCharge()
 }
 
 // Initialize Adapter state
@@ -87,17 +87,17 @@ controller.setCharge(0)
 
 /** @type {()=>Array<Particle>} */
 const defaultScenario = new ChemScenario('default',forceMatrixChemistry(),()=>{
-    // Initialize Atoms
-    const protium = new AtomicProperties(Elements.Hydrogen, -1, 0)
-    const leftHydrogen = new Particle(200E-12,500E-11,protium)
-    const rightHydrogen = new Particle(11800E-12,500E-11,protium)
+  // Initialize Atoms
+  const protium = new AtomicProperties(Elements.Hydrogen, -1, 0)
+  const leftHydrogen = new Particle(200E-12,500E-11,protium)
+  const rightHydrogen = new Particle(11800E-12,500E-11,protium)
 
-    // Direct towards each other
-    const speed = 10E-7
-    leftHydrogen.vx = speed
-    rightHydrogen.vx = -speed
+  // Direct towards each other
+  const speed = 10E-7
+  leftHydrogen.vx = speed
+  rightHydrogen.vx = -speed
 
-    return [leftHydrogen, rightHydrogen]
+  return [leftHydrogen, rightHydrogen]
 })
 controller.setScenario(defaultScenario)
 controller.reset()
@@ -105,61 +105,61 @@ controller.reset()
 
 
 Object.values(controller.simulation.environment.forceMatrix.value).forEach(force => {
-    const listItem = document.createElement('li')
-    /** @type {HTMLInputElement} */
-    const checkbox = document.createElement('input')
-    checkbox.type = 'checkbox'
-    const label = document.createElement('label')
-    checkbox.id = force.id
-    label.htmlFor = force.id
-    label.textContent = force.name
-    listItem.append(label, checkbox)
-    uiElements.divForceInputs.appendChild(listItem)
+  const listItem = document.createElement('li')
+  /** @type {HTMLInputElement} */
+  const checkbox = document.createElement('input')
+  checkbox.type = 'checkbox'
+  const label = document.createElement('label')
+  checkbox.id = force.id
+  label.htmlFor = force.id
+  label.textContent = force.name
+  listItem.append(label, checkbox)
+  uiElements.divForceInputs.appendChild(listItem)
 
-    checkbox.checked = controller.simulation.environment.forceMatrix.value[force.id].isEnabled
-    checkbox.onchange = (event)=> {
-        controller.simulation.environment.forceMatrix.value[force.id].isEnabled = event.target.checked
-    }
+  checkbox.checked = controller.simulation.environment.forceMatrix.value[force.id].isEnabled
+  checkbox.onchange = (event)=> {
+    controller.simulation.environment.forceMatrix.value[force.id].isEnabled = event.target.checked
+  }
 });
 uiElements.inputRunning.checked = controller.isRunning
 uiElements.inputRunning.onchange = (event)=>{
-    controller.isRunning = event.target.checked
+  controller.isRunning = event.target.checked
 }
 buttonReset.onclick = ()=>{
-    controller.reset()
+  controller.reset()
 }
 Object.values(Elements).forEach(element=>{
-    const idName = element.name.toLowerCase()
-    const elementSquare = document.getElementById(`ptable-${idName}`)
-    if (elementSquare) {
-        elementSquare.onclick = ()=>{
-            controller.setElement(element)
-        }
+  const idName = element.name.toLowerCase()
+  const elementSquare = document.getElementById(`ptable-${idName}`)
+  if (elementSquare) {
+    elementSquare.onclick = ()=>{
+      controller.setElement(element)
     }
+  }
 });
 demo.addMouseDownListener((event)=>{
-    const x = event.offsetX;
-    const y = event.offsetY;
-    controller.spawn(x/scalingFacting,y/scalingFacting)
-    SoundBoard.playPop()
+  const x = event.offsetX;
+  const y = event.offsetY;
+  controller.spawn(x/scalingFacting,y/scalingFacting)
+  SoundBoard.playPop()
 })
 
 let lastTime = 0;
 function animate(timestamp) {
-    let diff = timestamp - lastTime;
+  let diff = timestamp - lastTime;
 
-    if (controller.isRunning) {
-        controller.simulation.step(diff)
-    }
+  if (controller.isRunning) {
+    controller.simulation.step(diff)
+  }
 
-    demo.context.clearRect(0, 0, demo.canvas.width, demo.canvas.height);
-    demo.context.resetTransform()
-    demo.context.scale(scalingFacting,scalingFacting)
-    controller.drawParticles(demo.context)
+  demo.context.clearRect(0, 0, demo.canvas.width, demo.canvas.height);
+  demo.context.resetTransform()
+  demo.context.scale(scalingFacting,scalingFacting)
+  controller.drawParticles(demo.context)
     
-    lastTime = timestamp;
+  lastTime = timestamp;
     
-    requestAnimationFrame(animate);
+  requestAnimationFrame(animate);
 }
 
 animate(0);

@@ -164,18 +164,18 @@ export class ParticleEnvironment extends Environment {
   }
 
   particleForces() {
-      return [
-          this.forceMatrix.value.coulomb,
-          this.forceMatrix.value.lennardJones
-      ]
+    return [
+      this.forceMatrix.value.coulomb,
+      this.forceMatrix.value.lennardJones
+    ]
   }
 
   environmentForces() {
-      return [
-          this.forceMatrix.value.boundaries,
-          this.forceMatrix.value.drag,
-          this.forceMatrix.value.gravity
-      ]
+    return [
+      this.forceMatrix.value.boundaries,
+      this.forceMatrix.value.drag,
+      this.forceMatrix.value.gravity
+    ]
   }
 }
 

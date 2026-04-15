@@ -7,24 +7,24 @@ const woop = lazy(()=>{return new Audio('/assets/audio/mouth-woop-small.wav')})
 
 export const SoundBoard = {
 
-    /**
-     * 
-     * @param {LazyValue<Audio>} sound 
-     */
-    quickPlay: function (sound) {
-        const clip = sound.value
-        clip.pause()
-        clip.currentTime = 0
-        clip.play()
-    },
+  /**
+   * 
+   * @param {LazyValue<Audio>} sound 
+   */
+  quickPlay: function (sound) {
+    const clip = sound.value
+    clip.pause()
+    clip.currentTime = 0
+    clip.play()
+  },
 
-    playClack: ()=>{
-        SoundBoard.quickPlay(clack)
-    },
-    playPop: ()=>{
-        SoundBoard.quickPlay(pop)
-    },
-    playWoop: ()=>{
-        SoundBoard.quickPlay(woop)
-    },
+  playClack: ()=>{
+    SoundBoard.quickPlay(clack)
+  },
+  playPop: ()=>{
+    SoundBoard.quickPlay(pop)
+  },
+  playWoop: ()=>{
+    SoundBoard.quickPlay(woop)
+  },
 }

@@ -23,7 +23,7 @@ export class TrafficWorld extends Environment {
   }
 
   // draw3d() {
-    // TODO: add aquarium glass border for city-scapes with abrupt borders as alternative to distance fog
+  // TODO: add aquarium glass border for city-scapes with abrupt borders as alternative to distance fog
   // }
 }
 

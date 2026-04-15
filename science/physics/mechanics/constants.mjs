@@ -25,7 +25,7 @@ export const HOURS_PER_DAY = 24;
  * {@link MINUTES_PER_HOUR} * {@link HOURS_PER_DAY}
  */
 export const MILLIS_PER_DAY = 
-    MILLIS_PER_SECOND * SECONDS_PER_MINUTE * 
+  MILLIS_PER_SECOND * SECONDS_PER_MINUTE * 
     MINUTES_PER_HOUR * HOURS_PER_DAY;
 
 // #endregion

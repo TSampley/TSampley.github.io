@@ -14,24 +14,24 @@ import { Force } from '/science/physics/mechanics/force.mjs'
  * A collection of {@link Force}
  */
 export class ForceMatrix {
-    constructor(boundaries,drag,gravity,coulomb,lennardJones) {
-        this.boundaries = boundaries
-        this.drag = drag
-        this.gravity = gravity
+  constructor(boundaries,drag,gravity,coulomb,lennardJones) {
+    this.boundaries = boundaries
+    this.drag = drag
+    this.gravity = gravity
 
-        this.coulomb = coulomb
-        this.lennardJones = lennardJones
-    }
+    this.coulomb = coulomb
+    this.lennardJones = lennardJones
+  }
 }
 
 export function forceMatrixSim(boundaryRetention,drag,gravity,coulomb,lennardJones) {
-    return new ForceMatrix(
-        new ElasticBoundary(boundaryRetention,500,500),
-        new Drag(drag),
-        new Gravity(gravity),
-        new CoulombForce(coulomb),
-        new LennardJonesPotential(lennardJones)
-    )
+  return new ForceMatrix(
+    new ElasticBoundary(boundaryRetention,500,500),
+    new Drag(drag),
+    new Gravity(gravity),
+    new CoulombForce(coulomb),
+    new LennardJonesPotential(lennardJones)
+  )
 }
 /**
  * 
@@ -39,11 +39,11 @@ export function forceMatrixSim(boundaryRetention,drag,gravity,coulomb,lennardJon
  * chemical reaction scale.
  */
 export function forceMatrixChemistry() {
-    return new ForceMatrix(
-        new ElasticBoundary(0.99,600E-12,500E-12),
-        new Drag(1E46),
-        new Gravity(GRAVITY_EARTH_ACCELERATION * 1E-5),
-        new CoulombForce(COULOMB_CONSTANT*1E6),
-        new LennardJonesPotential(1.0)
-    )
+  return new ForceMatrix(
+    new ElasticBoundary(0.99,600E-12,500E-12),
+    new Drag(1E46),
+    new Gravity(GRAVITY_EARTH_ACCELERATION * 1E-5),
+    new CoulombForce(COULOMB_CONSTANT*1E6),
+    new LennardJonesPotential(1.0)
+  )
 }

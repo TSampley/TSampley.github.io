@@ -54,9 +54,9 @@ export class EntityRender extends Render2D {
     }
     context.fillStyle = 'black'
     if (subject.velocity) {
-        context.ellipse(subject.position.x + subject.velocity.x * offset, subject.position.y + subject.velocity.y * offset, 5, 5, 0, 0, 2 * Math.PI)
+      context.ellipse(subject.position.x + subject.velocity.x * offset, subject.position.y + subject.velocity.y * offset, 5, 5, 0, 0, 2 * Math.PI)
     } else {
-        context.ellipse(subject.position.x, subject.position.y, 5, 5, 0, 0, 2 * Math.PI)
+      context.ellipse(subject.position.x, subject.position.y, 5, 5, 0, 0, 2 * Math.PI)
     }
     context.fill()
   }

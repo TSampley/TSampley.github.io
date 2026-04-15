@@ -5,13 +5,13 @@
  */
 
 export class SphericalAngles {
-    /**
-     *
-     * @param {number} theta Rise toward y-coordinate from run z-coordinate.
-     * @param {number} phi Rise toward y-coordinate from run x-coordinate.
-     */
-    constructor(theta, phi) {
-        this.theta = theta;
-        this.phi = phi;
-    }
+  /**
+   *
+   * @param {number} theta Rise toward y-coordinate from run z-coordinate.
+   * @param {number} phi Rise toward y-coordinate from run x-coordinate.
+   */
+  constructor(theta, phi) {
+    this.theta = theta;
+    this.phi = phi;
+  }
 }

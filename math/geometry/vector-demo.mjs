@@ -101,7 +101,7 @@ export class VectorRender extends Render2D {
     tempState(context, (context) => {
       context.strokeStyle = 'black'
       context.lineWidth = 2
-      context.lineCap = 
+      context.lineCap = 'round'
       context.beginPath()
       context.moveTo(0, 0)
       context.lineTo(subject.x, subject.y)

@@ -7,23 +7,23 @@ import { Particle } from "./particle.mjs";
  */
 export class ElectricFieldRender {
 
-    /**
-     * 
-     * @param {HTMLCanvasElement} canvas 
-     */
-    constructor(canvas) {
-        this.canvas = canvas
-        this.context = canvas.getContext('webgl')
-        if (!this.context) {
-            console.error('Could not retrieve webgl context')
-        }
+  /**
+   * 
+   * @param {HTMLCanvasElement} canvas 
+   */
+  constructor(canvas) {
+    this.canvas = canvas
+    this.context = canvas.getContext('webgl')
+    if (!this.context) {
+      console.error('Could not retrieve webgl context')
     }
+  }
 
-    /**
-     * 
-     * @param {Array<Particle>} particles 
-     */
-    render(particles) {
-        // TODO: render field
-    }
+  /**
+   * 
+   * @param {Array<Particle>} particles 
+   */
+  render(particles) {
+    // TODO: render field
+  }
 }

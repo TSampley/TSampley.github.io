@@ -22,100 +22,100 @@ import { Scenario } from './scenario.mjs';
  */
 export class Simulation {
 
-    /**
-     * 
-     * @param {E} environment
-     * @param {Array<Scenario<E>>} scenarios
-     * @param {(Environment,offset)=>void} onDraw
-     */
-    constructor(environment,scenarios,onDraw) {
-        this.timer = new Timer()
-        /** @type {Array<Entity>} */
-        this.entityList = []
-        this.environment = environment
-        this.scenarios = scenarios || []
-        this.onDraw = onDraw || (()=>{})
-    }
+  /**
+   * 
+   * @param {E} environment
+   * @param {Array<Scenario<E>>} scenarios
+   * @param {(Environment,offset)=>void} onDraw
+   */
+  constructor(environment,scenarios,onDraw) {
+    this.timer = new Timer()
+    /** @type {Array<Entity>} */
+    this.entityList = []
+    this.environment = environment
+    this.scenarios = scenarios || []
+    this.onDraw = onDraw || (()=>{})
+  }
 
-    #isRunning = false
-    start() {
-        if (this.#isRunning) return;
-        this.#isRunning = true
-        this.#step()
-    }
+  #isRunning = false
+  start() {
+    if (this.#isRunning) return;
+    this.#isRunning = true
+    this.#step()
+  }
 
-    #step() {
-        requestAnimationFrame((tsl)=>{this.#frame(tsl)})
-    }
+  #step() {
+    requestAnimationFrame((tsl)=>{this.#frame(tsl)})
+  }
 
-    #lastTime = 0
-    #frame(tsl) {
-        if (!this.#lastTime) this.#lastTime = tsl
-        const delta = (tsl - this.#lastTime) / 1000.0
+  #lastTime = 0
+  #frame(tsl) {
+    if (!this.#lastTime) this.#lastTime = tsl
+    const delta = (tsl - this.#lastTime) / 1000.0
 
-        this.timer.step(delta)
-        this.environment.step(delta)
-        this.onDraw(this.environment, 0)
+    this.timer.step(delta)
+    this.environment.step(delta)
+    this.onDraw(this.environment, 0)
 
-        if (this.#isRunning) this.#step()
-    }
+    if (this.#isRunning) this.#step()
+  }
 
-    stop() {
-        this.#isRunning = false
-    }
+  stop() {
+    this.#isRunning = false
+  }
 }
 
 // TODO: reference below to convert to integrate phase offset parameter
-    // /**
-    //  * 
-    //  * @param {Environment} subject 
-    //  */
-    // constructor(subject) {
-    //     this.subject = subject
+// /**
+//  * 
+//  * @param {Environment} subject 
+//  */
+// constructor(subject) {
+//     this.subject = subject
 
-    //     /** @type {Observable<boolean>} */
-    //     this.isRunning = single(true)
-    //     /** @type {Observable<number>} */
-    //     this.simulationDelta = single(1000 / 60.0)
-    //     /** @type {Observable<number>} */
-    //     this.animationDelta = single(1000 / 30.0)
-    // }
+//     /** @type {Observable<boolean>} */
+//     this.isRunning = single(true)
+//     /** @type {Observable<number>} */
+//     this.simulationDelta = single(1000 / 60.0)
+//     /** @type {Observable<number>} */
+//     this.animationDelta = single(1000 / 30.0)
+// }
 
-    // start() {
-    //     this.isRunning.value = true
+// start() {
+//     this.isRunning.value = true
 
-    //     setTimeout()
-    //     // TODO: consider 
-    //     requestAnimationFrame((tls)=>this.#animate(tls))
-    // }
+//     setTimeout()
+//     // TODO: consider 
+//     requestAnimationFrame((tls)=>this.#animate(tls))
+// }
 
-    // #lastTime = 0
-    // #simulationPhase = 0
-    // #animationPhase = 0
-    // #animate(tsl) {
-    //     if (this.#lastTime == 0) {
-    //         this.#lastTime = tsl
-    //     }
+// #lastTime = 0
+// #simulationPhase = 0
+// #animationPhase = 0
+// #animate(tsl) {
+//     if (this.#lastTime == 0) {
+//         this.#lastTime = tsl
+//     }
 
-    //     const deltaMs = tsl - this.#lastTime
+//     const deltaMs = tsl - this.#lastTime
 
-    //     while (this.#simulationPhase >= this.simulationDelta) {
-    //         this.step(this.simulationDelta)
-    //     }
+//     while (this.#simulationPhase >= this.simulationDelta) {
+//         this.step(this.simulationDelta)
+//     }
 
-    //     const offset = (this.#animationPhase + deltaMs) % this.animationDelta
-    //     this.#animationPhase = phase
-    //     this.draw(phase)
-    // }
+//     const offset = (this.#animationPhase + deltaMs) % this.animationDelta
+//     this.#animationPhase = phase
+//     this.draw(phase)
+// }
 
-    // stop() {
-    //     this.isRunning.value = false
-    // }
+// stop() {
+//     this.isRunning.value = false
+// }
 
-    // step(delta) {
-    //     this.subject.step(delta)
-    // }
+// step(delta) {
+//     this.subject.step(delta)
+// }
 
-    // draw() {
-    //     this.subject.draw(context,0)
-    // }
+// draw() {
+//     this.subject.draw(context,0)
+// }
