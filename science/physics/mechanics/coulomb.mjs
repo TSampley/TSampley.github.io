@@ -1,5 +1,4 @@
 
-import { METERS_PER_PICOMETER } from "../../metrics.mjs"
 import { InterparticleForce } from "./force.mjs"
 
 const ELECTRONS_PER_COULOMB = 6.241509E18

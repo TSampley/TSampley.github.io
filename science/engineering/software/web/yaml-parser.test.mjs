@@ -45,7 +45,7 @@ describe('YamlParser', () => {
   test('parsing empty or blank input produces null', async () => {
     expect(await parserUnderTest.parse('')).toBe(null)
     expect(await parserUnderTest.parse('\n')).toBe(null)
-    expect(await parserUnderTest.parse("   \n  \t\s   \n")).toBe(null)
+    expect(await parserUnderTest.parse("   \n  \t   \n")).toBe(null)
     expect(await parserUnderTest.parse('null')).toBe(null)
     expect(await parserUnderTest.parse('   null ')).toBe(null)
     expect(await parserUnderTest.parse('\nnull\n')).toBe(null)
