@@ -38,7 +38,7 @@ export class Token {
  * This Lexer works in a lazy way, only consuming as much of the input as
  * needed to produce the next token(s).
  */
-class YamlLexer {
+export class YamlLexer {
   /**
    * 
    */
