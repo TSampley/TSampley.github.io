@@ -6,6 +6,13 @@ import { Parser } from '/science/computing/compilers/parser.mjs'
  * 
  */
 export class Token {
+  /**
+   * 
+   * @param {number} line 
+   * @param {number} column 
+   * @param {string} sequence 
+   * @param {Token.Type} type 
+   */
   constructor(line,column,sequence,type) {
     this.line = line
     this.column = column
@@ -107,15 +114,19 @@ export class YamlLexer {
           yield* yieldType(Token.Type.newline);
           advanceLine()
           break;
+        // TODO: other character classes
         default:
           if (char >= 'a' && char <= 'z') {
-
+            console.info('lowercase')
+            advancePosition()
           } else if (char >= 'A' && char <= 'Z') {
-
+            console.info('uppercase')
+            advancePosition()
           } else if (char >= '0' && char <= '9') {
-
+            console.info('digit')
+            advancePosition()
           } else {
-
+            console.info('unrecognized char: ', char)
           }
           break;
       }
@@ -147,6 +158,22 @@ export class YamlLexer {
   peek() {
     return new Token(0, 0, '', Token.Type.null)
   }
+
+  /**
+   * Checks if the next token is of the expected type and if so, advances
+   * the lexer, returning true. If the next token is not the expected type,
+   * nothing is consumed and false is returned.
+   * @param {Token.Type} tokenType 
+   * @returns {Promise<Token>} The next token if of the expected type.
+   */
+  async expect(tokenType) {
+    const next = this.peek()
+    if (next.type == tokenType) {
+      return this.next()
+    } else {
+      throw `Expected <${tokenType}> but found <${next.type}>`
+    }
+  }
 }
 
 /**
@@ -158,7 +185,6 @@ export class YamlParser extends Parser {
 
   constructor() {
     super()
-
   }
   
   /**
@@ -181,8 +207,6 @@ export class YamlParser extends Parser {
    * --> <boolean>
    * --> <string>
    * --> <number>
-   * 
-   * --> <blank>\ndoc
    * --> ε
    * @param {YamlLexer} tokenInput 
    * @returns {Promise<any>}
@@ -194,8 +218,7 @@ export class YamlParser extends Parser {
       && !this.#blocKMap(tokenInput)
       && !this.#string(tokenInput)
       && !this.#boolean(tokenInput)
-      && !this.#blank(tokenInput)
-     && !tokenInput.hasNext()) {
+      && !tokenInput.hasNext()) {
       throw `Unrecognized Input Sequence. Expected <property>, <blank>, or <eof>, but found ${tokenInput.next()}`
     }
     return null;
@@ -203,14 +226,16 @@ export class YamlParser extends Parser {
 
   /**
    * <property> --> <name>: <value>
-   * @param {*} tokenInput 
+   * @param {YamlLexer} tokenInput 
+   * @returns {Promise<Map<string,any>>}
    */
   async #property(tokenInput) {
-    // TODO: expect identifier token for name
-    // TODO: expect colon separator token
-    // TODO: expect value
-    this.#value(tokenInput)
-    // TODO: convert if-else cases to syntax-table?
+    const identifier = await tokenInput.expect(Token.Type.string)
+    await tokenInput.expect(Token.Type.colon)
+    const value = await this.#value(tokenInput)
+    const record = {}
+    record[identifier] = value
+    return record
   }
 
   /**
@@ -221,10 +246,11 @@ export class YamlParser extends Parser {
    * --> <string>
    * --> <list>
    * --> <map>
-   * @param {*} tokenInput 
+   * @param {YamlLexer} tokenInput 
+   * @returns {Promise<any>}
    */
   async #value(tokenInput) {
-    if (this.#null(tokenInput)) {
+    if (await this.#null(tokenInput)) {
       // TODO: null token accepted
     } else if (this.#boolean(tokenInput)) {
       // TODO: boolean accepted
@@ -243,47 +269,56 @@ export class YamlParser extends Parser {
 
   /**
    * null
-   * @param {*} tokenInput 
+   * @param {YamlLexer} tokenInput 
+   * @returns {Promise<null>}
    */
   async #null(tokenInput) {
-    // TODO: 
+    await tokenInput.expect(Token.Type.null)
+    return null
   }
 
   /**
    * <boolean> --> true|false
-   * @param {*} tokenInput 
+   * @param {YamlLexer} tokenInput 
+   * @returns {Promise<boolean>}
    */
   async #boolean(tokenInput) {
     // TODO: accept 'true' or 'false'
+    const token = await tokenInput.expect(Token.Type.boolean)
+    return token.sequence.toLowerCase() == 'true'
   }
 
   /**
    * <number> --> [0-9]+(\.[0-9]+)?
-   * @param {*} tokenInput 
+   * @param {YamlLexer} tokenInput 
+   * @returns {Promise<number>}
    */
   async #number(tokenInput) {
-    // TODO: accept integer/decimal format
+    await tokenInput.expect(Token.Type.number)
+    return 0
   }
 
   /**
    * <string>
    * --> [a-zA-Z0-9]{254}
    * --> "[a-zA-Z0-9\"'\w]*"
-   * @param {*} tokenInput
+   * @param {YamlLexer} tokenInput 
+   * @returns {Promise<string>}
    */
   async #string(tokenInput) {
-
+    await tokenInput.expect(Token.Type.string)
+    return "hello"
   }
 
   /**
    * <list>
    * --> <inline-list>
    * --> <block-list>
-   * @param {*} tokenInput 
+   * @param {YamlLexer} tokenInput 
+   * @returns {Promise<any[]>}
    */
   async #list(tokenInput) {
-    // TODO: expect inline-list OR block-list
-    this.#inlineList(tokenInput) || this.#blockList(tokenInput);
+    return await this.#inlineList(tokenInput) || await this.#blockList(tokenInput);
   }
 
   /**
@@ -293,43 +328,65 @@ export class YamlParser extends Parser {
    * --> <string>
    * --> <inline-list>
    * --> <inline-map>
-   * @param {*} tokenInput 
+   * @param {YamlLexer} tokenInput 
+   * @returns {Promise<any[]>}
    */
   async #inlineList(tokenInput) {
+    await tokenInput.expect(Token.Type.squareOpen)
+    return []
   }
 
   /**
    * <block-list>
-   * --> (\n\I- <block-item>)+
+   * --> newline + indent + block-list-body + dedent
+   * <block-list-body>
+   * --> property-name + : + property-value
    * <block-item>
    * --> <string>
    * --> <list>
    * --> <map>
    * --> <value>
-   * @param {*} tokenInput 
+   * @param {YamlLexer} tokenInput 
+   * @returns {Promise<any[]>}
    */
   async #blockList(tokenInput) {
-    // TODO: expect one or more lines with one additional indentation followed by a value
+    await tokenInput.expect(Token.Type.newline)
+    await tokenInput.expect(Token.Type.indent)
+
+    await tokenInput.expect(Token.Type.dedent)
+    return []
   }
 
   /**
    * <map>
    * --> <inline-map>
    * --> <block-map>
-   * @param {*} tokenInput 
+   * @param {YamlLexer} tokenInput 
+   * @returns {<PromiseMap<string,any>>}
    */
   async #map(tokenInput) {
-    // TODO: expect inline map OR block map
-    this.#inlineMap(tokenInput) || this.#blocKMap(tokenInput);
+    await this.#inlineMap(tokenInput)
+    await this.#blocKMap(tokenInput)
+    return {}
   }
 
   /**
    * <inline-map>
    * --> { (<property>(,<property>)*)? }
-   * @param {*} tokenInput 
+   * @param {YamlLexer} tokenInput 
+   * @returns {Promise<Map<string,any>>}
    */
   async #inlineMap(tokenInput) {
-    // TODO: expect opening brace, property list, closing brace
+    if (await tokenInput.expect(Token.Type.curlyOpen)) {
+      this.#property(tokenInput)
+    } else {
+      throw "Expected opening brace."
+    }
+    if (await tokenInput.expect(Token.Type.curlyClose)) {
+      return {}
+    } else {
+      throw "Expected closing brace."
+    }
   }
 
   /**
@@ -338,17 +395,15 @@ export class YamlParser extends Parser {
    * <block-map-tail>
    * --> <property> + \n <block-map-tail>
    * --> ε
-   * @param {*} tokenInput 
+   * @param {YamlLexer} tokenInput 
+   * @returns {Promise<Map<string,any>>}
    */
   async #blocKMap(tokenInput) {
     // TODO: expect 0 or more lines with one additional indentation and a property definition
-  }
-
-  /**
-   * <blank> --> [\w\s\b]*
-   * @param {*} tokenInput 
-   */
-  async #blank(tokenInput) {
-    // TODO: accept blank/epmty input lines
+    while (tokenInput.hasNext()) {
+      await this.#property(tokenInput)
+    }
+    
+    return {}
   }
 }
