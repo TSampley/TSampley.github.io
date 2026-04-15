@@ -1,8 +1,13 @@
-import { Size } from "/js/common/geom.mjs";
 import { NoOp } from "/js/common/fns.mjs";
-import { Observable, single } from "/js/common/observables.mjs";
-import { ForceMatrix } from "/science/chemistry/computational/force-matrix.mjs";
+import { single } from "/js/common/observables.mjs";
 import { Environment } from "/science/computing/simulation/environment.mjs";
+import { Particle } from "./particle.mjs";
+
+/**
+ * @typedef { import('/js/common/geom.mjs').Size } Size
+ * @typedef { import('/js/common/observables.mjs').Observable } Observable
+ * @typedef { import('/science/chemistry/computational/force-matrix.mjs').ForceMatrix } ForceMatrix
+ */
 
 /**
  */
@@ -180,7 +185,7 @@ export class ParticleEnvironment extends Environment {
 }
 
 const DefaultGenerator = (x, y) => { return new Particle(x, y); }
-const PassTest = (x, y) => { return true; }
+const PassTest = () => { return true; }
 const DefaultStep = 0.5
 
 /*
@@ -194,7 +199,7 @@ TODO: consider Generator abstract class with common initialization function, eac
  * @param {number} centerY The y coordinate of the center of the circle to initialize particles within.
  * @param {number} radius The radius of the circle to initialize particles within.
  */
-function initializeCircle(environment, centerX, centerY, radius) {
+export function initializeCircle(environment, centerX, centerY, radius) {
   let radiusSqr = radius * radius
   initializePoints(
     environment,
@@ -202,7 +207,7 @@ function initializeCircle(environment, centerX, centerY, radius) {
     centerX + radius,
     centerY - radius,
     centerY + radius,
-    test = (x, y) => {
+    (x, y) => {
       let xDif = x - centerX;
       let yDif = y - centerY;
       return xDif * xDif + yDif * yDif <= radiusSqr
