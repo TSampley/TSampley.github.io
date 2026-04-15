@@ -4,37 +4,36 @@
  * See LICENSE file in the project root for full license information.
  */
 
-import { YamlParser, TokenSequence, Token } from "./yaml-parser.mjs"
+import { YamlParser, YamlLexer, Token } from "./yaml-parser.mjs"
 
 // MARK: TokenSequence
-describe('TokenSequence', () => {
+describe('YamlLexer', () => {
   const input = 'some_key: some_value'
 
   test('initialization', () => {
-    const tokenSequence = new TokenSequence(input)
-    expect(tokenSequence.position).toBe(0)
+    const tokenSequence = new YamlLexer(input)
     expect(tokenSequence.input).toBe(input)
   })
 
   test('peek returns next token without advancing position', () => {
-    const tokenSequence = new TokenSequence(input)
+    const tokenSequence = new YamlLexer(input)
     expect(tokenSequence.peek()).toBe(new Token(0, 0, 'some_key', Token.Type.key))
-    expect(tokenSequence.position).toBe(0)
   })
 
   test('next returns next token and advances position', () => {
-    const tokenSequence = new TokenSequence(input)
+    const tokenSequence = new YamlLexer(input)
     expect(tokenSequence.next()).toBe(new Token(0, 0, 'some_key', Token.Type.key))
-    expect(tokenSequence.position).toBe('some_key'.length)
   })
 
   test('peek and next work together correctly', () => {
-    const tokenSequence = new TokenSequence(input)
+    const tokenSequence = new YamlLexer(input)
     expect(tokenSequence.peek()).toBe(new Token(0, 0, 'some_key', Token.Type.key))
     expect(tokenSequence.next()).toBe(new Token(0, 0, 'some_key', Token.Type.key))
-    expect(tokenSequence.peek()).toBe(new Token(0, 0, ':', Token.Type.colon))
-    expect(tokenSequence.next()).toBe(new Token(0, 0, ':', Token.Type.colon))
-    expect(tokenSequence.position).toBe('some_key:'.length)
+
+    expect(tokenSequence.peek()).toBe(new Token(0, 8, ':', Token.Type.colon))
+    expect(tokenSequence.next()).toBe(new Token(0, 8, ':', Token.Type.colon))
+
+    expect(tokenSequence.next()).toBe(new Token(0, 10, 'some_value', Token.Type.string))
   })
 })
 

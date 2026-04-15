@@ -35,15 +35,18 @@ export class Token {
 }
 
 /**
- * This Lexer works in a lazy way, only consuming as much of the input as
- * needed to produce the next token(s).
+ * Array<Char>|String --[Lexer]--> Array<Token>|TokenSequence
+ * TokenSequence --[Parser]--> AST/IR
+ * AST/IR --[Target/Platform]--> ???
  */
 export class YamlLexer {
-  /**
-   * 
-   */
-  constructor() {
 
+  /**
+   * @param {string} input
+   */
+  constructor(input) {
+    this.input = input
+    this.lexer = this.lex(this.input)
   }
 
   /**
@@ -121,22 +124,6 @@ export class YamlLexer {
 
     return
   }
-}
-
-/**
- * Array<Char>|String --[Lexer]--> Array<Token>|TokenSequence
- * TokenSequence --[Parser]--> AST/IR
- * AST/IR --[Target/Platform]--> ???
- */
-export class TokenSequence {
-
-  /**
-   * @param {YamlLexer} lexer
-   */
-  constructor(lexer) {
-    this.lexer = lexer
-    this.position = 0
-  }
 
   hasNext() {
     // TODO: return whether or not there is another character from the 
@@ -163,14 +150,6 @@ export class TokenSequence {
 }
 
 /**
- * @param {string} input
- * @returns {TokenSequence}
- */
-function conversionFunction(input) {
-  return new TokenSequence(new YamlLexer().lex(input))
-}
-
-/**
  * 
  * This documentation uses the escape sequence '\I' to refer to the current
  * level of indentation.
@@ -190,7 +169,7 @@ export class YamlParser extends Parser {
    */
   async parse(input) {
     // TODO: convert input to tokenInput stream for parser internals
-    const tokenInput = conversionFunction(input);
+    const tokenInput = new YamlLexer(new YamlLexerOld().lex(input));
     return this.#doc(tokenInput)
   }
 
@@ -199,7 +178,7 @@ export class YamlParser extends Parser {
    * --> <property>\ndoc
    * --> <blank>\ndoc
    * --> ε
-   * @param {TokenSequence} tokenInput 
+   * @param {YamlLexer} tokenInput 
    * @returns {Promise<any>}
    */
   async #doc(tokenInput) {
