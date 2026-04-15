@@ -1,29 +1,24 @@
-import { Particle } from "./particle.mjs";
+import { Render3D } from "science/computing/simulation/render.mjs";
 
+/**
+ * @typedef { import('./particle.mjs').Particle } Particle
+ */
 /**
  * Renders a field of electric charges with a test charge
  * to determine strength and direction of the field at all
  * points.
+ * @extends {Render3D<Particle[]>}
  */
-export class ElectricFieldRender {
+export class ElectricFieldRender extends Render3D {
 
   /**
    * 
-   * @param {HTMLCanvasElement} canvas 
+   * @param {WebGL2RenderingContext} context 
+   * @param {Particle[]} subject 
+   * @param {number} offset 
    */
-  constructor(canvas) {
-    this.canvas = canvas
-    this.context = canvas.getContext('webgl')
-    if (!this.context) {
-      console.error('Could not retrieve webgl context')
-    }
-  }
-
-  /**
-   * 
-   * @param {Array<Particle>} particles 
-   */
-  render(particles) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  render(context, subject, offset) {
     // TODO: render field
   }
 }
