@@ -24,6 +24,7 @@ export class Pendulum extends Entity {
    * @param {*} angularVelocity Pendulum weight starting angular velocity.
    */
   constructor(x,y,length,startAngle,angularVelocity) {
+    super()
     this.anchorX = x
     this.anchorY = y
     this.length = length
@@ -48,15 +49,14 @@ export class PendulumRender extends Render2D {
    * 
    * @param {CanvasRenderingContext2D} context 
    * @param {Pendulum} subject The subject to render.
-   * @param {number} offset 
    */
-  render(context, subject, offset) {
+  render(context, subject) {
     const weightX = Math.cos(subject.angle) * subject.length
     const weightY = Math.sin(subject.angle) * subject.length
 
     // draw rope
     context.strokeStyle = "white"
-    context.moveTo(subject.anchorX, tsubjecthis.anchorY)
+    context.moveTo(subject.anchorX, subject.anchorY)
     context.lineTo(weightX, weightY)
     context.stroke()
     // draw anchor
