@@ -168,14 +168,20 @@ export class YamlParser extends Parser {
    * @returns {Promise<any>}
    */
   async parse(input) {
-    // TODO: convert input to tokenInput stream for parser internals
-    const tokenInput = new YamlLexer(new YamlLexerOld().lex(input));
+    const tokenInput = new YamlLexer(input);
     return this.#doc(tokenInput)
   }
 
   /**
    * doc
-   * --> <property>\ndoc
+   * --> <block-map>
+   * --> <block-list>
+   * --> <inline-map>
+   * --> <inline-list>
+   * --> <boolean>
+   * --> <string>
+   * --> <number>
+   * 
    * --> <blank>\ndoc
    * --> ε
    * @param {YamlLexer} tokenInput 
@@ -183,8 +189,12 @@ export class YamlParser extends Parser {
    */
   async #doc(tokenInput) {
     // TODO: expect property followed by doc OR blank followed by doc OR nothing
-    if (!this.#property(tokenInput) 
-      && !this.#blank(tokenInput) 
+    if (!this.#inlineMap(tokenInput)
+      && !this.#blockList(tokenInput)
+      && !this.#blocKMap(tokenInput)
+      && !this.#string(tokenInput)
+      && !this.#boolean(tokenInput)
+      && !this.#blank(tokenInput)
      && !tokenInput.hasNext()) {
       throw `Unrecognized Input Sequence. Expected <property>, <blank>, or <eof>, but found ${tokenInput.next()}`
     }
@@ -324,7 +334,10 @@ export class YamlParser extends Parser {
 
   /**
    * <block-map>
-   * --> (\n\I<property>)*
+   * --> <property> + \n + <block-map-tail>
+   * <block-map-tail>
+   * --> <property> + \n <block-map-tail>
+   * --> ε
    * @param {*} tokenInput 
    */
   async #blocKMap(tokenInput) {
