@@ -1,12 +1,31 @@
+import { JsonParser } from "./json-parser.mjs"
 
-test('parsing empty or blank input produces null', ()=>{
 
-})
+describe('JsonParser',()=> {
+  test('parsing empty input produces null', ()=>{
+    const input = ''
+    const parser = new JsonParser()
 
-test('parsing curly braces produces empty object', ()=> {
+    const result = parser.parse(input)
 
-})
+    expect(result).toBe(null)
+  })
+  
+  test('parsing curly braces produces empty object', ()=> {
+    const input = '{}'
+    const parser = new JsonParser()
 
-test('parsing square brackets produces empty array', ()=> {
+    const result = parser.parse(input)
 
+    expect(result).toBe({})
+  })
+  
+  test('parsing square brackets produces empty array', ()=> {
+    const input = '[]'
+    const parser = new JsonParser()
+
+    const result = parser.parse(input)
+
+    expect(result).toBe([])
+  })
 })
