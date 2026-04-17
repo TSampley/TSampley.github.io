@@ -455,6 +455,22 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - https://en.wikipedia.org/wiki/Troy_Edgar
 
+- name: John Kennedy
+  region: Louisiana, US
+  roles:
+    - title: Senator
+      organization: US Senate
+      when: 2017-01-03 to -
+    - title: Treasurer
+      organization: Louisiana
+      when: 2000-01-10 to 2017-01-03
+  harm:
+    - advocated genocidal policies
+  refs:
+    - https://www.youtube.com/watch?v=n1QzhU_McYA
+    - https://en.wikipedia.org/wiki/John_Kennedy_(Louisiana_politician)
+    - https://www.kennedy.senate.gov/public/
+
 - name: Kathy Hochul
   region: New York, US
   roles:

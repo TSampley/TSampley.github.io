@@ -12,10 +12,21 @@ It seems we have fewer and fewer heroes every generation, but with sacrifice bei
 
 ```people
 
+
 - name: Luigi Mangione
   region: US
   acts:
     - advocates for fair insurance for all and against the enrichment of health insurance companies despite familial wealth derived from the same industry
+
+- name: David Bier
+  region: US
+  roles:
+    title: Immigration Studies Chair
+    organization: Cato Institute
+  acts:
+    - spoke against conservative establishment powers and their genocidal policies
+  refs:
+    - https://www.youtube.com/watch?v=n1QzhU_McYA
 
 - name: Daryl Isa
   region: California, US
