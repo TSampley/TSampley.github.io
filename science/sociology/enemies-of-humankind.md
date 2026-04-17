@@ -139,6 +139,18 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     -
   refs:
     - 
+- name: Gregory K. Bovino
+  region: US
+  roles:
+    - title: Chief Patrol Agent
+      organization: US Border Patrol
+  harm:
+    - genocide
+    - gas-lighting
+    - exploitation of power
+  refs:
+    - https://www.youtube.com/watch?v=nHC7_axbF-A
+    - https://en.wikipedia.org/wiki/Gregory_Bovino
 - name: Larry Ellison
   region: US
   roles:
@@ -456,6 +468,7 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - https://en.wikipedia.org/wiki/Troy_Edgar
 
 - name: Bobby Kotick
+  region: US
   roles:
     - title: CEO
       organization: Activision Blizzard
