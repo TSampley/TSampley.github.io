@@ -151,6 +151,16 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - https://www.youtube.com/watch?v=nHC7_axbF-A
     - https://en.wikipedia.org/wiki/Gregory_Bovino
+- name: Justin D. Smith
+  region: US
+  roles:
+    - title: Attorney
+      organization: Trump's Personal Team
+  harm:
+    - defends assassinations o political opponents by authoritarian leaders
+  refs:
+    - https://www.youtube.com/watch?v=uINS83DssCU
+
 - name: Larry Ellison
   region: US
   roles:
