@@ -455,6 +455,15 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - https://en.wikipedia.org/wiki/Troy_Edgar
 
+- name: Bobby Kotick
+  roles:
+    - title: CEO
+      organization: Activision Blizzard
+  harm:
+    - advocates for and participates in extraction and exploitation of general public for personal gain
+  refs:
+    - https://en.wikipedia.org/wiki/Bobby_Kotick
+
 - name: John Kennedy
   region: Louisiana, US
   roles:
