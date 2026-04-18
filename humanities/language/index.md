@@ -12,6 +12,8 @@ Languages are primarily identified by their ISO-639-1 code[^1].
 
 Languages are typically documented in dictionaries, which tend to be descriptive rather than prescriptive as a matter of practicality. Prescriptive definitions exist, but they're typically given as forewards to legal or medical literature for the reader's formal understanding.
 
+whale vowels: https://royalsocietypublishing.org/rspb/article/293/2069/20252994/481340/The-phonology-of-sperm-whale-coda-vowels
+bird syntax: https://www.nature.com/articles/ncomms10986
 
 ```
 
