@@ -12,12 +12,20 @@ The study of language, it's origins, function, and applications.
 
 - event: structuralism
   when: 
+  contributors:
+    - name: 
 - event: functionalism
   when: 
+  contributors:
+    - name: 
 - event: generativism
   when: 
+  contributors:
+    - name: Noam Chomsky
 - event: cognitivism
   when: 
+  contributors:
+    - name: 
 
 ```
 
