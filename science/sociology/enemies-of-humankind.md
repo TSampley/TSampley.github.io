@@ -160,16 +160,6 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - defends assassinations o political opponents by authoritarian leaders
   refs:
     - https://www.youtube.com/watch?v=uINS83DssCU
-
-- name: Larry Ellison
-  region: US
-  roles:
-    - title: CEO
-      organization: Oracle
-  harm:
-    -
-  refs:
-    - 
 - name: Mike Johnson
   region: US
   roles:
@@ -177,24 +167,6 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
       organization: Congressional House of the USA
   harm:
     - promotes ethnic states
-  refs:
-    - 
-- name: Dennis Prager
-  region: US
-  roles:
-    - title: CEO
-      organization: PragerU
-  harm:
-    - Coordinates disinformation campaigns
-  refs:
-    - 
-- name: Brian Thompson
-  region: US
-  roles:
-    - title: CEO
-      company: United Healthcare
-  harm:
-    - promotes beuracratized murder
   refs:
     - 
 - name: Kristi Noem
@@ -228,7 +200,6 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - defended genocide
   refs:
     - https://www.youtube.com/watch?v=GTYZ7LjfOec
-
 - name: Markwayne Mullin
   region: US
   roles:
@@ -241,6 +212,33 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - https://en.wikipedia.org/wiki/Markwayne_Mullin
     - https://www.youtube.com/watch?v=9E6Iy0oDfI4
 
+- name: Larry Ellison
+  region: US
+  roles:
+    - title: CEO
+      organization: Oracle
+  harm:
+    -
+  refs:
+    - 
+- name: Dennis Prager
+  region: US
+  roles:
+    - title: CEO
+      organization: PragerU
+  harm:
+    - Coordinates disinformation campaigns
+  refs:
+    - 
+- name: Brian Thompson
+  region: US
+  roles:
+    - title: CEO
+      company: United Healthcare
+  harm:
+    - promotes beuracratized murder
+  refs:
+    - 
 - name: 
   region: US
   roles:
@@ -249,7 +247,6 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - https://www.epa.gov/aboutepa/about-office-chemical-safety-and-pollution-prevention
     - https://www.youtube.com/watch?v=m7uuRBsnXR8
-
 - name: Alex Karp
   region: US
   roles:
@@ -269,7 +266,6 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - advocates for indiscriminate mass murder
   refs:
     - https://en.wikipedia.org/wiki/Palmer_Luckey
-
 - name: 
   region: US
   roles:
@@ -278,6 +274,7 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - project 2025; literal conspiracy to overtake nation with religious fundamentalism
   refs:
     - 
+
 - name: Jake Paul
   region: 
   roles:
@@ -303,7 +300,6 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - 
   harm:
     - abused authority to enrich himself at the expense of the general public
-    - fascilitated 
     - justified murder of a journalist for political purposes
   refs:
     - https://www.youtube.com/shorts/CGOQQK6_di8
