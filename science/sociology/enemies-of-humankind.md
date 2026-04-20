@@ -674,6 +674,10 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - Blood Diamonds
 ```
 
+## Corporate Groups
+
+Typically the CEO might be targeted as the externally facing figure-head of a company. Realistically, the board has the most power, but boards usually meet infrequently and stay out of the spotlight, leading even employees to be unaware of their existence. A CEO or other executive can be used as a sacrifice or apparent scape-goat for the board while the same motives remain in-place and simply take effect through a new figure head. Influencing a board is much more practical for stopping the malicious behavior of corporations or dismantling them entirely.
+
 [^1]: https://www.etymonline.com/word/enemy
 [^2]: https://www.etymonline.com/word/humankind
 [^3]: https://www.etymonline.com/word/human
