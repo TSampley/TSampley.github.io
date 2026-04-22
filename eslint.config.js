@@ -13,7 +13,7 @@ export default defineConfig([
       '@stylistic': stylistic
     },
     rules: {
-      "@stylistic/indent": ['error', 2]
+      "@stylistic/indent": ['error', 2, {'memberExpression': 1}]
     },
     extends: ["js/recommended"], 
     languageOptions: { 
