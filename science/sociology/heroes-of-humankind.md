@@ -17,6 +17,13 @@ It seems we have fewer and fewer heroes every generation, but with sacrifice bei
   region: US
   acts:
     - advocates for fair insurance for all and against the enrichment of health insurance companies despite familial wealth derived from the same industry
+- name: Cole Tomas Allen
+  region: US
+  acts:
+    - fought desperately to better the world despite the immense risk to himself and the grief of his family and friends
+  refs:
+    - https://apnews.com/article/trump-correspondents-dinner-shooting-suspect-d4111facf965aaaa10334eb5c12901db
+    - https://apnews.com/article/trump-correspondents-dinner-shooter-cole-tomas-allen-ea98b14e839217985bd7cf5ab169fb65
 
 - name: David Bier
   region: US
