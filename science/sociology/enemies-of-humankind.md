@@ -169,6 +169,12 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - promotes ethnic states
   refs:
     - 
+- name: Various
+  region: US
+  roles:
+    - organization: Secret Service
+  harm:
+    - fundamentally corrupt organization that can only possibly serve the interests of tyrants following the premise that a "Leader of the Free World" must do so democratically, i.e., with the consent of the governed, and if a single citizen feels they should kill a politician, then it is the politician's failure on society that is to blame
 - name: Kristi Noem
   region: US
   roles:
