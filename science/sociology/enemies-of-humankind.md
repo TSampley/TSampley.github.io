@@ -571,6 +571,19 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - personal experience
 
+- name: Josh Dean
+  region: Stillwater, Ok
+  roles:
+    - title: Photographer
+      organization: Josh Dean Photography
+  harm:
+    - singlemindely advocates "rules for thee but not for me" ideology
+    - advocates for violence through ignorance and perpetuation of conflict
+  refs:
+    - "I hope they (Pain County Democrats) don't make the office all political – but if they were Libertarian, that'd be ok!"
+    - "I don't know why some people just can't agree to disagree."
+    - https://joshdeanphotography.com/
+
 - name: Zach _Unkown_
   region: Stillwater, Ok
   roles:
