@@ -68,3 +68,6 @@ Declarative languages allow the developer to describe the state of the program i
 
 
 ### Reactive
+
+### Rule Based Programming
+
