@@ -37,7 +37,7 @@ MVVM+
 
 ## Structured
 
-## Funtional
+## Functional
 
 ## Object Oriented
 
