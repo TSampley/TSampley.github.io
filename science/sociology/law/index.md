@@ -13,19 +13,21 @@ Contrast with [law as a humanities](/humanities/law/)
 
 ## Digital Law Efforts
 
-FOLIO - https://openlegalstandard.org/
+For a demonstration of [Digital Law Demo](./digital-law).
 
-Computational Law - https://arxiv.org/html/2503.04305v1
+The idea of digitizing law is not new, and there have been many independent efforts across jurisdictions, each with their own approach.
+
+The [Open Legal Standard](https://openlegalstandard.org/) group maintains the FOLIO (Federated Open Legal Information Ontology) together with a collection of tools to digest, produce, and act on legal ontologies. It has an [API](https://github.com/alea-institute/folio-api) together with a [Python library](https://github.com/alea-institute/folio-python) to work with it.
+
 
 List of Ontologies - https://github.com/Liquid-Legal-Institute/Legal-Ontologies
 
+
+Computational Law - https://arxiv.org/html/2503.04305v1
+
+
 https://www.oasis-open.org/
 https://serviceinnovationlab.github.io/projects/legislation-as-code/
-https://www.edmondok.gov/DocumentCenter/View/5450/Ordinance-3868-Chickens?bidId=
-https://library.municode.com/ok/edmond/codes/code_of_ordinances?nodeId=COOR_TIT7AN_CH7.09AN
-
-
-Comment - The changing of laws is like rewriting the source code (policies) of a program. A reliance on some organization through legislation is (usually) the most difficult to change, hence delegation of finer policies to some regulatory body which can modify its policies more frequently.
 
 ### Rules as Code
 http://logic.stanford.edu/complaw/readings/rules_as_code.pdf

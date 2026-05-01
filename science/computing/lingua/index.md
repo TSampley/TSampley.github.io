@@ -70,4 +70,6 @@ Declarative languages allow the developer to describe the state of the program i
 ### Reactive
 
 ### Rule Based Programming
+In its simplest conception, rule based programming decomposes a system into a series of if-else branches with actions that describe the 
 
+[^fowler-rules]: https://martinfowler.com/bliki/RulesEngine.html
