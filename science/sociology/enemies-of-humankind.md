@@ -489,6 +489,14 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - https://en.wikipedia.org/wiki/Bobby_Kotick
 
+- name: Nick Fuentes
+  region: US
+  roles:
+  harm:
+    - promotes racism
+  refs:
+    - https://en.wikipedia.org/wiki/Nick_Fuentes
+
 - name: John Kennedy
   region: Louisiana, US
   roles:
