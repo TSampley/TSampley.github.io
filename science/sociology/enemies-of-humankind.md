@@ -694,6 +694,18 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - voted to continue war with Iran
     - promotes ethnic states
 
+- name: C. Naylor
+  region: Pittsburgh, Pennsylvania, US
+  roles:
+    - title: Officer
+      organization: Rostraver Township Police Department
+  harm:
+    - blamed victim for abuse by community
+    - dismissed legitimate grievances as physiological dysfunction
+    - perpetuated uneccessary suffering in favor of personal preconceptions (pride)
+  refs:
+    - https://www.youtube.com/watch?v=m_mVeZxP6NI
+
 - name: Nicky Oppenheimer
   region: South Africa
   roles:
