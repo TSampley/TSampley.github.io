@@ -489,6 +489,15 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - https://en.wikipedia.org/wiki/Bobby_Kotick
 
+- name: Kevin O'Leary
+  region: US
+  roles:
+    - title: CEO
+  harm:
+    - advocates suffering to motivate society
+  refs:
+    - 
+
 - name: Nick Fuentes
   region: US
   roles:
