@@ -479,6 +479,15 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - https://en.wikipedia.org/wiki/Troy_Edgar
 
+- name: Scott Bessent
+  region: US
+  roles:
+    - 
+  harm:
+    - 
+  refs:
+    - https://en.wikipedia.org/wiki/Scott_Bessent
+
 - name: Bobby Kotick
   region: US
   roles:
@@ -514,6 +523,15 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - breathes
   refs:
     - https://www.youtube.com/watch?v=dCrF7YG3elk&pp=ugUEEgJlbg%3D%3D
+
+- name:
+  region: Illinois
+  roles:
+    - title: State Trooper
+  harm:
+    - 
+  refs:
+    - https://www.youtube.com/watch?v=4dt9dJ1YJpA
 
 - name: John Kennedy
   region: Louisiana, US
