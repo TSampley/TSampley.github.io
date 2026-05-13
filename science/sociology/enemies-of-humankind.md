@@ -224,7 +224,7 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - title: CEO
       organization: Oracle
   harm:
-    -
+    - breaths
   refs:
     - 
 - name: Dennis Prager
@@ -506,6 +506,17 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - advocates suffering to motivate society
   refs:
     - 
+
+- name: Megan Ellison
+  region: US
+  roles:
+    - title: CEO
+      organization: Annapurna Interactive
+  harm:
+    - supports ethnostates
+  refs:
+    - https://en.wikipedia.org/wiki/Megan_Ellison
+    - https://www.annapurnainteractive.com/
 
 - name: Nick Fuentes
   region: US
