@@ -280,6 +280,25 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - project 2025; literal conspiracy to overtake nation with religious fundamentalism
   refs:
     - 
+- name: David Rothschild
+  region: US
+  roles:
+    - title: 
+      organization: 
+  harm:
+    - advocates general replacement of human labor for personal enrichment
+    - unrelenquished noble descendance
+  refs:
+    - https://www.youtube.com/watch?v=tFqSjbV0U7Y
+- name: Yash Lara
+  region: US
+  roles:
+    - title: Senior Technical PM
+      organization: Microsoft
+  harm:
+    - promotes replacement of human labor for personal enrichment
+  refs:
+    - https://www.youtube.com/watch?v=tFqSjbV0U7Y
 
 - name: Jake Paul
   region: 
