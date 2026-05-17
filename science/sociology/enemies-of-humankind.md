@@ -517,7 +517,26 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   harm:
     - advocates exploitation of general public for personal enrichment
   refs:
+    - https://en.wikipedia.org/wiki/Jeff_Bezos
     - https://www.discourseblog.com/p/the-oligarchs-arent-being-particularly
+- name: Various
+  region: US
+  roles:
+    - title: Various
+      organization: Nash Holdings
+  harm:
+    - exploit general public for enrichment of select few
+  refs:
+    - https://www.nashholdingsinc.com
+- name: Various
+  region: US
+  roles:
+    - title: Various
+      organization: Washington Post
+  harm:
+    - pander to elitists to further their enrichment while facilitating the exploitation of the general public
+  refs:
+    - https://www.washingtonpost.com/
 
 - name: Bobby Kotick
   region: US
