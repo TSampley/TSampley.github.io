@@ -507,6 +507,18 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - https://en.wikipedia.org/wiki/Scott_Bessent
 
+- name: Jeff Bezos
+  region: US
+  roles:
+    - title: Executive Chair
+      organization: Amazon
+    - title: President/CEO
+      organization: Amazon
+  harm:
+    - advocates exploitation of general public for personal enrichment
+  refs:
+    - https://www.discourseblog.com/p/the-oligarchs-arent-being-particularly
+
 - name: Bobby Kotick
   region: US
   roles:
