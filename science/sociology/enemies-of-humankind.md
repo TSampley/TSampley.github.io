@@ -425,6 +425,16 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - 
 
+- name: Eric Schmidt
+  region:
+  roles:
+    - title: 
+      organization: 
+  harm:
+    - 
+  refs:
+    - https://www.youtube.com/watch?v=LDUrtrRfReo
+
 - name: Kerry McCormack
   region: Cleveland, Ohio, US
   roles:
