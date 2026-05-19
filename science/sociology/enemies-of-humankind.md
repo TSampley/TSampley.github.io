@@ -585,6 +585,14 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - https://www.youtube.com/watch?v=dCrF7YG3elk&pp=ugUEEgJlbg%3D%3D
 
+- name: Various
+  region: US
+  roles:
+    - title: Court
+  harm:
+  refs:
+    - https://apnews.com/article/trump-lawsuit-irs-leak-3729de38770b558be01712a143437bf8
+
 - name:
   region: Illinois
   roles:
