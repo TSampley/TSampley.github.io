@@ -812,6 +812,16 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - https://www.youtube.com/watch?v=m_mVeZxP6NI
 
+- name: Mike Shultz
+  region: Utah
+  roles:
+    - title: Representative
+      organization: Utah House
+  harm:
+    - uses his position of power to enrich himself at the cost of his constituents
+  refs:
+    - https://www.youtube.com/watch?v=t6LKzB3eTFs
+
 - name: Nicky Oppenheimer
   region: South Africa
   roles:
