@@ -821,6 +821,16 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - uses his position of power to enrich himself at the cost of his constituents
   refs:
     - https://www.youtube.com/watch?v=t6LKzB3eTFs
+    - https://en.wikipedia.org/wiki/Mike_Schultz_(politician)
+- mame: Scott Sandall
+  region: Utah
+  roles:
+    - title: Senator
+      organization: Utah Senate
+  harm: 
+  refs:
+    - https://www.youtube.com/watch?v=t6LKzB3eTFs
+    - https://en.wikipedia.org/wiki/Scott_Sandall
 
 - name: Nicky Oppenheimer
   region: South Africa
