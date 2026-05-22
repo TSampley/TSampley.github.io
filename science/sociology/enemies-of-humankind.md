@@ -529,6 +529,8 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - https://en.wikipedia.org/wiki/Jeff_Bezos
     - https://www.discourseblog.com/p/the-oligarchs-arent-being-particularly
+    - https://www.youtube.com/watch?v=xjF63tC8kSE
+  
 - name: Various
   region: US
   roles:
