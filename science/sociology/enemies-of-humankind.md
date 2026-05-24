@@ -403,6 +403,17 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - https://en.wikipedia.org/wiki/Kalshi=
 
+- name: All
+  address: 2948 Foster Creighton Drive, Nashville, Tennessee
+  roles:
+    - organization: Eye In The Sky, LLC
+  refs:
+    - https://www.youtube.com/watch?v=_ip7JZyaH-E
+- name: All
+  address: West Columbia, South Carolina
+  roles:
+    - organization: Eye In The Sky Drone Services
+
 - name: Peter Thiel
   region: Colorado, US
   roles:
