@@ -859,6 +859,18 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
       when: 1974 to 1983
   harm:
     - Blood Diamonds
+
+- name: @YoAdrian1968@x.com, @Kristen55564384@x.com
+  region: TBD
+  roles:
+    - title: TBD
+      organization: TBD
+  harm:
+    - promotes unfounded paranoia of peers
+    - discourages scientific research
+  refs:
+    - https://x.com/YoAdrian1968
+    - https://truckntrailer.com
 ```
 
 ## Corporate Groups
