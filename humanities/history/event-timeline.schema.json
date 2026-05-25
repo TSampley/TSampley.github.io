@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$id": "https://tsampley.github.io/history/event-timeline.schema.json",
+  "definitions": {
+    "block-change": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": "string"
+        },
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "begin": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "change": {
+      "anyOf": [
+        { "$ref": "#definitions/inline-change" },
+        { "$ref": "#definitions/block-change" }
+      ]
+    },
+    "inline-change": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": "string"
+        },
+        "from": {},
+        "to": {}
+      }
+    },
+    "event": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "changes": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "refs": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "when": true
+      }
+    }
+  },
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/event"
+      }
+    }
+  }
+}
