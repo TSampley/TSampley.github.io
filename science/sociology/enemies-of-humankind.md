@@ -860,6 +860,16 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   harm:
     - Blood Diamonds
 
+- name: Lee Zeldin
+  region: 
+  roles:
+    - title:
+      organization:
+  harm:
+    - 
+  refs:
+    - https://www.youtube.com/watch?v=0Eg-vpvWkAE
+
 - name: @YoAdrian1968@x.com, @Kristen55564384@x.com
   region: TBD
   roles:
