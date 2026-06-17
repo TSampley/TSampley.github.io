@@ -20,3 +20,6 @@ vs Medicine:
 ## Sexism in Medicine
 
 Why I avoid male doctors - https://www.youtube.com/watch?v=n3G0W4UL3yQ
+
+[^1]: https://pmc.ncbi.nlm.nih.gov/articles/PMC7290730/
+[^2]: https://en.wikipedia.org/wiki/Paralytic_shellfish_poisoning
