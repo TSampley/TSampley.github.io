@@ -41,16 +41,11 @@ Expresses the instances at a specific point in the program's execution.
 ## Personal Approach
 
 1. Start with [Use Case Diagrams](#use-case), describing the types of users and high-level interactions with the system.
-  1. Identify entities referenced in use cases at a high level - these will become objects but at this point are probably too abstract to commit to a concrete structure.
+  - Identify entities referenced in use cases at a high level - these will become objects but at this point are probably too abstract to commit to a concrete structure.
   - These roughly correspond to the Agile "User Story", which is a type of User Scenario, following the format: As a &lt;Actor&gt; I want &lt;Feature&gt;, so that &lt;Value&gt;.
-2. Expand each Use Case into an [Activity Diagram](#activity)
-  1. [State Diagrams](#state) can be used to express complex, dynamic activities or processes.
-  2. 
+2. Expand each Use Case into an [Activity Diagram](#activity) and/or [State Diagrams](#state).
 3. Expand each Activity into a [Sequence Diagram](#sequence) or [Communication Diagram](#communication) while defining Class Diagrams to express supporting architecture.
-  1. 
-  2. 
 4. Validate architecture by using [Object Diagrams](#object) to walk step-by-step through the model the system creates for each use case.
-  1. 
 
 
 [^wiki-user-story]: https://en.wikipedia.org/wiki/User_story
