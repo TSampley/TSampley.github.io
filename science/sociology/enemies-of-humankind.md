@@ -616,6 +616,13 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - https://apnews.com/article/trump-lawsuit-irs-leak-3729de38770b558be01712a143437bf8
 
+- name: Tulsi Gabbard
+  region: US
+  roles: 
+  harm: 
+  refs:
+    - https://en.wikipedia.org/wiki/Tulsi_Gabbard
+
 - name:
   region: Illinois
   roles:
