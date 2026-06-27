@@ -107,6 +107,9 @@ map(obj) -> {
 ```mermaid
 
 graph
+
+  classDef Task fill:#ffd,stroke:#333;
+
   Sitemap[Sitemap Graph]:::Task
   AndroidHistory[Android Version History Timeline]:::Task
 
@@ -123,7 +126,28 @@ graph
   Legal --> S[Something]
   Legal --> B["Another thing!"]
 
-  classDef Task fill:#ffd,stroke:#333;
+```
+
+```mermaid
+
+graph
+
+  XYZ[XYZ Project]
+
+  PD_01[Create Task List]
+  
+  PD_01 --> PD_02[Create Task]
+  
+  PD_03[Create Group] --> PD_01
+  PD_03 --> PD_04[Join Group]
+  PD_03 --> PD_06[Create Pantry]
+  PD_03 --> PD_08[Create Recipe]
+  
+  PD_04 --> PD_05[Invite to Group]
+
+  PD_06 --> PD_07[Create Pantry Item]
+
+  PD_08 --> PD_09[Use Recipe]
 
 ```
 
