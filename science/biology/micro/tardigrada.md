@@ -7,7 +7,7 @@ date:
 updated:
 ---
 
-Tardigrades are everyone's favorite extremophile[^wiki=tard]!
+Tardigrades are everyone's favorite extremophile[^wiki-tard]!
 
 
 
