@@ -16,6 +16,49 @@ A fundamental decision in the manipulation of different properties is their data
 
 Since POST, GET, PUT/PATCH, DELETE correspond to Create, Read, Update, Delete, I think it makes sense to design an API by thinking about each endpoint like a resource and trying to assign a type that gives better semantic reasoning to each of the HTTP methods.
 
+## Collections
+
+### Set
+bag of values
+functions:
+- put, add, insert
+- remove
+queries:
+- 
+
+### List
+number acts as index mapping to value
+functions:
+- push, add
+- pop, remove
+queries:
+- idx: number
+
+### Map
+key acts index mapping to value
+functions:
+- set
+- remove
+queries:
+- key: any
+
+/set-resource: Set[Type]
+- POST adds a new element of Type to the set
+- GET gets the elements in the set (allows filtering)
+- PUT override an existing element in the set
+- DELETE remove an element from the set
+/list-resource: List[Type]
+- POST adds a new element of Type to the list
+- GET gets the elements in the list (allows filtering)
+- PUT override an existing element at a position in the list
+- DELETE remove an element at a position OR remove all instances of an element
+/map-resource: Map[Key, Value]
+- POST adds a new element as a value and returns the key
+- GET gets the elements in the map (allows filtering)
+- -key
+  - PUT update specific value at key
+  - DELETE delete specific value at key
+
 ```mermaid
 classDiagram
 
