@@ -3,7 +3,8 @@ layout: post
 
 title: Bureaucratized Murder
 subtitle: You Are Complicit
-
+date: 2025-07-30 0800 -0500
+updated: 2026-07-16 1806 -0500
 ---
 
 I like to think that I'm a compassionate individual; if I met someone who was going through addiction and slowly losing everything they had worked for in life, I would want to sit down with them and get to know them over a nice meal and try to figure out how I can help them - or just listen if that's what they need. But when that same person becomes increasingly desperate and starts to steal or mug people at knife-point in a dark alley, I can't blame anyone for defending their property or themselves, and if in the worst case, the mugger ends up dead, I can't fault the victim. While there are some who think all violence is unjust even for defense, the principle of self-defense is widely accepted, but it tends to be extremely limited in its recognition over time and space.
