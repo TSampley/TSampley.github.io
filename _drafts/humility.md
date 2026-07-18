@@ -3,6 +3,7 @@ layout: post
 
 title: Humiliation as a Cure
 subtitle: 
+date: 2025-10-17 0800 -0500
 ---
 
 Pride is a disease, and we are in a pandemic. The U.S. is having an especially bad time with it.
