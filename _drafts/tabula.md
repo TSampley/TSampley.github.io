@@ -3,7 +3,7 @@ layout: post
 
 title: Tabula Rasa
 subtitle: 
-
+date: 2025-07-25 0800 -0500
 ---
 
 We are all born blank as slates, but an important question that is always skipped over (as far as I have seen) is the material of the slate. It might be made of marble, green clay, or chalk, of cement with coarse aggregate, laminated fiberglass and resin, or shale. Each responds in its own way to the force of tools on its surface. Some take the force directly, breaking or flaking predictably according to the mason's vision; some channel or direct the force according to their own unique characteristics, requiring great care or completely baffling an inexperienced or presumptuous mason.

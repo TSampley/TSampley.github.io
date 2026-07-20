@@ -1,0 +1,17 @@
+---
+layout: post
+
+title: Mining the Asteroid Belt
+subtitle: The New Gold Rush
+date: 2024-09-20 0800 -0500
+updated: 2026-07-19 1852 -0500
+---
+
+
+<!-- Insert picture https://cdn-images-1.medium.com/v2/resize:fit:800/1*s79jw9jKsfSSUWzBOAtTPQ.jpeg -->
+<!-- Caption: Good ol' ice prospectors at work. -->
+Consider a possible near future: Fusion energy produces a net gain in energy, making it a feasible "clean" energy source; meanwhile, AI has become fully reliable and is now used by every major company and advanced military around the world to plan their next move - the only limitation now is how much energy an entity can manage to throw at its computing farm. Couple that with fusion-powered, indoor farming to feed an ever increasing population (assuming we avoid resource-wars somehow), and we're going to end up baking ourselves alive with waste heat before the sun and green house gasses can finish the job.
+It's a simple thermodynamic problem: the Earth can only radiate so much heat into the void of space, and we need to absorb and/or produce less than that to avoid cooking ourselves alive. Our global warming problem is a perfect example of what happens when the equilibrium is upset. In short the production of greenhouse gasses - so-called because they trap heat like a greenhouse - slows this radiative loss, causing the global average temperature to increase. One proposed solution is releasing chemicals that would reflect sunlight, reducing one variable in the equation: solar irradiance. But even in this dark future, net positive fusion energy could still produce more energy than we could radiate, again increasing the global average temperature. The only way to combat this fusion powered overheating would be to impart the waste heat into some material and jettison that material into space, like some kind of cosmic A/C. Without bothering to talk about why it would be problematic to use material directly from Earth itself - we would be left with only one option: importing material from space.
+Fortunately - for fusion-powered AI enthusiasts - we have an entire asteroid belt just beyond Mars full of icy rock. There have already been discussions about the trillions of dollars in metals that could be sourced from those distant Rockies; now, with competition-fueled fusion ovens on the horizon, this new frontier might just be an existential necessity. Or at least I imagine that's how it will be sold. Because slowing the demands of greed is never an option.
+Assuming we're able to establish outposts around the asteroid belt whose responsibility it is to pan through those great icy nuggets before gently nudging them Earth-ward, we're now presented with the threat of a misdirected meteorite "accidentally" being weaponized during orbital mining activities. If we can't effectively coordinate our nations to reduce our impact on the environment, why would we hope that we could effectively prevent space-rock attacks? It's all the power of a nuclear assault, but without the fallout poisoning the surface for centuries. The potential gains would be far too attractive in a greed-driven future.
+There are many other aspects I want to cover, but to avoid expanding into a full Hollywood doomsday movie, I'll cut myself off here - fusion belongs in space; the sun provides us with plenty of energy, if only we can find ways to effectively combat greed.

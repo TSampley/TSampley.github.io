@@ -3,6 +3,7 @@ layout: post
 
 title: Polite and Professional
 subtitle: How you're undermining humanity
+date: 2024-07-30 0800 -0500
 ---
 
 

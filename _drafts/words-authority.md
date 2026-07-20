@@ -3,6 +3,8 @@ layout: post
 
 title: The Authority of Words
 subtitle: 
+date: 2025-07-29 0800 -0500
+update: 2026-07-18 1907 -0500
 ---
 
 Concepts always come before words. A word is a label given to something we find worth communicating; inherently, the idea we're labeling must come before the word.

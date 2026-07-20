@@ -3,6 +3,8 @@ layout: post
 
 title: Tools
 subtitle: Misuse and Evil
+date: 2024-03-21 0800 -0500
+updated: 2026-07-18 1902 -0500
 ---
 
 ## Ethics

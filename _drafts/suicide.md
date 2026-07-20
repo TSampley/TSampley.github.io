@@ -2,7 +2,8 @@
 layout: wiki
 
 title: Suicide as a Group Adaptation
-date: 2025-07-02 2000 -0500
+date: 2024-09-16 0800 -0500
+updated: 2026-07-18 1915 -0500
 ---
 
 It may at first seem contradictory that evolution would create organisms that can be driven to kill themselves, but we need to remind ourselves that evolution works on a larger scale than the individual. If something increases the odds of some given genetics being carried on, that's all that's needed to make those traits more dominant in a population.
