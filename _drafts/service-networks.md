@@ -201,6 +201,11 @@ TLDs:
     - 
   registrar: eurodns
 
+- site: ms-cookie-sync.presage.io
+  registrar: 
+- site: intentiq.com
+  registrar: 
+- site: 
 ```
 
 Special District: https://en.wikipedia.org/wiki/Special_district_(United_States) - under legislated responsibilities - library networks - OK: https://oksenate.gov/sites/default/files/2022-05/os65.pdf
