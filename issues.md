@@ -11,6 +11,60 @@ These are project issues, linked from other pages where they are relevant.
 1. Generate TOC here
 {:toc}
 
+
+## Overview
+{: .no_toc}
+
+```mermaid
+
+graph
+
+  classDef Task fill:#ffd,stroke:#333;
+
+  Sitemap[Sitemap Graph]:::Task
+  AndroidHistory[Android Version History Timeline]:::Task
+
+  Quiz[Generate Quizzes from Data Points]:::Task
+  Quiz --> A
+  Quiz --> B
+
+  Demo[Demo]:::Task
+  Etym[Etymology Demo]:::Task --> Demo
+  Pend[Pendulum Demo]:::Task --> Demo
+  Econ[Economics Demos]:::Task --> Demo
+
+  Legal[Legal Network Diagram]
+  Legal --> S[Something]
+  Legal --> B["Another thing!"]
+
+```
+
+```mermaid
+
+graph
+
+  XYZ[XYZ Project]
+
+  PD_01[Create Task List]
+  
+  PD_01 --> PD_02[Create Task]
+  
+  PD_03[Create Group] --> PD_01
+  PD_03 --> PD_04[Join Group]
+  PD_03 --> PD_06[Create Pantry]
+  PD_03 --> PD_08[Create Recipe]
+  
+  PD_04 --> PD_05[Invite to Group]
+
+  PD_06 --> PD_07[Create Pantry Item]
+
+  PD_08 --> PD_09[Use Recipe]
+
+```
+
+{%- include code/mermaid-script.html -%}
+
+
 ## Timeline Diagrams
 - Visualize Timeline with data mapped to events
 - class event
@@ -101,54 +155,3 @@ map(obj) -> {
 ## Legal Network Diagram
 - associate efforts with regions
 - 
-
-## Overview
-
-```mermaid
-
-graph
-
-  classDef Task fill:#ffd,stroke:#333;
-
-  Sitemap[Sitemap Graph]:::Task
-  AndroidHistory[Android Version History Timeline]:::Task
-
-  Quiz[Generate Quizzes from Data Points]:::Task
-  Quiz --> A
-  Quiz --> B
-
-  Demo[Demo]:::Task
-  Etym[Etymology Demo]:::Task --> Demo
-  Pend[Pendulum Demo]:::Task --> Demo
-  Econ[Economics Demos]:::Task --> Demo
-
-  Legal[Legal Network Diagram]
-  Legal --> S[Something]
-  Legal --> B["Another thing!"]
-
-```
-
-```mermaid
-
-graph
-
-  XYZ[XYZ Project]
-
-  PD_01[Create Task List]
-  
-  PD_01 --> PD_02[Create Task]
-  
-  PD_03[Create Group] --> PD_01
-  PD_03 --> PD_04[Join Group]
-  PD_03 --> PD_06[Create Pantry]
-  PD_03 --> PD_08[Create Recipe]
-  
-  PD_04 --> PD_05[Invite to Group]
-
-  PD_06 --> PD_07[Create Pantry Item]
-
-  PD_08 --> PD_09[Use Recipe]
-
-```
-
-{%- include code/mermaid-script.html -%}
