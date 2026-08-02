@@ -171,6 +171,20 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - promotes ethnic states
   refs:
     - 
+
+- name: Various
+  region: US
+  roles:
+    - organization: FBI
+- name: Various
+  region: US
+  roles:
+    - organization: Pentagon
+- name: Chris Bargery
+  region: US
+  roles:
+    - title: Chief
+    - organization: Pentagon
 - name: Various
   region: US
   roles:
