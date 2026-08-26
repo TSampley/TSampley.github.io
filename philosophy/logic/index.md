@@ -17,6 +17,8 @@ key to understanding the natural world and its laws.
 [Mathematics](../../math/) is a specific type of logic that began
 as a subfield of [philosophy](../) but, like many special fields, it has grown to become its own field entirely.
 
+I would believe this is the single most common fallacy that humans commit[^wiki-fallacy].
+
 **Reason** - 
 
 <!-- TODO: Examples of reason without logic -->
@@ -28,3 +30,4 @@ as a subfield of [philosophy](../) but, like many special fields, it has grown t
 
 [^etym-reason]: https://www.etymonline.com/word/reason
 [^etym-logic]: https://www.etymonline.com/word/logic
+[^wiki-fallacy]: https://en.wikipedia.org/wiki/Association_fallacy

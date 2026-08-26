@@ -10,3 +10,23 @@ Philosophy is an incredibly broad field that spans essentially all of human hist
 
 ## Major Branches
 [Epistemology](./epistemology/), [ontology](./ontology/), ethics, meta-physics, and many more.
+
+### Mysticism
+
+
+### Stoicism
+
+Zeno of Citium
+Diogenes
+Marcus Tullius Cicero
+Seneca the Younger
+Epictetus 
+Marcus Aurelius
+
+[^wiki-stoicism]: https://en.wikipedia.org/wiki/Stoicism
+[^wiki-diogenes]: https://en.wikipedia.org/wiki/Diogenes
+
+### Others
+
+Plotinus
+Lucretius
