@@ -7,9 +7,16 @@ date: 2025-09-10 2000 -0600
 ---
 
 Law, as studied under sociology, focuses on 
+
 Law is best studied in theory as a social science or socio-economic engineering effort. It is heavily influenced by the humanities and [philosophy](../../philosophy/) in particular, but the practice itself is at times painfully formal, which gives it an air of authority, yet it can frequently be notoriously subjective – e.g. "I know it when I see it".
 
 Contrast with [law as a humanities](/humanities/law/)
+
+## Immutability of "Law"
+
+If you have ever wondered why or been annoyed that people will invoke the word "law" as though it holds some kind of absolute power, that derives from the ancient tradition of attributing ethical behavior – thus social expectations including law – to some kind of divine origin, which considered such expectations to be absolute and immutable[^etym-law]. Anyone who continues this tradition is therefore inherently evil.
+
+[^etym-law]: https://www.etymonline.com/word/law
 
 ## Digital Law Efforts
 
@@ -32,8 +39,6 @@ https://serviceinnovationlab.github.io/projects/legislation-as-code/
 ### Rules as Code
 http://logic.stanford.edu/complaw/readings/rules_as_code.pdf
 
-
-[^1]: https://www.etymonline.com/word/law
 [^2]: https://www.merriam-webster.com/dictionary/law#legalDictionary
 
 ## Regulative Norms
