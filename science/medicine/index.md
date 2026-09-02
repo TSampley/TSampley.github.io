@@ -30,3 +30,15 @@ https://en.wikipedia.org/wiki/Xanthine
 https://www.ncbi.nlm.nih.gov/books/NBK559165/
 https://en.wikipedia.org/wiki/Methylxanthines
 
+https://en.wikipedia.org/wiki/Botulinum_toxin
+https://en.wikipedia.org/wiki/Cyanide_poisoning
+https://www.sciencedirect.com/topics/medicine-and-dentistry/cyanide-poisoning
+https://pmc.ncbi.nlm.nih.gov/articles/PMC11591714/
+https://www.ncbi.nlm.nih.gov/books/NBK600901/
+
+https://www.ccohs.ca/oshanswers/chemicals/ld50.html
+https://www.openaccessgovernment.org/article/the-challenge-of-determining-the-health-risks-of-low-dose-chemical-exposures/190357/
+https://pmc.ncbi.nlm.nih.gov/articles/PMC2174412/
+
+https://pmc.ncbi.nlm.nih.gov/articles/PMC13188055/
+https://www.toxmsdt.com/41-interactions.html
