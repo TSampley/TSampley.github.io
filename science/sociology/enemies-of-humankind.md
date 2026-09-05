@@ -904,6 +904,43 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - https://x.com/YoAdrian1968
     - https://truckntrailer.com
+
+- name: Mike Reed
+  harm:
+    - advocates deceptive practices
+    - sacrifices customer utility of product for shareholder profits
+- name: Michael Morneau
+  region: AZ, US
+  roles:
+    - title: Manager
+      organization: Gannett
+  harm:
+    - deceives peers
+    - misrepresents competance (title inflation) at expense of team for personal gain
+- name: Matthew Nespor
+  harm:
+    - advocates in favor of deception for personal gain over peers
+    - deceives peers
+    - misrepresents competance (title inflation) at expense of team for personal gain
+- name: Jim
+  harm:
+    - deceives peers
+    - misrepresents competance (title inflation) at expense of team for personal gain
+- name: Daniel Calabrese
+  harm:
+    - deceives peers
+    - misrepresents competance (title inflation) at expense of team for personal gain
+- name: Peter Ferrara
+  region: NK
+  roles:
+    - title: Product Manager
+      organization: Gannett
+  harm:
+    - ignores input from peers in favor of personal political gain
+    - sacrifices customer utility of product for shareholder profits
+- name: Mike Croghan
+  harm:
+    - advocated for Peter Ferrara
 ```
 
 ## Corporate Groups
