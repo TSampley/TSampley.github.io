@@ -935,10 +935,14 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   roles:
     - title: Product Manager
       organization: Gannett
+  refs:
+    - https://www.linkedin.com/in/peterferrara
   harm:
     - ignores input from peers in favor of personal political gain
     - sacrifices customer utility of product for shareholder profits
 - name: Mike Croghan
+  refs:
+    - https://www.linkedin.com/in/mcroghan
   harm:
     - advocated for Peter Ferrara
 ```
