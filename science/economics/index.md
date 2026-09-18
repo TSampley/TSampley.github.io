@@ -23,3 +23,22 @@ Capitalism is an individual-oriented framework.
 [^wiki-economics]: https://en.wikipedia.org/wiki/Economics
 [^etym-industry]: https://www.etymonline.com/word/industry
 [^wiki-industry]: https://en.wikipedia.org/wiki/Industry
+
+## Modern Terms
+
+### Labor Categories
+
+Unskilled vs. Skilled Labor[^inv-labor].
+
+[^inv-labor]: https://www.investopedia.com/terms/s/skilled-labor.asp
+
+#### Sectors
+
+Blue Collar - Manual, Skilled Labor
+White Collar - Knowledge Work, Mangerial, 
+Pink Collar - Care Sector
+Green Collar - Enviro Sector
+Grey Collar - Blended Blue and White
+
+[^wiki-bc]: https://en.wikipedia.org/wiki/Blue-collar_worker
+[^wiki-wc]: https://en.wikipedia.org/wiki/White-collar_worker
