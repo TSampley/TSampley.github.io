@@ -4,7 +4,7 @@ layout: wiki
 title: Software Engineering
 description: The disciplined application of computer science 
 date: 2025-12-04 03:46 -0600
-updated: 2026-03-29 1528 -0500
+updated: 2026-09-24 0051 -0500
 ---
 
 Software engineering is the disciplined application of computer science to plan, build, and analyze software systems.
@@ -25,8 +25,6 @@ Software engineering encompasses many subdisciplines that are each themselves ex
 ### Mobile
 
 ### Full Stack
-
-### 
 
 ### Platform Engineering
 
@@ -59,3 +57,11 @@ Video game development is a beast of its own, with many of the practices that ha
 See [patterns](./patterns/) and [principles](./principles).
 
 [^wiki-hof]: https://en.wikipedia.org/wiki/Douglas_Hofstadter
+
+## Architecture
+
+Software architecture, like building architecture, is all about the layout of components and how it affects the way they interact with one another to produce a comprehensive structure. Some people make it out to be an objective pursuit; however, what one person finds easier to understand and therefore maintain, another person finds more difficult to remember or recall than something they prefer. Often, the difficulty is due to lack of familiarity with the approaches used, but people do process information and organize concepts in completely different ways, which can lead two "equally" intelligent individuals to prefer different approaches.
+
+For example, Uncle Bob[^wiki-rcm], discusses the concepts of fan-in and fan-out and how they affect the ability to refactor software components as dependents or dependencies. He points out that higher fan-in to a component, usually makes it more difficult to change that component because you need to manage the complexity of its dependents – more dependents, more complexity – and this sort of thing is usually addressed with abstraction, which makes it easier (even trivial in some cases) to swap one component for another with completely different behavior, but at the same time, the programmer then needs to understand which abstraction is being used at a particular time in order to understand what the invocation is accomplishing. No abstraction makes a program entirely rigid in its behavior, and therefore easier to understand but more difficult to change. Too much abstraction makes a program incredibly easy to change, but what exactly needs to be changed and how can be difficult. Whatever your approach, the ideal architecture finds a balance between concrete implementations and abstractions.
+
+[^wiki-rcm]: https://en.wikipedia.org/wiki/Robert_C._Martin
