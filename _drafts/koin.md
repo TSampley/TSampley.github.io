@@ -7,7 +7,7 @@ date: 2024-09-01 0800 -0500
 updated: 2026-07-19 1601 -0500
 ---
 
-{% include picture https://miro.medium.com/v2/resize:fit:720/format:webp/1*Xx3uXSvxC2UEdC_bA_WF4w.png %}
+{% include image.html url="/assets/img/headers/bastille.jpg" alt="" caption="" %}
 
 I've been using Dagger/Hilt with my Android projects for quite a while now and I've become very comfortable with dependency injection and reliant on it thanks to the amount of work the code-generation saves us as Android developers. When I decided to make the jump to Kotlin-Multiplatform, I was initially disappointed that I wouldn't be able to take Hilt with me, but I've rolled my own service locators before, so I just convinced myself that the amount of time I would spend wiring up my dependencies would be offset by the lack of code duplication thanks to cross-platform compilation.
 There have been some relatively recent advancements, but they have yet to make it to a stable release.

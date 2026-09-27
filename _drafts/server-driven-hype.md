@@ -3,8 +3,7 @@ layout: post
 
 title: Server-Driven Hype
 subtitle: Server-Driven Side Gripe
-date: 
-updated:
+date: 2024-08-01 0800 -0500
 ---
 
 I've seen a few articles about Server-Driven UI - it seems to be the new kid on the block. I wouldn't expect it to be a new idea, but Google trends only shows regular activity starting in 2020. (side-note: the original unhyphenated form seems to be overtaking the hyphenated form)

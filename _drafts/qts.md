@@ -7,7 +7,7 @@ date: 2024-09-04 0800 -0500
 updated: 2026-07-19 1603 -0500
 ---
 
-{% include picture https://cdn-images-1.medium.com/v2/resize:fit:800/1*Izst4PVPrqNS6u3mYVMRUA.png %}
+{% include image.html url="" alt="" caption="" %}
 
 As a member of the LGBTQIA+ community, I'm exhausted by typing (let alone saying) that phrase anytime I need to refer to myself or our community. More importantly, I've come to consider it ironically exclusionary. In an attempt to be more representative, we've ended up deciding who deserves full or primary representation and who only deserves partial or implied representation.
 For those new to or outside the community, the extended acronym stands for (L)esbian, (G)ay, (B)isexual, (T)rans, (Q)ueer, (I)ntersex, (A)sexual, and more (+). Some people also use the Q to refer to "questioning": someone exploring their identity.
