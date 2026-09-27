@@ -893,6 +893,16 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
   refs:
     - https://www.youtube.com/watch?v=0Eg-vpvWkAE
 
+- name: [Board and Officers]
+  region: 
+  roles:
+    - title: 
+      organization: Huy Fong Foods
+  harm:
+    - exploited exclusive business partner's good will
+  refs:
+    - https://en.wikipedia.org/wiki/Huy_Fong_Foods
+
 - name: @YoAdrian1968@x.com, @Kristen55564384@x.com
   region: TBD
   roles:
