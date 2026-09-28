@@ -868,6 +868,27 @@ For a more uplifting version, see the [heroes page](./heroes-of-humankind).
     - https://www.youtube.com/watch?v=t6LKzB3eTFs
     - https://en.wikipedia.org/wiki/Scott_Sandall
 
+- name: Nicholas Ryan Lapointe
+  region: Scarborough, Maine
+  roles:
+    - title: Officer, Rank Unknown
+      organization: ICE
+  harm:
+    - intimidating citizen observers trying to keep others safe
+    - complicit and active participants in systemic cruelty
+  refs:
+    - https://www.eyesonice.net/p/ice-agents-behind-the-masks-have
+- name: Christopher John Semler
+  region: Scarborough, Maine
+  roles:
+    - title: Officer, Rank Unknown
+      organization: ICE
+  harm:
+    - intimidating citizen observers trying to keep others safe
+    - complicit and active participants in systemic cruelty
+  refs:
+    - https://www.eyesonice.net/p/ice-agents-behind-the-masks-have
+
 - name: Nicky Oppenheimer
   region: South Africa
   roles:
@@ -965,3 +986,9 @@ Typically the CEO might be targeted as the externally facing figure-head of a co
 [^2]: https://www.etymonline.com/word/humankind
 [^3]: https://www.etymonline.com/word/human
 [^4]: https://www.etymonline.com/word/kind#etymonline_v_1862
+
+### Entry Form
+
+<form>
+  
+</form>

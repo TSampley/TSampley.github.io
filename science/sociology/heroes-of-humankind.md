@@ -49,6 +49,13 @@ It seems we have fewer and fewer heroes every generation, but with sacrifice bei
     - https://frost.house.gov/
     - https://en.wikipedia.org/wiki/Maxwell_Frost
 
+- name: Robert “Bob” Peck
+  region: Scarborough, Maine
+  acts:
+    - aided innocents by observing activities of ICE regime at risk to his own safety and freedom
+  refs:
+    - https://www.eyesonice.net/p/ice-agents-behind-the-masks-have
+
 - name: Linus Torvalds
   region: Finland
   acts:
